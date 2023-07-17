@@ -7,3 +7,4 @@
 | 02     | Hieu T. NGUYEN | 21120068@student.hcmus.edu.vn |      
 | 03     | Hoang C TA | 21120074@student.hcmus.edu.vn |
 | 04     | Hoang-Hung Vo-Trung | hoanghung1182003@gmail.com |
+| 05     | Phat Cao-Quang | quangphat18ti@gmail.com
