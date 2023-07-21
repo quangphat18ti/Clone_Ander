@@ -8,6 +8,6 @@
 | 03    | Hoang C TA          | 21120074@student.hcmus.edu.vn | 2        | 2003   | gitlab Heyesvz, github Heyesvz |
 | 04    | Hoang-Hung Vo-Trung | hoanghung1182003@gmail.com    | 8        | 2003   |
 | 05    | Phat Cao-Quang      | quangphat18ti@gmail.com       | 8        | 2003   | gitlab quangphat18ti, github quangphat18ti |
-| 06    | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        | 2002   |
+| 06    | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        | 2002   | github quocky|
 | 07    | Khuyen N. TRA       | kt7456158@gmail.com           | 9	     | 2002   |
 
