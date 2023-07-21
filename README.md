@@ -10,3 +10,9 @@
 | 05    | Phat Cao-Quang      | quangphat18ti@gmail.com       | 8        | 2003  | gitlab quangphat18ti, github quangphat18ti       |
 | 06    | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        | 2002  | github quocky                                    |
 | 07    | Khuyen N. TRA       | kt7456158@gmail.com           | 9        | 2002  | gitlab Ktra-sssc, github Ktra-sssc               |
+
+## reactjs webapp demo 
+cd $GITCLONED_HOME
+    mkdir reactjs_webapp
+    cd reactjs_webapp/
+        npx create-react-app .
