@@ -1,6 +1,6 @@
 ## member
 
-| index  | fullname | gitlab email      | district |
+| index  | fullname | gitlab email      | Area |
 | ------ | -------- | ----------------- | - 
 | 00     | Nam G VU | namgivu@gmail.com |
 | 01     | Tan P NGUYEN | phuctanhh@gmail.com | 
