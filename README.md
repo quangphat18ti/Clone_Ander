@@ -8,5 +8,5 @@
 | 03    | Hoang C TA          | 21120074@student.hcmus.edu.vn | 2        |
 | 04    | Hoang-Hung Vo-Trung | hoanghung1182003@gmail.com    | 8        |
 | 05    | Phat Cao-Quang      | quangphat18ti@gmail.com       | 8        |
-| 06    | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        |
+| 06    | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        | 2002 |
 | 07    | Khuyen N. TRA       | kt7456158@gmail.com           | 9	 |
