@@ -1,8 +1,8 @@
 ## member
 
-| index | fullname            | gitlab email                  | district |
-| ----- | ------------------- | ----------------------------- | -------- |
-| 00    | Nam G VU            | namgivu@gmail.com             | 10       |
+| index | fullname            | gitlab email                  | district | birth  |
+| ----- | ------------------- | ----------------------------- | -------- | - |
+| 00    | Nam G VU            | namgivu@gmail.com             | 10       | 1982 |
 | 01    | Tan P NGUYEN        | phuctanhh@gmail.com           | Thu Duc  |
 | 02    | Hieu T. NGUYEN      | nguyentronghieu@hsgs.edu.vn   | Thu Duc  |
 | 03    | Hoang C TA          | 21120074@student.hcmus.edu.vn | 2        |
