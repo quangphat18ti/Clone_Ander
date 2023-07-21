@@ -12,7 +12,14 @@
 | 07    | Khuyen N. TRA       | kt7456158@gmail.com           | 9        | 2002  | gitlab Ktra-sssc, github Ktra-sssc               |
 
 ## reactjs webapp demo 
+
+### generate code
 cd $GITCLONED_HOME
     mkdir reactjs_webapp
     cd reactjs_webapp/
         npx create-react-app .
+
+### run it 
+cd $GITCLONED_HOME
+    cd reactjs_webapp/
+    npm i ; npm start 
