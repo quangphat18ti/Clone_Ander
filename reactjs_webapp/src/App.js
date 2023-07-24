@@ -20,6 +20,9 @@ function App() {
       <br/>li @ each field pickup  <ul>{member_lilist}</ul>
 
       <br/>li @ the whole as json  <ul>{member_lilist2_asjsonstr}</ul>
+
+      <br/>TODO display as pure html table
+      <br/>TODO display as bootstrap 4 table
     </>
   )
 }
