@@ -5,6 +5,7 @@ let member_list = [
   { 'index': '02', 'fullname': 'Khuyen N TRA', 'gitlab email': 'kt7456158@gmail.com', 'district': 9,  'birth': 2002, 'git': 'gitlab Ktra-sssc, github Ktra-sssc', },
   { 'index': '03', 'fullname': 'Hoang C TA', 'gitlab email': '21120074@student.hcmus.edu.vn', 'district': 2,  'birth': 2003, 'git': 'gitlab Heyesvz, github Heyesvz', },
   { 'index': '04', 'fullname': 'Tan P NGUYEN', 'gitlab email': 'phuctanhh@gmail.com', 'district': 'Thu duc',  'birth': 2003, 'git': 'gitlab phuctanhh', },
+  { 'index': '05', 'fullname': 'Hieu T. NGUYEN', 'gitlab email': 'nguyentronghieu@hsgs.edu.vn', 'district': 'Thu Duc',  'birth': 2003, 'git': 'gitlab hieunguyen.cs, github hieunguyen.cs', },
   //TODO dear member, please fill in your info here; keep fieldname col aligned, thanks
 ]
 
