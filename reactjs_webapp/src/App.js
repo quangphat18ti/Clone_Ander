@@ -4,6 +4,7 @@ let member_list = [
   { 'index': '01', 'fullname': 'Hung H VO', 'gitlab email': 'hoanghung1182003@gmail.com', 'district': 8, 'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
   { 'index': '02', 'fullname': 'Khuyen N TRA', 'gitlab email': 'kt7456158@gmail.com', 'district': 9,  'birth': 2002, 'git': 'gitlab Ktra-sssc, github Ktra-sssc', }
   //TODO dear member, please fill in your info here; keep fieldname col aligned, thanks
+  { 'index': '03', 'fullname': 'Tan P NGUYEN', 'gitlab email': 'phuctanhh@gmail.com', 'district': 'Thu duc',  'birth': 2003, 'git': 'gitlab phuctanhh', },
 ]
 
 function App() {
