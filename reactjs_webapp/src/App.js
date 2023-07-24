@@ -5,11 +5,23 @@ let member_list = [
 ]
 
 function App() {
+  let member_lilist = member_list.map( m =>
+    <li>{m.fullname} {m['gitlab email']}</li>
+  )
+
+  let member_lilist2_asjsonstr = member_list.map( m =>
+    <li>{JSON.stringify(m)}</li>
+  )
+
   return (
     <>
-      <div>{JSON.stringify(member_list)}</div>
+      <br/>the whole as json       <div>{JSON.stringify(member_list)}</div>
+
+      <br/>li @ each field pickup  <ul>{member_lilist}</ul>
+
+      <br/>li @ the whole as json  <ul>{member_lilist2_asjsonstr}</ul>
     </>
-  );
+  )
 }
 
 export default App
