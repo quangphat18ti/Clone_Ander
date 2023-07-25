@@ -14,10 +14,8 @@ function App() {
 
   return (
     <>
-      {/* TODO: Change the code below to create the form. This form have field to fill the name,
-        gitlab email, district, birth, git, avatar (image load form your computer).
-        Note: the type of the input (the type of the birth field is date)
-        Expect: Can understand the form, and the action, htmlFor attributes in form
+      {/* TODO Change the code below to create the form. This form have field to fill the name, gitlab email, district, birth, git
+          Expect: Can understand the form, and the action, htmlFor of label
       */}
       <div className="container">
       <form action="#">
