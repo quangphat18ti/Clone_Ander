@@ -12,7 +12,7 @@ let member_list = [
 function App() {
   let headers = Object.keys(member_list[0])
 
-  let member_tdlist = member_list.map(m =>
+  let member_tr_list = member_list.map(m =>
       <tr>
         {headers.map( h => <td>{m[h]}</td>)}
       </tr>
@@ -30,7 +30,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {member_tdlist}
+            {member_tr_list}
           </tbody>
         </table>
       </div>
