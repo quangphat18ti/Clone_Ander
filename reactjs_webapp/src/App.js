@@ -20,6 +20,26 @@ function App() {
 
   return (
     <>
+      {/* TODO: Change the code below to create the form. This form have field to fill the name,
+        gitlab email, district, birth, git, avatar (image load form your computer).
+        Note: the type of the input (the type of the birth field is date)
+        Expect: Can understand the form, and the action, htmlFor attributes in form
+      */}
+      <div className="container">
+      <form action="#">
+        <div className="form-group">
+          <label htmlFor="email">Email address:</label>
+          <input type="email" className="form-control" placeholder="Enter email" id="email" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="pwd">Password:</label>
+          <input type="password" className="form-control" placeholder="Enter password" id="pwd" />
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form> 
+      </div>
+      {/*End TODO*/}
+
       <div className="container">
         <h2>Intern Member List</h2>
 
