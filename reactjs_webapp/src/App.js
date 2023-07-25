@@ -1,6 +1,5 @@
 let member_list = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
-  { 'index': '99', 'fullname': 'Han Ng VU',       'gitlab email': 'rubyhanvu@gmail.com',            'district': 3,          'birth': 2016, 'git': null, },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
   { 'index': '02', 'fullname': 'Khuyen N TRA',    'gitlab email': 'kt7456158@gmail.com',            'district': 9,          'birth': 2002, 'git': 'gitlab Ktra-sssc, github Ktra-sssc', },
   { 'index': '03', 'fullname': 'Hoang C TA',      'gitlab email': '21120074@student.hcmus.edu.vn',  'district': 2,          'birth': 2003, 'git': 'gitlab Heyesvz, github Heyesvz', },
@@ -11,36 +10,31 @@ let member_list = [
 ]
 
 function App() {
-  let member_tdlist = member_list.map(m =>
-      <tr>
-        <td>{m.index}</td>
-        <td>{m.fullname}</td>
-        <td>{m["gitlab email"]}</td>
-        <td>{m.district}</td>
-        <td>{m.birth}</td>
-        <td>{m.git}</td>
-      </tr>
+  let headers = Object.keys(member_list[0])
+
+  let member_tr_list = member_list.map(m =>
+    <tr>
+      {headers.map( h => <td>{m[h]}</td> )}
+    </tr>
   )
+
   return (
     <>
-      <div class="container">
-        <h2>Basic Table</h2>
-        <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
-        <table class="table">
+      <div className="container">
+        <h2>Intern Member List</h2>
+
+        <table className="table">
           <thead>
             <tr>
-              <th>index</th>
-              <th>fullname</th>
-              <th>gitlab email</th>
-              <th>district</th>
-              <th>birth</th>
-              <th>git</th>
+              {headers.map(h => <th>{h}</th>)}
             </tr>
           </thead>
+
           <tbody>
-            {member_tdlist}
+            {member_tr_list}
           </tbody>
         </table>
+
       </div>
     </>
   )
