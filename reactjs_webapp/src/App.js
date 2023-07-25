@@ -20,10 +20,29 @@ function App() {
       <div className="container">
         <form action="#">
           <div className="form-group">
-            <label htmlFor="email">Email address:</label>
-            <input type="email" className="form-control" placeholder="Enter email" id="email" />
+            <label htmlFor="fullName">Fullname:</label>
+            <input type="text" className="form-control" placeholder="Enter fullname" id="fullName" />
           </div>
 
+          <div className="form-group">
+            <label htmlFor="gitlabEmail">Gitlab email:</label>
+            <input type="email" className="form-control" placeholder="Enter Gitlab email" id="gitlabEmail" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="district">District:</label>
+            <input type="number" className="form-control" placeholder="Enter district" id="district" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="birth">Birth:</label>
+            <input type="number" className="form-control" placeholder="Enter birth" id="birth" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="git">Git:</label>
+            <input type="text" className="form-control" placeholder="Enter git information" id="git" />
+          </div>
           {/*This is example code for alert button*/}
           <button type="submit" className="btn btn-primary" onClick={()=>{
             alert('Bạn vừa nhấn vào nút Submit')
