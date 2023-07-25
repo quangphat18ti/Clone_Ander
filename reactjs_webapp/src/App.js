@@ -11,15 +11,7 @@ let member_list = [
 ]
 
 function App() {
-  let member_lilist = member_list.map( m =>
-    <li>{m.fullname} {m['gitlab email']}</li>
-  )
-
-  let member_lilist2_asjsonstr = member_list.map( m =>
-    <li>{JSON.stringify(m)}</li>
-  )
-
-  let member_tdlist = member_list.map(m => 
+  let member_tdlist = member_list.map(m =>
       <tr>
         <td>{m.index}</td>
         <td>{m.fullname}</td>
@@ -31,16 +23,6 @@ function App() {
   )
   return (
     <>
-      <br/>the whole as json       <div>{JSON.stringify(member_list)}</div>
-
-      <br/>li @ each field pickup  <ul>{member_lilist}</ul>
-
-      <br/>li @ the whole as json  <ul>{member_lilist2_asjsonstr}</ul>
-
-      <br/>TODO display as pure html table
-      <br/>TODO display as bootstrap 4 table
-
-      {/* TODO: The code below is a example of Bootstrap4 table, you modify it to render member_list */}
       <div class="container">
         <h2>Basic Table</h2>
         <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
