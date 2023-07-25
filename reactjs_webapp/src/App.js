@@ -10,32 +10,23 @@ let member_list = [
 ]
 
 function App() {
+  let headers = Object.keys(member_list[0])
+
   let member_tdlist = member_list.map(m =>
       <tr>
-        <td>{m.index}</td>
-        <td>{m.fullname}</td>
-        <td>{m["gitlab email"]}</td>
-        <td>{m.district}</td>
-        <td>{m.birth}</td>
-        <td>{m.git}</td>
+        {headers.map( h => <td>{m[h]}</td>)}
       </tr>
   )
 
   /*TODO class to className @Khuyen */
   return (
     <>
-      <div class="container">
-        <h2>Basic Table</h2>
-        <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
-        <table class="table">
+      <div className="container">
+        <h2>Intern Member List</h2>
+        <table className="table">
           <thead>
             <tr>
-              <th>index</th>
-              <th>fullname</th>
-              <th>gitlab email</th>
-              <th>district</th>
-              <th>birth</th>
-              <th>git</th>
+              {headers.map(h => <th>{h}</th>)}
             </tr>
           </thead>
           <tbody>
