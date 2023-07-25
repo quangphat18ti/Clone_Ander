@@ -18,21 +18,31 @@ function App() {
     </tr>
   )
 
+  let member_list_table_header = 
+    <thead>
+      <tr>
+      {Object.keys(member_list[0]).map(key => <th>{key}</th>)}
+      </tr>
+    </thead>
+  let member_list_table_body = 
+    <tbody>
+    {member_list.map(item => {
+    return (
+      <tr>
+        {Object.values(item).map(value => <td>{value}</td>)}
+      </tr>
+      )
+    })}
+    </tbody>
+  
   return (
     <>
       <div className="container">
         <h2>Intern Member List</h2>
 
         <table className="table">
-          <thead>
-            <tr>
-              {headers.map(h => <th>{h}</th>)}
-            </tr>
-          </thead>
-
-          <tbody>
-            {member_tr_list}
-          </tbody>
+          {member_list_table_header}
+          {member_list_table_body}      
         </table>
 
       </div>
