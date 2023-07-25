@@ -13,9 +13,9 @@ function App() {
   let headers = Object.keys(member_list[0])
 
   let member_tr_list = member_list.map(m =>
-      <tr>
-        {headers.map( h => <td>{m[h]}</td> )}
-      </tr>
+    <tr>
+      {headers.map( h => <td>{m[h]}</td> )}
+    </tr>
   )
 
   /*TODO class to className @Khuyen */
