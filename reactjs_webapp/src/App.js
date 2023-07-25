@@ -10,39 +10,29 @@ let member_list = [
 ]
 
 function App() {
-  let headers = Object.keys(member_list[0])
+  let col_header_list = Object.keys(member_list[0])
 
-  let member_tr_list = member_list.map(m =>
-    <tr>
-      {headers.map( h => <td>{m[h]}</td> )}
-    </tr>
-  )
-
-  let member_list_table_header = 
-    <thead>
-      <tr>
-      {Object.keys(member_list[0]).map(key => <th>{key}</th>)}
-      </tr>
-    </thead>
-  let member_list_table_body = 
-    <tbody>
-    {member_list.map(item => {
-    return (
-      <tr>
-        {Object.values(item).map(value => <td>{value}</td>)}
-      </tr>
-      )
-    })}
-    </tbody>
-  
   return (
     <>
       <div className="container">
         <h2>Intern Member List</h2>
 
         <table className="table">
-          {member_list_table_header}
-          {member_list_table_body}      
+          <thead>
+            <tr>
+              {col_header_list.map(h => <td>{h}</td> )}
+            </tr>
+          </thead>
+
+          <tbody>
+            {member_list.map(m =>
+              <tr>
+                {col_header_list.map(h =>
+                  <td>{m[h]}</td>
+                )}
+              </tr>
+            )}
+          </tbody>
         </table>
 
       </div>
