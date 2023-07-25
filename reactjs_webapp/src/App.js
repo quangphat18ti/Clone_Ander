@@ -35,7 +35,11 @@ function App() {
           <label htmlFor="pwd">Password:</label>
           <input type="password" className="form-control" placeholder="Enter password" id="pwd" />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+
+        {/*This is example code for alert button*/}
+        <button type="submit" className="btn btn-primary" onClick={()=>{
+          alert('Bạn vừa nhấn vào nút Submit')
+        }}>Submit</button>
       </form> 
       </div>
       {/*End TODO*/}
