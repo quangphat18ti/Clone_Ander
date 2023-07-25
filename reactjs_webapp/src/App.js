@@ -20,6 +20,23 @@ function App() {
     <li>{JSON.stringify(m)}</li>
   )
 
+  let member_list_table_header = 
+    <thead>
+      <tr>
+      {Object.keys(member_list[0]).map(key => <th>{key}</th>)}
+      </tr>
+    </thead>
+  let member_list_table_body = 
+    <tbody>
+    {member_list.map(item => {
+    return (
+      <tr>
+        {Object.values(item).map(value => <td>{value}</td>)}
+      </tr>
+      )
+    })}
+    </tbody>
+  
   return (
     <>
       <br/>the whole as json       <div>{JSON.stringify(member_list)}</div>
@@ -32,34 +49,11 @@ function App() {
       <br/>TODO display as bootstrap 4 table
 
       {/* TODO: The code below is a example of Bootstrap4 table, you modify it to render member_list */}
-      <div class="container">
-        <h2>Basic Table</h2>
-        <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
-          </tbody>
+      <div className="container">
+        <h2>List member</h2>
+        <table className="table">
+          {member_list_table_header}
+          {member_list_table_body}      
         </table>
       </div>
     </>
