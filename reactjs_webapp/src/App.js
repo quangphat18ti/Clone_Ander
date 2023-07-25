@@ -18,21 +18,17 @@ function App() {
           Expect: Can understand the form, and the action, htmlFor of label
       */}
       <div className="container">
-      <form action="#">
-        <div className="form-group">
-          <label htmlFor="email">Email address:</label>
-          <input type="email" className="form-control" placeholder="Enter email" id="email" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pwd">Password:</label>
-          <input type="password" className="form-control" placeholder="Enter password" id="pwd" />
-        </div>
+        <form action="#">
+          <div className="form-group">
+            <label htmlFor="email">Email address:</label>
+            <input type="email" className="form-control" placeholder="Enter email" id="email" />
+          </div>
 
-        {/*This is example code for alert button*/}
-        <button type="submit" className="btn btn-primary" onClick={()=>{
-          alert('Bạn vừa nhấn vào nút Submit')
-        }}>Submit</button>
-      </form> 
+          {/*This is example code for alert button*/}
+          <button type="submit" className="btn btn-primary" onClick={()=>{
+            alert('Bạn vừa nhấn vào nút Submit')
+          }}>Submit</button>
+        </form>
       </div>
       {/*End TODO*/}
 
