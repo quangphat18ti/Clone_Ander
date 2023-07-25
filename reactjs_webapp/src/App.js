@@ -20,6 +20,16 @@ function App() {
     <li>{JSON.stringify(m)}</li>
   )
 
+  let member_tdlist = member_list.map(m => 
+      <tr>
+        <td>{m.index}</td>
+        <td>{m.fullname}</td>
+        <td>{m["gitlab email"]}</td>
+        <td>{m.district}</td>
+        <td>{m.birth}</td>
+        <td>{m.git}</td>
+      </tr>
+  )
   return (
     <>
       <br/>the whole as json       <div>{JSON.stringify(member_list)}</div>
@@ -30,6 +40,27 @@ function App() {
 
       <br/>TODO display as pure html table
       <br/>TODO display as bootstrap 4 table
+
+      {/* TODO: The code below is a example of Bootstrap4 table, you modify it to render member_list */}
+      <div class="container">
+        <h2>Basic Table</h2>
+        <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
+        <table class="table">
+          <thead>
+            <tr>
+              <th>index</th>
+              <th>fullname</th>
+              <th>gitlab email</th>
+              <th>district</th>
+              <th>birth</th>
+              <th>git</th>
+            </tr>
+          </thead>
+          <tbody>
+            {member_tdlist}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
