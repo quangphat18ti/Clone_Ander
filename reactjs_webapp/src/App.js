@@ -22,8 +22,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <h2>Basic Table</h2>
-        <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
+        <h2>Intern Member List</h2>
         <table className="table">
           <thead>
             <tr>
