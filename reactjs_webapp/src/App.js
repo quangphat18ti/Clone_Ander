@@ -10,13 +10,7 @@ let member_list = [
 ]
 
 function App() {
-  let headers = Object.keys(member_list[0])
-
-  let member_tr_list = member_list.map(m =>
-    <tr>
-      {headers.map( h => <td>{m[h]}</td> )}
-    </tr>
-  )
+  let col_header_list = Object.keys(member_list[0])
 
   return (
     <>
@@ -26,12 +20,18 @@ function App() {
         <table className="table">
           <thead>
             <tr>
-              {headers.map(h => <th>{h}</th>)}
+              {col_header_list.map(h => <td>{h}</td> )}
             </tr>
           </thead>
 
           <tbody>
-            {member_tr_list}
+            {member_list.map(m =>
+              <tr>
+                {col_header_list.map(h =>
+                  <td>{m[h]}</td>
+                )}
+              </tr>
+            )}
           </tbody>
         </table>
 
