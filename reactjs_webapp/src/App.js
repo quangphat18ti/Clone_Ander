@@ -20,6 +20,16 @@ function App() {
     <li>{JSON.stringify(m)}</li>
   )
 
+  let member_tdlist = member_list.map(m => 
+      <tr>
+        <td>{m.index}</td>
+        <td>{m.fullname}</td>
+        <td>{m["gitlab email"]}</td>
+        <td>{m.district}</td>
+        <td>{m.birth}</td>
+        <td>{m.git}</td>
+      </tr>
+  )
   return (
     <>
       <br/>the whole as json       <div>{JSON.stringify(member_list)}</div>
@@ -38,27 +48,16 @@ function App() {
         <table class="table">
           <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+              <th>index</th>
+              <th>fullname</th>
+              <th>gitlab email</th>
+              <th>district</th>
+              <th>birth</th>
+              <th>git</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
+            {member_tdlist}
           </tbody>
         </table>
       </div>
