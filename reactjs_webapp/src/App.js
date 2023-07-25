@@ -39,6 +39,7 @@ function App() {
           <thead>
             <tr>
               {col_header_list.map(h => <td>{h}</td> )}
+              <td>Action</td>
             </tr>
           </thead>
 
@@ -48,6 +49,17 @@ function App() {
                 {col_header_list.map(h =>
                   <td>{m[h]}</td>
                 )}
+                <td>
+                  <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        // Handle the action here, e.g., editMember(m.index);
+                        alert(`You clicked on the edit button for member ${m.fullname}`);
+                      }}
+                  >
+                    Edit
+                  </button>
+                </td>
               </tr>
             )}
           </tbody>
