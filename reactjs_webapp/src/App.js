@@ -24,10 +24,10 @@ function App() {
   /*TODO class to className @Khuyen */
   return (
     <>
-      <div class="container">
+      <div className="container">
         <h2>Basic Table</h2>
         <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th>index</th>
