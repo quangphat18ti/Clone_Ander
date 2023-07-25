@@ -18,7 +18,6 @@ function App() {
     </tr>
   )
 
-  /*TODO class to className @Khuyen */
   return (
     <>
       <div className="container">
