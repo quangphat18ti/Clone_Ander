@@ -8,7 +8,6 @@ let member_list = [
   { 'index': '05', 'fullname': 'Hieu T. NGUYEN', 'gitlab email': 'nguyentronghieu@hsgs.edu.vn', 'district': 'Thu Duc',  'birth': 2003, 'git': 'gitlab hieunguyen.cs, github hieunguyen.cs', },
   { 'index': '06', 'fullname': 'Ky Q PHAN', 'gitlab email' : '20120017@student.hcmus.edu.vn', 'district': 8, 'birth': 2002, 'git': 'gitlab phanquocky, github quocky', },
   { 'index': '07', 'fullname': 'Phat Q CAO','gitlab email': 'quangphat18ti@gmail.com', 'district': 8, 'birth': 2016, 'git': 'gitlab quangphat18ti, github quangphat18ti', }, 
-  //TODO dear member, please fill in your info here; keep fieldname col aligned, thanks
 ]
 
 function App() {
