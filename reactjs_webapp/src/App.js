@@ -14,7 +14,7 @@ function App() {
 
   let member_tr_list = member_list.map(m =>
       <tr>
-        {headers.map( h => <td>{m[h]}</td>)}
+        {headers.map( h => <td>{m[h]}</td> )}
       </tr>
   )
 
@@ -23,16 +23,19 @@ function App() {
     <>
       <div className="container">
         <h2>Intern Member List</h2>
+
         <table className="table">
           <thead>
             <tr>
               {headers.map(h => <th>{h}</th>)}
             </tr>
           </thead>
+
           <tbody>
             {member_tr_list}
           </tbody>
         </table>
+
       </div>
     </>
   )
