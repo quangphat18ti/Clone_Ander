@@ -131,7 +131,7 @@ function App() {
         <div className='row mt-0'>
           <h2>Intern Member List</h2>
 
-          <table className="table">
+          <table className="table table-striped">
             <thead>
               <tr>
                 {col_header_list.map(h => <td key={`header-${h}`} >{h}</td> )}
