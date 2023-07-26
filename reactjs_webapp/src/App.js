@@ -115,15 +115,23 @@ function App() {
       {/* download :member_list as json file */}
       <div className="container">
         <button onClick={() => {
-          let blob = new Blob([localStorage.getItem('member_list')]);
-          let href = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = href;
-          link.download = "member_list.json";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}>Download member list</button>
+          // create url for :member_list in localstorage
+          let blob = new Blob([localStorage.getItem('member_list')])
+          let href = URL.createObjectURL(blob)
+
+          // create <a> elem to click
+          const a_elem    = document.createElement('a')
+          a_elem.href     = href
+          a_elem.download = "member_list.json"
+
+          // click it to start the download
+          document.body.appendChild(a_elem)
+          a_elem.click()
+          document.body.removeChild(a_elem)
+        }}
+        >
+          Download member list
+        </button>
       </div>
     </>
   )
