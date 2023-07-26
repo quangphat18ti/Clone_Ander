@@ -68,14 +68,18 @@ function App() {
                 }}/>
               </div>
 
-              <button type="submit" className="btn btn-primary" onClick={()=>{
-                console.log(fullname, gitlabEmail, district, birth, git)
+              <button
+                type="submit" className="btn btn-primary"
+                onClick={()=>{
+                  console.log(fullname, gitlabEmail, district, birth, git)
 
-                let member_list_new = [
-                  {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
-                  ...member_list
-                ] ; set__member_list(member_list_new)
-              }}>Submit</button>
+                  let member_list_new = [
+                    {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
+                    ...member_list
+                  ] ; set__member_list(member_list_new)
+                }}
+              >Submit</button>
+
             </form>
           </div>
         </div>
