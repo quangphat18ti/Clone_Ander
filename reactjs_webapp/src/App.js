@@ -97,6 +97,20 @@ function App() {
         </table>
 
       </div>
+      
+      {/*Create button to download the member_list */}
+      <div className="container">
+      <button onClick={() => {
+        let blob = new Blob([localStorage.getItem('member_list')]);
+        let href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = "member_list.json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }}>Download member list</button>
+      </div>
     </>
   )
 }
