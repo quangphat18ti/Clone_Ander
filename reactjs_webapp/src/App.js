@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 let member_list_init = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
@@ -26,16 +26,18 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
+  const formRef = useRef();
+
   return (
     <>
       <div className="container">
         {/* member @ upsert form */}
         <div className='row mt-5'>
           <div className='col-6'>
-            <form action="#">
+            <form action="#" ref={formRef}>
               <div className="form-group row">
                 <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                   <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
                     required
                     onChange={(e)=> {
@@ -46,7 +48,7 @@ function App() {
 
               <div className="form-group row">
                 <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                   <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
                     required
                     onChange={(e) => {
@@ -57,7 +59,7 @@ function App() {
 
               <div className="form-group row">
                 <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                   <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
                     required
                     onChange={(e) => {
@@ -68,7 +70,7 @@ function App() {
 
               <div className="form-group row">
                 <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                   <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
                     required
                     onChange={(e) => {
@@ -79,7 +81,7 @@ function App() {
 
               <div className="form-group row">
                 <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
-                <div class="col-sm-9">
+                <div className="col-sm-9">
                   <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
                     required
                     onChange={(e) => {
@@ -92,14 +94,15 @@ function App() {
                 type="submit" className="btn btn-primary"
                 onClick={()=>{
                   console.log(fullname, gitlabEmail, district, birth, git)
+                  const form = formRef.current;
+                  if (!form.checkValidity()) { return }
 
                   let member_list_new = [
-                    {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
+                    {fullname, "gitlab email": gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
                     ...member_list
                   ] ; set__member_list(member_list_new)
                 }}
               >Submit</button>
-
             </form>
           </div>
         </div>
