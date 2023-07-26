@@ -33,49 +33,6 @@ function App() {
   return (
     <>
       <div className="container">
-        {/* member listing @ markdown table */}
-        <div className='row mt-5'>
-          <h2>Intern Member List @ markdown table </h2>
-
-          <br/>
-          <div className="container p-0">
-            <pre>{ (() => {
-              //region find colwidth to call .padEnd() for each col
-              let colwidth_list__header  = key_list.map( k => k.length )
-              let colwidth_list__horizon = colwidth_list__header  // horizonLine colwidth defined by header colwidth
-              let colwidth_list__member  = member_list.map( m =>
-                key_list.map( k => (m[k]+'').length )
-              )
-
-              // shortcut var
-              let peh  = colwidth_list__header  // peh aka padEnd_for_header_line
-              let pehz = peh                    // peh aka padEnd_for_horizon_line
-              let pem  = colwidth_list__member  // peh aka padEnd_for_member_lines
-
-              // find max width for each col
-              let pem_transposed = pem[0].map((_, colIndex) => pem.map(row => row[colIndex]))  // transpose 2-dimension list ref. https://stackoverflow.com/a/17428705/248616
-              let pe = key_list.map( (_,i) => Math.max(...pem_transposed[i], peh[i]) )
-              //endregion find width to call .padEnd() for each col
-
-              var s=key_list.map( (k,i) =>  k.padEnd(pe[i])     ).join(' | ') ; const header_line  = `| ${s} |`
-              var s=key_list.map( (_,i) => ''.padEnd(pe[i],'-') ).join(' | ') ; const horizon_line = `| ${s} |`
-
-              const memberLine_list = member_list.map((m) => {
-                let s = key_list.map( (k,i) => (m[k]+'').padEnd(pe[i]) ).join(' | ')
-                return `| ${s} |`
-              })
-
-              let md_text = [
-                header_line,
-                horizon_line,
-                ...memberLine_list,
-              ].join('\n')
-
-              return md_text
-            })() }</pre>
-          </div>
-        </div>
-
         {/* member @ upsert form */}
         <div className='row mt-5'>
           <div className='col-6'>
@@ -177,7 +134,7 @@ function App() {
 
         {/* member listing */}
         <div className='row mt-0'>
-          <h2>Intern Member List</h2>
+          <h3>Intern Member List</h3>
 
           <table className="table table-striped">
             <thead>
@@ -232,6 +189,49 @@ function App() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* member listing @ markdown table */}
+        <div className='row mt-0'>
+          <h3>Intern Member List @ markdown table </h3>
+
+          <br/>
+          <div className="container p-0">
+            <pre>{ (() => {
+              //region find colwidth to call .padEnd() for each col
+              let colwidth_list__header  = key_list.map( k => k.length )
+              let colwidth_list__horizon = colwidth_list__header  // horizonLine colwidth defined by header colwidth
+              let colwidth_list__member  = member_list.map( m =>
+                key_list.map( k => (m[k]+'').length )
+              )
+
+              // shortcut var
+              let peh  = colwidth_list__header  // peh aka padEnd_for_header_line
+              let pehz = peh                    // peh aka padEnd_for_horizon_line
+              let pem  = colwidth_list__member  // peh aka padEnd_for_member_lines
+
+              // find max width for each col
+              let pem_transposed = pem[0].map((_, colIndex) => pem.map(row => row[colIndex]))  // transpose 2-dimension list ref. https://stackoverflow.com/a/17428705/248616
+              let pe = key_list.map( (_,i) => Math.max(...pem_transposed[i], peh[i]) )
+              //endregion find width to call .padEnd() for each col
+
+              var s=key_list.map( (k,i) =>  k.padEnd(pe[i])     ).join(' | ') ; const header_line  = `| ${s} |`
+              var s=key_list.map( (_,i) => ''.padEnd(pe[i],'-') ).join(' | ') ; const horizon_line = `| ${s} |`
+
+              const memberLine_list = member_list.map((m) => {
+                let s = key_list.map( (k,i) => (m[k]+'').padEnd(pe[i]) ).join(' | ')
+                return `| ${s} |`
+              })
+
+              let md_text = [
+                header_line,
+                horizon_line,
+                ...memberLine_list,
+              ].join('\n')
+
+              return md_text
+            })() }</pre>
+          </div>
         </div>
 
       </div>
