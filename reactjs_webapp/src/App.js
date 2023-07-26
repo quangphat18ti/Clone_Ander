@@ -44,7 +44,8 @@ function App() {
               var s=key_list.map( _ => `---` ).join(' | ') ; const horizon_line = `| ${s} |`
 
               const memberLine_list = member_list.map((m) => {
-                return key_list.map((key) => `| ${m[key]}`).join('') + ' |'
+                let s = key_list.map( k => m[k] ).join(' | ')
+                return `| ${s} |`
               })
 
               let md_text = [
