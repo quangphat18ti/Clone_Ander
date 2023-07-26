@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-let member_list = [
+let member_list_init = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
   { 'index': '02', 'fullname': 'Khuyen N TRA',    'gitlab email': 'kt7456158@gmail.com',            'district': 9,          'birth': 2002, 'git': 'gitlab Ktra-sssc, github Ktra-sssc', },
@@ -11,7 +11,7 @@ let member_list = [
 ]
 
 function App() {
-  let col_header_list = Object.keys(member_list[0])
+  let col_header_list = Object.keys(member_list_init[0])
 
   //state variables
   let [fullname, setFullname] = useState("");
@@ -19,6 +19,7 @@ function App() {
   let [district, setDistrict] = useState(""); 
   let [birth, setBirth] = useState();
   let [git, setGit] = useState("");
+  let [member_list, set__member_list] = useState(member_list_init)
 
   // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
   useEffect(() => {
