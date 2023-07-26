@@ -38,17 +38,17 @@ function App() {
         <table className="table">
           <thead>
             <tr>
-              {col_header_list.map(h => <td>{h}</td> )}
+              {col_header_list.map(h => <td key={`header-${h}`} >{h}</td> )}
               <td>action</td>
             </tr>
           </thead>
 
           <tbody>
-            {member_list.map(m =>
-              <tr>
+            {member_list.map( (m,i) =>
+              <tr key={`member-${i}`} >
                 {/* value col(s) */}
                 {col_header_list.map(h =>
-                  <td>{m[h]}</td>
+                  <td key={`memberinfo-${i}-${h}`} >{m[h]}</td>
                 )}
 
                 {/* action col */}
