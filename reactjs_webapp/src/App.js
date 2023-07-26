@@ -20,11 +20,13 @@ function generateMarkdownTable(member_list) {
     return key_list.map((key) => `| ${m[key]}`).join('') + '|'
   })
 
-  return [
+  let md_text = [
     header_line,
     horizon_line,
     ...memberLine_list,
   ].join('\n')
+
+  return md_text
 }
 
 function App() {
