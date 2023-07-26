@@ -33,49 +33,59 @@ function App() {
         <div className='row mt-5'>
           <div className='col-6'>
             <form action="#">
-              <div className="form-group">
-                <label htmlFor="fullName">Fullname:</label>
+              <div className="form-group row">
+                <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname:</label>
+                <div class="col-sm-9">
                 <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
                   required
                   onChange={(e)=> {
                     setFullname(e.target.value);
-                }}/>
+                  }}/>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="gitlabEmail">Gitlab email:</label>
+              <div className="form-group row">
+                <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email:</label>
+                <div class="col-sm-9">
                 <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
                   required
                   onChange={(e) => {
-                    setGitlabEmail(e.target.value);
-                }}/>
+                  setGitlabEmail(e.target.value);
+                }} />
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="district">District:</label>
+              <div className="form-group row">
+                <label htmlFor="district" className="col-sm-3 col-form-label">District:</label>
+                <div class="col-sm-9">
                 <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
                   required
                   onChange={(e) => {
-                    setDistrict(e.target.value);
+                  setDistrict(e.target.value);
                 }}/>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="birth">Birth:</label>
+              <div className="form-group row">
+                <label htmlFor="birth" className="col-sm-3 col-form-label">Birth:</label>
+                <div class="col-sm-9">
                 <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
                   required
                   onChange={(e) => {
                     setBirth(e.target.value);
                 }}/>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="git">Git:</label>
+              <div className="form-group row">
+                <label htmlFor="git" className="col-sm-3 col-form-label">Git:</label>
+                <div class="col-sm-9">
                 <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
                   required
                   onChange={(e) => {
-                    setGit(e.target.value);
+                  setGit(e.target.value);
                 }}/>
+                </div>
               </div>
 
               <button
