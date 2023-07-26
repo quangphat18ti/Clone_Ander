@@ -53,7 +53,7 @@ function App() {
 
                 {/* action col */}
                 <td>
-                  <div class="btn-group" role="group" aria-label="inline-btn">
+                  <div className="btn-group" role="group" aria-label="inline-btn">
                     <button type="button" className="btn btn-primary" onClick={ () => {
                       alert('Edit')
                     }}>Edit</button>
