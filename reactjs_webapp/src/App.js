@@ -10,6 +10,29 @@ let member_list_init = [
   { 'index': '07', 'fullname': 'Phat Q CAO',      'gitlab email': 'quangphat18ti@gmail.com',        'district': 8,          'birth': 2016, 'git': 'gitlab quangphat18ti, github quangphat18ti', },
 ]
 
+function generateMarkdownTable(data) {
+  const keys = Object.keys(data[0]);
+
+  const header = keys.map((key) => `| ${key} `).join("") + "|";
+
+  const seperator = keys.map((key) => `| --- `).join("") + "|";
+
+  const rows = data.map((item) => {
+    return keys.map((key) => `| ${item[key]}`).join("") + "|";
+  })
+
+  return [header, seperator, ...rows].join("\n");
+}
+
+function RenderMarkdownTable(props) {
+  let code = generateMarkdownTable(props.data);
+  return (
+    <pre>
+      <code>{code}</code>
+    </pre>
+  )
+}
+
 function App() {
   let col_header_list = Object.keys(member_list_init[0])
 
@@ -38,6 +61,7 @@ function App() {
           <br/>
           <div className="container p-0">
             <pre>TODO markdown table rendered here</pre>
+            <RenderMarkdownTable data={member_list} />
           </div>
         </div>
 
