@@ -165,9 +165,11 @@ function App() {
                       <button
                         style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3"
                         onClick={ () => {
-                          // delete member in :memberlist at this clicked row at index :i
-                          const updatedMemberList = member_list.filter((member) => member.index !== m.index)
-                          set__member_list(updatedMemberList)
+                          // delete member in :memberlist at this clicked row at index :i  ref. https://stackoverflow.com/questions/52348143/how-can-i-remove-an-array-element-by-index-using-javascript#comment135347015_52348198
+                          let sublist_0toi          = member_list.slice(0,i)
+                          let sublist_iplus1ToEnd   = member_list.slice(i+1)
+                          let member_list__afterdel = [...sublist_0toi, ...sublist_iplus1ToEnd]
+                          set__member_list(member_list__afterdel)
                         }}
                       >Delete</button>
 
