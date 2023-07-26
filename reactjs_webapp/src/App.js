@@ -44,7 +44,7 @@ function App() {
               let colwidth_list__header  = key_list.map( k => k.length )
               let colwidth_list__horizon = colwidth_list__header  // horizonLine colwidth defined by header colwidth
               let colwidth_list__member  = member_list.map( m =>
-                key_list.map( k => m[k].length )
+                key_list.map( k => (m[k]+'').length )
               )
 
               // shortcut var
@@ -55,8 +55,6 @@ function App() {
               // find max width for each col
               let pem_transposed = pem[0].map((_, colIndex) => pem.map(row => row[colIndex]))  // transpose 2-dimension list ref. https://stackoverflow.com/a/17428705/248616
               let pe = key_list.map( (_,i) => Math.max(...pem_transposed[i], peh[i]) )
-              console.log(pe)  //TODO why it's NaN at district and birth ie the value-is-number column
-
               //endregion find width to call .padEnd() for each col
 
               var s=key_list.map( (k,i) =>  k.padEnd(pe[i])     ).join(' | ') ; const header_line  = `| ${s} |`
