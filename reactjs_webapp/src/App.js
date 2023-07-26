@@ -10,18 +10,18 @@ let member_list_init = [
   { 'index': '07', 'fullname': 'Phat Q CAO',      'gitlab email': 'quangphat18ti@gmail.com',        'district': 8,          'birth': 2016, 'git': 'gitlab quangphat18ti, github quangphat18ti', },
 ]
 
-function generateMarkdownTable(data) {
-  const keys = Object.keys(data[0]);
+function generateMarkdownTable(member_list) {
+  const keys = Object.keys(member_list[0])
 
-  const header = keys.map((key) => `| ${key} `).join("") + "|";
+  const header = keys.map((key) => `| ${key} `).join("") + "|"
 
-  const seperator = keys.map((key) => `| --- `).join("") + "|";
+  const seperator = keys.map((key) => `| --- `).join("") + "|"
 
-  const rows = data.map((item) => {
-    return keys.map((key) => `| ${item[key]}`).join("") + "|";
+  const rows = member_list.map((item) => {
+    return keys.map((key) => `| ${item[key]}`).join("") + "|"
   })
 
-  return [header, seperator, ...rows].join("\n");
+  return [header, seperator, ...rows].join("\n")
 }
 
 function App() {
