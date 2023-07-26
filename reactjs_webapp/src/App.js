@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-let member_list = [
+let member_list_init = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
   { 'index': '02', 'fullname': 'Khuyen N TRA',    'gitlab email': 'kt7456158@gmail.com',            'district': 9,          'birth': 2002, 'git': 'gitlab Ktra-sssc, github Ktra-sssc', },
@@ -11,14 +11,15 @@ let member_list = [
 ]
 
 function App() {
-  let col_header_list = Object.keys(member_list[0])
+  let col_header_list = Object.keys(member_list_init[0])
 
   //state variables
-  let [fullName, setFullName] = useState("");
+  let [fullname, setFullname] = useState("");
   let [gitlabEmail, setGitlabEmail] = useState("");
   let [district, setDistrict] = useState(""); 
   let [birth, setBirth] = useState();
   let [git, setGit] = useState("");
+  let [member_list, set__member_list] = useState(member_list_init)
 
   // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
   useEffect(() => {
@@ -32,45 +33,73 @@ function App() {
         <div className='row mt-5'>
           <div className='col-6'>
             <form action="#">
-              <div className="form-group">
-                <label htmlFor="fullName">Fullname:</label>
-                <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullName} onChange={(e)=> {
-                    setFullName(e.target.value);
+              <div className="form-group row">
+                <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
+                <div class="col-sm-9">
+                  <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
+                    required
+                    onChange={(e)=> {
+                      setFullname(e.target.value);
+                    }}/>
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
+                <div class="col-sm-9">
+                  <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
+                    required
+                    onChange={(e) => {
+                    setGitlabEmail(e.target.value);
+                  }} />
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
+                <div class="col-sm-9">
+                  <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
+                    required
+                    onChange={(e) => {
+                    setDistrict(e.target.value);
                   }}/>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="gitlabEmail">Gitlab email:</label>
-                <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} onChange={(e) => {
-                  setGitlabEmail(e.target.value);
-                }} />
+              <div className="form-group row">
+                <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
+                <div class="col-sm-9">
+                  <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
+                    required
+                    onChange={(e) => {
+                      setBirth(e.target.value);
+                  }}/>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="district">District:</label>
-                <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} onChange={(e) => {
-                  setDistrict(e.target.value);
-                }}/>
+              <div className="form-group row">
+                <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
+                <div class="col-sm-9">
+                  <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
+                    required
+                    onChange={(e) => {
+                    setGit(e.target.value);
+                  }}/>
+                  </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="birth">Birth:</label>
-                <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} onChange={(e) => {
-                  setBirth(e.target.value);
-                }}/>
-              </div>
+              <button
+                type="submit" className="btn btn-primary"
+                onClick={()=>{
+                  console.log(fullname, gitlabEmail, district, birth, git)
 
-              <div className="form-group">
-                <label htmlFor="git">Git:</label>
-                <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} onChange={(e) => {
-                  setGit(e.target.value);
-                }}/>
-              </div>
+                  let member_list_new = [
+                    {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
+                    ...member_list
+                  ] ; set__member_list(member_list_new)
+                }}
+              >Submit</button>
 
-              <button type="submit" className="btn btn-primary" onClick={()=>{
-                //TODO add submit code here
-                console.log(fullName, gitlabEmail, district, birth, git)
-              }}>Submit</button>
             </form>
           </div>
         </div>
@@ -102,7 +131,7 @@ function App() {
         <div className='row mt-0'>
           <h2>Intern Member List</h2>
 
-          <table className="table">
+          <table className="table table-striped">
             <thead>
               <tr>
                 {col_header_list.map(h => <td key={`header-${h}`} >{h}</td> )}
@@ -121,13 +150,29 @@ function App() {
                   {/* action col */}
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        alert('Edit')
-                      }}>Edit</button>
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary"
+                        onClick={ () => {
+                          // get all <input> values of this clicked row, and set it to the upsert form fields
+                          setFullname   (member_list[i].fullname)
+                          setGitlabEmail(member_list[i]['gitlab email'])
+                          setDistrict   (member_list[i].district)
+                          setBirth      (member_list[i].birth)
+                          setGit        (member_list[i].git)
+                        }}
+                      >Edit</button>
+                      
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3"
+                        onClick={ () => {
+                          // delete member in :memberlist at this clicked row at index :i  ref. https://stackoverflow.com/questions/52348143/how-can-i-remove-an-array-element-by-index-using-javascript#comment135347015_52348198
+                          let sublist_0toi          = member_list.slice(0,i)
+                          let sublist_iplus1ToEnd   = member_list.slice(i+1)
+                          let member_list__afterdel = [...sublist_0toi, ...sublist_iplus1ToEnd]
+                          set__member_list(member_list__afterdel)
+                        }}
+                      >Delete</button>
 
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        alert('Delete')
-                      }}>Delete</button>
                     </div>
                   </td>
 
