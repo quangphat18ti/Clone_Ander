@@ -14,7 +14,7 @@ function App() {
   let col_header_list = Object.keys(member_list[0])
 
   //state variables
-  let [fullName, setFullName] = useState("");
+  let [fullname, setFullname] = useState("");
   let [gitlabEmail, setGitlabEmail] = useState("");
   let [district, setDistrict] = useState(""); 
   let [birth, setBirth] = useState();
@@ -34,8 +34,8 @@ function App() {
             <form action="#">
               <div className="form-group">
                 <label htmlFor="fullName">Fullname:</label>
-                <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullName} onChange={(e)=> {
-                    setFullName(e.target.value);
+                <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} onChange={(e)=> {
+                    setFullname(e.target.value);
                   }}/>
               </div>
 
@@ -69,7 +69,7 @@ function App() {
 
               <button type="submit" className="btn btn-primary" onClick={()=>{
                 //TODO add submit code here
-                console.log(fullName, gitlabEmail, district, birth, git)
+                console.log(fullname, gitlabEmail, district, birth, git)
               }}>Submit</button>
             </form>
           </div>
