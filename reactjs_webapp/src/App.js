@@ -52,8 +52,13 @@ function App() {
 
                 <td>
                   <div class="btn-group" role="group" aria-label="inline-btn">
-                    <button type="button" className="btn btn-primary">Edit</button>
-                    <button type="button" className="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-primary"onClick={ () => {
+                      alert('Edit')
+                    }}>Edit</button>
+
+                    <button type="button" className="btn btn-danger"onClick={ () => {
+                      alert('Delete')
+                    }}>Delete</button>
                   </div>
                 </td>
               </tr>
