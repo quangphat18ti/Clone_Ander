@@ -39,6 +39,7 @@ function App() {
           <thead>
             <tr>
               {col_header_list.map(h => <td>{h}</td> )}
+              <td>action</td>
             </tr>
           </thead>
 
