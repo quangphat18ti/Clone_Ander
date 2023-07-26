@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 let member_list = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
@@ -19,6 +19,11 @@ function App() {
   let [district, setDistrict] = useState(""); 
   let [birth, setBirth] = useState();
   let [git, setGit] = useState("");
+
+  // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
+  useEffect(() => {
+  localStorage.setItem('member_list', JSON.stringify(member_list));
+}, [member_list]);
 
   return (
     <>
