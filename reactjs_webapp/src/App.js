@@ -21,6 +21,8 @@ function App() {
   let [git, setGit] = useState("");
   let [member_list, set__member_list] = useState(member_list_init)
 
+  let key_list = Object.keys(member_list[0])
+
   // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
   useEffect(() => {
     localStorage.setItem('member_list', JSON.stringify(member_list))
@@ -38,13 +40,30 @@ function App() {
           <br/>
           <div className="container p-0">
             <pre>{ (() => {
-              const key_list = Object.keys(member_list[0])
+              //region find colwidth to call .padEnd() for each col
+              let colwidth_list__header  = key_list.map( k => k.length )
+              let colwidth_list__horizon = colwidth_list__header  // horizonLine colwidth defined by header colwidth
+              let colwidth_list__member  = member_list.map( m =>
+                key_list.map( k => m[k].length )
+              )
 
-              var s=key_list.map( k =>  k.padEnd(33) ).join(' | ') ; const header_line  = `| ${s} |`
-              var s=key_list.map( _ => ''.padEnd(33) ).join(' | ') ; const horizon_line = `| ${s} |`
+              // shortcut var
+              let peh  = colwidth_list__header  // peh aka padEnd_for_header_line
+              let pehz = peh                    // peh aka padEnd_for_horizon_line
+              let pem  = colwidth_list__member  // peh aka padEnd_for_member_lines
+
+              // find max width for each col
+              let pem_transposed = pem[0].map((_, colIndex) => pem.map(row => row[colIndex]))  // transpose 2-dimension list ref. https://stackoverflow.com/a/17428705/248616
+              let pe = key_list.map( (_,i) => Math.max(...pem_transposed[i], peh[i]) )
+              console.log(pe)  //TODO why it's NaN at district and birth ie the value-is-number column
+
+              //endregion find width to call .padEnd() for each col
+
+              var s=key_list.map( (k,i) =>  k.padEnd(pe[i])     ).join(' | ') ; const header_line  = `| ${s} |`
+              var s=key_list.map( (_,i) => ''.padEnd(pe[i],'-') ).join(' | ') ; const horizon_line = `| ${s} |`
 
               const memberLine_list = member_list.map((m) => {
-                let s = key_list.map( k => (m[k]+'').padEnd(33) ).join(' | ')
+                let s = key_list.map( (k,i) => (m[k]+'').padEnd(pe[i]) ).join(' | ')
                 return `| ${s} |`
               })
 
