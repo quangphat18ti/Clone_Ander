@@ -121,11 +121,11 @@ function App() {
                   {/* action col */}
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
-                      <button type="button" className="btn btn-outline-primary border-0" onClick={ () => {
+                      <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-primary border-0" onClick={ () => {
                         alert('Edit')
                       }}>Edit</button>
 
-                      <button type="button" className="btn btn-outline-danger border-0" onClick={ () => {
+                      <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-danger border-0" onClick={ () => {
                         alert('Delete')
                       }}>Delete</button>
                     </div>
