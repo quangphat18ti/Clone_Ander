@@ -97,12 +97,11 @@ function App() {
                   if (!form.checkValidity()) { return }
 
                   let member_list_new = [
-                    {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
+                    {fullname, "gitlab email": gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
                     ...member_list
                   ] ; set__member_list(member_list_new)
                 }}
               >Submit</button>
-
             </form>
           </div>
         </div>
