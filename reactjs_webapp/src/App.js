@@ -150,14 +150,17 @@ function App() {
                   {/* action col */}
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        // get all <input> values of this clicked row, and set it to the upsert form fields
-                        setFullname   (member_list[i].fullname)
-                        setGitlabEmail(member_list[i]['gitlab email'])
-                        setDistrict   (member_list[i].district)
-                        setBirth      (member_list[i].birth)
-                        setGit        (member_list[i].git)
-                      }}>Edit</button>
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary"
+                        onClick={ () => {
+                          // get all <input> values of this clicked row, and set it to the upsert form fields
+                          setFullname   (member_list[i].fullname)
+                          setGitlabEmail(member_list[i]['gitlab email'])
+                          setDistrict   (member_list[i].district)
+                          setBirth      (member_list[i].birth)
+                          setGit        (member_list[i].git)
+                        }}
+                      >Edit</button>
                       
                       <button
                         style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3"
