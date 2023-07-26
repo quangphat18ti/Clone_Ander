@@ -126,7 +126,7 @@ function App() {
                       }}>Edit</button>
 
                       <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        alert(`Del at ${i}`)
+                        alert(`Del at ${i}`)  //TODO delete member in :memberlist at this index
                       }}>Delete</button>
                     </div>
                   </td>
