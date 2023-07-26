@@ -27,6 +27,7 @@ function App() {
 
   return (
     <>
+      {/* member @ upsert form */}
       <div className="container">
         <form action="#">
           <div className="form-group">
@@ -71,6 +72,7 @@ function App() {
         </form>
       </div>
 
+      {/* member listing */}
       <div className="container">
         <h2>Intern Member List</h2>
 
@@ -110,7 +112,7 @@ function App() {
 
       </div>
       
-      {/*Create button to download the member_list */}
+      {/* download :member_list as json file */}
       <div className="container">
       <button onClick={() => {
         let blob = new Blob([localStorage.getItem('member_list')]);
