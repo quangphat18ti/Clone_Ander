@@ -49,6 +49,10 @@ function App() {
                 {col_header_list.map(h =>
                   <td>{m[h]}</td>
                 )}
+
+                <td>
+                  <button type="button" className="btn btn-primary">Edit</button>
+                </td>
               </tr>
             )}
           </tbody>
