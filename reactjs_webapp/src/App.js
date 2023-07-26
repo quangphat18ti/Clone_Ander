@@ -29,35 +29,35 @@ function App() {
         <form action="#">
           <div className="form-group">
             <label htmlFor="fullName">Fullname:</label>
-            <input type="text" className="form-control" placeholder="Enter fullname" id="fullName" value={fullName} onChange={(e)=> {
+            <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullName} onChange={(e)=> {
                 setFullName(e.target.value);
               }}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="gitlabEmail">Gitlab email:</label>
-            <input type="email" className="form-control" placeholder="Enter Gitlab email" id="gitlabEmail" value={gitlabEmail} onChange={(e) => {
+            <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} onChange={(e) => {
               setGitlabEmail(e.target.value);
             }} />
           </div>
 
           <div className="form-group">
             <label htmlFor="district">District:</label>
-            <input type="text" className="form-control" placeholder="Enter district" id="district" value={district} onChange={(e) => {
+            <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} onChange={(e) => {
               setDistrict(e.target.value);
             }}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="birth">Birth:</label>
-            <input type="number" className="form-control" placeholder="Enter birth" id="birth" value={birth} onChange={(e) => {
+            <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} onChange={(e) => {
               setBirth(e.target.value);
             }}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="git">Git:</label>
-            <input type="text" className="form-control" placeholder="Enter git information" id="git" value={git} onChange={(e) => {
+            <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} onChange={(e) => {
               setGit(e.target.value);
             }}/>
           </div>
