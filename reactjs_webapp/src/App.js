@@ -13,12 +13,12 @@ let member_list_init = [
 function generateMarkdownTable(member_list) {
   const keys = Object.keys(member_list[0])
 
-  const header = keys.map((key) => `| ${key} `).join("") + "|"
+  const header = keys.map( (k) => `| ${k} `).join("") + "|"
 
-  const seperator = keys.map((key) => `| --- `).join("") + "|"
+  const seperator = keys.map( (k) => `| --- `).join("") + "|"
 
-  const rows = member_list.map((item) => {
-    return keys.map((key) => `| ${item[key]}`).join("") + "|"
+  const rows = member_list.map((m) => {
+    return keys.map((key) => `| ${m[key]}`).join("") + "|"
   })
 
   return [header, seperator, ...rows].join("\n")
