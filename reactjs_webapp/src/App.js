@@ -39,6 +39,7 @@ function App() {
           <thead>
             <tr>
               {col_header_list.map(h => <td>{h}</td> )}
+              <td>action</td>
             </tr>
           </thead>
 
@@ -48,7 +49,20 @@ function App() {
                 {col_header_list.map(h =>
                   <td>{m[h]}</td>
                 )}
+
+                <td>
+                  <div class="btn-group" role="group" aria-label="inline-btn">
+                    <button type="button" className="btn btn-primary" onClick={ () => {
+                      alert('Edit')
+                    }}>Edit</button>
+
+                    <button type="button" className="btn btn-danger" onClick={ () => {
+                      alert('Delete')
+                    }}>Delete</button>
+                  </div>
+                </td>
               </tr>
+                   
             )}
           </tbody>
         </table>
