@@ -24,15 +24,6 @@ function generateMarkdownTable(data) {
   return [header, seperator, ...rows].join("\n");
 }
 
-function RenderMarkdownTable(props) {
-  let code = generateMarkdownTable(props.data);
-  return (
-    <pre>
-      <code>{code}</code>
-    </pre>
-  )
-}
-
 function App() {
   let col_header_list = Object.keys(member_list_init[0])
 
@@ -60,8 +51,7 @@ function App() {
 
           <br/>
           <div className="container p-0">
-            <pre>TODO markdown table rendered here</pre>
-            <RenderMarkdownTable data={member_list} />
+            <pre>{generateMarkdownTable(member_list)}</pre>
           </div>
         </div>
 
