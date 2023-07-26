@@ -16,8 +16,8 @@ function App() {
   //state variables
   let [fullName, setFullName] = useState("");
   let [gitlabEmail, setGitlabEmail] = useState("");
-  let [district, setDistrict] = useState(null); 
-  let [birth, setBirth] = useState(null);
+  let [district, setDistrict] = useState(""); 
+  let [birth, setBirth] = useState();
   let [git, setGit] = useState("");
 
   return (
@@ -43,7 +43,7 @@ function App() {
 
           <div className="form-group">
             <label htmlFor="district">District:</label>
-            <input type="number" className="form-control" placeholder="Enter district" id="district" value={district} onChange={(e) => {
+            <input type="text" className="form-control" placeholder="Enter district" id="district" value={district} onChange={(e) => {
               setDistrict(e.target.value);
             }}/>
           </div>
