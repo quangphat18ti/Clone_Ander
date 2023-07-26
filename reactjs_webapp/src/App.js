@@ -59,8 +59,20 @@ function App() {
                   >
                     Edit
                   </button>
+                
+                  <span style={{ marginLeft: '10px' }}></span>
+
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      alert(`You just click on Delete button!`);
+                    }}
+                  >
+                    Delete
+                  </button>         
                 </td>
               </tr>
+                   
             )}
           </tbody>
         </table>
