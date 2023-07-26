@@ -150,15 +150,16 @@ function App() {
                   {/* action col */}
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
-                      <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        console.log(`Upd at ${i} fullName=${member_list[i].fullname}`)  //TODO get all <input> values of this clicked row, and set it to the upsert form fields
-                        setFullname(member_list[i].fullname)
+                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
+                        // get all <input> values of this clicked row, and set it to the upsert form fields
+                        setFullname   (member_list[i].fullname)
                         setGitlabEmail(member_list[i]['gitlab email'])
-                        setDistrict(member_list[i].district)
-                        setBirth(member_list[i].birth)
-                        setGit(member_list[i].git)
+                        setDistrict   (member_list[i].district)
+                        setBirth      (member_list[i].birth)
+                        setGit        (member_list[i].git)
                       }}>Edit</button>
-                      <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
+                      
+                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
                         console.log(`Del at ${i}`)  //TODO delete member in :memberlist at this index
                       }}>Delete</button>
                     </div>
