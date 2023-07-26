@@ -30,47 +30,49 @@ function App() {
       <div className="container">
         {/* member @ upsert form */}
         <div className='row mt-5'>
-          <form action="#">
-            <div className="form-group">
-              <label htmlFor="fullName">Fullname:</label>
-              <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullName} onChange={(e)=> {
-                  setFullName(e.target.value);
+          <div className='col-6'>
+            <form action="#">
+              <div className="form-group">
+                <label htmlFor="fullName">Fullname:</label>
+                <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullName} onChange={(e)=> {
+                    setFullName(e.target.value);
+                  }}/>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="gitlabEmail">Gitlab email:</label>
+                <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} onChange={(e) => {
+                  setGitlabEmail(e.target.value);
+                }} />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="district">District:</label>
+                <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} onChange={(e) => {
+                  setDistrict(e.target.value);
                 }}/>
-            </div>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="gitlabEmail">Gitlab email:</label>
-              <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} onChange={(e) => {
-                setGitlabEmail(e.target.value);
-              }} />
-            </div>
+              <div className="form-group">
+                <label htmlFor="birth">Birth:</label>
+                <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} onChange={(e) => {
+                  setBirth(e.target.value);
+                }}/>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="district">District:</label>
-              <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} onChange={(e) => {
-                setDistrict(e.target.value);
-              }}/>
-            </div>
+              <div className="form-group">
+                <label htmlFor="git">Git:</label>
+                <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} onChange={(e) => {
+                  setGit(e.target.value);
+                }}/>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="birth">Birth:</label>
-              <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} onChange={(e) => {
-                setBirth(e.target.value);
-              }}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="git">Git:</label>
-              <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} onChange={(e) => {
-                setGit(e.target.value);
-              }}/>
-            </div>
-
-            <button type="submit" className="btn btn-primary" onClick={()=>{
-              //TODO add submit code here
-              console.log(fullName, gitlabEmail, district, birth, git)
-            }}>Submit</button>
-          </form>
+              <button type="submit" className="btn btn-primary" onClick={()=>{
+                //TODO add submit code here
+                console.log(fullName, gitlabEmail, district, birth, git)
+              }}>Submit</button>
+            </form>
+          </div>
         </div>
 
         {/* download :member_list as json file */}
