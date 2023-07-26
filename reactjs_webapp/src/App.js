@@ -24,7 +24,7 @@ function generateMarkdownTable(member_list) {
     header_line,
     horizon_line,
     ...memberLine_list,
-  ].join("\n")
+  ].join('\n')
 }
 
 function App() {
