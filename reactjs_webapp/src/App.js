@@ -31,6 +31,16 @@ function App() {
   return (
     <>
       <div className="container">
+        {/* member listing @ markdown table */}
+        <div className='row mt-5'>
+          <h2>Intern Member List @ markdown table </h2>
+
+          <br/>
+          <div className="container p-0">
+            <pre>TODO markdown table rendered here</pre>
+          </div>
+        </div>
+
         {/* member @ upsert form */}
         <div className='row mt-5'>
           <div className='col-6'>
@@ -190,7 +200,7 @@ function App() {
         </div>
 
       </div>
-      
+
     </>
   )
 }
