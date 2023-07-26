@@ -93,6 +93,7 @@ function App() {
               <button
                 type="submit" className="btn btn-primary"
                 onClick={()=>{
+                  console.log(fullname, gitlabEmail, district, birth, git)
                   const form = formRef.current;
                   if (!form.checkValidity()) { return }
 
