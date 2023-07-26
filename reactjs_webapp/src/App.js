@@ -122,11 +122,11 @@ function App() {
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
                       <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        alert('Edit')
+                        alert(`Upd at ${i}`)
                       }}>Edit</button>
 
                       <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        alert('Delete')
+                        alert(`Del at ${i}`)
                       }}>Delete</button>
                     </div>
                   </td>
