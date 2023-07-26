@@ -166,8 +166,8 @@ function App() {
                       }}>Edit</button>
                       
                       <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        console.log(`Del at ${i}`)  //TODO delete member in :memberlist at this index
-                        deleteMember(m.index); 
+                        // delete member in :memberlist at this clicked row at index :i
+                        deleteMember(m.index)
                       }}>Delete</button>
                     </div>
                   </td>
