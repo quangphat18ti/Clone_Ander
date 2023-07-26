@@ -150,18 +150,29 @@ function App() {
                   {/* action col */}
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        // get all <input> values of this clicked row, and set it to the upsert form fields
-                        setFullname   (member_list[i].fullname)
-                        setGitlabEmail(member_list[i]['gitlab email'])
-                        setDistrict   (member_list[i].district)
-                        setBirth      (member_list[i].birth)
-                        setGit        (member_list[i].git)
-                      }}>Edit</button>
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary"
+                        onClick={ () => {
+                          // get all <input> values of this clicked row, and set it to the upsert form fields
+                          setFullname   (member_list[i].fullname)
+                          setGitlabEmail(member_list[i]['gitlab email'])
+                          setDistrict   (member_list[i].district)
+                          setBirth      (member_list[i].birth)
+                          setGit        (member_list[i].git)
+                        }}
+                      >Edit</button>
                       
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        console.log(`Del at ${i}`)  //TODO delete member in :memberlist at this index
-                      }}>Delete</button>
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3"
+                        onClick={ () => {
+                          // delete member in :memberlist at this clicked row at index :i  ref. https://stackoverflow.com/questions/52348143/how-can-i-remove-an-array-element-by-index-using-javascript#comment135347015_52348198
+                          let sublist_0toi          = member_list.slice(0,i)
+                          let sublist_iplus1ToEnd   = member_list.slice(i+1)
+                          let member_list__afterdel = [...sublist_0toi, ...sublist_iplus1ToEnd]
+                          set__member_list(member_list__afterdel)
+                        }}
+                      >Delete</button>
+
                     </div>
                   </td>
 
