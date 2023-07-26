@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 let member_list_init = [
   { 'index': '00', 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'index': '01', 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
@@ -26,13 +26,15 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
+  const formRef = useRef();
+
   return (
     <>
       <div className="container">
         {/* member @ upsert form */}
         <div className='row mt-5'>
           <div className='col-6'>
-            <form action="#">
+            <form action="#" ref={formRef}>
               <div className="form-group row">
                 <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                 <div className="col-sm-9">
@@ -91,7 +93,8 @@ function App() {
               <button
                 type="submit" className="btn btn-primary"
                 onClick={()=>{
-                  console.log(fullname, gitlabEmail, district, birth, git)
+                  const form = formRef.current;
+                  if (!form.checkValidity()) { return }
 
                   let member_list_new = [
                     {fullname, gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
