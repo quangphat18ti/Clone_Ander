@@ -22,8 +22,8 @@ function App() {
 
   // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
   useEffect(() => {
-  localStorage.setItem('member_list', JSON.stringify(member_list));
-}, [member_list]);
+    localStorage.setItem('member_list', JSON.stringify(member_list))
+  }, [member_list])
 
   return (
     <>
@@ -114,16 +114,16 @@ function App() {
       
       {/* download :member_list as json file */}
       <div className="container">
-      <button onClick={() => {
-        let blob = new Blob([localStorage.getItem('member_list')]);
-        let href = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = href;
-        link.download = "member_list.json";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }}>Download member list</button>
+        <button onClick={() => {
+          let blob = new Blob([localStorage.getItem('member_list')]);
+          let href = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = href;
+          link.download = "member_list.json";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}>Download member list</button>
       </div>
     </>
   )
