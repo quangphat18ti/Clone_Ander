@@ -147,7 +147,7 @@ function App() {
               {member_list.map( (m,i) =>
                 <tr key={`member-${i}`} >
                   {/* index col */}
-                    <td>{i}</td>
+                    <td>{(i+'').padStart(2, '0')}</td>
 
                   {/* value col(s) */}
                   {col_header_list.map(h =>
