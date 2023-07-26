@@ -63,10 +63,10 @@ function App() {
               setGit(e.target.value);
             }}/>
           </div>
-          {/*This is example code for alert button*/}
+
           <button type="submit" className="btn btn-primary" onClick={()=>{
-            
-            console.log(fullName, gitlabEmail, district, birth, git);
+            //TODO add submit code here
+            console.log(fullName, gitlabEmail, district, birth, git)
           }}>Submit</button>
         </form>
       </div>
