@@ -134,6 +134,7 @@ function App() {
           <table className="table table-striped">
             <thead>
               <tr>
+                <td>row#</td>
                 {col_header_list.map(h => <td key={`header-${h}`} >{h}</td> )}
                 <td>action</td>
               </tr>
@@ -142,6 +143,9 @@ function App() {
             <tbody>
               {member_list.map( (m,i) =>
                 <tr key={`member-${i}`} >
+                  {/* row# col */}
+                  <td>{(i+'').padStart(2, '0')}</td>
+
                   {/* value col(s) */}
                   {col_header_list.map(h =>
                     <td key={`memberinfo-${i}-${h}`} >{m[h]}</td>
