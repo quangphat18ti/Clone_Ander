@@ -40,11 +40,11 @@ function App() {
             <pre>{ (() => {
               const key_list = Object.keys(member_list[0])
 
-              const header_line  = key_list.map( (k) => `| ${k} `).join('') + '|'
-              const horizon_line = key_list.map( (k) => `| --- ` ).join('') + '|'
+              var s=key_list.map( k => k     ).join(' | ') ; const header_line  = `| ${s} |`
+              var s=key_list.map( _ => `---` ).join(' | ') ; const horizon_line = `| ${s} |`
 
               const memberLine_list = member_list.map((m) => {
-                return key_list.map((key) => `| ${m[key]}`).join('') + '|'
+                return key_list.map((key) => `| ${m[key]}`).join('') + ' |'
               })
 
               let md_text = [
