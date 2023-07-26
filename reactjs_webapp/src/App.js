@@ -26,12 +26,6 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
-  // Function to delete a member by index
-  const deleteMember = (index) => {
-    const updatedMemberList = member_list.filter((member) => member.index !== index);
-    set__member_list(updatedMemberList);
-  };
-
   return (
     <>
       <div className="container">
@@ -165,10 +159,15 @@ function App() {
                         setGit        (member_list[i].git)
                       }}>Edit</button>
                       
-                      <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        // delete member in :memberlist at this clicked row at index :i
-                        deleteMember(m.index)
-                      }}>Delete</button>
+                      <button
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3"
+                        onClick={ () => {
+                          // delete member in :memberlist at this clicked row at index :i
+                          const updatedMemberList = member_list.filter((member) => member.index !== m.index)
+                          set__member_list(updatedMemberList)
+                        }}
+                      >Delete</button>
+
                     </div>
                   </td>
 
