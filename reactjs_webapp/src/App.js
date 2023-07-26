@@ -122,11 +122,11 @@ function App() {
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
                       <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-primary" onClick={ () => {
-                        alert(`Upd at ${i}`)
+                        console.log(`Upd at ${i} fullName=${member_list[i].fullname}`)  //TODO get all <input> values of this clicked row, and set it to the upsert form fields
                       }}>Edit</button>
 
                       <button style={{ "min-width": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
-                        alert(`Del at ${i}`)  //TODO delete member in :memberlist at this index
+                        console.log(`Del at ${i}`)  //TODO delete member in :memberlist at this index
                       }}>Delete</button>
                     </div>
                   </td>
