@@ -26,6 +26,18 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
+  // Function to delete a member by index
+  const deleteMember = (index) => {
+    const updatedMemberList = member_list.filter((member) => member.index !== index);
+
+    // Reset the index of the remaining members
+    const resetIndexMemberList = updatedMemberList.map((member, idx) => {
+      return { ...member, index: String(idx).padStart(2, "0") };
+    });
+
+    set__member_list(resetIndexMemberList);
+  };
+
   return (
     <>
       <div className="container">
@@ -161,6 +173,7 @@ function App() {
                       
                       <button style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-danger ml-3" onClick={ () => {
                         console.log(`Del at ${i}`)  //TODO delete member in :memberlist at this index
+                        deleteMember(m.index); 
                       }}>Delete</button>
                     </div>
                   </td>
