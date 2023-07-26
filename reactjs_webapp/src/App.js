@@ -29,13 +29,7 @@ function App() {
   // Function to delete a member by index
   const deleteMember = (index) => {
     const updatedMemberList = member_list.filter((member) => member.index !== index);
-
-    // Reset the index of the remaining members
-    const resetIndexMemberList = updatedMemberList.map((member, idx) => {
-      return { ...member, index: String(idx).padStart(2, "0") };
-    });
-
-    set__member_list(resetIndexMemberList);
+    set__member_list(updatedMemberList);
   };
 
   return (
