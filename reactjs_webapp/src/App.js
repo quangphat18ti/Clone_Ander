@@ -27,9 +27,6 @@ function App() {
 
   return (
     <>
-      {/* TODO Change the code below to create the form. This form have field to fill the name, gitlab email, district, birth, git
-          Expect: Can understand the form, and the action, htmlFor of label
-      */}
       <div className="container">
         <form action="#">
           <div className="form-group">
@@ -73,7 +70,6 @@ function App() {
           }}>Submit</button>
         </form>
       </div>
-      {/*End TODO*/}
 
       <div className="container">
         <h2>Intern Member List</h2>
