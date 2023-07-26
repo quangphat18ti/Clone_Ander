@@ -10,25 +10,6 @@ let member_list_init = [
   { 'index': '07', 'fullname': 'Phat Q CAO',      'gitlab email': 'quangphat18ti@gmail.com',        'district': 8,          'birth': 2016, 'git': 'gitlab quangphat18ti, github quangphat18ti', },
 ]
 
-function generateMarkdownTable(member_list) {
-  const key_list = Object.keys(member_list[0])
-
-  const header_line  = key_list.map( (k) => `| ${k} `).join('') + '|'
-  const horizon_line = key_list.map( (k) => `| --- ` ).join('') + '|'
-
-  const memberLine_list = member_list.map((m) => {
-    return key_list.map((key) => `| ${m[key]}`).join('') + '|'
-  })
-
-  let md_text = [
-    header_line,
-    horizon_line,
-    ...memberLine_list,
-  ].join('\n')
-
-  return md_text
-}
-
 function App() {
   let col_header_list = Object.keys(member_list_init[0])
 
@@ -56,7 +37,24 @@ function App() {
 
           <br/>
           <div className="container p-0">
-            <pre>{generateMarkdownTable(member_list)}</pre>
+            <pre>{ (() => {
+              const key_list = Object.keys(member_list[0])
+
+              const header_line  = key_list.map( (k) => `| ${k} `).join('') + '|'
+              const horizon_line = key_list.map( (k) => `| --- ` ).join('') + '|'
+
+              const memberLine_list = member_list.map((m) => {
+                return key_list.map((key) => `| ${m[key]}`).join('') + '|'
+              })
+
+              let md_text = [
+                header_line,
+                horizon_line,
+                ...memberLine_list,
+              ].join('\n')
+
+              return md_text
+            })() }</pre>
           </div>
         </div>
 
