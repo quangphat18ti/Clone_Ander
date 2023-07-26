@@ -39,7 +39,7 @@ function App() {
           <thead>
             <tr>
               {col_header_list.map(h => <td>{h}</td> )}
-              <td>Action</td>
+              <td>action</td>
             </tr>
           </thead>
 
@@ -49,27 +49,17 @@ function App() {
                 {col_header_list.map(h =>
                   <td>{m[h]}</td>
                 )}
-                <td>
-                  <button
-                      className="btn btn-danger"
-                      onClick={() => {
-                        // Handle the action here, e.g., editMember(m.index);
-                        alert(`You clicked on the edit button for member ${m.fullname}`);
-                      }}
-                  >
-                    Edit
-                  </button>
-                
-                  <span style={{ marginLeft: '10px' }}></span>
 
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      alert(`You just click on Delete button!`);
-                    }}
-                  >
-                    Delete
-                  </button>         
+                <td>
+                  <div class="btn-group" role="group" aria-label="inline-btn">
+                    <button type="button" className="btn btn-primary" onClick={ () => {
+                      alert('Edit')
+                    }}>Edit</button>
+
+                    <button type="button" className="btn btn-danger" onClick={ () => {
+                      alert('Delete')
+                    }}>Delete</button>
+                  </div>
                 </td>
               </tr>
                    
