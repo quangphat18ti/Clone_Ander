@@ -46,10 +46,12 @@ function App() {
           <tbody>
             {member_list.map(m =>
               <tr>
+                {/* value col(s) */}
                 {col_header_list.map(h =>
                   <td>{m[h]}</td>
                 )}
 
+                {/* action col */}
                 <td>
                   <div class="btn-group" role="group" aria-label="inline-btn">
                     <button type="button" className="btn btn-primary" onClick={ () => {
@@ -61,8 +63,8 @@ function App() {
                     }}>Delete</button>
                   </div>
                 </td>
+
               </tr>
-                   
             )}
           </tbody>
         </table>
