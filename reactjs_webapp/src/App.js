@@ -209,11 +209,11 @@ function App() {
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
                     let member_new = {
-                      "fullname"      : fullnameModal,
-                      "gitlab email"  : gitlabEmailModal,
-                      "district"      : districtModal,
-                      "birth"         : birthModal,
-                      "git"           : gitModal,
+                      'fullname'     : fullnameModal,
+                      'gitlab email' : gitlabEmailModal,
+                      'district'     : districtModal,
+                      'birth'        : birthModal,
+                      'git'          : gitModal,
                     }
                     let member_current = member_list[updIndex]
 
