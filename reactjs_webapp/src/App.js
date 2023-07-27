@@ -14,12 +14,19 @@ function App() {
   let col_header_list = Object.keys(member_list_init[0])
 
   //state variables
-  let [fullname, setFullname] = useState("");
-  let [gitlabEmail, setGitlabEmail] = useState("");
-  let [district, setDistrict] = useState(""); 
-  let [birth, setBirth] = useState();
-  let [git, setGit] = useState("");
+  let [fullname, setFullname] = useState('')
+  let [gitlabEmail, setGitlabEmail] = useState('')
+  let [district, setDistrict] = useState('') 
+  let [birth, setBirth] = useState()
+  let [git, setGit] = useState('')
   let [member_list, set__member_list] = useState(member_list_init)
+
+  //state variables for modal
+  let [fullnameModal, setFullnameModal] = useState('')
+  let [gitlabEmailModal, setGitlabEmailModal] = useState('')
+  let [districtModal, setDistrictModal] = useState('') 
+  let [birthModal, setBirthModal] = useState()
+  let [gitModal, setGitModal] = useState('')
 
   let key_list = Object.keys(member_list[0])
 
@@ -29,6 +36,8 @@ function App() {
   }, [member_list])
 
   const formRef = useRef();
+
+  let [updIndex, setUpdIndex] = useState(null)
 
   return (
     <>
@@ -54,8 +63,8 @@ function App() {
                   <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
                     required
                     onChange={(e) => {
-                    setGitlabEmail(e.target.value);
-                  }} />
+                      setGitlabEmail(e.target.value);
+                    }}/>
                 </div>
               </div>
 
@@ -65,8 +74,8 @@ function App() {
                   <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
                     required
                     onChange={(e) => {
-                    setDistrict(e.target.value);
-                  }}/>
+                      setDistrict(e.target.value);
+                    }}/>
                 </div>
               </div>
 
@@ -77,7 +86,7 @@ function App() {
                     required
                     onChange={(e) => {
                       setBirth(e.target.value);
-                  }}/>
+                    }}/>
                 </div>
               </div>
 
@@ -87,9 +96,9 @@ function App() {
                   <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
                     required
                     onChange={(e) => {
-                    setGit(e.target.value);
-                  }}/>
-                  </div>
+                      setGit(e.target.value);
+                    }}/>
+                </div>
               </div>
 
               <button
@@ -108,6 +117,124 @@ function App() {
             </form>
           </div>
         </div>
+        
+        
+        <div className="row mt-5">
+          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
+            setUpdIndex(null)
+          }}>Create New</button>      
+          {/*Modal*/}
+          <div className="modal" tabindex="-1" id="upsertModal">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                {/*Modal header*/}
+                <div className="modal-header">
+                  {
+                    (updIndex === null) ?
+                      <h5 className="modal-title">Create new member</h5> :
+                      <h5 className="modal-title">Update member</h5>
+                  }
+                  
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                {/*
+                  TODO change the code to display the form above and show the form
+                  expect: understand bs4 modal, and state management
+                */}
+                {/*Modal body*/}
+                <div className="modal-body">
+                  <form action="#">
+                    <div className="form-group row">
+                      <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullNameModal" value={fullnameModal} 
+                          required
+                          onChange={(e)=> {
+                            setFullnameModal(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
+                      <div className="col-sm-9">
+                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmailModal" value={gitlabEmailModal} 
+                          required
+                          onChange={(e) => {
+                            setGitlabEmailModal(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="districtModal" value={districtModal} 
+                          required
+                          onChange={(e) => {
+                            setDistrictModal(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
+                        <div className="col-sm-9">
+                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birthModal" value={birthModal} 
+                          required
+                          onChange={(e) => {
+                            setBirthModal(e.target.value);
+                          }}/>
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="gitModal" value={gitModal} 
+                          required
+                          onChange={(e) => {
+                            setGitModal(e.target.value);
+                          }}/>
+                        </div>
+                    </div>
+                  </form>
+                </div>
+
+                {/*Modal footer*/}
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
+                    let member_new = {
+                      'fullname'     : fullnameModal,
+                      'gitlab email' : gitlabEmailModal,
+                      'district'     : districtModal,
+                      'birth'        : birthModal,
+                      'git'          : gitModal,
+                    }
+                    let member_current = member_list[updIndex]
+
+                    let member_list_new
+                    if (updIndex) {  // is updating
+                      member_list_new = [...member_list]
+                      member_list_new[updIndex] = {
+                        ...member_current,
+                        ...member_new,
+                      }
+                    } else {  // is adding new
+                      member_list_new = [member_new, ...member_list]
+                    }
+                    set__member_list(member_list_new)
+                  }}>Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
 
         {/* download :member_list as json file */}
         <div className='row mt-5'>
@@ -160,14 +287,15 @@ function App() {
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
                       <button
-                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary"
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#upsertModal"
                         onClick={ () => {
                           // get all <input> values of this clicked row, and set it to the upsert form fields
-                          setFullname   (member_list[i].fullname)
-                          setGitlabEmail(member_list[i]['gitlab email'])
-                          setDistrict   (member_list[i].district)
-                          setBirth      (member_list[i].birth)
-                          setGit        (member_list[i].git)
+                          setFullnameModal    (member_list[i].fullname)
+                          setGitlabEmailModal (member_list[i]['gitlab email'])
+                          setDistrictModal    (member_list[i].district)
+                          setBirthModal       (member_list[i].birth)
+                          setGitModal         (member_list[i].git)
+                          setUpdIndex         (i)
                         }}
                       >Edit</button>
                       
