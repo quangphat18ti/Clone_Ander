@@ -61,8 +61,8 @@ function App() {
                   <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
                     required
                     onChange={(e) => {
-                    setGitlabEmail(e.target.value);
-                  }} />
+                      setGitlabEmail(e.target.value);
+                    }}/>
                 </div>
               </div>
 
@@ -72,8 +72,8 @@ function App() {
                   <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
                     required
                     onChange={(e) => {
-                    setDistrict(e.target.value);
-                  }}/>
+                      setDistrict(e.target.value);
+                    }}/>
                 </div>
               </div>
 
@@ -84,7 +84,7 @@ function App() {
                     required
                     onChange={(e) => {
                       setBirth(e.target.value);
-                  }}/>
+                    }}/>
                 </div>
               </div>
 
@@ -94,9 +94,9 @@ function App() {
                   <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
                     required
                     onChange={(e) => {
-                    setGit(e.target.value);
-                  }}/>
-                  </div>
+                      setGit(e.target.value);
+                    }}/>
+                </div>
               </div>
 
               <button
