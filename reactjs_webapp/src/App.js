@@ -25,6 +25,8 @@ function App() {
   let [fullnameModal, setFullnameModal] = useState('')
   let [gitlabEmailModal, setGitlabEmailModal] = useState('')
   let [districtModal, setDistrictModal] = useState('') 
+  let [birthModal, setBirthModal] = useState()
+  let [gitModal, setGitModal] = useState('')
 
   let key_list = Object.keys(member_list[0])
 
@@ -178,24 +180,24 @@ function App() {
                       </div>
                     </div>
 
-
                     <div className="form-group row">
                         <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
                         <div className="col-sm-9">
-                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
-                            required
-                            onChange={(e) => {
-                            setBirth(e.target.value);
+                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birthModal" value={birthModal} 
+                          required
+                          onChange={(e) => {
+                            setBirthModal(e.target.value);
                         }}/>
                         </div>
                     </div>
+
                     <div className="form-group row">
                       <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
+                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="gitModal" value={gitModal} 
                           required
                           onChange={(e) => {
-                          setGit(e.target.value);
+                            setGitModal(e.target.value);
                         }}/>
                         </div>
                     </div>
@@ -210,6 +212,8 @@ function App() {
                       "fullname"      : fullnameModal,
                       "gitlab email"  : gitlabEmailModal,
                       "district"      : districtModal,
+                      "birth"         : birthModal,
+                      "git"           : gitModal,
                     }
                     let member_current = member_list[updIndex]
 
@@ -289,8 +293,8 @@ function App() {
                           setFullnameModal    (member_list[i].fullname)
                           setGitlabEmailModal (member_list[i]['gitlab email'])
                           setDistrictModal    (member_list[i].district)
-                          setBirth            (member_list[i].birth)
-                          setGit              (member_list[i].git)
+                          setBirthModal       (member_list[i].birth)
+                          setGitModal         (member_list[i].git)
                           setUpdIndex         (i)
                         }}
                       >Edit</button>
