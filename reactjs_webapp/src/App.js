@@ -23,6 +23,8 @@ function App() {
 
   //state variables for modal
   let [fullnameModal, setFullnameModal] = useState("");
+  let [gitlabEmailModal, setGitlabEmailModal] = useState("");
+  let [districtModal, setDistrictModal] = useState(""); 
 
   let key_list = Object.keys(member_list[0])
 
@@ -157,10 +159,10 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
                       <div className="col-sm-9">
-                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
+                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmailModal" value={gitlabEmailModal} 
                           required
                           onChange={(e) => {
-                          setGitlabEmail(e.target.value);
+                          setGitlabEmailModal(e.target.value);
                           }}/>
                       </div>
                     </div>
@@ -168,10 +170,10 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
+                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="districtModal" value={districtModal} 
                           required
                           onChange={(e) => {
-                          setDistrict(e.target.value);
+                          setDistrictModal(e.target.value);
                           }}/>
                       </div>
                     </div>
@@ -205,7 +207,9 @@ function App() {
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
                     let member_new = {
-                      "fullname": fullnameModal,
+                      "fullname"      : fullnameModal,
+                      "gitlab email"  : gitlabEmailModal,
+                      "district"      : districtModal,
                     }
                     let member_current = member_list[updIndex]
 
