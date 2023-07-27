@@ -131,7 +131,12 @@ function App() {
         
         <div className="row mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
-            setUpdIndex(null)
+            setUpdIndex          (null)
+            setFullnameModal     ('')
+            setGitlabEmailModal  ('')
+            setDistrictModal     ('')
+            setBirthModal        ('')
+            setGitModal          ('') 
           }}>Create New</button>      
           {/*Modal*/}
           <div className="modal" tabindex="-1" id="upsertModal">
