@@ -1,7 +1,7 @@
 const Layout = ()=> {
   return(
     <>
-      <div className='container-fluid'>
+      <div className='container-fluid mt-3'>
         <nav>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             <button className="nav-link active" id="nav-demoblockchain-tab" data-toggle="tab" data-target="#nav-demoblockchain" type="button" role="tab" aria-controls="nav-demoblockchain" aria-selected="true" >Demo Blockchain</button>
