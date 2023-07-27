@@ -108,6 +108,38 @@ function App() {
             </form>
           </div>
         </div>
+        
+        {/*
+          TODO change the code to display the form above and show the form when the button is clicked to allow inserting a new member
+          expect: understand bs4 modal, and state management
+        */}
+        <div className="container mt-5">
+          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>      
+          {/*Modal*/}
+          <div id="myModal" className="modal fade">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                {/*Modal header*/}
+                <div class="modal-header">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                {/*Modal body*/}
+                <div class="modal-body">
+                  Modal body..
+                </div>
+        
+                {/* <!-- Modal footer --> */}
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End TODO*/}
 
         {/* download :member_list as json file */}
         <div className='row mt-5'>
