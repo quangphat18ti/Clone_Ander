@@ -42,79 +42,89 @@ function App() {
   return (
     <>
       <div className="container">
-        {/* member @ upsert form */}
-        <div className='row mt-5'>
-          <div className='col-6'>
-            <form action="#" ref={formRef}>
-              <div className="form-group row">
-                <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
-                <div className="col-sm-9">
-                  <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
-                    required
-                    onChange={(e)=> {
-                      setFullname(e.target.value);
-                    }}/>
-                </div>
+        <div className="row mt-5">
+          <a className="btn btn-primary" data-toggle="collapse" href="#collapseUpsertForm" role="button"
+             aria-expanded="false" aria-controls="collapseUpsertForm">
+            Upsert Form v0
+          </a>
+        </div>
+        <div  className="collapse" id="collapseUpsertForm">
+          <div className="card card-body">
+            {/* member @ upsert form */}
+            <div className='row mt-5'>
+              <div className='col-6'>
+                <form action="#" ref={formRef}>
+                  <div className="form-group row">
+                    <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
+                    <div className="col-sm-9">
+                      <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname}
+                             required
+                             onChange={(e)=> {
+                               setFullname(e.target.value);
+                             }}/>
+                    </div>
+                  </div>
+
+                  <div className="form-group row">
+                    <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
+                    <div className="col-sm-9">
+                      <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail}
+                             required
+                             onChange={(e) => {
+                               setGitlabEmail(e.target.value);
+                             }}/>
+                    </div>
+                  </div>
+
+                  <div className="form-group row">
+                    <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
+                    <div className="col-sm-9">
+                      <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district}
+                             required
+                             onChange={(e) => {
+                               setDistrict(e.target.value);
+                             }}/>
+                    </div>
+                  </div>
+
+                  <div className="form-group row">
+                    <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
+                    <div className="col-sm-9">
+                      <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth}
+                             required
+                             onChange={(e) => {
+                               setBirth(e.target.value);
+                             }}/>
+                    </div>
+                  </div>
+
+                  <div className="form-group row">
+                    <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
+                    <div className="col-sm-9">
+                      <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git}
+                             required
+                             onChange={(e) => {
+                               setGit(e.target.value);
+                             }}/>
+                    </div>
+                  </div>
+
+                  <button
+                      type="submit" className="btn btn-primary"
+                      onClick={()=>{
+                        console.log(fullname, gitlabEmail, district, birth, git)
+                        const form = formRef.current;
+                        if (!form.checkValidity()) { return }
+
+                        let member_list_new = [
+                          {fullname, "gitlab email": gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
+                          ...member_list
+                        ] ; set__member_list(member_list_new)
+                      }}
+                  >Submit</button>
+                </form>
               </div>
-
-              <div className="form-group row">
-                <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
-                <div className="col-sm-9">
-                  <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
-                    required
-                    onChange={(e) => {
-                      setGitlabEmail(e.target.value);
-                    }}/>
-                </div>
-              </div>
-
-              <div className="form-group row">
-                <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
-                <div className="col-sm-9">
-                  <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
-                    required
-                    onChange={(e) => {
-                      setDistrict(e.target.value);
-                    }}/>
-                </div>
-              </div>
-
-              <div className="form-group row">
-                <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
-                <div className="col-sm-9">
-                  <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
-                    required
-                    onChange={(e) => {
-                      setBirth(e.target.value);
-                    }}/>
-                </div>
-              </div>
-
-              <div className="form-group row">
-                <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
-                <div className="col-sm-9">
-                  <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
-                    required
-                    onChange={(e) => {
-                      setGit(e.target.value);
-                    }}/>
-                </div>
-              </div>
-
-              <button
-                type="submit" className="btn btn-primary"
-                onClick={()=>{
-                  console.log(fullname, gitlabEmail, district, birth, git)
-                  const form = formRef.current;
-                  if (!form.checkValidity()) { return }
-
-                  let member_list_new = [
-                    {fullname, "gitlab email": gitlabEmail, district, birth, git},  // we want to add to the top --> rendered at top of the table
-                    ...member_list
-                  ] ; set__member_list(member_list_new)
-                }}
-              >Submit</button>
-            </form>
+            </div>
           </div>
         </div>
         
