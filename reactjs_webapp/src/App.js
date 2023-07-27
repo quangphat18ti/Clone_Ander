@@ -209,15 +209,14 @@ function App() {
                     }
 
                     let member_list_new = []
-                    if (updIndex){
+                    if (updIndex) {
                       member_list_new = [...member_list]
                       member_list_new[updIndex] = {
                         ...member_list_new[updIndex],
                         ...member
                       }
                       setUpdIndex(null)
-                    }
-                    else {
+                    } else {
                       member_list_new = [member, ...member_list]
                     }
                     set__member_list(member_list_new)
