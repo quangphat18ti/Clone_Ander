@@ -14,17 +14,17 @@ function App() {
   let col_header_list = Object.keys(member_list_init[0])
 
   //state variables
-  let [fullname, setFullname] = useState("")
-  let [gitlabEmail, setGitlabEmail] = useState("")
-  let [district, setDistrict] = useState("") 
+  let [fullname, setFullname] = useState('')
+  let [gitlabEmail, setGitlabEmail] = useState('')
+  let [district, setDistrict] = useState('') 
   let [birth, setBirth] = useState()
-  let [git, setGit] = useState("")
+  let [git, setGit] = useState('')
   let [member_list, set__member_list] = useState(member_list_init)
 
   //state variables for modal
-  let [fullnameModal, setFullnameModal] = useState("")
-  let [gitlabEmailModal, setGitlabEmailModal] = useState("")
-  let [districtModal, setDistrictModal] = useState("") 
+  let [fullnameModal, setFullnameModal] = useState('')
+  let [gitlabEmailModal, setGitlabEmailModal] = useState('')
+  let [districtModal, setDistrictModal] = useState('') 
 
   let key_list = Object.keys(member_list[0])
 
