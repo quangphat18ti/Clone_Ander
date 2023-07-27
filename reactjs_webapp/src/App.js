@@ -42,6 +42,7 @@ function App() {
   return (
     <>
       <div className="container">
+        {/* member @ upsert form v0 */}
         <div className="row mt-5">
           <a className="btn btn-primary" data-toggle="collapse" href="#collapseUpsertForm" role="button"
              aria-expanded="false" aria-controls="collapseUpsertForm">
@@ -129,6 +130,7 @@ function App() {
         </div>
         
         
+        {/* modal upsert form */}
         <div className="row mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
             setUpdIndex(null)
@@ -245,7 +247,6 @@ function App() {
           </div>
         </div>
        
-
         {/* download :member_list as json file */}
         <div className='row mt-5'>
           <a href="#" className="text-primary"
