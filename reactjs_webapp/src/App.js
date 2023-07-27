@@ -21,6 +21,9 @@ function App() {
   let [git, setGit] = useState("");
   let [member_list, set__member_list] = useState(member_list_init)
 
+  //state variables for modal
+  let [fullnameModal, setFullnameModal] = useState("");
+
   let key_list = Object.keys(member_list[0])
 
   // Store member_list in localStorage with the key 'member_list', and update when member_list is changed
@@ -143,10 +146,10 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
+                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullNameModal" value={fullnameModal} 
                           required
                           onChange={(e)=> {
-                            setFullname(e.target.value);
+                            setFullnameModal(e.target.value);
                           }}/>
                       </div>
                     </div>
@@ -200,7 +203,24 @@ function App() {
                 {/*Modal footer*/}
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
+                    let member = {
+                      "fullname": fullnameModal,
+                    }
+                    let member_list_new = [];
+                    if (updIndex){
+                      member_list_new = [...member_list]
+                      member_list_new[updIndex] = {
+                        ...member_list_new[updIndex],
+                        ...member
+                      }
+                      setUpdIndex(null)
+                    }
+                    else {
+                      member_list_new = [member, ...member_list]
+                    }
+                    set__member_list(member_list_new)
+                  }}>Save changes</button>
                 </div>
               </div>
             </div>
@@ -262,12 +282,12 @@ function App() {
                         style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#upsertModal"
                         onClick={ () => {
                           // get all <input> values of this clicked row, and set it to the upsert form fields
-                          setFullname   (member_list[i].fullname)
-                          setGitlabEmail(member_list[i]['gitlab email'])
-                          setDistrict   (member_list[i].district)
-                          setBirth      (member_list[i].birth)
-                          setGit        (member_list[i].git)
-                          setUpdIndex   (i)
+                          setFullnameModal    (member_list[i].fullname)
+                          setGitlabEmail      (member_list[i]['gitlab email'])
+                          setDistrict         (member_list[i].district)
+                          setBirth            (member_list[i].birth)
+                          setGit              (member_list[i].git)
+                          setUpdIndex         (i)
                         }}
                       >Edit</button>
                       
