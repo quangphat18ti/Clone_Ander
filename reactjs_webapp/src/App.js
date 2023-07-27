@@ -173,6 +173,16 @@ function App() {
                       </div>
                     </div>
 
+                    <div className="form-group row">
+                      <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
+                          required
+                          onChange={(e) => {
+                          setGit(e.target.value);
+                        }}/>
+                        </div>
+                    </div>
                   </form>
                 </div>
 
