@@ -1,4 +1,6 @@
 import About from "./page/about"
+import DemoBlockchain from "./page/demo_blockchain"
+import DemoTxSign from "./page/demo_tx_sign"
 
 const Layout = ()=> {
   return(
@@ -13,9 +15,9 @@ const Layout = ()=> {
         </nav>
 
         <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-demoblockchain" role="tabpanel" aria-labelledby="nav-demoblockchain-tab" >TODO demoblockchain</div>
-          <div className="tab-pane fade            " id="nav-demotxsign"     role="tabpanel" aria-labelledby="nav-demotxsign-tab"     >TODO demotxsign</div>
-          <div className="tab-pane fade            " id="nav-about"          role="tabpanel" aria-labelledby="nav-about-tab"          > <About /> </div>
+          <div className="tab-pane fade show active" id="nav-demoblockchain" role="tabpanel" aria-labelledby="nav-demoblockchain-tab">  <DemoBlockchain/> </div>
+          <div className="tab-pane fade            " id="nav-demotxsign"     role="tabpanel" aria-labelledby="nav-demotxsign-tab">      <DemoTxSign/>     </div>
+          <div className="tab-pane fade            " id="nav-about"          role="tabpanel" aria-labelledby="nav-about-tab">           <About/>          </div>
         </div>
       </div>
     </>
