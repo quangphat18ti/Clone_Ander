@@ -116,25 +116,27 @@ function App() {
         <div className="container mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>      
           {/*Modal*/}
-          <div id="myModal" className="modal fade">
+          <div className="modal" tabindex="-1" id="myModal">
             <div className="modal-dialog">
               <div className="modal-content">
                 {/*Modal header*/}
-                <div class="modal-header">
-                  <h4 class="modal-title">Modal Heading</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                
-                {/*Modal body*/}
-                <div class="modal-body">
-                  Modal body..
-                </div>
-        
-                {/* <!-- Modal footer --> */}
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <div className="modal-header">
+                  <h5 className="modal-title">Modal title</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
 
+                {/*Modal body*/}
+                <div className="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+
+                {/*Modal footer*/}
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
               </div>
             </div>
           </div>
