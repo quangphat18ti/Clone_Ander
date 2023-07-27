@@ -215,7 +215,7 @@ function App() {
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
                       <button
-                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary"
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#myModal"
                         onClick={ () => {
                           // get all <input> values of this clicked row, and set it to the upsert form fields
                           setFullname   (member_list[i].fullname)
@@ -223,6 +223,7 @@ function App() {
                           setDistrict   (member_list[i].district)
                           setBirth      (member_list[i].birth)
                           setGit        (member_list[i].git)
+                          setUpdIndex   (i)
                         }}
                       >Edit</button>
                       
