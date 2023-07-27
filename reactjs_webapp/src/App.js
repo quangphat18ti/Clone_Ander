@@ -204,21 +204,22 @@ function App() {
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
-                    let member = {
+                    let member_new = {
                       "fullname": fullnameModal,
                     }
+                    let member_current = member_list[updIndex]
 
                     let member_list_new
                     if (updIndex) {  // is updating
                       member_list_new = [...member_list]
                       member_list_new[updIndex] = {
-                        ...member_list_new[updIndex],
-                        ...member,
+                        ...member_current,
+                        ...member_new,
                       }
 
                       setUpdIndex(null)
                     } else {  // is adding new
-                      member_list_new = [member, ...member_list]
+                      member_list_new = [member_new, ...member_list]
                     }
                     set__member_list(member_list_new)
                   }}>Save changes</button>
