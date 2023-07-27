@@ -1,3 +1,5 @@
+import About from "./page/about"
+
 const Layout = ()=> {
   return(
     <>
@@ -13,7 +15,7 @@ const Layout = ()=> {
         <div className="tab-content" id="nav-tabContent">
           <div className="tab-pane fade show active" id="nav-demoblockchain" role="tabpanel" aria-labelledby="nav-demoblockchain-tab" >TODO demoblockchain</div>
           <div className="tab-pane fade            " id="nav-demotxsign"     role="tabpanel" aria-labelledby="nav-demotxsign-tab"     >TODO demotxsign</div>
-          <div className="tab-pane fade            " id="nav-about"          role="tabpanel" aria-labelledby="nav-about-tab"          >TODO about</div>
+          <div className="tab-pane fade            " id="nav-about"          role="tabpanel" aria-labelledby="nav-about-tab"          > <About /> </div>
         </div>
       </div>
     </>
