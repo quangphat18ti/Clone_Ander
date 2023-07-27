@@ -46,7 +46,7 @@ function App() {
         {/* member @ upsert form */}
         <div className='row mt-5'>
           <div className='col-6'>
-            <form action="#" ref={formRef}>
+            <form action="#" ref={formRef} onSubmit={(e)=>e.preventDefault()}>
               <div className="form-group row">
                 <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                 <div className="col-sm-9">
@@ -147,7 +147,7 @@ function App() {
                 */}
                 {/*Modal body*/}
                 <div className="modal-body">
-                  <form action="#" id="formModal" ref={formModalRef}>
+                  <form action="#" id="formModal" ref={formModalRef} onSubmit={(e)=>e.preventDefault()}>
                     <div className="form-group row">
                       <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                       <div className="col-sm-9">
