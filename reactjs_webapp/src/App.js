@@ -119,7 +119,7 @@ function App() {
         </div>
         
         
-        <div className="container mt-5">
+        <div className="row mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
             setUpdIndex(null)
           }}>Create New</button>      
