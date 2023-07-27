@@ -208,7 +208,7 @@ function App() {
                       "fullname": fullnameModal,
                     }
 
-                    let member_list_new = []
+                    let member_list_new
                     if (updIndex) {  // is updating
                       member_list_new = [...member_list]
                       member_list_new[updIndex] = {
