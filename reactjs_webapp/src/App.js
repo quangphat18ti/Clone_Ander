@@ -218,7 +218,7 @@ function App() {
                     let member_current = member_list[updIndex]
 
                     let member_list_new
-                    if (updIndex) {  // is updating
+                    if (updIndex !== null) {  // is updating
                       member_list_new = [...member_list]
                       member_list_new[updIndex] = {
                         ...member_current,
