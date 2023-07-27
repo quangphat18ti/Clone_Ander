@@ -173,6 +173,17 @@ function App() {
                       </div>
                     </div>
 
+
+                    <div className="form-group row">
+                        <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
+                        <div className="col-sm-9">
+                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
+                            required
+                            onChange={(e) => {
+                            setBirth(e.target.value);
+                        }}/>
+                        </div>
+                    </div>
                     <div className="form-group row">
                       <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
                       <div className="col-sm-9">
