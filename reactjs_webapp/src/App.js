@@ -162,7 +162,7 @@ function App() {
                         <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmailModal" value={gitlabEmailModal} 
                           required
                           onChange={(e) => {
-                          setGitlabEmailModal(e.target.value);
+                            setGitlabEmailModal(e.target.value);
                           }}/>
                       </div>
                     </div>
@@ -173,7 +173,7 @@ function App() {
                         <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="districtModal" value={districtModal} 
                           required
                           onChange={(e) => {
-                          setDistrictModal(e.target.value);
+                            setDistrictModal(e.target.value);
                           }}/>
                       </div>
                     </div>
