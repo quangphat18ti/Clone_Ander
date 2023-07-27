@@ -30,6 +30,8 @@ function App() {
 
   const formRef = useRef();
 
+  let [updIndx, setUpdIndx] = useState(null)
+
   return (
     <>
       <div className="container">
@@ -109,27 +111,41 @@ function App() {
           </div>
         </div>
         
-        {/*
-          TODO change the code to display the form above and show the form when the button is clicked to allow inserting a new member
-          expect: understand bs4 modal, and state management
-        */}
+        
         <div className="container mt-5">
-          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>      
+          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={()=>{
+            setUpdIndx(null)
+          }}>Create New</button>      
           {/*Modal*/}
           <div className="modal" tabindex="-1" id="myModal">
             <div className="modal-dialog">
               <div className="modal-content">
                 {/*Modal header*/}
                 <div className="modal-header">
-                  <h5 className="modal-title">Modal title</h5>
+                  <h5 className="modal-title">Create new member</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
 
+                {/*
+                  TODO change the code to display the form above and show the form
+                  expect: understand bs4 modal, and state management
+                */}
                 {/*Modal body*/}
                 <div className="modal-body">
-                  <p>Modal body text goes here.</p>
+                  <form action="#">
+                    <div className="form-group row">
+                      <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname} 
+                          required
+                          onChange={(e)=> {
+                            setFullname(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+                  </form>
                 </div>
 
                 {/*Modal footer*/}
@@ -141,7 +157,7 @@ function App() {
             </div>
           </div>
         </div>
-        {/*End TODO*/}
+       
 
         {/* download :member_list as json file */}
         <div className='row mt-5'>
