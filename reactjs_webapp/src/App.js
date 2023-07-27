@@ -187,7 +187,7 @@ function App() {
                           required
                           onChange={(e) => {
                             setBirthModal(e.target.value);
-                        }}/>
+                          }}/>
                         </div>
                     </div>
 
@@ -198,7 +198,7 @@ function App() {
                           required
                           onChange={(e) => {
                             setGitModal(e.target.value);
-                        }}/>
+                          }}/>
                         </div>
                     </div>
                   </form>
