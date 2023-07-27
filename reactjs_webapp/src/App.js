@@ -30,7 +30,7 @@ function App() {
 
   const formRef = useRef();
 
-  let [updIndx, setUpdIndx] = useState(null)
+  let [updIndex, setUpdIndex] = useState(null)
 
   return (
     <>
@@ -114,7 +114,7 @@ function App() {
         
         <div className="container mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={()=>{
-            setUpdIndx(null)
+            setUpdIndex(null)
           }}>Create New</button>      
           {/*Modal*/}
           <div className="modal" tabindex="-1" id="myModal">
@@ -122,7 +122,12 @@ function App() {
               <div className="modal-content">
                 {/*Modal header*/}
                 <div className="modal-header">
-                  <h5 className="modal-title">Create new member</h5>
+                  {
+                    (updIndex === null) ?
+                    <h5 className="modal-title">Create new member</h5> :
+                    <h5 className="modal-title">Update member</h5>
+                  }
+                  
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
