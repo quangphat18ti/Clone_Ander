@@ -289,8 +289,8 @@ function App() {
                         onClick={ () => {
                           // get all <input> values of this clicked row, and set it to the upsert form fields
                           setFullnameModal    (member_list[i].fullname)
-                          setGitlabEmail      (member_list[i]['gitlab email'])
-                          setDistrict         (member_list[i].district)
+                          setGitlabEmailModal (member_list[i]['gitlab email'])
+                          setDistrictModal    (member_list[i].district)
                           setBirth            (member_list[i].birth)
                           setGit              (member_list[i].git)
                           setUpdIndex         (i)
