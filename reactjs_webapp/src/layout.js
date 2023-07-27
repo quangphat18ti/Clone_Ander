@@ -5,6 +5,7 @@ import DemoTxSign from "./page/demo_tx_sign"
 const Layout = ()=> {
   return(
     <>
+      {/* we use bootstrap4 nav-tab to switch page/content ref. https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior */}
       <div className='container-fluid mt-3'>
         <nav>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
