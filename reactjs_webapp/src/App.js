@@ -220,8 +220,6 @@ function App() {
                         ...member_current,
                         ...member_new,
                       }
-
-                      setUpdIndex(null)  //FIXME @Ky we dont set it null here; instead, will set null @onClick Create New, and set =i @onClick row's edit
                     } else {  // is adding new
                       member_list_new = [member_new, ...member_list]
                     }
