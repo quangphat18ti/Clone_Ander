@@ -213,7 +213,7 @@ function App() {
                       member_list_new = [...member_list]
                       member_list_new[updIndex] = {
                         ...member_list_new[updIndex],
-                        ...member
+                        ...member,
                       }
 
                       setUpdIndex(null)
