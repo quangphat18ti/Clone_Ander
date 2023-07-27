@@ -113,19 +113,19 @@ function App() {
         
         
         <div className="container mt-5">
-          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={()=>{
+          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
             setUpdIndex(null)
           }}>Create New</button>      
           {/*Modal*/}
-          <div className="modal" tabindex="-1" id="myModal">
+          <div className="modal" tabindex="-1" id="upsertModal">
             <div className="modal-dialog">
               <div className="modal-content">
                 {/*Modal header*/}
                 <div className="modal-header">
                   {
                     (updIndex === null) ?
-                    <h5 className="modal-title">Create new member</h5> :
-                    <h5 className="modal-title">Update member</h5>
+                      <h5 className="modal-title">Create new member</h5> :
+                      <h5 className="modal-title">Update member</h5>
                   }
                   
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -149,6 +149,50 @@ function App() {
                             setFullname(e.target.value);
                           }}/>
                       </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
+                      <div className="col-sm-9">
+                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
+                          required
+                          onChange={(e) => {
+                          setGitlabEmail(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
+                          required
+                          onChange={(e) => {
+                          setDistrict(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+
+                    <div className="form-group row">
+                        <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
+                        <div className="col-sm-9">
+                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth} 
+                            required
+                            onChange={(e) => {
+                            setBirth(e.target.value);
+                        }}/>
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                      <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git} 
+                          required
+                          onChange={(e) => {
+                          setGit(e.target.value);
+                        }}/>
+                        </div>
                     </div>
                   </form>
                 </div>
@@ -215,7 +259,7 @@ function App() {
                   <td>
                     <div className="btn-group" role="group" aria-label="inline-btn">
                       <button
-                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#myModal"
+                        style={{ "minWidth": "5rem" }} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#upsertModal"
                         onClick={ () => {
                           // get all <input> values of this clicked row, and set it to the upsert form fields
                           setFullname   (member_list[i].fullname)
