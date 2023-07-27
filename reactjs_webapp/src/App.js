@@ -150,6 +150,29 @@ function App() {
                           }}/>
                       </div>
                     </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
+                      <div className="col-sm-9">
+                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail} 
+                          required
+                          onChange={(e) => {
+                          setGitlabEmail(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
+                    <div className="form-group row">
+                      <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
+                      <div className="col-sm-9">
+                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district} 
+                          required
+                          onChange={(e) => {
+                          setDistrict(e.target.value);
+                          }}/>
+                      </div>
+                    </div>
+
                   </form>
                 </div>
 
