@@ -9,7 +9,7 @@ function DemoBlockchain() {
           <div className="nav nav-tabs justify-content-end" id="nav-tab" role="tablist">
             <button className="nav-link active" id="nav-hash-tab"                           data-toggle="tab" data-target="#nav-hash"                        type="button" role="tab" aria-controls="nav-hash"                         aria-selected="true" >Hash</button>
             <button className="nav-link       " id="nav-block-tab"                          data-toggle="tab" data-target="#nav-block"                       type="button" role="tab" aria-controls="nav-block"                        aria-selected="false">Block</button>
-            <button className="nav-link       " id="nav-blockchain--demoblockchain"         data-toggle="tab" data-target="#nav-blockchain--demoblockchain"  type="button" role="tab" aria-controls="nav-blockchain--demoblockchain"   aria-selected="false">Blockchain</button>
+            <button className="nav-link       " id="nav-blockchain--demoblockchain-tab"     data-toggle="tab" data-target="#nav-blockchain--demoblockchain"  type="button" role="tab" aria-controls="nav-blockchain--demoblockchain"   aria-selected="false">Blockchain</button>
             <button className="nav-link       " id="nav-distributed-tab"                    data-toggle="tab" data-target="#nav-distributed"                 type="button" role="tab" aria-controls="nav-distributed"                  aria-selected="false">Distributed</button>
             <button className="nav-link       " id="nav-token-tab"                          data-toggle="tab" data-target="#nav-token"                       type="button" role="tab" aria-controls="nav-token"                        aria-selected="false">Token</button>
           </div>
