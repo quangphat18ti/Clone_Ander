@@ -4,7 +4,7 @@ function Hash() {
             <div className="container">
                 <h1>SHA256 Hash</h1>
 
-                <div className="alert alert-dark" role="alert">
+                <div className="alert alert-dark p-3" role="alert">
                     <form>
                         <div className="form-group row">
                             <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data:</strong></label>
