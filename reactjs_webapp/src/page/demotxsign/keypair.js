@@ -1,8 +1,8 @@
 
 function KeyPair() {
   return(
-    <div className="container-fluid d-flex justify-content-center">
-      <div className="cointainer mt-3 w-75">
+    <>
+      <div className="cointainer mt-3 mx-5">
         <div className="card">
           <h4 className="card-header">Public / Private Key Pairs</h4>
 
@@ -10,7 +10,7 @@ function KeyPair() {
             <div className="form-group">
               <label htmlFor="privkey" className="mt-2">Private Key</label>
               <div className="form-inline">
-                <input type="text" class="form-control mb-2" style={{width: "90%"}} id="privkey"/>
+                <input type="text" className="form-control mb-2" style={{width: "90%"}} id="privkey"/>
                 <button className="btn btn-secondary mb-2" style={{width: "10%"}}>Random</button>
               </div>
             </div>
@@ -23,7 +23,7 @@ function KeyPair() {
 
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
