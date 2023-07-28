@@ -1,3 +1,4 @@
+import Hash from "./demoblockchain/hash"
 function DemoBlockchain() {
   return (
     <>
@@ -13,7 +14,7 @@ function DemoBlockchain() {
         </nav>
 
         <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-hash"                        role="tabpanel" aria-labelledby="nav-hash-tab">                         TODO hash        </div>
+          <div className="tab-pane fade show active" id="nav-hash"                        role="tabpanel" aria-labelledby="nav-hash-tab">                         <Hash/>        </div>
           <div className="tab-pane fade            " id="nav-block"                       role="tabpanel" aria-labelledby="nav-block-tab">                        TODO block       </div>
           <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   TODO blockchain  </div>
           <div className="tab-pane fade            " id="nav-distributed"                 role="tabpanel" aria-labelledby="nav-distributed-tab">                  TODO distributed </div>
