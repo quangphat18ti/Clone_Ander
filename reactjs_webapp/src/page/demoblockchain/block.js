@@ -3,7 +3,7 @@ function Block() {
         <>
             <div className="container">
                 <h1>Block</h1>
-                <div className="alert alert-success" role="alert" style={{ color: 'black' }}>
+                <div className="alert alert-success p-3" role="alert" style={{ color: 'black' }}>
                     <form>
                         <div className="form-group row">
                             <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block:</strong></label>
