@@ -36,7 +36,8 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
-  const formRef = useRef();
+  const formRef = useRef()
+  const formModalRef = useRef()
 
   let [updIndex, setUpdIndex] = useState(null)
 
@@ -55,7 +56,7 @@ function App() {
             {/* member @ upsert form */}
             <div className='row mt-5'>
               <div className='col-6'>
-                <form action="#" ref={formRef}>
+                <form action="#" ref={formRef} onSubmit={(e)=>e.preventDefault()}>
                   <div className="form-group row">
                     <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                     <div className="col-sm-9">
@@ -134,7 +135,12 @@ function App() {
         {/* modal upsert form */}
         <div className="row mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
-            setUpdIndex(null)
+            setUpdIndex          (null)
+            setFullnameModal     ('')
+            setGitlabEmailModal  ('')
+            setDistrictModal     ('')
+            setBirthModal        ('')
+            setGitModal          ('') 
           }}>Create New</button>      
           {/*Modal*/}
           <div className="modal" tabindex="-1" id="upsertModal">
@@ -159,7 +165,7 @@ function App() {
                 */}
                 {/*Modal body*/}
                 <div className="modal-body">
-                  <form action="#">
+                  <form action="#" id="formModal" ref={formModalRef} onSubmit={(e)=>e.preventDefault()}>
                     <div className="form-group row">
                       <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                       <div className="col-sm-9">
@@ -220,7 +226,10 @@ function App() {
                 {/*Modal footer*/}
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
+                  <button type="submit" form="formModal" className="btn btn-primary" onClick={()=>{
+                    console.log(fullnameModal, gitlabEmailModal, districtModal, birthModal, gitModal)
+                    const formModal = formModalRef.current
+                    if (!formModal.checkValidity()) {return}
                     let member_new = {
                       'fullname'     : fullnameModal,
                       'gitlab email' : gitlabEmailModal,
@@ -241,6 +250,8 @@ function App() {
                       member_list_new = [member_new, ...member_list]
                     }
                     set__member_list(member_list_new)
+                    let closeButton = document.querySelector("#upsertModal .close");
+                    closeButton.click();
                   }}>Save changes</button>
                 </div>
               </div>
