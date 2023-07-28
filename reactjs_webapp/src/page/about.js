@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from "react"
+
 let member_list_init = [
   { 'fullname': 'Nam G VU',        'gitlab email': 'namgivu@gmail.com',              'district': 10,         'birth': 1982, 'git': 'gitlab namgivu, github namgivu', },
   { 'fullname': 'Hung H VO',       'gitlab email': 'hoanghung1182003@gmail.com',     'district': 8,          'birth': 2003, 'git': 'gitlab HungBacktracking, github HungBacktracking'},
@@ -35,13 +36,15 @@ function App() {
     localStorage.setItem('member_list', JSON.stringify(member_list))
   }, [member_list])
 
-  const formRef = useRef();
+  const formRef = useRef()
+  const formModalRef = useRef()
 
   let [updIndex, setUpdIndex] = useState(null)
 
   return (
     <>
       <div className="container">
+        {/* member @ upsert form v0 */}
         <div className="row mt-5">
           <a className="btn btn-primary" data-toggle="collapse" href="#collapseUpsertForm" role="button"
              aria-expanded="false" aria-controls="collapseUpsertForm">
@@ -53,7 +56,7 @@ function App() {
             {/* member @ upsert form */}
             <div className='row mt-5'>
               <div className='col-6'>
-                <form action="#" ref={formRef}>
+                <form action="#" ref={formRef} onSubmit={(e)=>e.preventDefault()}>
                   <div className="form-group row">
                     <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                     <div className="col-sm-9">
@@ -129,9 +132,15 @@ function App() {
         </div>
         
         
+        {/* modal upsert form */}
         <div className="row mt-5">
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#upsertModal" onClick={()=>{
-            setUpdIndex(null)
+            setUpdIndex          (null)
+            setFullnameModal     ('')
+            setGitlabEmailModal  ('')
+            setDistrictModal     ('')
+            setBirthModal        ('')
+            setGitModal          ('') 
           }}>Create New</button>      
           {/*Modal*/}
           <div className="modal" tabindex="-1" id="upsertModal">
@@ -156,7 +165,7 @@ function App() {
                 */}
                 {/*Modal body*/}
                 <div className="modal-body">
-                  <form action="#">
+                  <form action="#" id="formModal" ref={formModalRef} onSubmit={(e)=>e.preventDefault()}>
                     <div className="form-group row">
                       <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                       <div className="col-sm-9">
@@ -217,7 +226,10 @@ function App() {
                 {/*Modal footer*/}
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{
+                  <button type="submit" form="formModal" className="btn btn-primary" onClick={()=>{
+                    console.log(fullnameModal, gitlabEmailModal, districtModal, birthModal, gitModal)
+                    const formModal = formModalRef.current
+                    if (!formModal.checkValidity()) {return}
                     let member_new = {
                       'fullname'     : fullnameModal,
                       'gitlab email' : gitlabEmailModal,
@@ -238,6 +250,8 @@ function App() {
                       member_list_new = [member_new, ...member_list]
                     }
                     set__member_list(member_list_new)
+                    let closeButton = document.querySelector("#upsertModal .close");
+                    closeButton.click();
                   }}>Save changes</button>
                 </div>
               </div>
@@ -245,7 +259,6 @@ function App() {
           </div>
         </div>
        
-
         {/* download :member_list as json file */}
         <div className='row mt-5'>
           <a href="#" className="text-primary"
