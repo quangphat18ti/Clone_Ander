@@ -1,3 +1,6 @@
+import KeyPair from "./demotxsign/keypair"
+import Signature from "./demotxsign/signature"
+
 function DemoTxSign() {
   return (
     <>
@@ -12,8 +15,8 @@ function DemoTxSign() {
         </nav>
 
         <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-key"                 role="tabpanel" aria-labelledby="nav-key-tab">                  TODO key         </div>
-          <div className="tab-pane fade            " id="nav-signature"           role="tabpanel" aria-labelledby="nav-block-tab">                TODO signature   </div>
+          <div className="tab-pane fade show active" id="nav-key"                 role="tabpanel" aria-labelledby="nav-key-tab">             <KeyPair />  </div>
+          <div className="tab-pane fade            " id="nav-signature"           role="tabpanel" aria-labelledby="nav-block-tab">                <Signature />   </div>
           <div className="tab-pane fade            " id="nav-transaction"         role="tabpanel" aria-labelledby="nav-transaction-tab">          TODO transaction </div>
           <div className="tab-pane fade            " id="nav-blockchain--demotxsign"  role="tabpanel" aria-labelledby="nav-blockchain--demotxsign-tab">   TODO blockchain  </div>
         </div>
