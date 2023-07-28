@@ -29,5 +29,7 @@ cd $GITCLONED_HOME
 ## webapp @ clone anders blockchain demo 
 blockchain demo https://andersbrownworth.com/blockchain/hash
 tx sign demo    https://andersbrownworth.com/blockchain/public-private-keys/keys
+    source code https://github.com/anders94/blockchain-demo/
+    how to map vanilla js lib to nodejs/reactjs package name https://stackoverflow.com/q/76696833/248616
 
 team task plan https://docs.google.com/document/d/1KVw_VVOVDYCEudaNqB0_JPc4J8BVuOONqNvgaW1MoHw/edit?usp=sharing
