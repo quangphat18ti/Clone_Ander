@@ -11,6 +11,7 @@
 | 06   | PHAN Quoc Ky        | 20120017@student.hcmus.edu.vn | 8        | 2002  | github quocky                                    |
 | 07   | Khuyen N. TRA       | kt7456158@gmail.com           | 9        | 2002  | gitlab Ktra-sssc, github Ktra-sssc               |
 
+
 ## reactjs webapp demo 
 
 ### generate code
@@ -23,3 +24,10 @@ cd $GITCLONED_HOME
 cd $GITCLONED_HOME
     cd reactjs_webapp/
     npm i ; npm start 
+
+
+## webapp @ clone anders blockchain demo 
+blockchain demo https://andersbrownworth.com/blockchain/hash
+tx sign demo    https://andersbrownworth.com/blockchain/public-private-keys/keys
+
+team task plan https://docs.google.com/document/d/1KVw_VVOVDYCEudaNqB0_JPc4J8BVuOONqNvgaW1MoHw/edit?usp=sharing
