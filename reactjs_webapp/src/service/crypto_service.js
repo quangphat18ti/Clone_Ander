@@ -18,4 +18,4 @@ function mine(block, data) {
     }
 }
 
-module.exports = {sha256_hash, mine}
+module.exports = {sha256_hash, mine, DIFFICULTY}
