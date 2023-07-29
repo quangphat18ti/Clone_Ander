@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { mine, sha256_hash, DIFFICULTY } from "../../service/crypto_service";
+import { mine, sha256_hash, DIFFICULTY, mine2 } from "../../service/crypto_service";
 
 function Block() {
     let [block, setBlock] = useState(1)
@@ -76,17 +76,18 @@ function Block() {
                                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
                                     <span className="ladda-label" 
                                           onClick={(e) => {
-                                            e.preventDefault()
+                                            console.log("Click me")
                                             try {
-                                              let {new_nonce, hash_new} = mine(block, data)
+                                              let new_nonce = mine2(block, data);
                                               if(new_nonce !== undefined)
                                                 setNonce(new_nonce)
                                               else 
                                                 alert("Cannot mined block")
-                                              } catch (error) {
-                                                console.log(error)
-                                                alert("Get error. See on Console")
-                                              }
+                                            } 
+                                            catch (error) {
+                                              console.log(error)
+                                              alert("Get error. See on Console")
+                                            }
                                           }}>Mine</span>
                                 </button>
                             </div>
