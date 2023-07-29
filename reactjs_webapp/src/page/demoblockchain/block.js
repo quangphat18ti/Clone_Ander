@@ -83,11 +83,11 @@ function Block() {
                                               if(new_nonce !== undefined)
                                                 setNonce(new_nonce.nonce)
                                               else 
-                                                alert("Cannot mined block")
+                                                alert("Cannot find a nonce!")
                                             } 
                                             catch (error) {
-                                              console.log(error)
-                                              alert("Get error. See on Console")
+                                              console.log("Error = ", error)
+                                              alert("Get error. Detail in Console")
                                             }
                                           }}>Mine</span>
                                 </button>
