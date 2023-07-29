@@ -43,7 +43,7 @@ function mine2(blockNumber, data) {
     for (let x = 0; x < maximumNonce; x++) {
         let blockNumber_string = blockNumber === undefined ? '' : blockNumber.toString();
         let message = blockNumber_string + x.toString() + data;
-        if(sha256_hash(message).toString().substring(0, DIFFICULTY_MAJOR) === zeroString) {
+        if(sha256_hash(message).toString().startsWith(zeroString)) {
             return x;
         }
     }
