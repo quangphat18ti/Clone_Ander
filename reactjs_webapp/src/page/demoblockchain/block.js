@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { mine } from "../../service/crypto_service";
 
 function Block() {
-    let [block, setBlock] = useState()
+    let [block, setBlock] = useState(1)
     let [nonce, setNonce] = useState('')
     let [data, setData] = useState('')
     let [hash, setHash] = useState('')
@@ -67,9 +68,17 @@ function Block() {
                                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
                                     <span className="ladda-label" 
                                           onClick={(e) => {
-                                            // e.preventDefault()
-                                            // console.log("block =", block)
-                                            // console.log("data = ", data)
+                                            e.preventDefault()
+                                            try {
+                                              let {new_nonce, hash_new} = mine(block, data)
+                                              if(new_nonce !== undefined)
+                                                setNonce(new_nonce)
+                                              else 
+                                                alert("Cannot mined block")
+                                              } catch (error) {
+                                                console.log(error)
+                                                alert("Get error. See on Console")
+                                              }
                                           }}>Mine</span>
                                 </button>
                             </div>
