@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { mine } from "../../service/crypto_service";
+import { useState, useEffect } from "react";
+import { mine, sha256_hash } from "../../service/crypto_service";
 
 function Block() {
     let [block, setBlock] = useState(1)
@@ -9,6 +9,10 @@ function Block() {
     let [isMined, setIsMined] = useState(1)
     let [prev, setPrev] = useState()
 
+    useEffect(() => {
+      setHash(sha256_hash(block === undefined ? '' : block.toString() + nonce + data).toString())
+    }, [block, data, nonce])
+  
     return (
         <>
             <div className="container">
