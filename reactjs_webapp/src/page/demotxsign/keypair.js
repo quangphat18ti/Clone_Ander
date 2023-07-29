@@ -8,14 +8,16 @@ function KeyPair() {
 
           <div className="card-body">  
             <div className="form-group">
-              <label htmlFor="privkey" className="mt-2">Private Key</label>
-              <div className="form-inline">
-                <input type="text" className="form-control mb-2" style={{width: "90%"}} id="privkey"/>
-                <button className="btn btn-secondary mb-2" style={{width: "10%"}}>Random</button>
+              <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
+              <div className="input-group">
+                <input type="text" className="form-control mb-2" id="privkey"/>
+                <span className="input-group-append">
+                  <button className="btn btn-secondary mb-2" >Random</button>
+                </span>
               </div>
             </div>
 
-            <div className="form-group mb-5">
+            <div className="form-group mb-5">label
               <label htmlFor="pubkey" className="mt-2">Public Key</label>
               <input className="form-control" id="pubkey" type="text" placeholder="Readonly input here..." readOnly={true} />
             </div>
