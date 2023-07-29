@@ -7,8 +7,8 @@ function Hash() {
 
   return (
     <>
-      <div className="container">
-        <h1>SHA256 Hash</h1>
+      <div className="container mt-3">
+        <h3>SHA256 Hash</h3>
 
         <div className="alert alert-dark p-3" role="alert">
           <form>
