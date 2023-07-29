@@ -29,10 +29,13 @@ function mine(blockNum, data) {
     for (let x = 0; x < maximumNonce; x++) {
         let message = blockNum.toString() + x.toString() + data;
         let hash_message = sha256_hash(message).toString();
+
         if (hash_message.substring(0, DIFFICULTY_MAJOR) === zeroString) {
             return { nonce: x, hash: hash_message };
         }
     }
+
+    return {nonce: undefined, hash: undefined}
 }
 //endregion mine
 
