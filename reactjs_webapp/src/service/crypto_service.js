@@ -5,8 +5,8 @@ import CryptoJS from "crypto-js";
  * https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/blockchain.js#L6C25-L32
  */
 
-var DIFFICULTY_MINOR = 15;
-var DIFFICULTY_MAJOR = 4;
+const DIFFICULTY_MINOR = 15;
+const DIFFICULTY_MAJOR = 4;
 
 var maximumNonce = 8;
 for (var x=0; x<DIFFICULTY_MAJOR; x++) {
