@@ -33,9 +33,7 @@ function Block() {
                                 <div className="input-group">
                                     <span className="input-group-text" id="basic-addon1">#</span>
                                     <input type="number" className="form-control" id="blockchainnumber" value={block}
-                                            onChange={(e) => {
-                                              setBlock(e.target.value) 
-                                            }} />
+                                           onChange={(e) => {setBlock(e.target.value)}} />
                                 </div>
                             </div>
                         </div>
