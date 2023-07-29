@@ -3,13 +3,13 @@ import { gen_keypair }  from  '../../service/crypto_service'
 import bigInt from'big-integer'
 
 function KeyPair() {
-  let [privkey, setPrivkey] = useState();
-  let [pubkey, setPubkey]   = useState();
+  let [privkey, setPrivkey] = useState()
+  let [pubkey, setPubkey]   = useState()
 
   useEffect(()=>{
-    let keypair = gen_keypair();
-    setPrivkey(keypair.privkey);
-    setPubkey(keypair.pubkey);
+    let keypair = gen_keypair()
+    setPrivkey(keypair.privkey)
+    setPubkey(keypair.pubkey)
   }, [])
   return(
     <>
