@@ -41,18 +41,15 @@ function Block() {
                             <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce:</strong></label>
                             <div className="col-sm-10">
                                 <input type="text" className="form-control" id="nonce" value={nonce}
-                                        onChange={(e) => {
-                                          setNonce(e.target.value)
-                                        }} />
+                                        onChange={(e) => {setNonce(e.target.value)}} />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data:</strong></label>
                             <div className="col-sm-10">
                                 <textarea className="form-control" id="data" rows="10" 
-                                        onChange={(e) => {
-                                          setData(e.target.value)
-                                        }}>{data}</textarea>
+                                        onChange={(e) => { setData(e.target.value)}}>{data}
+                                </textarea>
                             </div>
                         </div>
                         { (prev != null) &&
