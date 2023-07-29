@@ -16,9 +16,9 @@ function Hash() {
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
 
               <div className="col-sm-10">
-                <textarea className="form-control" id="data" rows="10" onChange={(event) => {
-                  setData(event.target.value);
-                  setHash(sha256_hash(event.target.value));
+                <textarea className="form-control" id="data" rows="10" onChange={(e) => {
+                  setData(e.target.value);
+                  setHash(sha256_hash(e.target.value));
                 }}>{data}</textarea>
               </div>
             </div>
