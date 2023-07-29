@@ -14,7 +14,7 @@ function Block() {
                 <h3>Block</h3>
                 <div className={`
                         alert ${isMined ? "alert-success" : "alert-danger"}
-                        p-3
+                        px-3 pt-3 pb-0
                      `} role="alert" style={{ color: 'black' }}
                 >
                     <form>
