@@ -5,11 +5,6 @@ function Hash() {
   const [data, setData] = useState('');
   const [hash, setHash] = useState(sha256_hash(''));
 
-  const handleInputChange = (event) => {
-    setData(event.target.value);
-    setHash(sha256_hash(event.target.value));
-  };
-
   return (
     <>
       <div className="container">
@@ -19,8 +14,12 @@ function Hash() {
           <form>
             <div className="form-group row">
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
+
               <div className="col-sm-10">
-                <textarea className="form-control" id="data" rows="10" onChange={handleInputChange}>{data}</textarea>
+                <textarea className="form-control" id="data" rows="10" onChange={(event) => {
+                  setData(event.target.value);
+                  setHash(sha256_hash(event.target.value));
+                }}>{data}</textarea>
               </div>
             </div>
             <div className="form-group row">
