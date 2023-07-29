@@ -3,7 +3,7 @@ import { sha256_hash } from "../../service/crypto_service";
 
 function Hash() {
     const [data, setData] = useState('');
-    const [hash, setHash] = useState(sha256_hash(""));
+    const [hash, setHash] = useState(sha256_hash(''));
 
     const handleInputChange = (event) => {
         setData(event.target.value);
