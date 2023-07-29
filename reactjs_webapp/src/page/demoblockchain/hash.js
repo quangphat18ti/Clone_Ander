@@ -10,7 +10,7 @@ function Hash() {
       <div className="container mt-3">
         <h3>SHA256 Hash</h3>
 
-        <div className="alert alert-dark p-3" role="alert">
+        <div className="p-3" style={{ backgroundColor: '#dcdcdc' }}>
           <form>
             <div className="form-group row">
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
