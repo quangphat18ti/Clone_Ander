@@ -7,7 +7,7 @@ const sha256_hash = (data) => {
 const DIFFICULTY = 4;
 var maximumNonce = 100000;
 
-function mine(block, data) {
+function mine(blockNum, data) {
     for (let x = 0; x < maximumNonce; x++) {
         let message = block.toString() + x.toString() + data;
         const zeroString = '0'.repeat(DIFFICULTY);
