@@ -5,14 +5,14 @@ function Block() {
     let [nonce, setNonce] = useState('')
     let [data, setData] = useState('')
     let [hash, setHash] = useState('')
-    let [stateBlock, setStateBlock] = useState(1)
+    let [isMined, setIsMined] = useState(1)
     let [prev, setPrev] = useState()
 
     return (
         <>
             <div className="container">
                 <h1>Block</h1>
-                <div className={`alert ${stateBlock ? "alert-success" : "alert-danger"} p-3`} role="alert" style={{ color: 'black' }}>
+                <div className={`alert ${isMined ? "alert-success" : "alert-danger"} p-3`} role="alert" style={{ color: 'black' }}>
                     <form>
                         <div className="form-group row">
                             <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block:</strong></label>

@@ -1,4 +1,4 @@
-import CryptoJS from "crypto-js"
+let CryptoJS = require('crypto-js')
 
 const sha256_hash = (data) => {
     return CryptoJS.SHA256(data)
@@ -39,5 +39,4 @@ function mine(block, data) {  //FIXME data la mot truong/field cua block roi ref
 }
 //endregion mine
 
-
-export {sha256_hash, mine}
+module.exports = {sha256_hash, mine}
