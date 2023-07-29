@@ -5,7 +5,7 @@ const sha256_hash = (data) => {
 };
 
 
-// region mine
+//region mine
 /*!
  * Initial value for maximumNonce, view at
  * https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/blockchain.js#L6C25-L32
@@ -34,6 +34,6 @@ function mine(block, data) {
         }
     }
 }
-// end region mine
+//endregion mine
 
 export {sha256_hash, mine};
