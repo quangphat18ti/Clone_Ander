@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { mine, sha256_hash, DIFFICULTY_MAJOR, mine2 } from "../../service/crypto_service";
 
 function Block() {
-    let [block, setBlock] = useState()
+    let [block, setBlock] = useState(1)
     let [nonce, setNonce] = useState('')
     let [data, setData] = useState('')
     let [hash, setHash] = useState('')
     let [isMined, setIsMined] = useState(1)
     let [prev, setPrev] = useState()
+
+    useEffect(() => {
+      setHash(sha256_hash(block === undefined ? '' : block.toString() + nonce + data).toString())
+    }, [block, data, nonce])
+  
+    useEffect(() => {
+      setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))
+    }, [hash])
 
     return (
         <>
@@ -67,9 +76,17 @@ function Block() {
                                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
                                     <span className="ladda-label" 
                                           onClick={(e) => {
-                                            // e.preventDefault()
-                                            // console.log("block =", block)
-                                            // console.log("data = ", data)
+                                            try {
+                                              let new_nonce = mine(block, data);
+                                              if(new_nonce !== undefined)
+                                                setNonce(new_nonce.nonce)
+                                              else 
+                                                alert("Cannot mined block")
+                                            } 
+                                            catch (error) {
+                                              console.log(error)
+                                              alert("Get error. See on Console")
+                                            }
                                           }}>Mine</span>
                                 </button>
                             </div>
