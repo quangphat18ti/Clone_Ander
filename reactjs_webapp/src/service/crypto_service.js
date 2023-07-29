@@ -1,8 +1,8 @@
-import CryptoJS from "crypto-js";
+let CryptoJS = require('crypto-js')
 
 const sha256_hash = (data) => {
-    return CryptoJS.SHA256(data);
-};
+    return CryptoJS.SHA256(data)
+}
 
 const DIFFICULTY = 4;
 var maximumNonce = 100000;
@@ -18,4 +18,4 @@ function mine(block, data) {
     }
 }
 
-export {sha256_hash, mine};
+module.exports = {sha256_hash, mine}
