@@ -20,8 +20,8 @@ function Hash() {
                   let new_data = e.target.value
                   let new_hash = sha256_hash(new_data)
 
-                  setData(new_data);
-                  setHash(new_hash);
+                  setData(new_data)
+                  setHash(new_hash)
                 }}>{data}</textarea>
               </div>
 
