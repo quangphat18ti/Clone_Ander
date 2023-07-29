@@ -16,13 +16,18 @@ function Hash() {
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
 
               <div className="col-sm-10">
-                <textarea className="form-control" id="data" rows="10" onChange={(e) => {
-                  let new_data = e.target.value
-                  let new_hash = sha256_hash(new_data)
+                <textarea
+                  className="form-control" id="data" rows="10"
+                  onChange={(e) => {
+                    let new_data = e.target.value
+                    let new_hash = sha256_hash(new_data)
 
-                  setData(new_data)
-                  setHash(new_hash)
-                }}>{data}</textarea>
+                    setData(new_data)
+                    setHash(new_hash)
+                  }}
+                >
+                  {data}
+                </textarea>
               </div>
 
             </div>
