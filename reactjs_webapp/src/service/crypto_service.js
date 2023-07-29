@@ -1,7 +1,7 @@
-import CryptoJS from "crypto-js"
+let CryptoJS = require('crypto-js')
 
 const sha256_hash = (data) => {
     return CryptoJS.SHA256(data)
 }
 
-export {sha256_hash}
+module.exports = {sha256_hash}
