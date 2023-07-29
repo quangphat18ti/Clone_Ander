@@ -30,7 +30,7 @@ function mine(block, data) {  //FIXME data la mot truong/field cua block roi ref
 
         const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
 
-        if (hash_message.substring(0, DIFFICULTY_MAJOR) === zeroString) {
+        if (hash_message.startsWith(zeroString)) {
             return { nonce: i, hash: hash_message }
         }
     }
