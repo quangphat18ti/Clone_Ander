@@ -21,10 +21,15 @@ function KeyPair() {
             <div className="form-group">
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
-                <input type="number" className="form-control mb-2" id="privkey" value={bigInt(privkey, 16).toString()} onChange={(e) => {
-                  let prevkey_new = bigInt(e.target.value).toString(16)
-                  setPrivkey(prevkey_new)
-                  setPubkey(gen_keypair(prevkey_new).pubkey)
+                <input type="number" className="form-control mb-2" id="privkey" value={(privkey==="0")?"":bigInt(privkey, 16).toString()} onChange={(e) => {
+                  let privkey_new = bigInt(e.target.value).toString(16)
+                  console.log("prevnew", privkey_new)
+                  if(privkey_new !== "0"){
+                    setPrivkey(privkey_new)
+                    setPubkey(gen_keypair(privkey_new).pubkey)
+                  }else {
+                    setPrivkey("0")
+                  }
                 }}/>
                 <span className="input-group-append">
                   <button className="btn btn-secondary mb-2" onClick={()=>{
