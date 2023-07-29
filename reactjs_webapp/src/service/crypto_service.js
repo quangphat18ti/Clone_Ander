@@ -1,3 +1,5 @@
+import Block from "../page/demoblockchain/block";
+
 let CryptoJS = require('crypto-js')
 
 const sha256_hash = (data) => {
@@ -23,7 +25,8 @@ else if (DIFFICULTY_MINOR === 1) { maximumNonce *= 8  } // 0001 require 3 more 0
 else if (DIFFICULTY_MINOR <=  3) { maximumNonce *= 4  } // 0011 require 2 more 0 bits
 else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0 bit
 
-function mine(block, data) {  //FIXME data la mot truong/field cua block roi ref. https://t.me/c/1725591141/169/774
+function mine(BLock) {
+    let { block, data } = BLock.props;
     for (let i = 0; i < maximumNonce; i++) {
         let message      = (block === undefined ? '' : block.toString()) + i.toString() + data
         let hash_message = sha256_hash(message).toString()
