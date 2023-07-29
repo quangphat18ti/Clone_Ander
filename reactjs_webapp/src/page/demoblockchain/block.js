@@ -20,8 +20,12 @@ function Block() {
     return (
         <>
             <div className="container">
-                <h1>Block</h1>
-                <div className={`alert ${isMined ? "alert-success" : "alert-danger"} p-3`} role="alert" style={{ color: 'black' }}>
+                <h3>Block</h3>
+                <div className={`
+                        alert ${isMined ? "alert-success" : "alert-danger"}
+                        px-3 pt-3 pb-0
+                     `} role="alert" style={{ color: 'black' }}
+                >
                     <form>
                         <div className="form-group row">
                             <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block:</strong></label>
