@@ -37,14 +37,4 @@ function mine(block, data) {  //FIXME data la mot truong/field cua block roi ref
 }
 //endregion mine
 
-function mine2(blockNumber, data) {
-    for (let x = 0; x < maximumNonce; x++) {
-        let blockNumber_string = blockNumber === undefined ? '' : blockNumber.toString();
-        let message = blockNumber_string + x.toString() + data;
-        if(sha256_hash(message).toString().startsWith(zeroString)) {
-            return x;
-        }
-    }
-    return undefined;
-}
-export {sha256_hash, mine, DIFFICULTY_MAJOR, mine2}
+export {sha256_hash, mine, DIFFICULTY_MAJOR}
