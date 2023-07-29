@@ -34,7 +34,8 @@ function mine(block, data) {  //FIXME data la mot truong/field cua block roi ref
             return { nonce: i, hash: hash_message }
         }
     }
-    //TODO what if we cannot return in above for? ie what to return here?
+
+    return { nonce: undefined, hash: undefined }
 }
 //endregion mine
 
