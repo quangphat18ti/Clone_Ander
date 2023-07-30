@@ -42,7 +42,7 @@ function Block(props) {
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon1">#</span>
                   <input type="number" className="form-control" id="blockchainnumber"
-                         value={blockNum}
+                         value={blockNum || ''}
                          onChange={(e) => {setBlockNum(e.target.value)}}
                   />
                 </div>
@@ -55,7 +55,7 @@ function Block(props) {
 
               <div className="col-sm-10">
                 <input type="text" className="form-control" id="nonce"
-                       value={nonce}
+                       value={nonce || ''}
                        onChange={(e) => {setNonce(e.target.value)}}
                 />
               </div>
@@ -69,7 +69,8 @@ function Block(props) {
                 <textarea
                   className="form-control" id="data" rows="10"
                   onChange={(e) => { setData(e.target.value)}}
-                >{data}</textarea>
+                  value={data || ''}
+                ></textarea>
               </div>
             </div>
 
