@@ -4,10 +4,8 @@ import {mine} from "../../service/crypto_service"
 function BlockChain() {
   //region cook block_list data
   let block_list = [
-    //                                                  nonce: pre-computed value and set here
-    {blockNum: '01', data: 'listoftx 01', prev: '...',  nonce: '53675',  hash: 'TODO', },
-    {blockNum: '02', data: 'listoftx 02', prev: 'TODO', nonce: '149193', hash: 'TODO', },
-    {blockNum: '03', data: 'listoftx 03', prev: 'TODO', nonce: '66452',  hash: 'TODO', },
+    // calling :Mine at :block tabpane and paste mined block result here
+    {blockNum: '1', data: 'listoftx 01', prev: '...',  nonce: '31266',  hash: '0000f31922fa0289d6b90bd16eef0a4def6dd018887d0eef10055153247ec5b9', },
   ]
 
   //region set :prev fr current hash values
