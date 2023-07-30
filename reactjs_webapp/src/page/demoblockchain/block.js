@@ -17,7 +17,7 @@ function Block() {
   }, [block, data, nonce])
   
   useEffect(() => {
-    setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))
+    setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))  //TODO Phat use .startsWith(zeroString)
   }, [hash])
 
   return (
