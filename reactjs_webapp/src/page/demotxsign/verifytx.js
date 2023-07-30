@@ -7,7 +7,7 @@ function VerifyTx() {
           <div className="input-group">
             <div className="input-group-text">$
             </div>
-              <input className="form-control" value="20.00"/>
+              <input className="form-control" defaultvvalue="20.00"/>
             <div className="input-group-text">From:
             </div>
               <input className="form-control" />

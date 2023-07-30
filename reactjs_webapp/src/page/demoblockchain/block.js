@@ -17,7 +17,7 @@ function Block(props) {
   }, [blockNum, data, nonce])
   
   useEffect(() => {
-    setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))  //TODO Phat use .startsWith(zeroString)
+    setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
   }, [hash])
 
   return (
@@ -56,10 +56,22 @@ function Block(props) {
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon1">#</span>
                   <input type="number" className="form-control" id="blockchainnumber"
-                         value={blockNum}
+                         value={blockNum || ''}
                          onChange={(e) => {setBlockNum(e.target.value)}}
                   />
                 </div>
+              </div>
+            </div>
+
+            {/* nonce */}
+            <div className="form-group row">
+              <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
+
+              <div className="col-sm-10">
+                <input type="text" className="form-control" id="nonce"
+                       value={nonce || ''}
+                       onChange={(e) => {setNonce(e.target.value)}}
+                />
               </div>
             </div>
 
@@ -71,7 +83,8 @@ function Block(props) {
                 <textarea
                   className="form-control" id="data" rows="10"
                   onChange={(e) => { setData(e.target.value)}}
-                >{data}</textarea>
+                  value={data || ''}
+                ></textarea>
               </div>
             </div>
 
