@@ -24,14 +24,11 @@ function KeyPair() {
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
                 <input type="number" className="form-control mb-2" id="privkey"
-                       value={privkey==='0'? '':bigInt(privkey, 16).toString()}
+                       value={bigInt(privkey, 16).toString()}
                        onChange={ (e) => {
-                         let privkey_new = bigInt(e.target.value).toString(16)
-
-                         // calc pub fr priv
-                         let pubkey_new
-                         let                          e_target_value__whenblank = '0'
-                         pubkey_new = privkey_new === e_target_value__whenblank?
+                         // calc new pubkey
+                         let              privkey_new = bigInt(e.target.value).toString(16)
+                         let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
                            0 : gen_keypair(privkey_new).pubkey
 
                          // render to ui
