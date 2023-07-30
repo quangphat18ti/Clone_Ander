@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service";
 
 function Block(props) {
-  let [blockNum, setBlockNum] = useState(1)
-  let [nonce, setNonce] = useState('')
-  let [data, setData] = useState('')
-  let [hash, setHash] = useState('')
-  let [isMined, setIsMined] = useState(1)
-  let [prev, setPrev] = useState()
+  let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
+  let [nonce, setNonce]       = useState(props.nonce?    props.nonce    : '' )
+  let [data, setData]         = useState(props.data?     props.data     : '' )
+  let [hash, setHash]         = useState(props.hash?     props.hash     : '' )
+  let [isMined, setIsMined]   = useState(props.isMined?  props.isMined  : 1  )
+  let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed

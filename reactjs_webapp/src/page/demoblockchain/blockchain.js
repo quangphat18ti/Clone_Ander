@@ -15,10 +15,11 @@ function BlockChain() {
       <h3>Blockchain</h3>
 
       <div className="row row-horizon">
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
         {/*TODO make :Block list on same line*/}
+
+        {block_list.map(b =>
+          <div className="col-4"><Block showTitle='false' showPrev='true' {...b} /></div>
+        )}
       </div>
     </>
   )
