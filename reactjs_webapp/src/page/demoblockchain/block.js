@@ -89,7 +89,7 @@ function Block() {
 
             {/* mine */}
             <div className="form-group row">
-              {/* loading spinner */} {/*TODO toggle spinner @ onClick :Mine btn */}
+              {/* loading spinner */} {/*TODO toggle spinner @ onClick :Mine btn - ref demo at https://t.me/c/1725591141/169/835 */}
               <div className="col-sm-2">
                 <i className="icon-spinner icon-spin icon-large"></i>
               </div>
