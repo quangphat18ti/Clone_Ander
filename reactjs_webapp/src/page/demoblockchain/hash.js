@@ -27,8 +27,8 @@ function Hash() {
                     setData(new_data)
                     setHash(new_hash)
                   }}
+                  defaultvvalue={data || ''}
                 >
-                  {data}
                 </textarea>
               </div>
 

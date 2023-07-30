@@ -60,7 +60,7 @@ function App() {
                   <div className="form-group row">
                     <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                     <div className="col-sm-9">
-                      <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname}
+                      <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullName" value={fullname || ''}
                              required
                              onChange={(e)=> {
                                setFullname(e.target.value);
@@ -71,7 +71,7 @@ function App() {
                   <div className="form-group row">
                     <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
                     <div className="col-sm-9">
-                      <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail}
+                      <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmail" value={gitlabEmail || ''}
                              required
                              onChange={(e) => {
                                setGitlabEmail(e.target.value);
@@ -82,7 +82,7 @@ function App() {
                   <div className="form-group row">
                     <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
                     <div className="col-sm-9">
-                      <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district}
+                      <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="district" value={district || ''}
                              required
                              onChange={(e) => {
                                setDistrict(e.target.value);
@@ -93,7 +93,7 @@ function App() {
                   <div className="form-group row">
                     <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
                     <div className="col-sm-9">
-                      <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth}
+                      <input type="number" className="form-control" placeholder="Enter your birth year" id="birth" value={birth || ''}
                              required
                              onChange={(e) => {
                                setBirth(e.target.value);
@@ -104,7 +104,7 @@ function App() {
                   <div className="form-group row">
                     <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
                     <div className="col-sm-9">
-                      <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git}
+                      <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="git" value={git || ''}
                              required
                              onChange={(e) => {
                                setGit(e.target.value);
@@ -143,7 +143,7 @@ function App() {
             setGitModal          ('') 
           }}>Create New</button>      
           {/*Modal*/}
-          <div className="modal" tabindex="-1" id="upsertModal">
+          <div className="modal" tabIndex="-1" id="upsertModal">
             <div className="modal-dialog">
               <div className="modal-content">
                 {/*Modal header*/}
@@ -169,7 +169,7 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="fullName" className="col-sm-3 col-form-label">Fullname</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullNameModal" value={fullnameModal} 
+                        <input type="text" className="form-control" placeholder="eg Ten Lot HO" id="fullNameModal" value={fullnameModal || ''} 
                           required
                           onChange={(e)=> {
                             setFullnameModal(e.target.value);
@@ -180,7 +180,7 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="gitlabEmail" className="col-sm-3 col-form-label">Gitlab email</label>
                       <div className="col-sm-9">
-                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmailModal" value={gitlabEmailModal} 
+                        <input type="email" className="form-control" placeholder="Enter your email used for gitlab" id="gitlabEmailModal" value={gitlabEmailModal || ''} 
                           required
                           onChange={(e) => {
                             setGitlabEmailModal(e.target.value);
@@ -191,7 +191,7 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="district" className="col-sm-3 col-form-label">District</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="districtModal" value={districtModal} 
+                        <input type="text" className="form-control" placeholder="What is your district location in Saigon" id="districtModal" value={districtModal || ''} 
                           required
                           onChange={(e) => {
                             setDistrictModal(e.target.value);
@@ -202,7 +202,7 @@ function App() {
                     <div className="form-group row">
                         <label htmlFor="birth" className="col-sm-3 col-form-label">Birth</label>
                         <div className="col-sm-9">
-                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birthModal" value={birthModal} 
+                        <input type="number" className="form-control" placeholder="Enter your birth year" id="birthModal" value={birthModal || ''} 
                           required
                           onChange={(e) => {
                             setBirthModal(e.target.value);
@@ -213,7 +213,7 @@ function App() {
                     <div className="form-group row">
                       <label htmlFor="git" className="col-sm-3 col-form-label">Git</label>
                       <div className="col-sm-9">
-                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="gitModal" value={gitModal} 
+                        <input type="text" className="form-control" placeholder="Enter your git info > gitlab namgivu, github namgivu" id="gitModal" value={gitModal || ''} 
                           required
                           onChange={(e) => {
                             setGitModal(e.target.value);

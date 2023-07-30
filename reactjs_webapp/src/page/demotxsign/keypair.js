@@ -24,7 +24,7 @@ function KeyPair() {
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
                 <input type="number" className="form-control mb-2" id="privkey"
-                       value={bigInt(privkey, 16).toString()}
+                       value={bigInt(privkey, 16).toString() || ''}
                        onChange={ (e) => {
                          // calc new pubkey
                          let              privkey_new = bigInt(e.target.value).toString(16)  // convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
@@ -52,7 +52,7 @@ function KeyPair() {
             {/* pubkey */}
             <div className="form-group mb-5">
               <label htmlFor="pubkey" className="mt-2">Public Key</label>
-              <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey}/>
+              <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
             </div>
           </div>
 
