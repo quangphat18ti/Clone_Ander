@@ -17,7 +17,7 @@ function Block(props) {
   }, [blockNum, data, nonce])
   
   useEffect(() => {
-    setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))  //TODO Phat use .startsWith(zeroString)
+    setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
   }, [hash])
 
   return (
