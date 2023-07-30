@@ -5,10 +5,10 @@ function BlockChain() {
   //region cook block_list data
   let block_list = [
     // calling :Mine at :block tabpane and paste mined block result here - may need to turn on showPrev=true for <Block /> at tabpane
-    {blockNum: '1', data: 'listoftx 01', prev: '...',  nonce: '31266',  hash: '0000f31922fa0289d6b90bd16eef0a4def6dd018887d0eef10055153247ec5b9', },
-    {blockNum: '2', data: 'listoftx 02',               nonce: '125252', prev: '0000f31922fa0289d6b90bd16eef0a4def6dd018887d0eef10055153247ec5b9',  hash: '00000cc3305145158e2e9b61d6eae170afc1f8ba915ccca95a93e35116f2ce12', },
-    {blockNum: '3', data: 'listoftx 03',               nonce: '72379',                                                                             prev: '00000cc3305145158e2e9b61d6eae170afc1f8ba915ccca95a93e35116f2ce12',  hash: '0000fe80d6b28b2c5ee27d30e9bee04d3d5847c0683aeb6153bc45764003905d', },
-    {blockNum: '4', data: 'listoftx 04',               nonce: '72379',                                                                             prev: '00000cc3305145158e2e9b61d6eae170afc1f8ba915ccca95a93e35116f2ce12',  hash: '0000fe80d6b28b2c5ee27d30e9bee04d3d5847c0683aeb6153bc45764003905d', },
+    {blockNum: '1', data: 'listoftx 01', prev: '...',  nonce: '199194', hash: '000022c67c1cc83db7b6e62dfd157bb3825e2215d09823e2dd43f844b39b7439', },
+    {blockNum: '2', data: 'listoftx 02',               nonce: '8034',   prev: '000022c67c1cc83db7b6e62dfd157bb3825e2215d09823e2dd43f844b39b7439',  hash: '00003e011605f523619af99bb77320b15196ba039c6710ea1ee7eabdc1c132c5', },
+    {blockNum: '3', data: 'listoftx 03',               nonce: '98798',                                                                             prev: '00003e011605f523619af99bb77320b15196ba039c6710ea1ee7eabdc1c132c5',  hash: '00006aa44d505d663ae3ff36180cba3f7fbca96f0449ef27b71a6fe3899ae238', },
+    {blockNum: '4', data: 'listoftx 04',               nonce: '30725',                                                                                                                                                        prev: '00006aa44d505d663ae3ff36180cba3f7fbca96f0449ef27b71a6fe3899ae238',  hash: '0000b7268be6dd274b320fb1b3992df81d82f900205bdd86a393c65cb58beaeb', },
   ]
 
   //region set :prev fr current hash values
