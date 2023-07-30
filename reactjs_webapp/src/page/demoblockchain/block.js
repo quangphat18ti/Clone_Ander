@@ -23,17 +23,27 @@ function Block(props) {
   return (
     <>
       {/* ref anders demo ref https://andersbrownworth.com/blockchain/block */}
-
       <div className="container">
         { props.showTitle==='true' &&
           <h3>Block</h3>
         }
+
         <div className={`
                alert ${isMined ? "alert-success" : "alert-danger"}
                px-3 pt-3 pb-0
              `} role="alert" style={{ color: 'black' }}
         >
           <form>
+            {/* prev */}
+            { props.showPrev==='true' &&
+              <div className="form-group row">
+                <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
+                <div className="col-sm-10">
+                  <input type="text" className="form-control" id="prev" disabled value={prev} />
+                </div>
+              </div>
+            }
+
             {/* blockNum */}
             <div className="form-group row">
               <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block</strong></label>
@@ -60,16 +70,6 @@ function Block(props) {
                 >{data}</textarea>
               </div>
             </div>
-
-            {/* prev */}
-            { props.showPrev==='true' &&
-              <div className="form-group row">
-                <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
-                <div className="col-sm-10">
-                  <input type="text" className="form-control" id="prev" disabled value={prev} />
-                </div>
-              </div>
-            }
 
             {/* nonce */}
             <div className="form-group row">
