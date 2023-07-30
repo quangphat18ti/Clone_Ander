@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service";
 
 function Block() {
-  let [block, setBlock] = useState(1)
+  let [blockNum, setBlockNum] = useState(1)
   let [nonce, setNonce] = useState('')
   let [data, setData] = useState('')
   let [hash, setHash] = useState('')
@@ -11,10 +11,10 @@ function Block() {
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
-    let blockData = block === undefined ? '' : block.toString() + nonce + data
+    let blockData = blockNum === undefined ? '' : blockNum.toString() + nonce + data
     let hash_new = sha256_hash(blockData).toString()
     setHash(hash_new)
-  }, [block, data, nonce])
+  }, [blockNum, data, nonce])
   
   useEffect(() => {
     setIsMined(hash.substring(0, DIFFICULTY_MAJOR) === '0'.repeat(DIFFICULTY_MAJOR))  //TODO Phat use .startsWith(zeroString)
@@ -34,11 +34,13 @@ function Block() {
             <div className="form-group row">
               <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block</strong></label>
               <div className="col-sm-10">
-              <div className="input-group">
-                <span className="input-group-text" id="basic-addon1">#</span>
-                <input type="number" className="form-control" id="blockchainnumber" value={block}
-                   onChange={(e) => {setBlock(e.target.value)}} />
-              </div>
+                <div className="input-group">
+                  <span className="input-group-text" id="basic-addon1">#</span>
+                  <input type="number" className="form-control" id="blockchainnumber"
+                         value={blockNum}
+                         onChange={(e) => {setBlockNum(e.target.value)}}
+                  />
+                </div>
               </div>
             </div>
 
@@ -92,7 +94,7 @@ function Block() {
                   <span className="ladda-label"
                     onClick={(e) => {
                       try {
-                        let new_nonce = mine({block, data})
+                        let new_nonce = mine({blockNum, data})
                         if(new_nonce !== undefined)
                           setNonce(new_nonce.nonce)
                         else
