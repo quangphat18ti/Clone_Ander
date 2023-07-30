@@ -44,20 +44,25 @@ else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0
 let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
 //endregion initial maximumNonce
 
-function mine({blockNum, data, prev}) {
+function mine({prev, blockNum, data}) {
+  console.log(`mining  ${prev} ${blockNum} ${data}...`)
+
   for (let i=0; i<maximumNonce; i++) {
     let m = ''
+    if (prev     !== undefined) { m+= ''+prev }
     if (blockNum !== undefined) { m+= ''+blockNum }
     if (data     !== undefined) { m+= ''+data }
-    if (prev     !== undefined) { m+= ''+prev }
+    m+= ''+i
 
     let h = sha256_hash(m).toString()
 
     if (h.startsWith(ZERO_PREFIX)) {
+      console.log(`mining ${blockNum}... Found nonce=${i} hash=${h}`)
       return { nonce: i, hash: h }
     }
   }
 
+  console.log(`mining ${blockNum}... NOT found nonce`)
   return {nonce: undefined, hash: undefined}
 }
 //endregion mine
