@@ -5,9 +5,10 @@ function Block(props) {
   let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
   let [nonce, setNonce]       = useState(props.nonce?    props.nonce    : '' )
   let [data, setData]         = useState(props.data?     props.data     : '' )
-  let [hash, setHash]         = useState(props.hash?     props.hash     : '' )
-  let [isMined, setIsMined]   = useState(props.isMined?  props.isMined  : 1  )
   let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
+  let [hash, setHash]         = useState(props.hash?     props.hash     : '' )
+
+  let [isMined, setIsMined] = useState()
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
