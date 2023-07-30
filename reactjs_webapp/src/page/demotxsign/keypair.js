@@ -26,10 +26,10 @@ function KeyPair() {
                        onChange={(e) => {
                           let privkey_new = bigInt(e.target.value).toString(16)
                           console.log("prevnew", privkey_new)
-                          if(privkey_new !== "0"){
+                          if (privkey_new !== "0") {
                             setPrivkey(privkey_new)
                             setPubkey(gen_keypair(privkey_new).pubkey)
-                          }else {
+                          } else {
                             setPrivkey("0")
                           }
                         }}
