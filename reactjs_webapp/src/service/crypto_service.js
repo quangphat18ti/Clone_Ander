@@ -1,4 +1,5 @@
-//TODO
+let CryptoJS = require('crypto-js')
+
 function gen_keypair(privkey = null) {
   const EC = require('elliptic').ec
   const ec = new EC('secp256k1')
@@ -12,4 +13,8 @@ function gen_keypair(privkey = null) {
           }
 } 
 
-export {gen_keypair}
+const sha256_hash = (data) => {
+    return CryptoJS.SHA256(data)
+}
+
+module.exports = {sha256_hash, gen_keypair}
