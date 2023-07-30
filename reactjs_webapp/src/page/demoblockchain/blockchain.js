@@ -14,10 +14,7 @@ function BlockChain() {
   //region set :prev fr current hash values
   block_list = block_list.map( (b,i) => {
     let prev = i>0 ? block_list[i-1].hash : '...'
-    return {
-      ...b,
-      prev,
-    }
+    return {...b, prev}
   })
   //endregion set :prev fr current hash values
 
@@ -26,11 +23,7 @@ function BlockChain() {
   if (do_remine===true) {
     block_list = block_list.map(b => {
       let {nonce, hash} = mine(b)
-      return {
-        ...b,
-        nonce,
-        hash,
-      }
+      return {...b, nonce, hash}
     })
   }
   //endregion mine all blocks
