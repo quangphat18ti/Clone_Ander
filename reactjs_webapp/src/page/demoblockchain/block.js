@@ -10,7 +10,10 @@ function Block() {
   let [prev, setPrev] = useState()
 
   useEffect(() => {
-    setHash(sha256_hash(block === undefined ? '' : block.toString() + nonce + data).toString())
+    // re-render :hash if any field in blockdata changed
+    let blockData = block === undefined ? '' : block.toString() + nonce + data
+    let hash_new = sha256_hash(blockData).toString()
+    setHash(hash_new)
   }, [block, data, nonce])
   
   useEffect(() => {
