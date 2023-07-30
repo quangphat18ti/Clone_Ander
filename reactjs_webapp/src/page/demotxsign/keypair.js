@@ -27,12 +27,14 @@ function KeyPair() {
                        value={privkey==='0'? '':bigInt(privkey, 16).toString()}
                        onChange={ (e) => {
                          let privkey_new = bigInt(e.target.value).toString(16)
-                         let pubkey_new
 
+                         // calc pub fr priv
+                         let pubkey_new
                          let                          e_target_value__whenblank = '0'
                          pubkey_new = privkey_new === e_target_value__whenblank?
                            0 : gen_keypair(privkey_new).pubkey
 
+                         // render to ui
                          setPrivkey(privkey_new)
                          setPubkey(pubkey_new)
                        }}
