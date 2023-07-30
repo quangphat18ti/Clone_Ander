@@ -27,15 +27,18 @@ function KeyPair() {
                        value={privkey==='0'? '':bigInt(privkey, 16).toString()}
                        onChange={ (e) => {
                           let privkey_new = bigInt(e.target.value).toString(16)
+                          let pubkey_new
 
                           let e_target_value__whenblank = '0'
                           if (privkey_new !== e_target_value__whenblank) {
-                            setPrivkey(privkey_new)
-                            setPubkey(gen_keypair(privkey_new).pubkey)
+                            pubkey_new = gen_keypair(privkey_new).pubkey
                           } else {
-                            setPrivkey("0")
+                            pubkey_new = 0
                           }
-                        }}
+
+                          setPrivkey(privkey_new)
+                          setPubkey(pubkey_new)
+                       }}
                 />
 
                 {/* btn Random */}
