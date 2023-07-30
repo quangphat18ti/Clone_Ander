@@ -40,17 +40,17 @@ else if (DIFFICULTY_MINOR <=  3) { maximumNonce *= 4  } // 0011 require 2 more 0
 else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0 bit
 
 function mine(blockNum, data) {  //FIXME data la mot truong/field cua block roi ref. https://t.me/c/1725591141/169/774
-    const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
-    for (let i=0; i<maximumNonce; i++) {
-        let message      = (blockNum === undefined ? '' : blockNum.toString()) + i.toString() + data
-        let hash_message = sha256_hash(message).toString()
+  const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
+  for (let i=0; i<maximumNonce; i++) {
+    let message      = (blockNum === undefined ? '' : blockNum.toString()) + i.toString() + data
+    let hash_message = sha256_hash(message).toString()
 
-        if (hash_message.startsWith(zeroString)) {
-            return { nonce: i, hash: hash_message }
-        }
+    if (hash_message.startsWith(zeroString)) {
+      return { nonce: i, hash: hash_message }
     }
+  }
 
-    return {nonce: undefined, hash: undefined}
+  return {nonce: undefined, hash: undefined}
 }
 //endregion mine
 
