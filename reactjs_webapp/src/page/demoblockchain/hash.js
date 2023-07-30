@@ -7,6 +7,8 @@ function Hash() {
 
   return (
     <>
+      {/* ref anders demo ref https://andersbrownworth.com/blockchain/hash */}
+
       <div className="container mt-3">
         <h3>SHA256 Hash</h3>
 

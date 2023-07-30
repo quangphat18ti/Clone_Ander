@@ -1,5 +1,6 @@
 import Hash from "./demoblockchain/hash"
 import Block from "./demoblockchain/block"
+import BlockChain from "./demoblockchain/blockchain"
 
 function DemoBlockchain() {
   return (
@@ -18,7 +19,7 @@ function DemoBlockchain() {
         <div className="tab-content" id="nav-tabContent">
           <div className="tab-pane fade show active" id="nav-hash"                        role="tabpanel" aria-labelledby="nav-hash-tab">                         <Hash/>        </div>
           <div className="tab-pane fade            " id="nav-block"                       role="tabpanel" aria-labelledby="nav-block-tab">                        <Block/>       </div>
-          <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   TODO blockchain  </div>
+          <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   <BlockChain/>  </div>
           <div className="tab-pane fade            " id="nav-distributed"                 role="tabpanel" aria-labelledby="nav-distributed-tab">                  TODO distributed </div>
           <div className="tab-pane fade            " id="nav-token"                       role="tabpanel" aria-labelledby="nav-token-tab">                        TODO token       </div>
         </div>

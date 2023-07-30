@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service";
 
-function Block() {
+function Block(props) {
   let [blockNum, setBlockNum] = useState(1)
   let [nonce, setNonce] = useState('')
   let [data, setData] = useState('')
@@ -22,8 +22,12 @@ function Block() {
 
   return (
     <>
+      {/* ref anders demo ref https://andersbrownworth.com/blockchain/block */}
+
       <div className="container">
-        <h3>Block</h3>
+        { props.showTitle==='true' &&
+          <h3>Block</h3>
+        }
         <div className={`
                alert ${isMined ? "alert-success" : "alert-danger"}
                px-3 pt-3 pb-0
@@ -70,7 +74,7 @@ function Block() {
             </div>
 
             {/* prev */}
-            { (prev != null) &&
+            { props.showPrev==='true' &&
               <div className="form-group row">
                 <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
                 <div className="col-sm-10">
