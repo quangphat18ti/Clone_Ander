@@ -64,18 +64,6 @@ function Block(props) {
               </div>
             </div>
 
-            {/* nonce */}
-            <div className="form-group row">
-              <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
-
-              <div className="col-sm-10">
-                <input type="text" className="form-control" id="nonce"
-                       value={nonce || ''}
-                       onChange={(e) => {setNonce(e.target.value)}}
-                />
-              </div>
-            </div>
-
             {/* data */}
             <div className="form-group row">
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
@@ -95,7 +83,7 @@ function Block(props) {
 
               <div className="col-sm-10">
                 <input type="text" className="form-control" id="nonce"
-                       value={nonce}
+                       value={nonce || ''}
                        onChange={(e) => {setNonce(e.target.value)}}
                 />
               </div>
