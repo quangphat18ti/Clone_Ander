@@ -22,6 +22,8 @@ function Block() {
 
   return (
     <>
+      {/* ref anders demo ref https://andersbrownworth.com/blockchain/block */}
+
       <div className="container">
         <h3>Block</h3>
         <div className={`
