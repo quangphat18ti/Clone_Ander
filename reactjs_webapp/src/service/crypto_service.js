@@ -12,9 +12,9 @@ function gen_keypair(privkey = null) {
   }
 
   return {
-            "privkey":    keypair.getPrivate('hex'),
-            "pubkey":     keypair.getPublic('hex')
-          }
+    "privkey": keypair.getPrivate('hex'),
+    "pubkey":  keypair.getPublic('hex')
+  }
 } 
 
 const sha256_hash = (data) => {
