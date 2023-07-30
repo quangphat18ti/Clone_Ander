@@ -27,7 +27,7 @@ function KeyPair() {
                        value={bigInt(privkey, 16).toString()}
                        onChange={ (e) => {
                          // calc new pubkey
-                         let              privkey_new = bigInt(e.target.value).toString(16)
+                         let              privkey_new = bigInt(e.target.value).toString(16)  // convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
                          let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
                            0 : gen_keypair(privkey_new).pubkey
 
