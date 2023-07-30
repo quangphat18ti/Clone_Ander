@@ -1,6 +1,6 @@
-import { useEffect, useState }     from  'react'
-import { gen_keypair }  from  '../../service/crypto_service'
-import bigInt from'big-integer'
+import { useEffect, useState } from 'react'
+import { gen_keypair } from  '../../service/crypto_service'
+import bigInt from 'big-integer'
 
 function KeyPair() {
   let [privkey, setPrivkey] = useState()
