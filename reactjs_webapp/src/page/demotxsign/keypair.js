@@ -19,6 +19,8 @@ function KeyPair() {
 
           <div className="card-body">  
             <div className="form-group">
+
+              {/* privkey */}
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
                 <input type="number" className="form-control mb-2" id="privkey"
@@ -26,6 +28,7 @@ function KeyPair() {
                        onChange={(e) => {
                           let privkey_new = bigInt(e.target.value).toString(16)
                           console.log("prevnew", privkey_new)
+
                           if (privkey_new !== "0") {
                             setPrivkey(privkey_new)
                             setPubkey(gen_keypair(privkey_new).pubkey)
@@ -34,6 +37,8 @@ function KeyPair() {
                           }
                         }}
                 />
+
+                {/* btn Random */}
                 <span className="input-group-append">
                   <button className="btn btn-secondary mb-2" onClick={()=>{
                     let keypair = gen_keypair()
@@ -44,6 +49,7 @@ function KeyPair() {
               </div>
             </div>
 
+            {/* pubkey */}
             <div className="form-group mb-5">
               <label htmlFor="pubkey" className="mt-2">Public Key</label>
               <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey}/>
