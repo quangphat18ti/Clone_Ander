@@ -105,7 +105,7 @@ function Block(props) {
             <div className="form-group row">
               <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash</strong></label>
               <div className="col-sm-10">
-              <input type="text" className="form-control" id="hash" disabled value={hash} />
+                <input type="text" className="form-control" id="hash" disabled value={hash} />
               </div>
             </div>
 
