@@ -92,7 +92,7 @@ function Block() {
                   <span className="ladda-label"
                     onClick={(e) => {
                       try {
-                        let new_nonce = mine(block, data);
+                        let new_nonce = mine({block, data})
                         if(new_nonce !== undefined)
                           setNonce(new_nonce.nonce)
                         else

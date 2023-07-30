@@ -39,7 +39,7 @@ else if (DIFFICULTY_MINOR === 1) { maximumNonce *= 8  } // 0001 require 3 more 0
 else if (DIFFICULTY_MINOR <=  3) { maximumNonce *= 4  } // 0011 require 2 more 0 bits
 else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0 bit
 
-function mine(blockNum, data) {  //FIXME data la mot truong/field cua block roi ref. https://t.me/c/1725591141/169/774
+function mine({blockNum, data}) {
   const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
   for (let i=0; i<maximumNonce; i++) {
     let message      = (blockNum === undefined ? '' : blockNum.toString()) + i.toString() + data
