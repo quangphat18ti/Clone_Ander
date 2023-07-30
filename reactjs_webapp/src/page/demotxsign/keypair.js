@@ -48,6 +48,7 @@ function KeyPair() {
                     setPubkey(keypair.pubkey)
                   }}>Random</button>
                 </span>
+
               </div>
             </div>
 
