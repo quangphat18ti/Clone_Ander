@@ -3,10 +3,14 @@ let CryptoJS = require('crypto-js')
 function gen_keypair(privkey = null) {
   const EC = require('elliptic').ec
   const ec = new EC('secp256k1')
- 
-  let keypair = ec.genKeyPair();
-  if (privkey != null)
+
+  let keypair
+  if (privkey != null) {  // gen pub from priv key
     keypair = ec.keyFromPrivate(privkey)
+  } else {  // gen brandnew keypair
+    keypair = ec.genKeyPair()
+  }
+
   return {
             "privkey":    keypair.getPrivate('hex'),
             "pubkey":     keypair.getPublic('hex')
