@@ -5,10 +5,10 @@ function gen_keypair(privkey = null) {
   const ec = new EC('secp256k1')
 
   let keypair
-  if (privkey != null) {  // gen pub from priv key
-    keypair = ec.keyFromPrivate(privkey)
-  } else {  // gen brandnew keypair
+  if (privkey === null) {  // gen brandnew keypair
     keypair = ec.genKeyPair()
+  } else {  // gen pub from priv key
+    keypair = ec.keyFromPrivate(privkey)
   }
 
   return {
