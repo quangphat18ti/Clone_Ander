@@ -18,7 +18,7 @@ function gen_keypair(privkey = null) {
 } 
 
 const sha256_hash = (data) => {
-    return CryptoJS.SHA256(data)
+    return CryptoJS.SHA256(data)  //TODO should we call .toString() here
 }
 
 
@@ -45,24 +45,23 @@ let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
 //endregion initial maximumNonce
 
 function mine({prev, blockNum, data}) {
-  console.log(`mining  ${prev} ${blockNum} ${data}...`)
+  console.log(`mining ${prev} ${blockNum} ${data}...`)
+
+  let m = ''
+  if (prev     !== undefined) { m+= ''+prev }
+  if (blockNum !== undefined) { m+= ''+blockNum }
+  if (data     !== undefined) { m+= ''+data }
 
   for (let i=0; i<maximumNonce; i++) {
-    let m = ''
-    if (prev     !== undefined) { m+= ''+prev }
-    if (blockNum !== undefined) { m+= ''+blockNum }
-    if (data     !== undefined) { m+= ''+data }
-    m+= ''+i
-
-    let h = sha256_hash(m).toString()
+    let h = sha256_hash(m+i.toString()).toString()
 
     if (h.startsWith(ZERO_PREFIX)) {
-      console.log(`mining ${blockNum}... Found nonce=${i} hash=${h}`)
+      console.log(`mining ${prev} ${blockNum} ${data}... nonce=${i} hash=${h}`)
       return { nonce: i, hash: h }
     }
   }
 
-  console.log(`mining ${blockNum}... NOT found nonce`)
+  console.log(`mining ${prev} ${blockNum} ${data}... no nonce found`)
   return {nonce: undefined, hash: undefined}
 }
 //endregion mine
