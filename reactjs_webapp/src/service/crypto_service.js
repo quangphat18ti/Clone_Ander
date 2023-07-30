@@ -47,9 +47,9 @@ let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
 function mine({blockNum, data, prev}) {
   for (let i=0; i<maximumNonce; i++) {
     let m = ''
-      + blockNum === undefined ? '' : blockNum.toString()
-      + i.toString()
-      + data
+    if (blockNum !== undefined) { m+= ''+blockNum }
+    if (data     !== undefined) { m+= ''+data }
+    if (prev     !== undefined) { m+= ''+prev }
 
     let h = sha256_hash(m).toString()
 
