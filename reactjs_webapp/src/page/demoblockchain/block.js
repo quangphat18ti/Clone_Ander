@@ -108,17 +108,12 @@ function Block(props) {
               <div className="col-sm-10">
                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
                   <span className="ladda-label"
-                    onClick={(e) => {
-                      try {
-                        let new_nonce = mine({blockNum, data})
-                        if(new_nonce !== undefined)
-                          setNonce(new_nonce.nonce)
-                        else
-                          alert("Cannot find a nonce!")
-                      }
-                      catch (error) {
-                        console.log("Error = ", error)
-                        alert("Get error. Detail in Console")
+                    onClick={() => {
+                      let new_nonce = mine({blockNum, data})
+                      if (new_nonce !== undefined) {
+                        setNonce(new_nonce.nonce)
+                      } else {
+                        alert("Cannot find a nonce!")
                       }
                     }}
                   >Mine</span>
