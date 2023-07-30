@@ -7,6 +7,7 @@ function BlockChain() {
     // calling :Mine at :block tabpane and paste mined block result here - may need to turn on showPrev=true for <Block /> at tabpane
     {blockNum: '1', data: 'listoftx 01', prev: '...',  nonce: '31266',  hash: '0000f31922fa0289d6b90bd16eef0a4def6dd018887d0eef10055153247ec5b9', },
     {blockNum: '2', data: 'listoftx 02',               nonce: '125252', prev: '0000f31922fa0289d6b90bd16eef0a4def6dd018887d0eef10055153247ec5b9',  hash: '00000cc3305145158e2e9b61d6eae170afc1f8ba915ccca95a93e35116f2ce12', },
+    {blockNum: '3', data: 'listoftx 03',               nonce: '72379',                                                                             prev: '00000cc3305145158e2e9b61d6eae170afc1f8ba915ccca95a93e35116f2ce12',  hash: '0000fe80d6b28b2c5ee27d30e9bee04d3d5847c0683aeb6153bc45764003905d', },
   ]
 
   //region set :prev fr current hash values
