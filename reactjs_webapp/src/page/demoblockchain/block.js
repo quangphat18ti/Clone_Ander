@@ -38,8 +38,12 @@ function Block(props) {
             { props.showPrev==='true' &&
               <div className="form-group row">
                 <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
+
                 <div className="col-sm-10">
-                  <input type="text" className="form-control" id="prev" value={prev} />
+                  <input type="text" className="form-control" id="prev"
+                         value={prev}
+                         onChange={(e) => {setPrev(e.target.value)}}
+                  />
                 </div>
               </div>
             }
