@@ -1,15 +1,15 @@
-import { useEffect, useState }     from  'react'
-import { gen_keypair }  from  '../../service/crypto_service'
-import bigInt from'big-integer'
+import { useEffect, useState } from 'react'
+import { gen_keypair } from  '../../service/crypto_service'
+import bigInt from 'big-integer'
 
 function KeyPair() {
-  let [privkey, setPrivkey] = useState();
-  let [pubkey, setPubkey]   = useState();
+  let [privkey, setPrivkey] = useState()
+  let [pubkey, setPubkey]   = useState()
 
   useEffect(()=>{
-    let keypair = gen_keypair();
-    setPrivkey(keypair.privkey);
-    setPubkey(keypair.pubkey);
+    let keypair = gen_keypair()
+    setPrivkey(keypair.privkey)
+    setPubkey(keypair.pubkey)
   }, [])
   return(
     <>
@@ -19,13 +19,25 @@ function KeyPair() {
 
           <div className="card-body">  
             <div className="form-group">
+
+              {/* privkey */}
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
-                <input type="number" className="form-control mb-2" id="privkey" value={bigInt(privkey, 16).toString()} onChange={(e) => {
-                  let prevkey_new = bigInt(e.target.value).toString(16)
-                  setPrivkey(prevkey_new)
-                  setPubkey(gen_keypair(prevkey_new).pubkey)
-                }}/>
+                <input type="number" className="form-control mb-2" id="privkey"
+                       value={bigInt(privkey, 16).toString()}
+                       onChange={ (e) => {
+                         // calc new pubkey
+                         let              privkey_new = bigInt(e.target.value).toString(16)  // convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
+                         let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
+                           0 : gen_keypair(privkey_new).pubkey
+
+                         // render to ui
+                         setPrivkey(privkey_new)
+                         setPubkey(pubkey_new)
+                       }}
+                />
+
+                {/* btn Random */}
                 <span className="input-group-append">
                   <button className="btn btn-secondary mb-2" onClick={()=>{
                     let keypair = gen_keypair()
@@ -33,9 +45,11 @@ function KeyPair() {
                     setPubkey(keypair.pubkey)
                   }}>Random</button>
                 </span>
+
               </div>
             </div>
 
+            {/* pubkey */}
             <div className="form-group mb-5">
               <label htmlFor="pubkey" className="mt-2">Public Key</label>
               <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey}/>
