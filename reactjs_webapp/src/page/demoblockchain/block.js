@@ -33,6 +33,7 @@ function Block() {
             {/* blockNum */}
             <div className="form-group row">
               <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block</strong></label>
+
               <div className="col-sm-10">
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon1">#</span>
@@ -47,29 +48,34 @@ function Block() {
             {/* nonce */}
             <div className="form-group row">
               <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
+
               <div className="col-sm-10">
-              <input type="text" className="form-control" id="nonce" value={nonce}
-                onChange={(e) => {setNonce(e.target.value)}} />
+                <input type="text" className="form-control" id="nonce"
+                       value={nonce}
+                       onChange={(e) => {setNonce(e.target.value)}}
+                />
               </div>
             </div>
 
             {/* data */}
             <div className="form-group row">
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
+
               <div className="col-sm-10">
-              <textarea className="form-control" id="data" rows="10"
-                onChange={(e) => { setData(e.target.value)}}>{data}
-              </textarea>
+                <textarea
+                  className="form-control" id="data" rows="10"
+                  onChange={(e) => { setData(e.target.value)}}
+                >{data}</textarea>
               </div>
             </div>
 
             {/* prev */}
             { (prev != null) &&
               <div className="form-group row">
-              <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
-              <div className="col-sm-10">
-                <input type="text" className="form-control" id="prev" disabled value={prev} />
-              </div>
+                <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
+                <div className="col-sm-10">
+                  <input type="text" className="form-control" id="prev" disabled value={prev} />
+                </div>
               </div>
             }
 
