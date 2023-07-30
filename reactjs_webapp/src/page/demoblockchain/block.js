@@ -27,8 +27,9 @@ function Block() {
                      `} role="alert" style={{ color: 'black' }}
                 >
                     <form>
+                        {/* blockNum */}
                         <div className="form-group row">
-                            <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block:</strong></label>
+                            <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block</strong></label>
                             <div className="col-sm-10">
                                 <div className="input-group">
                                     <span className="input-group-text" id="basic-addon1">#</span>
@@ -37,31 +38,39 @@ function Block() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* nonce */}
                         <div className="form-group row">
-                            <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce:</strong></label>
+                            <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
                             <div className="col-sm-10">
                                 <input type="text" className="form-control" id="nonce" value={nonce}
                                         onChange={(e) => {setNonce(e.target.value)}} />
                             </div>
                         </div>
+
+                        {/* data */}
                         <div className="form-group row">
-                            <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data:</strong></label>
+                            <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
                             <div className="col-sm-10">
                                 <textarea className="form-control" id="data" rows="10" 
                                         onChange={(e) => { setData(e.target.value)}}>{data}
                                 </textarea>
                             </div>
                         </div>
+
+                        {/* prev */}
                         { (prev != null) &&
                             <div className="form-group row">
-                                <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev:</strong></label>
+                                <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="prev" disabled value={prev} />
                                 </div>
                             </div>
                         }
+
+                        {/* hash */}
                         <div className="form-group row">
-                            <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash:</strong></label>
+                            <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash</strong></label>
                             <div className="col-sm-10">
                                 <input type="text" className="form-control" id="hash" disabled value={hash} />
                             </div>
