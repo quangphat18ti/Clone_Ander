@@ -12,7 +12,7 @@ function Block(props) {
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
-    let blockData = blockNum === undefined ? '' : blockNum.toString() + nonce + data
+    let blockData = blockNum.toString() + nonce + data
     let hash_new = sha256_hash(blockData).toString()
     setHash(hash_new)
   }, [blockNum, data, nonce])
