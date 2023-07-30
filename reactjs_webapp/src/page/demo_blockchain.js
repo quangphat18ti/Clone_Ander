@@ -6,8 +6,8 @@ function DemoBlockchain() {
   return (
     <>
       <div className='container-fluid mt-3'>
-        <nav>
-          <div className="nav nav-tabs justify-content-end" id="nav-tab" role="tablist">
+        <nav className="d-flex justify-content-end">
+          <div className="nav nav-tabs" id="nav-tab" role="tablist">
             <button className="nav-link active" id="nav-hash-tab"                           data-toggle="tab" data-target="#nav-hash"                        type="button" role="tab" aria-controls="nav-hash"                         aria-selected="true" >Hash</button>
             <button className="nav-link       " id="nav-block-tab"                          data-toggle="tab" data-target="#nav-block"                       type="button" role="tab" aria-controls="nav-block"                        aria-selected="false">Block</button>
             <button className="nav-link       " id="nav-blockchain--demoblockchain-tab"     data-toggle="tab" data-target="#nav-blockchain--demoblockchain"  type="button" role="tab" aria-controls="nav-blockchain--demoblockchain"   aria-selected="false">Blockchain</button>
