@@ -66,4 +66,4 @@ function mine({prev, blockNum, data}) {
 }
 //endregion mine
 
-module.exports = {sha256_hash, gen_keypair, mine, DIFFICULTY_MAJOR}
+module.exports = {sha256_hash, gen_keypair, mine, ZERO_PREFIX}

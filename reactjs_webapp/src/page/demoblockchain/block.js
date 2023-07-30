@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service";
+import { mine, sha256_hash, ZERO_PREFIX } from "../../service/crypto_service";
 
 function Block(props) {
   let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
@@ -18,7 +18,7 @@ function Block(props) {
   }, [blockNum, data, nonce])
   
   useEffect(() => {
-    setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
+    setIsMined(hash.startsWith(ZERO_PREFIX))
   }, [hash])
 
   return (
