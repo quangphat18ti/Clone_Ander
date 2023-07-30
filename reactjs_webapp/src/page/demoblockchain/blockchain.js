@@ -1,4 +1,5 @@
 import Block from "./block"
+import {mine} from "../../service/crypto_service"
 
 function BlockChain() {
   //region cook block_list data
@@ -7,6 +8,16 @@ function BlockChain() {
     {blockNum: '02', data: 'listoftx 02', prev: 'TODO', nonce: 'TODO', 'hash': 'TODO', },
     {blockNum: '03', data: 'listoftx 03', prev: 'TODO', nonce: 'TODO', 'hash': 'TODO', },
   ]
+
+  // mine all blocks
+  block_list = block_list.map(b => {
+    let {nonce, hash} = mine(b)
+    return {
+      ...b,
+      nonce,
+      hash,
+    }
+  })
   //endregion cook block_list data
 
   return (
