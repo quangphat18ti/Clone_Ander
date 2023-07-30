@@ -39,8 +39,10 @@ function BlockChain() {
       <h3>Blockchain</h3>
 
       <div className="row row-horizon d-flex flex-nowrap mh-100" style={{overflowY: "scroll"}}>
-        {block_list.map(b =>
-          <div className="col-4"><Block showTitle='false' showPrev='true' {...b} /></div>
+        {block_list.map( (b,i) =>
+          <div className="col-4" key={`b-${i}`}>
+            <Block showTitle='false' showPrev='true' {...b} />
+          </div>
         )}
       </div>
     </>
