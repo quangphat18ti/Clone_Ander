@@ -9,15 +9,20 @@ function BlockChain() {
     {blockNum: '03', data: 'listoftx 03', prev: 'TODO', nonce: '66452',  'hash': '0000711e68d600af7f06372f8a66130bb8c6b6b26eb8568e4ca1e022204ca2d8', },
   ]
 
-  // mine all blocks
-  block_list = block_list.map(b => {
-    let {nonce, hash} = mine(b)
-    return {
-      ...b,
-      nonce,
-      hash,
-    }
-  })
+  //region mine all blocks
+  let do_remine = false
+  if (do_remine===true) {
+    block_list = block_list.map(b => {
+      let {nonce, hash} = mine(b)
+      return {
+        ...b,
+        nonce,
+        hash,
+      }
+    })
+  }
+  //endregion mine all blocks
+
   //endregion cook block_list data
 
   return (
