@@ -9,7 +9,7 @@ function ConnectWeb3Wallet() {
 
   return (
     <>
-      <a className="btn btn-outline-primary  ml-4 mb-2"
+      <div className="btn btn-outline-primary  ml-4 mb-2"
          onClick={ ()=>{
            // gg reactjs etherjs metamask ~tutorial
            // ref https://programmablewealth.com/ethersjs-react-tutorial/
@@ -23,7 +23,7 @@ function ConnectWeb3Wallet() {
          }}
       >
         {walletaccount_pubkey || 'Connect Wallet'}
-      </a>
+      </div>
     </>
   )
 }
