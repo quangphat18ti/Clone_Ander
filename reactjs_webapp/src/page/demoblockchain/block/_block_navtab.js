@@ -17,20 +17,6 @@ function BlockNavtab() {
         <div className="tab-pane fade show active" id="pills-blockmock" role="tabpanel" aria-labelledby="pills-blockmock-tab">...h</div>
         <div className="tab-pane fade" id="pills-blocksepolia" role="tabpanel" aria-labelledby="pills-blocksepolia-tab">...p</div>
       </div>      
-
-      <div className='container-fluid mt-3'>
-        <nav className="d-flex">
-          <div className="nav nav-tabs" id="nav-tab" role="tablist">
-            <button className="nav-link active" id="nav-hash-tab"  data-toggle="tab" data-target="#nav-hash"  type="button" role="tab" aria-controls="nav-hash"  aria-selected="true" >BlockMock</button>
-            <button className="nav-link       " id="nav-block-tab" data-toggle="tab" data-target="#nav-block" type="button" role="tab" aria-controls="nav-block" aria-selected="false">BlockSepolia</button>
-          </div>
-        </nav>
-
-        <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-hash"  role="tabpanel" aria-labelledby="nav-hash-tab">  TODO BlockMock    </div>
-          <div className="tab-pane fade            " id="nav-block" role="tabpanel" aria-labelledby="nav-block-tab"> TODO BlockSepolia </div>
-        </div>
-      </div>
     </>
   )
 }
