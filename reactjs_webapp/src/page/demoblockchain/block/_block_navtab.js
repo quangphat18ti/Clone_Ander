@@ -10,12 +10,12 @@ function BlockNavtab() {
           <button className="nav-link active" id="pills-blockmock-tab" data-toggle="pill" data-target="#pills-blockmock" type="button" role="tab" aria-controls="pills-blockmock" aria-selected="true">Mock Data</button>
         </li>
         <li className="nav-item" role="presentation">
-          <button className="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+          <button className="nav-link" id="pills-blocksepolia-tab" data-toggle="pill" data-target="#pills-blocksepolia" type="button" role="tab" aria-controls="pills-blocksepolia" aria-selected="false">Mock Sepolia</button>
         </li>
       </ul>
       <div className="tab-content" id="pills-tabContent">
         <div className="tab-pane fade show active" id="pills-blockmock" role="tabpanel" aria-labelledby="pills-blockmock-tab">...h</div>
-        <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...p</div>
+        <div className="tab-pane fade" id="pills-blocksepolia" role="tabpanel" aria-labelledby="pills-blocksepolia-tab">...p</div>
       </div>      
 
       <div className='container-fluid mt-3'>
