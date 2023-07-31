@@ -1,9 +1,20 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import bigInt from 'big-integer'
 
 function Sign(){
   let [message, setMessage]     = useState('')
-  let [privkey, setPrivkey]     = useState(localStorage.getItem('privkey'))
+  let [privkey, setPrivkey]     = useState(0)
   let [signature, setSignature] = useState('')
+  console.log("privkey in sing", privkey)
+  useEffect(()=> {
+
+    const handleStorage = () => {
+      setPrivkey(localStorage.getItem('privkey'))
+    }
+    window.addEventListener('storage', handleStorage())
+    return () => window.removeEventListener('storage', handleStorage())
+  }, [])
+  console.log('privkey in Sign', privkey)
   return(
     <>
       <form>
@@ -13,10 +24,9 @@ function Sign(){
             setMessage(e.target.value)
           }}></textarea>
         </div>
-
         <div className="form-group">
           <label className="form-label" htmlFor="privkey--sign">Private Key</label>
-          <input className="form-control" id="privkey--sign" type="number" value={privkey} onChange = {(e) => {
+          <input className="form-control" id="privkey--sign" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
             setPrivkey(e.target.value)
           }}/>
         </div>

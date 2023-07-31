@@ -3,14 +3,26 @@ import { gen_keypair } from  '../../service/crypto_service'
 import bigInt from 'big-integer'
 
 function KeyPair() {
-  let [privkey, setPrivkey] = useState()
-  let [pubkey, setPubkey]   = useState()
+  let [privkey, setPrivkey] = useState(0)
+  let [pubkey, setPubkey]   = useState(0)
+
+  /*
+    Store and dispatch event
+    ref: https://michalkotowski.pl/writings/how-to-refresh-a-react-component-when-local-storage-has-changed
+  */
+  const storeKeypair = (privkey = 0, pubkey = 0)=> {
+    localStorage.setItem('privkey', privkey)
+    localStorage.setItem('pubkey', pubkey)
+    window.dispatchEvent(new Event('storage'))
+  }  
 
   useEffect(()=>{
     let keypair = gen_keypair()
     setPrivkey(keypair.privkey)
     setPubkey(keypair.pubkey)
+    storeKeypair(keypair.privkey, keypair.pubkey)
   }, [])
+
   return(
     <>
       <div className="cointainer mt-3 mx-5">
@@ -34,6 +46,7 @@ function KeyPair() {
                          // render to ui
                          setPrivkey(privkey_new)
                          setPubkey(pubkey_new)
+                         storeKeypair(privkey_new, pubkey_new)
                        }}
                 />
 
@@ -43,6 +56,7 @@ function KeyPair() {
                     let keypair = gen_keypair()
                     setPrivkey(keypair.privkey)
                     setPubkey(keypair.pubkey)
+                    storeKeypair(keypair.privkey, keypair.pubkey)
                   }}>Random</button>
                 </span>
 
