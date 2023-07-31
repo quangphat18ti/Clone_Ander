@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { gen_keypair } from  '../../service/crypto_service'
 import bigInt from 'big-integer'
 
+const privkey_event = new Event('storage_keypair_event')
+console.log("123 times")
 function KeyPair() {
   let [privkey, setPrivkey] = useState(0)
   let [pubkey, setPubkey]   = useState(0)
@@ -10,10 +12,13 @@ function KeyPair() {
     Store and dispatch event
     ref: https://michalkotowski.pl/writings/how-to-refresh-a-react-component-when-local-storage-has-changed
   */
+  
   const storeKeypair = (privkey = 0, pubkey = 0)=> {
+    console.log("dispatch event", privkey_event)
     localStorage.setItem('privkey', privkey)
+    window.dispatchEvent(privkey_event)
     localStorage.setItem('pubkey', pubkey)
-    window.dispatchEvent(new Event('storage'))
+    window.dispatchEvent(new Event('storage_pubkey_event'))
   }  
 
   useEffect(()=>{

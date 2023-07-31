@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { signMessage } from '../../../service/crypto_service'
 import bigInt from 'big-integer'
 
 function Sign(){
@@ -6,14 +7,14 @@ function Sign(){
   let [privkey, setPrivkey]     = useState(0)
   let [signature, setSignature] = useState('')
   console.log("privkey in sing", privkey)
-  useEffect(()=> {
 
+  useEffect(()=> {
     const handleStorage = () => {
       setPrivkey(localStorage.getItem('privkey'))
     }
-    window.addEventListener('storage', handleStorage())
-    return () => window.removeEventListener('storage', handleStorage())
+    window.addEventListener('storage_keypair_event', handleStorage)
   }, [])
+
   console.log('privkey in Sign', privkey)
   return(
     <>
@@ -32,7 +33,11 @@ function Sign(){
         </div>
 
         <div className="form-group">
-          <button className="btn btn-block btn-primary" type='button'>Sign</button>
+          <button className="btn btn-block btn-primary" type='button' onClick={()=> {
+            setSignature(signMessage(message, privkey))
+            localStorage.setItem('signature', signMessage(message, privkey))
+            window.dispatchEvent(new Event('signature'))
+          }}>Sign</button>
         </div>
 
         <div className="form-group">
