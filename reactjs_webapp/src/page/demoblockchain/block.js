@@ -39,7 +39,7 @@ function Block(props) {
     }
   });
 
-  const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+  const sleepNow = ms => new Promise(r => setTimeout(r, ms))  // ref. https://stackoverflow.com/a/39914235/248616
 
   return (
     <>
