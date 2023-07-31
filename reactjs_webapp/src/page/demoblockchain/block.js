@@ -122,14 +122,13 @@ function Block(props) {
 
               {/* mine btn */}
               <div className="col-sm-10">
-                <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
-                  <span className="ladda-label"
-                    onClick={async (e) => {
-                      setSpinClass('ml-2 spinner-border spinner-border-sm')
-                      await handleMine()
-                      setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
-                    }}
-                  >Mine</span>
+                <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
+                  onClick={async (e) => {
+                    setSpinClass('ml-2 spinner-border spinner-border-sm')
+                    await handleMine()
+                    setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
+                  }}>
+                  <span className="ladda-label">Mine</span>
                   {/* spin */}
                   <div className={spinClass}></div>
                 </button>
