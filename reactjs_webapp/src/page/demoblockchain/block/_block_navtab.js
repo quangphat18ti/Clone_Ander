@@ -7,14 +7,14 @@ function BlockNavtab() {
 
       <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li className="nav-item" role="presentation">
-          <button className="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+          <button className="nav-link active" id="pills-blockmock-tab" data-toggle="pill" data-target="#pills-blockmock" type="button" role="tab" aria-controls="pills-blockmock" aria-selected="true">Mock Data</button>
         </li>
         <li className="nav-item" role="presentation">
           <button className="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
         </li>
       </ul>
       <div className="tab-content" id="pills-tabContent">
-        <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...h</div>
+        <div className="tab-pane fade show active" id="pills-blockmock" role="tabpanel" aria-labelledby="pills-blockmock-tab">...h</div>
         <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...p</div>
       </div>      
 
