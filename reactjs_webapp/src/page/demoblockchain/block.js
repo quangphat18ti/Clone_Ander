@@ -21,7 +21,7 @@ function Block(props) {
     setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
   }, [hash])
 
-  const handleMine = () => new Promise(async(resolve, reject) => {
+  const onClickMine = () => new Promise(async(resolve, reject) => {
     await sleep(100)
 
     try {
@@ -124,7 +124,7 @@ function Block(props) {
                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
                   onClick={async (e) => {
                     setSpinClass(       'ml-2 spinner-border spinner-border-sm')
-                    await handleMine()
+                    await onClickMine()
                     setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
                   }}
                 >
