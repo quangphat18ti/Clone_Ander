@@ -6,6 +6,7 @@ let ethers = require("ethers")
 
 function ConnectWeb3Wallet() {
   let [walletaccount_pubkey, set__walletaccount_pubkey] = useState()
+  /*TODO refresh will reset state :walletaccount_pubkey -> use localStorage to save it*/
 
   return (
     <>
