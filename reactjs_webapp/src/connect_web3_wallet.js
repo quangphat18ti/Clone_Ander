@@ -31,6 +31,8 @@ function ConnectWeb3Wallet() {
          }}
       >
         {walletaccount_pubkey || 'Connect Wallet'}
+        {/*TODO catch event when 00 user manually open metamask to disconnect this site -> reset state :walletaccount_pubkey=null
+                                 01 user switch account -> switch state :walletaccount_pubkey to new value */}
       </div>
     </>
   )
