@@ -11,6 +11,13 @@ function ConnectWeb3Wallet() {
     <>
       <div className="btn btn-outline-primary  ml-4 mb-2"
          onClick={ ()=>{
+           // check if metamask installed  ref. https://ethereum.stackexchange.com/a/92097/109415
+           if (!window.ethereum) {
+             alert('Metamask not installed')
+             return
+           }
+
+
            // gg reactjs etherjs metamask ~tutorial
            // ref https://programmablewealth.com/ethersjs-react-tutorial/
 
