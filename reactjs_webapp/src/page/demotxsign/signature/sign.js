@@ -6,41 +6,42 @@ function Sign(){
   let [message, setMessage]     = useState('')
   let [privkey, setPrivkey]     = useState(0)
   let [signature, setSignature] = useState('')
-  console.log("privkey in sing", privkey)
 
   useEffect(()=> {
-    const handleStorage = () => {
+    const handlePrivkeyStorage = () => {
       setPrivkey(localStorage.getItem('privkey'))
     }
-    window.addEventListener('storage_keypair_event', handleStorage)
+    window.addEventListener('storage_privkey_event', handlePrivkeyStorage) // add the event listener for the window object
   }, [])
 
-  console.log('privkey in Sign', privkey)
   return(
     <>
       <form>
-        <div className="form-group">
+        <div className="form-group mx-4">
           <label className="form-label" htmlFor="message--sign">Message</label>
           <textarea className="form-control" id="message--sign" rows="5" value={message} onChange = {(e) => {
             setMessage(e.target.value)
+            localStorage.setItem('message', e.target.value)
+            window.dispatchEvent(new Event('storage_message_event')) // trigger event
           }}></textarea>
         </div>
-        <div className="form-group">
+        <div className="form-group mx-4">
           <label className="form-label" htmlFor="privkey--sign">Private Key</label>
           <input className="form-control" id="privkey--sign" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
-            setPrivkey(e.target.value)
+            let privkey_new = e.target.value === '' ? '0' : e.target.value 
+            setPrivkey(privkey_new)
           }}/>
         </div>
 
-        <div className="form-group">
+        <div className="form-group mx-4">
           <button className="btn btn-block btn-primary" type='button' onClick={()=> {
             setSignature(signMessage(message, privkey))
             localStorage.setItem('signature', signMessage(message, privkey))
-            window.dispatchEvent(new Event('signature'))
+            window.dispatchEvent(new Event('storage_signature_event')) // trigger event
           }}>Sign</button>
         </div>
 
-        <div className="form-group">
+        <div className="form-group mx-4">
           <label className="form-label" htmlFor="signature" >Message Signature</label>
           <input className="form-control" id="signature" type="text" readOnly={true} value={signature}/>
         </div>

@@ -16,8 +16,8 @@ function Signature() {
             </nav>
           </div>
 
-          <div className="card-body">
-            <div className="tab-content" id="nav-tabContent--signature">
+          <div className="card-body p-0" >
+            <div className="tab-content" id="nav-tabContent--signature" >
               <div className="tab-pane fade show active" id="sign"    role="tabpanel" aria-labelledby="sign">   <Sign />    </div>
               <div className="tab-pane fade            " id="verify"  role="tabpanel" aria-labelledby="verify"> <Verify />  </div>
             </div>
