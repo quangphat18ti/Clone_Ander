@@ -21,9 +21,11 @@ function Block(props) {
     setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
   }, [hash])
 
-  const onClickMine = async () => {
-    const sleep = ms => new Promise(r => setTimeout(r, ms))  // sleep() in js ref. https://stackoverflow.com/a/39914235/248616
-    await sleep(100)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
+  const onClickMine = async (slowDown=true) => {
+    if (slowDown) {
+      const sleep = ms => new Promise(r => setTimeout(r, ms))  // sleep() in js ref. https://stackoverflow.com/a/39914235/248616
+      await sleep(100)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
+    }
 
     let new_nonce = mine({ blockNum, data })
     if (new_nonce !== undefined) {
