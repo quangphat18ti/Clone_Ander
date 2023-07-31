@@ -22,7 +22,8 @@ function Block(props) {
   }, [hash])
 
   const handleMine = () => new Promise(async(resolve, reject) => {
-    await sleepNow(100)
+    await sleep(100)
+
     try {
       let new_nonce = mine({ blockNum, data })
       if (new_nonce !== undefined) {
@@ -39,7 +40,7 @@ function Block(props) {
     }
   });
 
-  const sleepNow = ms => new Promise(r => setTimeout(r, ms))  // ref. https://stackoverflow.com/a/39914235/248616
+  const sleep = ms => new Promise(r => setTimeout(r, ms))  // ref. https://stackoverflow.com/a/39914235/248616
 
   return (
     <>
