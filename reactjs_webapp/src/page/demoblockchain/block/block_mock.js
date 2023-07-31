@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service"
 
-function Block(props) {
+function BlockMock(props) {
   let [blockNum, setBlockNum] = useState(1)
   let [nonce, setNonce] = useState('')
   let [data, setData] = useState('')
@@ -129,4 +129,4 @@ function Block(props) {
   )
 }
 
-export default Block
+export default BlockMock
