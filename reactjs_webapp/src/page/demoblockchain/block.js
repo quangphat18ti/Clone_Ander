@@ -116,11 +116,6 @@ function Block(props) {
 
             {/* mine */}
             <div className="form-group row">
-              {/* loading spinner */}
-              <div className="col-sm-2">
-                <i className="icon-spinner icon-spin icon-large"></i>
-              </div>
-
               {/* mine btn */}
               <div className="col-sm-10">
                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
@@ -132,7 +127,7 @@ function Block(props) {
                 >
                   <span className="ladda-label">Mine</span>
 
-                  {/* spinner */}
+                  {/* loading spinner */}
                   <div className={spinClass}></div>
                 </button>
               </div>
