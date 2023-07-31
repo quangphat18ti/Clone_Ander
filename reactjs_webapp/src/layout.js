@@ -12,6 +12,8 @@ const Layout = ()=> {
             <button className="nav-link active" id="nav-demoblockchain-tab" data-toggle="tab" data-target="#nav-demoblockchain" type="button" role="tab" aria-controls="nav-demoblockchain" aria-selected="true" >Demo Blockchain</button>
             <button className="nav-link       " id="nav-demotxsign-tab"     data-toggle="tab" data-target="#nav-demotxsign"     type="button" role="tab" aria-controls="nav-demotxsign"     aria-selected="false">Demo Tx Sign</button>
             <button className="nav-link       " id="nav-about-tab"          data-toggle="tab" data-target="#nav-about"          type="button" role="tab" aria-controls="nav-about"          aria-selected="false">About</button>
+
+            <a className="btn btn-outline-primary  ml-4 mb-2">Connect Wallet</a>
           </div>
         </nav>
 
