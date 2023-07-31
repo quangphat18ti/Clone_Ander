@@ -116,6 +116,9 @@ function Block(props) {
 
             {/* mine */}
             <div className="form-group row">
+              {/* left-spacing col */}
+              <div className="col-sm-2"></div>
+
               {/* mine btn */}
               <div className="col-sm-10">
                 <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
