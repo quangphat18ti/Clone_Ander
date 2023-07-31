@@ -22,10 +22,10 @@ function ConnectWeb3Wallet() {
            // ref https://programmablewealth.com/ethersjs-react-tutorial/
 
            async function connectToMetamask() {
-             let                                              provider = new ethers.providers.Web3Provider(window.ethereum)
-             let                             accounts = await provider.send('eth_requestAccounts', [])
-             let new__walletaccount_pubkey = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
-             set__walletaccount_pubkey(new__walletaccount_pubkey)
+             let                                            provider = new ethers.providers.Web3Provider(window.ethereum)
+             let                           accounts = await provider.send('eth_requestAccounts', [])
+             let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
+             set__walletaccount_pubkey(a)
            } ; connectToMetamask()
            //endregion popup metamask to let user select pubkey/wallet/account
          }}
