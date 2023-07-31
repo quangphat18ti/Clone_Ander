@@ -17,7 +17,7 @@ function ConnectWeb3Wallet() {
              return
            }
 
-
+           //region popup metamask to let user select pubkey/wallet/account
            // gg reactjs etherjs metamask ~tutorial
            // ref https://programmablewealth.com/ethersjs-react-tutorial/
 
@@ -27,6 +27,7 @@ function ConnectWeb3Wallet() {
              let new__walletaccount_pubkey = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
              set__walletaccount_pubkey(new__walletaccount_pubkey)
            } ; connectToMetamask()
+           //endregion popup metamask to let user select pubkey/wallet/account
          }}
       >
         {walletaccount_pubkey || 'Connect Wallet'}
