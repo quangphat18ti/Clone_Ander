@@ -21,25 +21,16 @@ function Block(props) {
     setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
   }, [hash])
 
-  const onClickMine = () => new Promise(async(resolve, reject) => {
+  const onClickMine = async () => {
     await sleep(100)
 
-    try {
-      let new_nonce = mine({ blockNum, data })
-      if (new_nonce !== undefined) {
-        setNonce(new_nonce.nonce)
-        resolve()
-      } else {
-        alert("Cannot find a nonce!")
-        reject(new Error("Cannot find a nonce!"))
-      }
-    } catch (error) {
-      console.log("Error =", error)
-      alert("Get error. Detail in Console")
-      reject(error)
+    let new_nonce = mine({ blockNum, data })
+    if (new_nonce !== undefined) {
+      setNonce(new_nonce.nonce)
+    } else {
+      alert("Cannot find a nonce!")
     }
-  });
-
+  }
   const sleep = ms => new Promise(r => setTimeout(r, ms))  // ref. https://stackoverflow.com/a/39914235/248616
 
   return (
