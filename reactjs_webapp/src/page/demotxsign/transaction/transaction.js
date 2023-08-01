@@ -1,6 +1,7 @@
 import SignTx from "./signtx"
 import VerifyTx from "./verifytx";
 function Transaction() {
+  
   return(
     <>
       <div className="cointainer mt-3 mx-5">
@@ -15,7 +16,7 @@ function Transaction() {
             </nav>
           </div>
 
-          <div className="card-body">
+          <div className="card-body p-0">
             <div className="tab-content" id="nav-tabContent--tx">
               <div className="tab-pane fade show active" id="sign--tx"    role="tabpanel" aria-labelledby="sign--tx">   <SignTx />    </div>
               <div className="tab-pane fade            " id="verify--tx"  role="tabpanel" aria-labelledby="verify--tx"> <VerifyTx />  </div>

@@ -77,4 +77,11 @@ let signMessage = (message, privateKey) => {
   return hexSignature
 }
 
-module.exports = {sha256_hash, gen_keypair, mine, zeroString, signMessage, verifyMessage}
+let getPubkeyByPrivkey = (privkey = 0) => {
+  if (privkey === '0'){
+    return 0
+  }
+  return gen_keypair(privkey).pubkey
+}
+
+module.exports = {sha256_hash, gen_keypair, mine, DIFFICULTY_MAJOR, signMessage, verifyMessage, getPubkeyByPrivkey}
