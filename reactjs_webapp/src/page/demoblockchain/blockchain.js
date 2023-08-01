@@ -1,4 +1,4 @@
-import Block from "./block"
+import BlockMock from "./block/block_mock"
 import {mine} from "../../service/crypto_service"
 
 function BlockChain() {

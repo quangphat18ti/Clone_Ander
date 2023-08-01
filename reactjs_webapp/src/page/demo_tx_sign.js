@@ -1,5 +1,5 @@
 import KeyPair from "./demotxsign/keypair"
-import Signature from "./demotxsign/signature"
+import Signature from "./demotxsign/signature/signature"
 import Transaction from "./demotxsign/transaction"
 
 function DemoTxSign() {
