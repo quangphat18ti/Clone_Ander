@@ -2,7 +2,7 @@ let CryptoJS = require('crypto-js')
 let Buffer = require('buffer')
 let EC = require('elliptic').ec ; const ec = new EC('secp256k1')
 
-//ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug
+//ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/keys.pug#L21C5-L37C1
 function gen_keypair(privkey = null) {
   const EC = require('elliptic').ec
   const ec = new EC('secp256k1')
@@ -71,7 +71,7 @@ function mine({prev, blockNum, data}) {
   return null
 }//endregion mine
 
-//ref https://github.com/anders94/public-private-key-demo/blob/master/views/signatures.pug
+//ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/signatures.pug#L66C7-L73C10
 let verifyMessage = (msg2Verify, publicKey, signature) => {
     let tmpKey
     try      { tmpKey = ec.keyFromPublic(publicKey, 'hex') }
@@ -82,7 +82,7 @@ let verifyMessage = (msg2Verify, publicKey, signature) => {
     catch(e) { return false }
 };  
 
-//ref https://github.com/anders94/public-private-key-demo/blob/master/views/signatures.pug
+//ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/signatures.pug#L67C9-L68C100let
 let signMessage = (message, privateKey) => {
   let keypair = ec.keyFromPrivate(privateKey) // ref. anders' code
   let h = sha256_hash(message)

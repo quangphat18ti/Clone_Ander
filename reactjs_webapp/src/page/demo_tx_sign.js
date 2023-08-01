@@ -1,7 +1,7 @@
 import KeyPair from "./demotxsign/keypair"
 import Signature from "./demotxsign/signature/signature"
 import Transaction from "./demotxsign/transaction/transaction"
-import Blockchain from "./demotxsign/blockchain";
+import Blockchain from "./demotxsign/blockchain/blockchain";
 
 function DemoTxSign() {
   return (
