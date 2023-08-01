@@ -8,6 +8,7 @@ function BlockMock(props) {
   let [hash, setHash] = useState('')
   let [isMined, setIsMined] = useState(1)
   let [prev, setPrev] = useState()
+  let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
@@ -21,6 +22,20 @@ function BlockMock(props) {
     console.log("hash = ", hash);
     console.log(zeroString);
   }, [hash])
+
+  const onClickMine = async (slowDown=true) => {
+    if (slowDown) {
+      const sleep = ms => new Promise(r => setTimeout(r, ms))  // sleep() in js ref. https://stackoverflow.com/a/39914235/248616
+      await sleep(100)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
+    }
+
+    let new_nonce = mine({ blockNum, data })
+    if (new_nonce !== undefined) {
+      setNonce(new_nonce.nonce)
+    } else {
+      alert("Cannot find a nonce!")
+    }
+  }
 
   return (
     <>
@@ -93,35 +108,28 @@ function BlockMock(props) {
             </div>
           </div>
 
-          {/* mine */}
-          <div className="form-group row">
-            {/* loading spinner */} {/*TODO toggle spinner @ onClick :Mine btn - ref demo at https://t.me/c/1725591141/169/835 */}
-            <div className="col-sm-2">
-              <i className="icon-spinner icon-spin icon-large"></i>
-            </div>
+            {/* mine */}
+            <div className="form-group row">
+              {/* left-spacing col */}
+              <div className="col-sm-2"></div>
 
-            {/* mine btn */}
-            <div className="col-sm-10">
-              <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
-                <span className="ladda-label"
-                  onClick={(e) => {
-                    try {
-                      let new_nonce = mine({blockNum, data})
-                      if(new_nonce !== undefined)
-                        setNonce(new_nonce.nonce)
-                      else
-                        alert("Cannot find a nonce!")
-                    }
-                    catch (error) {
-                      console.log("Error = ", error)
-                      alert("Get error. Detail in Console")
-                    }
+              {/* mine btn */}
+              <div className="col-sm-10">
+                <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
+                  onClick={async (e) => {
+                    setSpinClass(       'ml-2 spinner-border spinner-border-sm')
+                    await onClickMine()
+                    setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
                   }}
-                >Mine</span>
-              </button>
+                >
+                  <span className="ladda-label">Mine</span>
+
+                  {/* loading spinner */}
+                  <div className={spinClass}></div>
+                </button>
+              </div>
             </div>
 
-          </div>
         </form>
 
       </div>
