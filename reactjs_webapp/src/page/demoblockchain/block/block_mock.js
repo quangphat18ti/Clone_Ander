@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service"
+import { mine, sha256_hash, zeroString } from "../../../service/crypto_service"
 
 function BlockMock(props) {
   let [blockNum, setBlockNum] = useState(1)
@@ -17,7 +17,9 @@ function BlockMock(props) {
   }, [blockNum, data, nonce])
   
   useEffect(() => {
-    setIsMined(hash.startsWith('0'.repeat(DIFFICULTY_MAJOR)))
+    setIsMined(hash.startsWith(zeroString))
+    console.log("hash = ", hash);
+    console.log(zeroString);
   }, [hash])
 
   return (

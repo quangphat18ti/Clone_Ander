@@ -29,6 +29,7 @@ ref https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/b
 */
 const DIFFICULTY_MINOR = 15
 const DIFFICULTY_MAJOR = 4
+const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
 
 var maximumNonce = 8
 for (var i=0; i<DIFFICULTY_MAJOR; i++) {
@@ -40,7 +41,6 @@ else if (DIFFICULTY_MINOR <=  3) { maximumNonce *= 4  } // 0011 require 2 more 0
 else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0 bit
 
 function mine({blockNum, data}) {
-  const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
   for (let i=0; i<maximumNonce; i++) {
     let message      = (blockNum === undefined ? '' : blockNum.toString()) + i.toString() + data
     let hash_message = sha256_hash(message).toString()
@@ -54,4 +54,4 @@ function mine({blockNum, data}) {
 }
 //endregion mine
 
-module.exports = {sha256_hash, gen_keypair, mine, DIFFICULTY_MAJOR}
+module.exports = {sha256_hash, gen_keypair, mine, zeroString}
