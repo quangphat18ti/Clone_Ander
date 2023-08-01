@@ -9,7 +9,9 @@ function BlockMock(props) {
   let [hash, setHash]         = useState(props.hash?     props.hash     : '0000f727854b50bb95c054b39c1fe5c92e5ebcfa4bcb5dc279f56aa96a365e5a' )
 
   let [isMined, setIsMined] = useState()
-  let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
+
+  let css_spinner = 'ml-2 spinner-border spinner-border-sm'
+  let [spinClass, setSpinClass] = useState(`d-none ${css_spinner}}`)
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
@@ -116,9 +118,9 @@ function BlockMock(props) {
             <div className="col-sm-10">
               <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
                 onClick={async (e) => {
-                  setSpinClass(       'ml-2 spinner-border spinner-border-sm')
+                  setSpinClass(css_spinner)
                   await onClickMine()
-                  setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
+                  setSpinClass(`d-none ${css_spinner}`)
                 }}
               >
                 <span className="ladda-label">Mine</span>
