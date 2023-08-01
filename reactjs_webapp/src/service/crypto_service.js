@@ -89,4 +89,4 @@ let signMessage = (message, privateKey) => {
   return hexSignature
 }
 
-module.exports = {sha256_hash, gen_keypair, mine, ZERO_PREFIX, signMessage, verifyMessage}
+module.exports = {sha256_hash, gen_keypair, mine, signMessage, verifyMessage}
