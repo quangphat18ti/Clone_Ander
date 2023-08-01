@@ -33,6 +33,7 @@ function BlockChain() {
 
   //endregion cook block_list data
 
+  /*TODO change a block -> refresh isMine whole :chain */
   return (
     <>
       {/* ref anders demo ref https://andersbrownworth.com/blockchain/blockchain */}
