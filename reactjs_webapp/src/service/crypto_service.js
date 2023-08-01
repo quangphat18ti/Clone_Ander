@@ -47,7 +47,7 @@ let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
 //endregion initial maximumNonce
 
 function mine({prev, blockNum, data}) {
-  console.log(`mining ${prev} ${blockNum} ${data}...`)
+  console.log(`mining ${prev} ${blockNum} ${data}`)
 
   let m = ''
   if (prev     !== undefined) { m+= ''+prev }
@@ -58,12 +58,12 @@ function mine({prev, blockNum, data}) {
     let h = sha256_hash(m+i.toString()).toString()
 
     if (h.startsWith(ZERO_PREFIX)) {
-      console.log(`mining ${prev} ${blockNum} ${data}... nonce=${i} hash=${h}`)
+      console.log(`mining ${prev} ${blockNum} ${data} -> nonce=${i} hash=${h}`)
       return { nonce: i, hash: h }
     }
   }
 
-  console.log(`mining ${prev} ${blockNum} ${data}... no nonce found`)
+  console.log(`mining ${prev} ${blockNum} ${data} -> no nonce found`)
   return {nonce: undefined, hash: undefined}
 }
 //endregion mine
