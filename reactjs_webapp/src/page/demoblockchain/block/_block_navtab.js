@@ -1,4 +1,4 @@
-import Block from "./block/block_mock"
+import BlockMock from "./block/block_mock"
 
 function BlockNavtab() {
   return (
@@ -9,9 +9,9 @@ function BlockNavtab() {
       </ul>
 
       <div className="tab-content" id="pills-tabContent">
-        <div className="tab-pane fade show active" id="pills-blockmock"    role="tabpanel" aria-labelledby="pills-blockmock-tab"    >TODO blockmock</div>
+        <div className="tab-pane fade show active" id="pills-blockmock"    role="tabpanel" aria-labelledby="pills-blockmock-tab"    > <BlockMock/> </div>
         <div className="tab-pane fade            " id="pills-blocksepolia" role="tabpanel" aria-labelledby="pills-blocksepolia-tab" >TODO blocksepolia</div>
-      </div>      
+      </div>
     </>
   )
 }
