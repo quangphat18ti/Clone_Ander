@@ -13,8 +13,10 @@ function KeyPair() {
   const storeKeypair = (privkey = 0, pubkey = 0)=> { // store privkey, pubkey and trigger the event
     localStorage.setItem('privkey', privkey)
     window.dispatchEvent(new Event('storage_privkey_event'))
+    window.dispatchEvent(new Event('storage_privkeytx_event'))
     localStorage.setItem('pubkey',  pubkey)
     window.dispatchEvent(new Event('storage_pubkey_event'))
+    window.dispatchEvent(new Event('storage_pubkeytx_event'))
   }  
 
   useEffect(()=>{

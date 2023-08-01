@@ -1,6 +1,7 @@
 import SignTx from "./signtx"
 import VerifyTx from "./verifytx";
 function Transaction() {
+  
   return(
     <>
       <div className="cointainer mt-3 mx-5">
