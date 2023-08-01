@@ -1,4 +1,4 @@
-import BlockMock from "./block/block_mock"
+import BlockMock from "./block_mock"
 
 function BlockNavtab() {
   return (

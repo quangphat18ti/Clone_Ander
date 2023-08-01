@@ -1,4 +1,4 @@
-import Block from "./block"
+import BlockMock from "./block/block_mock"
 
 function BlockChain() {
   return (
@@ -7,9 +7,9 @@ function BlockChain() {
       <h3>Blockchain</h3>
 
       <div className="row row-horizon">
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
-        <div className="col-4"><Block showTitle='false' showPrev='true' /></div>
+        <div className="col-4"><BlockMock showTitle='false' showPrev='true' /></div>
+        <div className="col-4"><BlockMock showTitle='false' showPrev='true' /></div>
+        <div className="col-4"><BlockMock showTitle='false' showPrev='true' /></div>
         {/*TODO make :Block list on same line*/}
       </div>
     </>
