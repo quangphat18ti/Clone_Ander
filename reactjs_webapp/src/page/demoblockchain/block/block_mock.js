@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service";
+import { useState, useEffect } from "react"
+import { mine, sha256_hash, DIFFICULTY_MAJOR } from "../../service/crypto_service"
 
 function Block(props) {
   let [blockNum, setBlockNum] = useState(1)
