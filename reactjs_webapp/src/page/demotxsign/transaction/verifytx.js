@@ -1,31 +1,23 @@
-import { useState, useEffect } from "react"
-import bigInt from "big-integer"
-import { verifyMessage } from '../../../service/crypto_service'
+import { useState, useEffect }  from "react"
+import bigInt                   from "big-integer"
+import { verifyMessage }        from '../../../service/crypto_service'
 
 function VerifyTx() {
-  let [amount, setAmount]     = useState('')
-  let [signature, setSignature] = useState('')
-  let [from, setFrom] = useState('')
-  let [to, setTo] = useState('')
-  let [verifyState, setVerifyState] = useState(0)
+  let [amount, setAmount]             = useState('')
+  let [signature, setSignature]       = useState('')
+  let [from, setFrom]                 = useState('')
+  let [to, setTo]                     = useState('')
+  let [verifyState, setVerifyState]   = useState(0)
 
   useEffect(()=> {
-    const handleAmountStorage = () => {
-      setAmount(localStorage.getItem('amount'))
-    }
-    const handleFromStorage = () => {
-      setFrom(localStorage.getItem('from'))
-    }
-    const handleToStorage = () => {
-      setTo(localStorage.getItem('to'))
-    }
-    const handleSignatureStorage = () => {
-      setSignature(localStorage.getItem('signaturetx'))
-    }
-    window.addEventListener('storage_amount_event', handleAmountStorage)
-    window.addEventListener('storage_from_event', handleFromStorage) // add the event listener for the window object
-    window.addEventListener('storage_to_event', handleToStorage)
-    window.addEventListener('storage_signaturetx_event', handleSignatureStorage)
+    const handleAmountStorage       = () => { setAmount(localStorage.getItem('amount')) }
+    const handleFromStorage         = () => { setFrom(localStorage.getItem('from')) }
+    const handleToStorage           = () => { setTo(localStorage.getItem('to')) }
+    const handleSignatureStorage    = () => { setSignature(localStorage.getItem('signaturetx')) }
+    window.addEventListener('storage_amount_event',       handleAmountStorage)
+    window.addEventListener('storage_from_event',         handleFromStorage) 
+    window.addEventListener('storage_to_event',           handleToStorage)
+    window.addEventListener('storage_signaturetx_event',  handleSignatureStorage)
   }, [])
 
   useEffect(()=> {
@@ -40,27 +32,19 @@ function VerifyTx() {
           <div className="input-group">
             <div className="input-group-text">$
             </div>
-              <input className="form-control" value={amount} onChange={(e) => {
-                setAmount(e.target.value)
-              }}/>
+              <input className="form-control" value={amount} onChange= {(e) => { setAmount(e.target.value) }}/>
             <div className="input-group-text">From:
             </div>
-              <input className="form-control" value={from} onChange={(e) => {
-                setFrom(e.target.value)
-              }} />
+              <input className="form-control" value={from} onChange= {(e) => { setFrom(e.target.value)}} />
             <div className="input-group-text">-&gt;
             </div>
-              <input className="form-control" value={to} onChange={(e) => {
-                setTo(e.target.value)
-              }}/>
+              <input className="form-control" value={to} onChange= {(e) => { setTo(e.target.value) }}/>
           </div>
         </div>
 
         <div className="form-group">
           <label className="form-label" htmlFor="signature--tx-verify">Signature</label>
-          <input className="form-control" id="signature--tx-verify" type="text" value={signature} onChange={(e) => {
-            setSignature(e.target.value)
-          }}/>
+          <input className="form-control" id="signature--tx-verify" type="text" value={signature} onChange= {(e) => { setSignature(e.target.value) }}/>
         </div>
 
         <div className="form-group">

@@ -1,35 +1,30 @@
 import { useState, useEffect } from "react"
 import bigInt from "big-integer"
-import { signMessage } from '../../../service/crypto_service'
+import { signMessage, getPubkeyByPrivkey } from '../../../service/crypto_service'
 
 function SignTx() {
-  let [amount, setAmount]     = useState('20.00')
-  let [privkey, setPrivkey]     = useState(0)
-  let [signature, setSignature] = useState('')
-  let [from, setFrom] = useState('')
-  let [to, setTo] = useState('04cc955bf8e359cc7ebbb66f4c2dc616a93e8ba08e93d27996e20299ba92cba9cbd73c2ff46ed27a3727ba09486ba32b5ac35dd20c0adec020536996ca4d9f3d74')
+  let [amount, setAmount]         = useState('20.00')
+  let [privkey, setPrivkey]       = useState(0)
+  let [signature, setSignature]   = useState('')
+  let [from, setFrom]             = useState('')
+  let [to, setTo]                 = useState('04cc955bf8e359cc7ebbb66f4c2dc616a93e8ba08e93d27996e20299ba92cba9cbd73c2ff46ed27a3727ba09486ba32b5ac35dd20c0adec020536996ca4d9f3d74')
 
   useEffect(()=> {
-    localStorage.setItem('to', to)
+    localStorage.setItem('to',            to)
     window.dispatchEvent(new Event('storage_to_event'))
-    localStorage.setItem('amount', amount)
+    localStorage.setItem('amount',        amount)
     window.dispatchEvent(new Event('storage_amount_event'))
-    localStorage.setItem('signaturetx', signature)
-    window.dispatchEvent(new Event('storage_signaturetx_event'))
-    const handlePrivkeyStorage = () => {
+    
+    const handleKeypairStorate = () => {
       setPrivkey(localStorage.getItem('privkey'))
-    }
-
-    const handlePubkeyStorage = () => {
       setFrom(localStorage.getItem('pubkey'))
-      localStorage.setItem('from', localStorage.getItem('pubkey'))
+      localStorage.setItem('from', localStorage.getItem('pubkey')) // send the pubkey to the verify tab
       window.dispatchEvent(new Event('storage_from_event'))
     }
     
-    window.addEventListener('storage_privkeytx_event', handlePrivkeyStorage) // add the event listener for the window object
-    window.addEventListener('storage_pubkeytx_event', handlePubkeyStorage)
+    window.addEventListener('storage_keypair_event', handleKeypairStorate) // add the event listener for the window object
   }, [])
-  console.log(from)
+
   return(
     <>
       <form className="mx-4">
@@ -63,8 +58,12 @@ function SignTx() {
         <div className="form-group">
           <label className="form-label" htmlFor="privkey--tx">Private Key</label>
           <input className="form-control" id="privkey--tx" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
-            let privkey_new = e.target.value === '' ? '0' : e.target.value 
+            let privkey_new = bigInt(e.target.value).toString(16)  
+            let pubkey_new = getPubkeyByPrivkey(privkey_new)
             setPrivkey(privkey_new)
+            localStorage.setItem('privkey', privkey_new)
+            localStorage.setItem('pubkey', pubkey_new)
+            window.dispatchEvent(new Event('storage_keypair_event'))
           }}/>
         </div>
 

@@ -12,18 +12,21 @@ function KeyPair() {
   */
   const storeKeypair = (privkey = 0, pubkey = 0)=> { // store privkey, pubkey and trigger the event
     localStorage.setItem('privkey', privkey)
-    window.dispatchEvent(new Event('storage_privkey_event'))
-    window.dispatchEvent(new Event('storage_privkeytx_event'))
     localStorage.setItem('pubkey',  pubkey)
-    window.dispatchEvent(new Event('storage_pubkey_event'))
-    window.dispatchEvent(new Event('storage_pubkeytx_event'))
+    window.dispatchEvent(new Event('storage_keypair_event'))
   }  
 
-  useEffect(()=>{
+  useEffect(()=>{ // generate the random keypair at the first time this component is rendered
     let keypair = gen_keypair()
     setPrivkey(keypair.privkey)
     setPubkey(keypair.pubkey)
     storeKeypair(keypair.privkey, keypair.pubkey)
+
+    const handleKeypairStorage = () => {    // add the event handler when localStorage is updated
+      setPrivkey(localStorage.getItem('privkey'))
+      setPubkey(localStorage.getItem('pubkey'))
+    }
+    window.addEventListener('storage_keypair_event', handleKeypairStorage)
   }, [])
 
   return(

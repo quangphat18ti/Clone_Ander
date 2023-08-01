@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { signMessage } from '../../../service/crypto_service'
+import { signMessage, getPubkeyByPrivkey } from '../../../service/crypto_service'
 import bigInt from 'big-integer'
 
 function Sign(){
@@ -8,10 +8,8 @@ function Sign(){
   let [signature, setSignature] = useState('')
 
   useEffect(()=> {
-    const handlePrivkeyStorage = () => {
-      setPrivkey(localStorage.getItem('privkey'))
-    }
-    window.addEventListener('storage_privkey_event', handlePrivkeyStorage) // add the event listener for the window object
+    const handleKeypairStorage = () => { setPrivkey(localStorage.getItem('privkey')) } // this page only use privkey
+    window.addEventListener('storage_keypair_event', handleKeypairStorage) // add the event listener for the window object
   }, [])
 
   return(
@@ -28,8 +26,12 @@ function Sign(){
         <div className="form-group mx-4">
           <label className="form-label" htmlFor="privkey--sign">Private Key</label>
           <input className="form-control" id="privkey--sign" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
-            let privkey_new = e.target.value === '' ? '0' : e.target.value 
+            let privkey_new = bigInt(e.target.value).toString(16)  
+            let pubkey_new = getPubkeyByPrivkey(privkey_new)
             setPrivkey(privkey_new)
+            localStorage.setItem('privkey', privkey_new)
+            localStorage.setItem('pubkey', pubkey_new)
+            window.dispatchEvent(new Event('storage_keypair_event'))
           }}/>
         </div>
 
