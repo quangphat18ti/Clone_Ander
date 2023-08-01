@@ -2,12 +2,13 @@ import { useState, useEffect } from "react"
 import { mine, sha256_hash, zeroString } from "../../../service/crypto_service"
 
 function BlockMock(props) {
-  let [blockNum, setBlockNum] = useState(1)
-  let [nonce, setNonce] = useState('')
-  let [data, setData] = useState('')
-  let [hash, setHash] = useState('')
-  let [isMined, setIsMined] = useState(1)
-  let [prev, setPrev] = useState()
+  let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
+  let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
+  let [nonce, setNonce]       = useState(props.nonce?    props.nonce    : '72608' )
+  let [data, setData]         = useState(props.data?     props.data     : '' )
+  let [hash, setHash]         = useState(props.hash?     props.hash     : '0000f727854b50bb95c054b39c1fe5c92e5ebcfa4bcb5dc279f56aa96a365e5a' )
+
+  let [isMined, setIsMined] = useState()
   let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
 
   useEffect(() => {
