@@ -49,6 +49,16 @@ function BlockMock(props) {
            `} role="alert" style={{ color: 'black' }}
       >
         <form>
+          {/* prev */}
+          { props.showPrev==='true' &&
+            <div className="form-group row">
+              <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
+              <div className="col-sm-10">
+                <input type="text" className="form-control" id="prev" disabled value={prev} />
+              </div>
+            </div>
+          }
+
           {/* blockNum */}
           <div className="form-group row">
             <label htmlFor="block" className="col-sm-2 col-form-label text-right"><strong>Block</strong></label>
@@ -61,18 +71,6 @@ function BlockMock(props) {
                        onChange={(e) => {setBlockNum(e.target.value)}}
                 />
               </div>
-            </div>
-          </div>
-
-          {/* nonce */}
-          <div className="form-group row">
-            <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
-
-            <div className="col-sm-10">
-              <input type="text" className="form-control" id="nonce"
-                     value={nonce || ''}
-                     onChange={(e) => {setNonce(e.target.value)}}
-              />
             </div>
           </div>
 
@@ -89,15 +87,17 @@ function BlockMock(props) {
             </div>
           </div>
 
-          {/* prev */}
-          { props.showPrev==='true' &&
-            <div className="form-group row">
-              <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
-              <div className="col-sm-10">
-                <input type="text" className="form-control" id="prev" disabled value={prev} />
-              </div>
+          {/* nonce */}
+          <div className="form-group row">
+            <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
+
+            <div className="col-sm-10">
+              <input type="text" className="form-control" id="nonce"
+                     value={nonce || ''}
+                     onChange={(e) => {setNonce(e.target.value)}}
+              />
             </div>
-          }
+          </div>
 
           {/* hash */}
           <div className="form-group row">
