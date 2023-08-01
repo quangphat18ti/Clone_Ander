@@ -107,27 +107,27 @@ function BlockMock(props) {
             </div>
           </div>
 
-            {/* mine */}
-            <div className="form-group row">
-              {/* left-spacing col */}
-              <div className="col-sm-2"></div>
+          {/* mine */}
+          <div className="form-group row">
+            {/* left-spacing col */}
+            <div className="col-sm-2"></div>
 
-              {/* mine btn */}
-              <div className="col-sm-10">
-                <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
-                  onClick={async (e) => {
-                    setSpinClass(       'ml-2 spinner-border spinner-border-sm')
-                    await onClickMine()
-                    setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
-                  }}
-                >
-                  <span className="ladda-label">Mine</span>
+            {/* mine btn */}
+            <div className="col-sm-10">
+              <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
+                onClick={async (e) => {
+                  setSpinClass(       'ml-2 spinner-border spinner-border-sm')
+                  await onClickMine()
+                  setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
+                }}
+              >
+                <span className="ladda-label">Mine</span>
 
-                  {/* loading spinner */}
-                  <div className={spinClass}></div>
-                </button>
-              </div>
+                {/* loading spinner */}
+                <div className={spinClass}></div>
+              </button>
             </div>
+          </div>
 
         </form>
 
