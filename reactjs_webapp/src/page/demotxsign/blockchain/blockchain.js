@@ -17,7 +17,7 @@ function Blockchain(){
 								<div className="row row-horizon d-flex flex-nowrap mh-100" style={{overflowY: "scroll"}}>
 									{blockchain.map((block) => (
 										<div className="col-sm-5" >
-											<Block block/>
+											<Block {...block}/>
 										</div>
 									))}
 									</div>
