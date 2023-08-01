@@ -1,7 +1,6 @@
-let Buffer = require('buffer')
 let CryptoJS = require('crypto-js')
-const EC = require('elliptic').ec
-const ec = new EC('secp256k1')
+let Buffer = require('buffer')
+let EC = require('elliptic').ec ; const ec = new EC('secp256k1')
 
 //ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug
 function gen_keypair(privkey = null) {
