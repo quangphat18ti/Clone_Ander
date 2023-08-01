@@ -36,6 +36,7 @@ function Tx(props){
         <span className="input-group-text">Sig:</span>
         <input type="text" className={`form-control ${txState == 0 ? '' : 'text-danger'}`} id="sig" value={sig} onChange={(e) => {setSig(e.target.value)}}/>
       </div>
+      <br/>
     </>
   )
 }
