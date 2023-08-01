@@ -10,12 +10,20 @@ function SignTx() {
   let [to, setTo] = useState('04cc955bf8e359cc7ebbb66f4c2dc616a93e8ba08e93d27996e20299ba92cba9cbd73c2ff46ed27a3727ba09486ba32b5ac35dd20c0adec020536996ca4d9f3d74')
 
   useEffect(()=> {
+    localStorage.setItem('to', to)
+    window.dispatchEvent(new Event('storage_to_event'))
+    localStorage.setItem('amount', amount)
+    window.dispatchEvent(new Event('storage_amount_event'))
+    localStorage.setItem('signaturetx', signature)
+    window.dispatchEvent(new Event('storage_signaturetx_event'))
     const handlePrivkeyStorage = () => {
       setPrivkey(localStorage.getItem('privkey'))
     }
 
     const handlePubkeyStorage = () => {
       setFrom(localStorage.getItem('pubkey'))
+      localStorage.setItem('from', localStorage.getItem('pubkey'))
+      window.dispatchEvent(new Event('storage_from_event'))
     }
     
     window.addEventListener('storage_privkeytx_event', handlePrivkeyStorage) // add the event listener for the window object
@@ -24,7 +32,7 @@ function SignTx() {
   console.log(from)
   return(
     <>
-      <form>
+      <form className="mx-4">
         <div className="form-group">
           <label className="form-label" htmlFor="message--tx">Message</label>
           <div className="input-group">
@@ -32,16 +40,22 @@ function SignTx() {
             </div>
               <input className="form-control" value={amount} onChange={(e) => {
                 setAmount(e.target.value)
+                localStorage.setItem('amount', e.target.value)
+                window.dispatchEvent(new Event('storage_amount_event'))
               }}/>
             <div className="input-group-text" >From:
             </div>
               <input className="form-control" value={from} onChange={(e) => {
               setFrom(e.target.value)
+              localStorage.setItem('from', e.target.value)
+              window.dispatchEvent(new Event('storage_from_event'))
             }}/>
             <div className="input-group-text">-&gt;
             </div>
               <input className="form-control" value={to} onChange={(e) => {
                 setTo(e.target.value)
+                localStorage.setItem('to', e.target.value)
+                window.dispatchEvent(new Event('storage_to_event'))
               }}/>
           </div>
         </div>
@@ -59,6 +73,8 @@ function SignTx() {
             let message = amount + from + to
             let signature = signMessage(message, privkey)
             setSignature(signature)
+            localStorage.setItem('signaturetx', signature)
+            window.dispatchEvent(new Event('storage_signaturetx_event'))
           }}>Sign</button>
         </div>
 
