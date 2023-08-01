@@ -33,7 +33,6 @@ ref https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/b
 */
 const DIFFICULTY_MINOR = 15
 const DIFFICULTY_MAJOR = 4
-const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
 
 var maximumNonce = 8
 for (var i=0; i<DIFFICULTY_MAJOR; i++) {
