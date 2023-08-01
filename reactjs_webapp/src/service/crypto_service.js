@@ -1,7 +1,6 @@
-let Buffer = require('buffer')
 let CryptoJS = require('crypto-js')
-const EC = require('elliptic').ec
-const ec = new EC('secp256k1')
+let Buffer = require('buffer')
+let EC = require('elliptic').ec ; const ec = new EC('secp256k1')
 
 //ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug
 function gen_keypair(privkey = null) {
@@ -22,17 +21,18 @@ function gen_keypair(privkey = null) {
 } 
 
 const sha256_hash = (data) => {
-    return CryptoJS.SHA256(data)
+    return CryptoJS.SHA256(data)  //TODO should we call .toString() here
 }
 
 //region mine
+
+//region initial maximumNonce
 /*
 initial maximumNonce
 ref https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/blockchain.js#L6C25-L32
 */
 const DIFFICULTY_MINOR = 15
 const DIFFICULTY_MAJOR = 4
-const zeroString = '0'.repeat(DIFFICULTY_MAJOR)
 
 var maximumNonce = 8
 for (var i=0; i<DIFFICULTY_MAJOR; i++) {
@@ -43,19 +43,33 @@ else if (DIFFICULTY_MINOR === 1) { maximumNonce *= 8  } // 0001 require 3 more 0
 else if (DIFFICULTY_MINOR <=  3) { maximumNonce *= 4  } // 0011 require 2 more 0 bits
 else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0 bit
 
-function mine({blockNum, data}) {
-  for (let i=0; i<maximumNonce; i++) {
-    let message      = (blockNum === undefined ? '' : blockNum.toString()) + i.toString() + data
-    let hash_message = sha256_hash(message).toString()
+let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
+//endregion initial maximumNonce
 
-    if (hash_message.startsWith(zeroString)) {
-      return { nonce: i, hash: hash_message }
+function hash_a_block({prev, blockNum, data, nonce}) {
+  let m = ''
+  if (prev)     { m+= ''+prev }
+  if (blockNum) { m+= ''+blockNum }
+  if (data)     { m+= ''+data }
+  if (nonce)    { m+= ''+nonce }
+
+  let h = sha256_hash(m).toString()
+  return h
+}
+
+function mine({prev, blockNum, data}) {
+  console.log(`mining  ${prev} ${blockNum} ${data}...`)
+
+  for (let i=0; i<maximumNonce; i++) {
+    let h = hash_a_block({prev, blockNum, data, nonce:i})
+    if (h.startsWith(ZERO_PREFIX)) {
+      return { nonce: i, hash: h }
     }
   }
 
-  return {nonce: undefined, hash: undefined}
-}
-//endregion mine
+  console.log(`mining ${blockNum}... NOT found nonce`)
+  return null
+}//endregion mine
 
 //ref https://github.com/anders94/public-private-key-demo/blob/master/views/signatures.pug
 let verifyMessage = (msg2Verify, publicKey, signature) => {
@@ -83,5 +97,11 @@ let getPubkeyByPrivkey = (privkey = 0) => {
   }
   return gen_keypair(privkey).pubkey
 }
+module.exports = {
+  // demo blockchain
+  sha256_hash,
+  mine, ZERO_PREFIX, hash_a_block,
 
-module.exports = {sha256_hash, gen_keypair, mine, DIFFICULTY_MAJOR, signMessage, verifyMessage, getPubkeyByPrivkey}
+  // demo tx sign
+  gen_keypair, signMessage, verifyMessage, getPubkeyByPrivkey,
+}
