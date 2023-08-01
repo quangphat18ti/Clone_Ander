@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import Tx from './tx'
-import { sha256_hash } from '../../../service/crypto_service';
+import { sha256_hash, ZERO_PREFIX } from '../../../service/crypto_service';
 
 function Block(props){
   let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
@@ -11,6 +11,9 @@ function Block(props){
 	let [tx, setTx]							= useState(props.tx? 			 props.tx				: [])
 	let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
   let [hash, setHash]         = useState('0000000000000000000000000000000000000000000000000000000000000000' )
+	let [isMine, setIsMine] 		= useState(1) // 0 is mine, 1 isn't mine
+	
+	const updateState = (hash) => { setIsMine(hash.startsWith(ZERO_PREFIX) ? 0 : 1)}
 
 	useEffect(()=> {
 		console.log("change lbock")
@@ -21,13 +24,14 @@ function Block(props){
 		message += prev
 		let hash_new = sha256_hash(message).toString()
 		setHash(hash_new)
+		updateState(hash_new)
 	}, [blockNum, nonce, award, coinbase, tx, prev])
 
 	console.log('tx', tx)
 	return(
 		<>
 			<div className="container">
-				<div className="alert alert-success p-3" role="alert" style={{ color: 'black' }}>
+				<div className={`alert alert-${isMine === 0 ? 'success' : 'danger'} p-3`} role="alert" style={{ color: 'black' }}>
 					<form>
 						<div className="form-group row">
 							<label htmlFor="block" className="col-sm-2 col-form-label text-right">Block:</label>
@@ -66,9 +70,7 @@ function Block(props){
 						<div className="form-group row">
 							<label htmlFor="coinbase" className="col-sm-2 col-form-label text-right">Tx:</label>
 							<div className="col-sm">
-								{
-									tx.map((data) => <Tx {...data}/>)
-								}
+								{	tx.map((data) => <Tx {...data}/>) }
 							</div>
 						</div>
 
