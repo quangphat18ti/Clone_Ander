@@ -89,7 +89,10 @@ let signMessage = (message, privateKey) => {
 }
 
 module.exports = {
-  sha256_hash, gen_keypair,
-  mine, ZERO_PREFIX,
-  signMessage, verifyMessage,
+  // demo blockchain
+  sha256_hash,
+  mine, ZERO_PREFIX, hash_a_block,
+
+  // demo tx sign
+  gen_keypair, signMessage, verifyMessage,
 }
