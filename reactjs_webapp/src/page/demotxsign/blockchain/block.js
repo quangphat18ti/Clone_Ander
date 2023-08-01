@@ -1,6 +1,7 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Tx from './tx'
+import { sha256_hash } from '../../../service/crypto_service';
 
 function Block(props){
   let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
@@ -10,6 +11,18 @@ function Block(props){
 	let [tx, setTx]							= useState(props.tx? 			 props.tx				: [])
 	let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
   let [hash, setHash]         = useState('0000000000000000000000000000000000000000000000000000000000000000' )
+
+	useEffect(()=> {
+		console.log("change lbock")
+		let message = '' + blockNum + nonce + award + coinbase
+		message = tx.reduce((msg, curr) => 
+			msg += '' + curr.value + curr.from + curr.to + curr.seq + curr.sig
+		, message)
+		message += prev
+		let hash_new = sha256_hash(message).toString()
+		setHash(hash_new)
+	}, [blockNum, nonce, award, coinbase, tx, prev])
+
 	console.log('tx', tx)
 	return(
 		<>
@@ -21,7 +34,7 @@ function Block(props){
 							<div className="col-sm-10">
 								<div className="input-group">
 									<span className="input-group-text">#</span>
-									<input type="number" className="form-control" id="blockchainnumber" value={blockNum}/>
+									<input type="number" className="form-control" id="blockchainnumber" value={blockNum} onChange= {(e)=> {setBlockNum(e.target.value)}}/>
 								</div>
 							</div>
 						</div>
@@ -29,7 +42,7 @@ function Block(props){
 						<div className="form-group row">
 							<label htmlFor="nonce" className="col-sm-2 col-form-label text-right">Nonce:</label>
 							<div className="col-sm-10">
-								<input type="text" className="form-control" id="nonce" value={nonce}/>
+								<input type="text" className="form-control" id="nonce" value={nonce} onChange= {(e)=> setNonce(e.target.value)}/>
 							</div>
 						</div>
 
@@ -38,14 +51,14 @@ function Block(props){
 							<div className="col-sm">
 								<div className="input-group">
 									<span className="input-group-text">$</span>
-									<input type="text" className="form-control" id="coinbasevalue" value={award}/>
+									<input type="text" className="form-control" id="coinbasevalue" value={award} onChange= {(e)=> setAward(e.target.value)}/>
 									<span className="input-group-text">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
 											</svg>
 											<i className="bi bi-arrow-right"></i>
 									</span>
-									<input type="text" className="form-control" id="coinbaseto" value={coinbase}/>
+									<input type="text" className="form-control" id="coinbaseto" value={coinbase} onChange= {(e) => setCoinbase(e.target.value)}/>
 								</div>
 							</div>
 						</div>
@@ -62,7 +75,7 @@ function Block(props){
 						<div className="form-group row">
 							<label htmlFor="prev" className="col-sm-2 col-form-label text-right">Prev:</label>
 							<div className="col-sm-10">
-								<input type="text" className="form-control" id="prev" value={prev}/>
+								<input type="text" className="form-control" id="prev" value={prev} onChange= {(e) => {setPrev(e.target.value)}}/>
 							</div>
 						</div>
 
