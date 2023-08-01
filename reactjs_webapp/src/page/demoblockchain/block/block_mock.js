@@ -30,9 +30,9 @@ function BlockMock(props) {
       await sleep(66)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
     }
 
-    let new_nonce = mine({ blockNum, data })
-    if (new_nonce !== undefined) {
-      setNonce(new_nonce.nonce)
+    let mined = mine({ prev, blockNum, data })
+    if (mined !== undefined) {
+      setNonce(mined.nonce)
     } else {
       alert("Cannot find a nonce!")
     }
