@@ -46,27 +46,30 @@ else if (DIFFICULTY_MINOR <=  7) { maximumNonce *= 2  } // 0111 require 1 more 0
 let ZERO_PREFIX = '0'.repeat(DIFFICULTY_MAJOR)
 //endregion initial maximumNonce
 
-function mine({prev, blockNum, data}) {
-  console.log(`mining ${prev} ${blockNum} ${data}`)
-
+function hash_a_block({prev, blockNum, data, nonce}) {
   let m = ''
-  if (prev     !== undefined) { m+= ''+prev }
-  if (blockNum !== undefined) { m+= ''+blockNum }
-  if (data     !== undefined) { m+= ''+data }
+  if (prev)     { m+= ''+prev }
+  if (blockNum) { m+= ''+blockNum }
+  if (data)     { m+= ''+data }
+  if (nonce)    { m+= ''+nonce }
+
+  let h = sha256_hash(m).toString()
+  return h
+}
+
+function mine({prev, blockNum, data}) {
+  console.log(`mining  ${prev} ${blockNum} ${data}...`)
 
   for (let i=0; i<maximumNonce; i++) {
-    let h = sha256_hash(m+i.toString()).toString()
-
+    let h = hash_a_block({prev, blockNum, data, nonce:i})
     if (h.startsWith(ZERO_PREFIX)) {
-      console.log(`mining ${prev} ${blockNum} ${data} -> nonce=${i} hash=${h}`)
       return { nonce: i, hash: h }
     }
   }
 
-  console.log(`mining ${prev} ${blockNum} ${data} -> no nonce found`)
-  return {nonce: undefined, hash: undefined}
-}
-//endregion mine
+  console.log(`mining ${blockNum}... NOT found nonce`)
+  return null
+}//endregion mine
 
 //ref https://github.com/anders94/public-private-key-demo/blob/master/views/signatures.pug
 let verifyMessage = (msg2Verify, publicKey, signature) => {

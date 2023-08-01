@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import {mine, sha256_hash, ZERO_PREFIX} from "../../../service/crypto_service"
+import {mine, hash_a_block, ZERO_PREFIX} from "../../../service/crypto_service"
 
 function BlockMock(props) {
   let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )
   let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
-  let [nonce, setNonce]       = useState(props.nonce?    props.nonce    : '72608' )
   let [data, setData]         = useState(props.data?     props.data     : '' )
+  let [nonce, setNonce]       = useState(props.nonce?    props.nonce    : '72608' )
   let [hash, setHash]         = useState(props.hash?     props.hash     : '0000f727854b50bb95c054b39c1fe5c92e5ebcfa4bcb5dc279f56aa96a365e5a' )
 
   let [isMined, setIsMined] = useState()
@@ -15,13 +15,13 @@ function BlockMock(props) {
 
   useEffect(() => {
     // re-render :hash if any field in blockdata changed
-    let blockData = blockNum === undefined ? '' : blockNum.toString() + nonce + data
-    let hash_new = sha256_hash(blockData).toString()
+    let hash_new = hash_a_block({prev, blockNum, data, nonce})
     setHash(hash_new)
-  }, [blockNum, data, nonce])
+  }, [prev, blockNum, data, nonce])
 
   useEffect(() => {
-    setIsMined(hash.startsWith(ZERO_PREFIX))
+    // re-render bgcolor fr :isMine
+    setIsMined( hash.startsWith(ZERO_PREFIX) )
   }, [hash])
 
   const onClickMine = async (slowDown=true) => {
@@ -30,7 +30,7 @@ function BlockMock(props) {
       await sleep(66)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
     }
 
-    let mined = mine({ prev, blockNum, data })
+    let mined = await mine({ prev, blockNum, data, nonce })
     if (mined !== undefined) {
       setNonce(mined.nonce)
     } else {
