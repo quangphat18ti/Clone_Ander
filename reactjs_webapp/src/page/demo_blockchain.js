@@ -1,6 +1,8 @@
 import Hash from "./demoblockchain/hash"
 import BlockNavtab from "./demoblockchain/block/_block_navtab"
 import BlockChain from "./demoblockchain/blockchain"
+import {data} from"../data/blockchain_token"
+import {Blockchain as Token} from "./demotxsign/blockchain/blockchain"
 
 function DemoBlockchain() {
   return (
@@ -21,7 +23,7 @@ function DemoBlockchain() {
           <div className="tab-pane fade            " id="nav-block"                       role="tabpanel" aria-labelledby="nav-block-tab">                        <BlockNavtab showPrev="false"/>   </div>
           <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   <BlockChain/>    </div>
           <div className="tab-pane fade            " id="nav-distributed"                 role="tabpanel" aria-labelledby="nav-distributed-tab">                  TODO distributed </div>
-          <div className="tab-pane fade            " id="nav-token"                       role="tabpanel" aria-labelledby="nav-token-tab">                        TODO token </div>
+          <div className="tab-pane fade            " id="nav-token"                       role="tabpanel" aria-labelledby="nav-token-tab">                        <Token data={data}/> </div>
         </div>
       </div>
     </>

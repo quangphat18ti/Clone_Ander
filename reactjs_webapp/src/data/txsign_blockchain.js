@@ -1,7 +1,7 @@
 let peer = {0: 'A', 1: 'B', 2: 'C'}
 const data = []
 
-// ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/blockchain.pug#L7C5-L17C9
+// ref https://github.com/anders94/blockchain-demo/blob/4138d88e3c56e12265d0098f4bd4a3b5fe762ff0/views/tokens.pug#L11C13-L15C343
 Object.values(peer).forEach((chain) => {
   let block = []
   block.push({blockNum: 1, chain: chain, nonce: 16119, coinbasevalue: '100.00', coinbase: '04fe1be031bc7a54d900ff062911bc4f7ba0edb39e4280268e490b79e347e3b8b0019c252aad7536ef7caeb061d558cac2eaec43ff670d76a521bec77c35751310', tx: [], prev: '0000000000000000000000000000000000000000000000000000000000000000', txCount: 0})
