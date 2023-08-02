@@ -32,4 +32,11 @@ tx sign demo    https://andersbrownworth.com/blockchain/public-private-keys/keys
     source code https://github.com/anders94/blockchain-demo/
     how to map vanilla js lib to nodejs/reactjs package name https://stackoverflow.com/q/76696833/248616
 
-team task plan https://docs.google.com/document/d/1KVw_VVOVDYCEudaNqB0_JPc4J8BVuOONqNvgaW1MoHw/edit?usp=sharing
+team task plan by Ky https://docs.google.com/document/d/1KVw_VVOVDYCEudaNqB0_JPc4J8BVuOONqNvgaW1MoHw/edit?usp=sharing
+
+## block explorer aka block scan
+api doc  ref https://docs.etherscan.io/getting-started/endpoint-urls
+
+| Network | URL                               | Documentation                                  |
+|---------|-----------------------------------|------------------------------------------------|
+| Sepolia | https://api-sepolia.etherscan.io/ | https://docs.etherscan.io/v/sepolia-etherscan/ |
