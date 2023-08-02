@@ -40,8 +40,8 @@ get block info by blocknumber  ref https://api-sepolia.etherscan.io/api?module=p
 }
 */
 
-import { ETHERSCAN_API_KEY } from "./api_key.js";
-import fs from "fs"
+let { ETHERSCAN_API_KEY } = require("./api_key.js")
+let fs = require("fs")
 
 const hexToDecimal = hex => parseInt(hex, 16)
 const demicalToHex = demical => demical.toString(16)
@@ -70,4 +70,4 @@ async function getChainNewestBlock(num = 6) {
   return chainOfBlocks;
 }
 
-export {getNewestBlockHexNumber, getBlockInfoByBlockHexNumber, getChainNewestBlock}
+module.exports = {getNewestBlockHexNumber, getBlockInfoByBlockHexNumber, getChainNewestBlock}
