@@ -1,4 +1,4 @@
-// Get newest blocknumber: https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=KBSYCQ4JIXAJCNCTSG1M4HIK5QAT4D4CDV
+// Get newest blocknumber  ref https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=KBSYCQ4JIXAJCNCTSG1M4HIK5QAT4D4CDV
 /*{
   "jsonrpc": "2.0",
   "id": 83,
@@ -6,7 +6,7 @@
 } 
 */
 
-// Get Block Info by number: https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=0x3d1b90&boolean=true&apikey=KBSYCQ4JIXAJCNCTSG1M4HIK5QAT4D4CDV
+// Get Block Info by number  ref https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=0x3d1b90&boolean=true&apikey=KBSYCQ4JIXAJCNCTSG1M4HIK5QAT4D4CDV
 
 /*
 {
