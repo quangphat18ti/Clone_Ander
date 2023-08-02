@@ -1,6 +1,6 @@
 let assert = require('assert')
 //
-let {getNewestBlockHexNumber, getBlockInfoByBlockHexNumber} = require('../../src/service/etherscan_service/etherscan_service')
+let {getNewestBlockHexNumber, getBlockInfoByBlockHexNumber} = require('../../../src/service/etherscan_service/_')
 
 
 let test_getNewestBlockHexNumber = async ()=>{

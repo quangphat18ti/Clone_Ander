@@ -1,7 +1,4 @@
-let { ETHERSCAN_API_KEY } = require("./etherscan_api_key")
-let fs = require("fs")
-
-
+let { ETHERSCAN_API_KEY } = require('./api_key')
 
 async function getNewestBlockHexNumber() {
   /*
