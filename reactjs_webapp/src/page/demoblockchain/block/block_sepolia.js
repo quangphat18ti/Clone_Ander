@@ -64,7 +64,7 @@ function BlockSepolia() {
                 <div className="col-sm-10">
                   {
                     blockObj.transactions.map( (tx, i) => {
-                      return <Tx from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} />
+                      return <Tx from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} key={tx.hash} />
                     })
                   }
                 </div>
