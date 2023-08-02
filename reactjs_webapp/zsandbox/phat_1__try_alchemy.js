@@ -1,5 +1,4 @@
 // npm install alchemy-sdk
-// "alchemy-sdk": "^2.9.2"
 
 // Imports the Alchemy SDK
 import { Alchemy, Network } from "alchemy-sdk";
