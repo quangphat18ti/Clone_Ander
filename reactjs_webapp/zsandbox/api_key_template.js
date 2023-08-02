@@ -1,7 +1,2 @@
-/// @ Get API_KEY from https://dashboard.alchemy.com/
-const Alchemy_API_KEY = "your API Key"; // Replace with your API key
-
-/// @ Get API_KEY from https://docs.etherscan.io/getting-started/viewing-api-usage-statistics
-const ETHERSCAN_API_KEY = "your API Key";
-
-module.exports = {Alchemy_API_KEY, ETHERSCAN_API_KEY}
+exports.Alchemy_API_KEY   = 'your_API_Key'  // get key at https://dashboard.alchemy.com/
+exports.ETHERSCAN_API_KEY = 'your_API_Key'  // get key at https://docs.etherscan.io/getting-started/viewing-api-usage-statistics  ie login and get at https://etherscan.io/myapikey
