@@ -1,3 +1,6 @@
+// npm install alchemy-sdk
+// "alchemy-sdk": "^2.9.2"
+
 // Imports the Alchemy SDK
 import { Alchemy, Network } from "alchemy-sdk";
 import {Alchemy_API_KEY} from "./api_key_template";
