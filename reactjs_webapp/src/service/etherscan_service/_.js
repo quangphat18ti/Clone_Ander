@@ -1,5 +1,6 @@
 let { ETHERSCAN_API_KEY } = require('./api_key')
 
+module.exports.getNewestBlockHexNumber =
 async function getNewestBlockHexNumber() {
   /*
   get newest blocknumber
@@ -14,6 +15,7 @@ async function getNewestBlockHexNumber() {
 }
 
 
+module.exports.getBlockInfoByBlockHexNumber =
 async function getBlockInfoByBlockHexNumber(blockHexNumber) {
   /*
   get block info by blocknumber
@@ -25,10 +27,4 @@ async function getBlockInfoByBlockHexNumber(blockHexNumber) {
   r = await res.json()
   r = r.result
   return r
-}
-
-//TODO replace by inline export
-module.exports = {
-  getNewestBlockHexNumber,
-  getBlockInfoByBlockHexNumber,
 }
