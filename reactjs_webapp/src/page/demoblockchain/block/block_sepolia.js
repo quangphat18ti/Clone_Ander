@@ -31,7 +31,7 @@ function BlockSepolia() {
         <div>{JSON.stringify(blockObj)}</div>
       </>} */}
       {blockObj && 
-        <div className={`alert-success px-3 pt-3 pb-3`} role="alert" style={{ color: 'black' }}>
+        <div className={`alert alert-success px-3 pt-3 pb-3`} role="alert" style={{ color: 'black' }}>
           <form className="pb-10">
               {/* prev */}
               <div className="form-group row">
