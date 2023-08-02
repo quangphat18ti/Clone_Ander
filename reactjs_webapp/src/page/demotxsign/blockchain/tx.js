@@ -5,12 +5,12 @@ function Tx(props){
   let [value, setValue]         = useState(props.value? props.value : '0.00' )
   let [from, setFrom]           = useState(props.from? props.from : '0')
   let [to, setTo]               = useState(props.to? props.to : '0')
-  let [seq, setSeq]             = useState(props.seq? props.seq : 1)
-  let [sig, setSig]             = useState(props.sig? props.sig : '0')
+  let [seq, setSeq]             = useState(props.seq? props.seq : null)
+  let [sig, setSig]             = useState(props.sig? props.sig : '')
   let [txState, setTxState]     = useState(0) // 0 is valid signature, 1 is invalid signature
 
   useEffect(()=> {
-    let message = value + from + to + seq
+    let message = value + from + to + (seq == null ? '' : seq)
     let verify = verifyMessage(message, from, sig)
     setTxState(verify? 0 : 1)
   }, [value, from, to, seq, sig])
@@ -39,18 +39,21 @@ function Tx(props){
             props.handleTxchange(props.index, {to: e.target.value})
           }}/>
       </div>
-      <div className="input-group">
-        <span className="input-group-text">Seq:</span>
-        <input type="text" className="form-control col-sm-2" id="seq" value={seq} onChange={(e) => {
-            setSeq(e.target.value)
-            props.handleTxchange(props.index, {seq: e.target.value})
-          }}/>
-        <span className="input-group-text">Sig:</span>
-        <input type="text" className={`form-control ${txState === 0 ? '' : 'text-danger'}`} id="sig" value={sig} onChange={(e) => {
-            setSig(e.target.value)
-            props.handleTxchange(props.index, {sig: e.target.value})
-          }}/>
-      </div>
+      {
+        seq != null && 
+        <div className="input-group">
+          <span className="input-group-text">Seq:</span>
+          <input type="text" className="form-control col-sm-2" id="seq" value={seq} onChange={(e) => {
+              setSeq(e.target.value)
+              props.handleTxchange(props.index, {seq: e.target.value})
+            }}/>
+          <span className="input-group-text">Sig:</span>
+          <input type="text" className={`form-control ${txState === 0 ? '' : 'text-danger'}`} id="sig" value={sig} onChange={(e) => {
+              setSig(e.target.value)
+              props.handleTxchange(props.index, {sig: e.target.value})
+            }}/>
+        </div>
+      }
       <br/>
     </>
   )

@@ -1,11 +1,11 @@
 import React 							from 'react';
 import Block 							from './block';
-import { data, peer } 		from './data';
+import { peer } 					from '../../../data/txsign_blockchain';
 import {useState} 				from 'react'
 import { sha256_hash } 		from '../../../service/crypto_service';
 
-function Blockchain(){  
-	let [blockchain, setBlockchain] = useState(data)
+function Blockchain(props){  
+	let [blockchain, setBlockchain] = useState(props.data? props.data : '')
 
 	const updateChain = (block_index, chain_index, block_new) => {
 		let blockchain_clone = [...blockchain]
@@ -51,4 +51,4 @@ function Blockchain(){
 	)
 }
 
-export default Blockchain;
+export  {Blockchain};
