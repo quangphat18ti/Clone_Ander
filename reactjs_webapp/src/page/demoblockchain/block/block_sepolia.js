@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import {getBlockInfoByBlockHexNumber, getNewestBlockHexNumber} from "../../../service/etherscan_service/_"
+import Tx from "./Tx"
 
 const hexToDecimal = hex => parseInt(hex, 16)
 
@@ -61,17 +62,11 @@ function BlockSepolia() {
                 <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Tx</strong></label>
 
                 <div className="col-sm-10">
-                  <div className="input-group">
-                    <div className="input-group-text">$
-                    </div>
-                      <input className="form-control" disabled value={''} />
-                    <div className="input-group-text">From:
-                    </div>
-                      <input className="form-control" disabled value={ ''} />
-                    <div className="input-group-text">-&gt;
-                    </div>
-                      <input className="form-control" disabled value={''} />
-                  </div>
+                  {
+                    blockObj.transactions.map( (tx, i) => {
+                      return <Tx from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} />
+                    })
+                  }
                 </div>
               </div>
 
