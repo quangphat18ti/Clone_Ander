@@ -48,9 +48,12 @@ const hexToDecimal = hex => parseInt(hex, 16)
 const demicalToHex = demical => demical.toString(16)
 
 async function getNewestBlockHexNumber() {
-  return fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${ETHERSCAN_API_KEY}`)
-      .then(response => response.json())
-      .then(response => response.result)
+  let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${ETHERSCAN_API_KEY}`)
+
+  let r
+  r = await res.json()  //.result
+  r = r.result
+  return r
 }
 
 async function getBlockInfoByBlockHexNumber(blockHexNumber) {
