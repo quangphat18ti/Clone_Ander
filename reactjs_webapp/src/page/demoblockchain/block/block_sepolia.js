@@ -15,15 +15,18 @@ function BlockSepolia() {
   return (
     <>
       <h3>Block Sepolia</h3>
-      <pre>
-        <br/>Prev         {blockObj.parentHash}
-        <br/>Block Number {blockObj.number}
-        <br/>Nonce        {blockObj.nonce}
-        <br/>Hash         {blockObj.hash}
-      </pre>
 
-      <hr/>
-      <div>{JSON.stringify(blockObj)}</div>
+      {blockObj && <>
+        <pre>
+          <br/>Prev         {blockObj.parentHash}
+          <br/>Block Number {blockObj.number}
+          <br/>Nonce        {blockObj.nonce}
+          <br/>Hash         {blockObj.hash}
+        </pre>
+
+        <hr/>
+        <div>{JSON.stringify(blockObj)}</div>
+      </>}
     </>
   )
 }
