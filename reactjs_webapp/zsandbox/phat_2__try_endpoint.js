@@ -51,15 +51,18 @@ async function getNewestBlockHexNumber() {
   let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${ETHERSCAN_API_KEY}`)
 
   let r
-  r = await res.json()  //.result
+  r = await res.json()
   r = r.result
   return r
 }
 
 async function getBlockInfoByBlockHexNumber(blockHexNumber) {
-  return fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true&apikey=${ETHERSCAN_API_KEY}`)
-      .then(response => response.json())
-      .then(response => response.result)
+  let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true&apikey=${ETHERSCAN_API_KEY}`)
+
+  let r
+  r = await res.json()
+  r = r.result
+  return r
 }
 
 async function getChainNewestBlock(num = 6) {
