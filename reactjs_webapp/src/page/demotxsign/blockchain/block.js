@@ -1,7 +1,7 @@
-import React from 'react';
-import {useState, useEffect} from 'react'
-import Tx from './tx'
-import { sha256_hash, ZERO_PREFIX } from '../../../service/crypto_service';
+import React 													from 'react';
+import {useState, useEffect} 					from 'react'
+import Tx 														from './tx'
+import { sha256_hash, ZERO_PREFIX } 	from '../../../service/crypto_service';
 
 function Block(props){
   let [blockNum, setBlockNum] = useState(props.blockNum? props.blockNum : 1  )
@@ -13,36 +13,7 @@ function Block(props){
   let [hash, setHash]         = useState('0000000000000000000000000000000000000000000000000000000000000000' )
 	let [isMine, setIsMine] 		= useState(1) // 0 is mine, 1 isn't mine
 	
-	const updateState = (hash) => { setIsMine(hash.startsWith(ZERO_PREFIX) ? 0 : 1)}
-
-	const handleTxChange = (index, tx_new)=> {
-		let tx_clone = [...tx]
-		tx_clone[index] = {...tx_clone[index], ...tx_new}
-		setTx(tx_clone)
-	}
-
-	useEffect(()=> {
-		setBlockNum(props.blockNum)
-		setNonce(props.nonce)
-		setAward(props.coinbasevalue)
-		setCoinbase(props.coinbase)
-		setTx(props.tx)
-		setPrev(props.prev)
-	})
-
-	useEffect(()=> {
-		console.log('tx', tx)
-		let message = '' + blockNum + nonce + award + coinbase
-		message = tx.reduce((msg, curr) => 
-			msg += '' + curr.value + curr.from + curr.to + curr.seq + curr.sig
-		, message)
-		message += prev
-		let hash_new = sha256_hash(message).toString()
-		setHash(hash_new)
-		updateState(hash_new)
-	}, [blockNum, nonce, award, coinbase, tx, prev])
-
-	let block = {
+	let BLOCK = { // global object in Block component
 		blockNum,
 		nonce,
 		coinbasevalue: award,
@@ -50,6 +21,56 @@ function Block(props){
 		tx,
 		prev
 	}
+
+	const updateState = (hash) => { setIsMine(hash.startsWith(ZERO_PREFIX) ? 0 : 1)}
+
+	const getMessageFromBlock = (block) => {
+		let message = '' + block.blockNum + block.nonce + block.coinbasevalue + block.coinbase
+		message = tx.reduce((msg, curr) => 
+			msg += '' + curr.value + curr.from + curr.to + curr.seq + curr.sig
+		, message)
+		message += block.prev
+		return message
+	}
+
+	const handleTxChange = (index, tx_new)=> {
+		let tx_clone = [...tx]
+		tx_clone[index] = {...tx_clone[index], ...tx_new}
+		setTx(tx_clone)
+		let block_new = {...BLOCK, tx: tx_clone}
+		props.updateChain(props.block_index, props.chain_index, block_new)
+	}
+
+	const mine = (block) => {
+		const DIFFICULTY = 4
+		const maxiter = 8 * Math.pow(16, DIFFICULTY)
+		for (let nonce = 1 ; nonce < maxiter ; nonce ++) {
+			block.nonce = nonce
+			let message = getMessageFromBlock(block)
+			let hash = sha256_hash(message).toString()
+			if (hash.startsWith(ZERO_PREFIX)) {
+				props.updateChain(props.block_index, props.chain_index, block)
+				break
+			}
+		}
+
+	}
+
+	useEffect(()=> {
+		setBlockNum					(props.blockNum)
+		setNonce						(props.nonce)
+		setAward						(props.coinbasevalue)
+		setCoinbase					(props.coinbase)
+		setTx								(props.tx)
+		setPrev							(props.prev)
+	})
+
+	useEffect(()=> {
+		let message = getMessageFromBlock(BLOCK)
+		let hash_new = sha256_hash(message).toString()
+		setHash(hash_new)
+		updateState(hash_new)
+	}, [blockNum, nonce, award, coinbase, tx, prev])
 
 	return(
 		<>
@@ -63,7 +84,7 @@ function Block(props){
 									<span className="input-group-text">#</span>
 									<input type="number" className="form-control" id="blockchainnumber" value={blockNum} onChange= {(e)=> {
 										setBlockNum(e.target.value)
-										let block_new = {...block, blockNum: e.target.value}
+										let block_new = {...BLOCK, blockNum: e.target.value}
 										props.updateChain(props.block_index, props.chain_index, block_new)
 									}}/>
 								</div>
@@ -75,7 +96,7 @@ function Block(props){
 							<div className="col-sm-10">
 								<input type="text" className="form-control" id="nonce" value={nonce} onChange= {(e)=>{
 									setNonce(e.target.value)
-									let block_new = {...block, nonce: e.target.value}
+									let block_new = {...BLOCK, nonce: e.target.value}
 									props.updateChain(props.block_index, props.chain_index, block_new)
 								}}/>
 							</div>
@@ -88,18 +109,18 @@ function Block(props){
 									<span className="input-group-text">$</span>
 									<input type="text" className="form-control" id="coinbasevalue" value={award} onChange= {(e)=> {
 										setAward(e.target.value)
-										let block_new = {...block, coinbasevalue: e.target.value}
+										let block_new = {...BLOCK, coinbasevalue: e.target.value}
 										props.updateChain(props.block_index, props.chain_index, block_new)
 									}}/>
 									<span className="input-group-text">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
-												<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+												<path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
 											</svg>
 											<i className="bi bi-arrow-right"></i>
 									</span>
 									<input type="text" className="form-control" id="coinbaseto" value={coinbase} onChange= {(e) => {
 										setCoinbase(e.target.value)
-										let block_new = {...block, coinbase: e.target.value}
+										let block_new = {...BLOCK, coinbase: e.target.value}
 										props.updateChain(props.block_index, props.chain_index, block_new)
 									}}/>
 								</div>
@@ -118,7 +139,7 @@ function Block(props){
 							<div className="col-sm-10">
 								<input type="text" className="form-control" id="prev" value={prev} onChange= {(e) => {
 									setPrev(e.target.value)
-									let block_new = {...block, prev: e.target.value}
+									let block_new = {...BLOCK, prev: e.target.value}
 									props.updateChain(props.block_index, props.chain_index, block_new)
 								}}/>
 							</div>
@@ -136,7 +157,9 @@ function Block(props){
 								<i className="icon-spinner icon-spin icon-large"></i>
 							</div>
 							<div className="col-sm-10">
-								<button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button">
+								<button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button" onClick= {() => {
+									mine(BLOCK)
+								}}>
 									<span className="ladda-label">Mine</span>
 								</button>
 							</div>

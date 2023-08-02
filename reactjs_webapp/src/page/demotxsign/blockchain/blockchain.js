@@ -1,11 +1,12 @@
-import React from 'react';
-import Block from './block';
-import { data, peer } from './data';
-import {useState} from 'react'
-import { sha256_hash } from '../../../service/crypto_service';
+import React 							from 'react';
+import Block 							from './block';
+import { data, peer } 		from './data';
+import {useState} 				from 'react'
+import { sha256_hash } 		from '../../../service/crypto_service';
 
 function Blockchain(){  
 	let [blockchain, setBlockchain] = useState(data)
+
 	const updateChain = (block_index, chain_index, block_new) => {
 		let blockchain_clone = [...blockchain]
 		blockchain_clone[chain_index][block_index] = block_new
@@ -36,7 +37,7 @@ function Blockchain(){
 								<h3>Peer {peer[chain_index]}</h3>
 								<div className="row row-horizon d-flex flex-nowrap mh-100" style={{overflowY: "scroll"}}>
 									{blockchain.map((block, block_index) => (
-										<div className="col-sm-5" >
+										<div className="col-sm-5" key={block_index}>
 											<Block {...block} chain_index={chain_index} block_index={block_index} updateChain={updateChain}/>
 										</div>
 									))}
@@ -44,8 +45,6 @@ function Blockchain(){
 							</React.Fragment>
 						)
 					}
-
-					
 				</div>
 			</div>
 		</>
