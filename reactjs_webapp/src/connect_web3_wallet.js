@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 //
 let ethers = require("ethers")
 //NOTE    must use require() to import as it has error > import { ethers } from "ethers"  ref. https://ethereum.stackexchange.com/a/129260/109415
@@ -7,6 +7,11 @@ let ethers = require("ethers")
 function ConnectWeb3Wallet() {
   let [walletaccount_pubkey, set__walletaccount_pubkey] = useState()
   /*TODO refresh will reset state :walletaccount_pubkey -> use localStorage to save it*/
+
+  useEffect(()=>{
+    localStorage.setItem('walletaccount_pubkey', walletaccount_pubkey)
+    window.dispatchEvent(new Event('storage'))
+  }, [walletaccount_pubkey])
 
   return (
     <>
