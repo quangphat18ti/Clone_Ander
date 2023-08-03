@@ -98,6 +98,7 @@ function DemoWallet() {
               />
             </div>
           </div>
+          {/* Submit button */}
           <div class="form-group row">
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary" 
@@ -113,11 +114,13 @@ function DemoWallet() {
               >Confirm</button>
             </div>
           </div>
-
         </form>
       </div>
+
+      {/* Tx detail */}
       <div>Transaction detail
         {tx}
+        {console.log(JSON.parse(tx))}
       </div>
     </div>
   )
