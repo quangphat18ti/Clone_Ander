@@ -57,8 +57,8 @@ function SignTx() {
 
         <div className="form-group">
           <label className="form-label" htmlFor="privkey--tx">Private Key</label>
-          <input className="form-control" id="privkey--tx" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
-            let privkey_new = bigInt(e.target.value).toString(16)  
+          <input className="form-control" id="privkey--tx" type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" value={privkey || ''} onChange = {(e) => {
+            let privkey_new = (e.target.value === '')? '0' : e.target.value
             let pubkey_new = getPubkeyByPrivkey(privkey_new)
             setPrivkey(privkey_new)
             localStorage.setItem('privkey', privkey_new)

@@ -25,8 +25,8 @@ function Sign(){
         </div>
         <div className="form-group mx-4">
           <label className="form-label" htmlFor="privkey--sign">Private Key</label>
-          <input className="form-control" id="privkey--sign" type="number" value={bigInt(privkey, 16).toString() || ''} onChange = {(e) => {
-            let privkey_new = bigInt(e.target.value).toString(16)  
+          <input className="form-control" id="privkey--sign" type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" value={privkey || ''} onChange = {(e) => {
+            let privkey_new = (e.target.value === '')? '0' : e.target.value
             let pubkey_new = getPubkeyByPrivkey(privkey_new)
             setPrivkey(privkey_new)
             localStorage.setItem('privkey', privkey_new)
