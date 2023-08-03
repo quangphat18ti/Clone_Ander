@@ -78,14 +78,14 @@ function KeyPair() {
           </div>
         </div>
         <button
-            style={{ "minWidth": "5rem",float: 'left', marginTop: '150px'}} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#mathModal"
+            style={{ "minWidth": "5rem",float: 'left', marginTop: '150px'}} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#explainGenerationModal"
             onClick={ () => {
             }}
         >Cơ sở toán học</button>
 
         {/*Modal*/}
         {/*TODO: Translate to English & write again by katex*/}
-        <div className="modal" tabIndex="-1" id="mathModal">
+        <div className="modal" tabIndex="-1" id="explainGenerationModal">
           <div className="modal-dialog">
             <div className="modal-content">
               {/*Modal header*/}
@@ -114,11 +114,6 @@ function KeyPair() {
                   </ul>
                 </div>
                 <h6>=> Cặp (e, n) gọi là public key, còn cặp (d,n) là private key</h6>
-              </div>
-
-              {/*Modal footer*/}
-              <div className="modal-footer">
-
               </div>
             </div>
           </div>

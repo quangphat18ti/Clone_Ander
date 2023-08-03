@@ -48,6 +48,34 @@ function Sign(){
           <input className="form-control" id="signature" type="text" readOnly={true} value={signature}/>
         </div>
       </form>
+      <button
+          style={{ "minWidth": "5rem",float: 'left'}} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#explainSignModal"
+          onClick={ () => {
+          }}
+      >Cơ sở toán học</button>
+
+      {/*Modal*/}
+      {/*TODO: Translate to English & write again by katex*/}
+      <div className="modal" tabIndex="-1" id="explainSignModal">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            {/*Modal header*/}
+            <div className="modal-header">
+              <h4 className="modal-title">Cơ sở toán học quá trình tạo chữ ký</h4>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {/*Modal body*/}
+            <div className="modal-body">
+              {/*Ref: "Cơ sở lý thuyết số trong an toàn - bảo mật thông tin"
+                - Bùi Doãn Khánh, Nguyễn Đình Thúc, Trần Đan Thư*/}
+              <h4>Thuật toán RSA:</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
