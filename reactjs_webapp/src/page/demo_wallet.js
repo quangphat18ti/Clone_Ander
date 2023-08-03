@@ -1,6 +1,20 @@
 import { useState, useEffect, useRef } from "react"
 let ethers = require("ethers")
 
+async function popupMetamaskToMakeTransaction(from, to, amount) {
+  let provider = new ethers.providers.Web3Provider(window.ethereum)
+  let                           accounts =await  provider.send('eth_requestAccounts', [])
+  let                       signer = provider.getSigner()
+  const transactionParameters = {
+    from, // sender wallet address
+    to,  // receiver address
+    value: ethers.utils.parseEther(amount),
+  }
+
+  let transaction = await signer.sendTransaction(transactionParameters)
+  return transaction
+}
+
 function DemoWallet() {
   let [fromaccount_pubkey, set__fromaccount_pubkey] = useState(localStorage.getItem("walletaccount_pubkey")) 
   let [toaccount_pubkey, set__toaccount_pubkey] = useState()
@@ -89,24 +103,12 @@ function DemoWallet() {
               <button type="submit" class="btn btn-primary" 
                     onClick={async (e) => {
                       if(formTransaction.current.checkValidity() === false) return
-                      // alert(`From: ${fromaccount_pubkey}\nTo: ${toaccount_pubkey}\nAmount: ${amount}`)
-                      
-                      let provider = new ethers.providers.Web3Provider(window.ethereum)
-                      let                           accounts =await  provider.send('eth_requestAccounts', [])
-                      let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
-                      let                       signer = provider.getSigner();
-                      let gasPrice          = await provider.getGasPrice();
-                      const transactionParameters = {
-                        from: fromaccount_pubkey, // sender wallet address
-                        to: toaccount_pubkey,  // receiver address
-                        // nonce: provider.getTransactionCount(fromaccount_pubkey, "latest"),
-                        value: ethers.utils.parseEther(amount),
-                        gasLimit: ethers.utils.hexlify(100000),
-                        gasPrice: ethers.utils.hexlify(parseInt(gasPrice)),
+                      try{
+                        let transaction = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
+                        set__tx(JSON.stringify(transaction))
+                      }catch(e){
+                        alert(e)
                       }
-
-                      let transaction = await signer.sendTransaction(transactionParameters)
-                      set__tx(JSON.stringify(transaction))
                     }}
               >Confirm</button>
             </div>
