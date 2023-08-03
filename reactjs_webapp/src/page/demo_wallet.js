@@ -6,6 +6,34 @@ function DemoWallet() {
   let [toaccount_pubkey, set__toaccount_pubkey] = useState()
   let [amount, set__amount] = useState()
   let [tx, set__tx] = useState('') 
+  let [chainID, set__chainID] = useState()
+  let [network, set__network] = useState()
+
+  // add event listener and initialize chainID
+  useEffect(()=>{
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    // https://eips.ethereum.org/EIPS/eip-1193#events
+
+    const getNetworkChainID = async () => {
+      const network = await provider.getNetwork()
+      set__chainID(network.chainId)
+    }
+    getNetworkChainID()
+
+    provider.provider.on("chainChanged", async (chainId) => {
+      set__chainID(chainId)
+    })
+  }, [])
+
+  // network name from chainID
+  useEffect(()=>{
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    const getNetworkName = async () => {
+      const network = await provider.getNetwork()
+      set__network(network.name.toUpperCase())
+    }
+    getNetworkName()
+  }, [chainID])
 
   useEffect(()=>{
     const handleStorage = () => {
@@ -19,6 +47,7 @@ function DemoWallet() {
 
   return (
     <div className="container mt-5 mx-5">
+      {chainID && <h3>{network} network</h3> }
       <div className="card">
         <h4 className="card-header"> Transaction </h4>
 
