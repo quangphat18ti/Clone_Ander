@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { gen_keypair } from  '../../service/crypto_service'
 import bigInt from 'big-integer'
+//import 'katex/dist/katex.min.css'
 
 function KeyPair() {
   let [privkey, setPrivkey] = useState(0)
@@ -75,7 +76,52 @@ function KeyPair() {
               <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
             </div>
           </div>
+        </div>
+        <button
+            style={{ "minWidth": "5rem",float: 'left', marginTop: '150px'}} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#mathModal"
+            onClick={ () => {
+            }}
+        >Cơ sở toán học</button>
 
+        {/*Modal*/}
+        {/*TODO: Translate to English & write again by katex*/}
+        <div className="modal" tabIndex="-1" id="mathModal">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              {/*Modal header*/}
+              <div className="modal-header">
+                <h4 className="modal-title">Cơ sở toán học của quá trình sinh khóa</h4>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {/*Modal body*/}
+              <div className="modal-body">
+                {/*Ref: "Cơ sở lý thuyết số trong an toàn - bảo mật thông tin"
+                - Bùi Doãn Khánh, Nguyễn Đình Thúc, Trần Đan Thư*/}
+                <h4>Thuật toán RSA:</h4>
+                <>Mấu chốt cơ bản của việc sinh khóa RSA là tìm được bộ 3 số nguyên (e, d, n);<br/></>
+                <>Trong đó n là tích của 2 số nguyên tố lớn khác nhau p,q.<br/> </>
+                {<>(Trên thực tế n được tạo bởi nhiều số nguyên tố khác nhau dựa vào định lý Trung Hoa mở rộng,
+                thay vì chỉ 2 số nguyên tố p, q)<br/></>}
+                <div>
+                  <h6>Cụ thể, quá trình sinh khóa như sau:</h6>
+                  <ul>
+                    <li>Chọn n = pq (Với p,q là 2 số nguyên tố lớn)</li>
+                    <li>Tính <span>&#934;</span>(n) = (p-1)(q-1)</li>
+                    <li>Chọn e sao cho:   1 <span>&#60;</span> e <span>&#60;</span> <span>&#934;</span>(n), GCD(e, <span>&#934;</span>(n)) = 1 </li>
+                    <li>Chọn d sao cho:   d = e<sup>-1</sup> mod <span>&#934;</span>(n), 1 <span>&#60;</span> d <span>&#60;</span> <span>&#934;</span>(n)</li>
+                  </ul>
+                </div>
+                <h6>=> Cặp (e, n) gọi là public key, còn cặp (d,n) là private key</h6>
+              </div>
+
+              {/*Modal footer*/}
+              <div className="modal-footer">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
