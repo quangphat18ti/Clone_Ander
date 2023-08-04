@@ -2,7 +2,7 @@ import React 							from 'react';
 import Block 							from './block';
 import { peer } 					from '../../../data/txsign_blockchain';
 import {useState} 				from 'react'
-import { sha256_hash } 		from '../../../service/crypto_service';
+import { getMessageFromBlock, sha256_hash } 		from '../../../service/crypto_service';
 
 function Blockchain(props){  
 	let [blockchain, setBlockchain] = useState(props.data? props.data : '')
@@ -13,11 +13,7 @@ function Blockchain(props){
 		let length = blockchain_clone[chain_index].length
 		for (let i = block_index + 1; i < length ; i ++) {
 			let block = blockchain_clone[chain_index][i-1]
-			let message = '' + block.blockNum + block.nonce + block.coinbasevalue + block.coinbase
-			message = block.tx.reduce((msg, curr) => 
-				msg += '' + curr.value + curr.from + curr.to + curr.seq + curr.sig
-			, message)
-			message += block.prev
+			let message = getMessageFromBlock(block)
 			let hash_new = sha256_hash(message).toString()
 			blockchain_clone[chain_index][i].prev = hash_new
 		}
@@ -38,7 +34,7 @@ function Blockchain(props){
 								<div className="row row-horizon d-flex flex-nowrap mh-100" style={{overflowY: "scroll"}}>
 									{blockchain.map((block, block_index) => (
 										<div className="col-sm-5" key={block_index}>
-											<Block {...block} chain_index={chain_index} block_index={block_index} updateChain={updateChain}/>
+											<Block {...block} chain_index={chain_index} block_index={block_index} updateChain={updateChain} showCoinbase={props.showCoinbase}/>
 										</div>
 									))}
 									</div>
