@@ -13,6 +13,14 @@ function ConnectWeb3Wallet() {
     window.dispatchEvent(new Event('storage'))
   }, [walletaccount_pubkey])
 
+  // catch change account event
+  useEffect(()=>{
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    provider.provider.on('accountsChanged', (accounts) => {
+      set__walletaccount_pubkey(accounts[0])
+    })
+  }, [])
+
   return (
     <>
       <div className="btn btn-outline-primary  ml-4 mb-2"
@@ -22,16 +30,20 @@ function ConnectWeb3Wallet() {
              alert('Metamask not installed')
              return
            }
-
+      
            //region popup metamask to let user select pubkey/wallet/account
            // gg reactjs etherjs metamask ~tutorial
            // ref https://programmablewealth.com/ethersjs-react-tutorial/
 
            async function connectToMetamask() {
-             let                                            provider = new ethers.providers.Web3Provider(window.ethereum)
-             let                           accounts = await provider.send('eth_requestAccounts', [])
-             let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
-             set__walletaccount_pubkey(a)
+            try {
+              let                                            provider = new ethers.providers.Web3Provider(window.ethereum)
+              let                           accounts = await provider.send('eth_requestAccounts', [])
+              let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
+              set__walletaccount_pubkey(a)
+            } catch (error) {
+              alert(error);
+            }
            } ; connectToMetamask()
            //endregion popup metamask to let user select pubkey/wallet/account
          }}
