@@ -105,6 +105,7 @@ function KeyPair() {
                 {<>(Trên thực tế n được tạo bởi nhiều số nguyên tố khác nhau dựa vào định lý Trung Hoa mở rộng,
                 thay vì chỉ 2 số nguyên tố p, q)<br/></>}
                 <div>
+                  <hr></hr>
                   <h6>Cụ thể, quá trình sinh khóa như sau:</h6>
                   <ul>
                     <li>Chọn n = pq (Với p,q là 2 số nguyên tố lớn)</li>
@@ -114,6 +115,9 @@ function KeyPair() {
                   </ul>
                 </div>
                 <h6>=> Cặp (e, n) gọi là public key, còn cặp (d,n) là private key</h6>
+                <hr></hr>
+                <h4>Thuật toán ECC:</h4>
+
               </div>
             </div>
           </div>
