@@ -23,7 +23,7 @@ function DemoBlockchain() {
           <div className="tab-pane fade            " id="nav-block"                       role="tabpanel" aria-labelledby="nav-block-tab">                        <BlockNavtab showPrev="false"/>   </div>
           <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   <BlockChain/>    </div>
           <div className="tab-pane fade            " id="nav-distributed"                 role="tabpanel" aria-labelledby="nav-distributed-tab">                  TODO distributed </div>
-          <div className="tab-pane fade            " id="nav-token"                       role="tabpanel" aria-labelledby="nav-token-tab">                        <Token data={data}/> </div>
+          <div className="tab-pane fade            " id="nav-token"                       role="tabpanel" aria-labelledby="nav-token-tab">                        <Token data={data} showCoinbase={false}/> </div>
         </div>
       </div>
     </>

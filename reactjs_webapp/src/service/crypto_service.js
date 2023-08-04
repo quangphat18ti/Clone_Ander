@@ -97,11 +97,21 @@ let getPubkeyByPrivkey = (privkey = 0) => {
   }
   return gen_keypair(privkey).pubkey
 }
+
+const getMessageFromBlock = (block) => {
+  let message = '' + block.blockNum + block.nonce + block.coinbasevalue + block.coinbase
+  message = block.tx.reduce((msg, curr) => 
+    msg += '' + curr.value + curr.from + curr.to + (curr.seq === undefined? '' : curr.seq) + (curr.sig === undefined ? '' : curr.sig)
+  , message)
+  message += block.prev
+  return message
+}
+
 module.exports = {
   // demo blockchain
   sha256_hash,
   mine, ZERO_PREFIX, hash_a_block,
 
   // demo tx sign
-  gen_keypair, signMessage, verifyMessage, getPubkeyByPrivkey,
+  gen_keypair, signMessage, verifyMessage, getPubkeyByPrivkey, getMessageFromBlock
 }

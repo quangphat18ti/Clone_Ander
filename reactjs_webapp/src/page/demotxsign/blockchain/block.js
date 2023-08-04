@@ -1,36 +1,21 @@
-import React 													from 'react';
-import {useState, useEffect} 					from 'react'
-import Tx 														from './tx'
-import { sha256_hash, ZERO_PREFIX } 	from '../../../service/crypto_service';
+import React 																									from 'react';
+import {useState, useEffect} 																	from 'react'
+import Tx 																										from './tx'
+import { sha256_hash, ZERO_PREFIX, getMessageFromBlock } 			from '../../../service/crypto_service';
 
 function Block(props){
-  let [blockNum, setBlockNum] = useState(props.blockNum? 				props.blockNum 			: 1  )
-  let [nonce, setNonce]       = useState(props.nonce?    				props.nonce    			: '72608' )
-	let [award, setAward]				= useState(props.coinbasevalue? 	props.coinbasevalue	: null)
-	let [coinbase, setCoinbase] = useState(props.coinbase? 				props.coinbase 			: '')
-	let [tx, setTx]							= useState(props.tx? 			 				props.tx						: [])
-	let [prev, setPrev]         = useState(props.prev?     				props.prev     			: '' )
-  let [hash, setHash]         = useState('0000000000000000000000000000000000000000000000000000000000000000' )
-	let [isMine, setIsMine] 		= useState(1) // 0 is mine, 1 isn't mine
+  let [blockNum, setBlockNum] 								= useState(props.blockNum? 				props.blockNum 			: 1  )
+  let [nonce, setNonce]       								= useState(props.nonce?    				props.nonce    			: '72608' )
+	let [coinbasevalue, setCoinbasevalue]				= useState(props.coinbasevalue? 	props.coinbasevalue	: '')
+	let [coinbase, setCoinbase] 								= useState(props.coinbase? 				props.coinbase 			: '')
+	let [tx, setTx]															= useState(props.tx? 			 				props.tx						: [])
+	let [prev, setPrev]         								= useState(props.prev?     				props.prev     			: '' )
+  let [hash, setHash]         								= useState('0000000000000000000000000000000000000000000000000000000000000000' )
+	let [isMine, setIsMine] 										= useState(1) // 0 is mine, 1 isn't mine
 	
-	let BLOCK = { // global object in Block component
-		blockNum,
-		nonce,
-		coinbasevalue: 	award==null					 	?	'' : award,
-		coinbase,
-		tx,
-		prev
-	}
-	const updateState = (hash) => { setIsMine(hash.startsWith(ZERO_PREFIX) ? 0 : 1)}
+	let BLOCK = { blockNum, nonce, coinbasevalue, coinbase, tx, prev }
 
-	const getMessageFromBlock = (block) => {
-		let message = '' + block.blockNum + block.nonce + block.coinbasevalue + block.coinbase
-		message = tx.reduce((msg, curr) => 
-			msg += '' + curr.value + curr.from + curr.to + (curr.seq === undefined? '' : curr.seq) + (curr.sig === undefined ? '' : curr.sig)
-		, message)
-		message += block.prev
-		return message
-	}
+	const updateState = (hash) => { setIsMine(hash.startsWith(ZERO_PREFIX) ? 0 : 1)}
 
 	const handleTxChange = (index, tx_new)=> {
 		let tx_clone = [...tx]
@@ -57,7 +42,7 @@ function Block(props){
 	useEffect(()=> {
 		setBlockNum					(props.blockNum)
 		setNonce						(props.nonce)
-		setAward						(props.coinbasevalue? 	props.coinbasevalue	: null)
+		setCoinbasevalue						(props.coinbasevalue? 	props.coinbasevalue	: '')
 		setCoinbase					(props.coinbase? 				props.coinbase 			: '')
 		setTx								(props.tx)
 		setPrev							(props.prev)
@@ -69,7 +54,7 @@ function Block(props){
 		let hash_new = sha256_hash(message).toString()
 		setHash(hash_new)
 		updateState(hash_new)
-	}, [blockNum, nonce, award, coinbase, tx, prev])
+	}, [blockNum, nonce, coinbasevalue, coinbase, tx, prev])
 
 	return(
 		<>
@@ -102,14 +87,14 @@ function Block(props){
 						</div>
 						
 						{
-							award != null && 
+							props.showCoinbase && 
 							<div className="form-group row">
 								<label htmlFor="coinbase" className="col-sm-2 col-form-label text-right">Coinbase:</label>
 								<div className="col-sm">
 									<div className="input-group">
 										<span className="input-group-text">$</span>
-										<input type="text" className="form-control" id="coinbasevalue" value={award} onChange= {(e)=> {
-											setAward(e.target.value)
+										<input type="text" className="form-control" id="coinbasevalue" value={coinbasevalue} onChange= {(e)=> {
+											setCoinbasevalue(e.target.value)
 											let block_new = {...BLOCK, coinbasevalue: e.target.value}
 											props.updateChain(props.block_index, props.chain_index, block_new)
 										}}/>
