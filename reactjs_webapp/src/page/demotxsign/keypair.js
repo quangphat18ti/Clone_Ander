@@ -41,11 +41,11 @@ function KeyPair() {
               {/* privkey */}
               <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
               <div className="input-group">
-                <input type="number" className="form-control mb-2" id="privkey"
-                       value={bigInt(privkey, 16).toString() || ''}
+                <input type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" placeholder="0x" className="form-control mb-2" id="privkey"
+                       value={privkey || ''}
                        onChange={ (e) => {
                          // calc new pubkey
-                         let              privkey_new = bigInt(e.target.value).toString(16)  // convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
+                         let privkey_new = (e.target.value === '')? '0' : e.target.value// convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
                          let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
                            0 : gen_keypair(privkey_new).pubkey
 
