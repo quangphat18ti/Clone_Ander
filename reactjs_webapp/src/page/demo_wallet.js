@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import Tx from "./demo_wallet/Tx"
 let ethers = require("ethers")
 
 async function popupMetamaskToMakeTransaction(from, to, amount) {
@@ -15,6 +16,12 @@ async function popupMetamaskToMakeTransaction(from, to, amount) {
   return transaction
 }
 
+async function getTxByHash(hash, confirmBlock = null) {
+  let provider = new ethers.providers.Web3Provider(window.ethereum)
+  let transaction = await provider.waitForTransaction(hash, confirmBlock)
+  return transaction
+}
+
 function DemoWallet() {
   let [fromaccount_pubkey, set__fromaccount_pubkey] = useState(localStorage.getItem("walletaccount_pubkey")) 
   let [toaccount_pubkey, set__toaccount_pubkey] = useState()
@@ -22,6 +29,7 @@ function DemoWallet() {
   let [tx, set__tx] = useState('') 
   let [chainID, set__chainID] = useState()
   let [network, set__network] = useState()
+  let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
 
   // add event listener and initialize chainID
   useEffect(()=>{
@@ -104,23 +112,35 @@ function DemoWallet() {
               <button type="submit" class="btn btn-primary" 
                     onClick={async (e) => {
                       if(formTransaction.current.checkValidity() === false) return
+                      setSpinClass(       'ml-2 spinner-border spinner-border-sm')
                       try{
-                        let transaction = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
-                        set__tx(JSON.stringify(transaction))
+                        let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
+                        let transactionAfterBlock = await getTxByHash(transactionBeforeBlock.hash)
+                        console.log("before: ", transactionBeforeBlock)
+                        console.log("after: ", transactionAfterBlock)
+                        let fullTransaction = {
+                          ...transactionBeforeBlock,
+                          ...transactionAfterBlock
+                        }
+                        console.log("full: ", fullTransaction)
+                        set__tx(fullTransaction)
                       }catch(e){
                         alert(e)
                       }
+                      setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
                     }}
-              >Confirm</button>
+              >Confirm
+                {/* loading spinner */}
+                <div className={spinClass}></div>
+              </button>
             </div>
           </div>
         </form>
       </div>
 
-      {/* Tx detail */}
-      <div>Transaction detail
-        {tx}
-        {console.log(JSON.parse(tx))}
+       {/* Tx detail */}
+      <div>
+         { tx ? <Tx transaction={tx}/> : <></>}
       </div>
     </div>
   )
