@@ -1,0 +1,1 @@
+exports.POLYGONSCAN_API_KEY = 'your_API_Key' // get the api key at: https://docs.polygonscan.com/getting-started/viewing-api-usage-statistics
