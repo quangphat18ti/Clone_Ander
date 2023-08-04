@@ -11,48 +11,48 @@ function Tx(props) {
         {/* Hash */}
         { props.transaction.hash &&
           <div className="row my-3">
-            <div className="col-sm-2">Hash</div>
-            <input className="col-sm-10 no-border" value ={props.transaction.transactionHash.slice(2)} />
+            <div className="col-sm-2 text-right m-auto">Hash</div>
+            <input className="col-sm-10 form-control" value ={props.transaction.transactionHash.slice(2)} />
           </div>
         }
 
         {/* Block Number */}
         { props.transaction.blockNumber &&
           <div className="row my-3">
-            <div className="col-sm-2">Block Number</div>
-            <input className="col-sm-10 no-border" value ={props.transaction.blockNumber} />
+            <div className="col-sm-2 text-right m-auto">Block Number</div>
+            <input className="col-sm-10 form-control" value ={props.transaction.blockNumber} />
           </div>
         }
 
         {/* Block hash */}
         { props.transaction.blockHash &&
           <div className="row my-3">
-            <div className="col-sm-2">Block Hash</div>
-            <input className="col-sm-10 no-border" value ={props.transaction.blockHash} />
+            <div className="col-sm-2 text-right m-auto">Block Hash</div>
+            <input className="col-sm-10 form-control" value ={props.transaction.blockHash} />
           </div>
         }
         
         {/* From */}
         {props.transaction.from && 
           <div className="row my-3">
-            <div className="col-sm-2">From</div>
-            <input className="col-sm-10 no-border" value ={props.transaction.from} />
+            <div className="col-sm-2 text-right m-auto">From</div>
+            <input className="col-sm-10 form-control" value ={props.transaction.from} />
           </div>
         }
 
         {/* To */}
         {props.transaction.to && 
           <div className="row my-3">
-            <div className="col-sm-2">To</div>
-            <input className="col-sm-10" value ={props.transaction.to} />
+            <div className="col-sm-2 text-right m-auto">To</div>
+            <input className="col-sm-10 form-control" value ={props.transaction.to} />
           </div>
         }
 
         {/* Value */}
         {props.transaction.value &&
           <div className="row my-3">
-            <div className="col-sm-2">Value (ETH)</div>
-            <input className="col-sm-10" value ={ethers.utils.formatEther(props.transaction.value)} />
+            <div className="col-sm-2 text-right m-auto">Value (ETH)</div>
+            <input className="col-sm-10 form-control" value ={ethers.utils.formatEther(props.transaction.value)} />
           </div>
         }
       </div>
