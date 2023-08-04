@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import Tx from "./demo_wallet/Tx"
+import Block from "./demo_wallet/Block"
 let ethers = require("ethers")
 
 async function popupMetamaskToMakeTransaction(from, to, amount) {
@@ -24,8 +25,8 @@ async function getTxByHash(hash, confirmBlock = null) {
 
 function DemoWallet() {
   let [fromaccount_pubkey, set__fromaccount_pubkey] = useState(localStorage.getItem("walletaccount_pubkey")) 
-  let [toaccount_pubkey, set__toaccount_pubkey] = useState()
-  let [amount, set__amount] = useState()
+  let [toaccount_pubkey, set__toaccount_pubkey] = useState('0x6f46693c8b9A18E80d36a6DCD47F83E871e665b8')
+  let [amount, set__amount] = useState('0.00001')
   let [tx, set__tx] = useState('') 
   let [chainID, set__chainID] = useState()
   let [network, set__network] = useState()
@@ -116,13 +117,13 @@ function DemoWallet() {
                       try{
                         let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
                         let transactionAfterBlock = await getTxByHash(transactionBeforeBlock.hash)
-                        console.log("before: ", transactionBeforeBlock)
-                        console.log("after: ", transactionAfterBlock)
+                        // console.log("before: ", transactionBeforeBlock)
+                        // console.log("after: ", transactionAfterBlock)
                         let fullTransaction = {
                           ...transactionBeforeBlock,
                           ...transactionAfterBlock
                         }
-                        console.log("full: ", fullTransaction)
+                        // console.log("full: ", fullTransaction)
                         set__tx(fullTransaction)
                       }catch(e){
                         alert(e)
@@ -141,6 +142,9 @@ function DemoWallet() {
        {/* Tx detail */}
       <div>
          { tx ? <Tx transaction={tx}/> : <></>}
+      </div>
+      <div>
+        {tx ? <Block blockNumber={tx.blockNumber}/> : <>  </>}
       </div>
     </div>
   )

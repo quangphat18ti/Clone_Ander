@@ -12,7 +12,6 @@ function BlockSepolia() {
       let bno = await getNewestBlockHexNumber()
       let b   = await getBlockInfoByBlockHexNumber(bno)
       set_blockObj(b)
-      console.log(b)
     }; get_latest_blocknum()  //NOTE must wrap code in an inner function to run w/ async; dont use useEffect( https://devtrium.com/posts/async-functions-useeffectasync()=>{} )  ref.
   }, [])
 
