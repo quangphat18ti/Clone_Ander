@@ -1,9 +1,10 @@
 import KeyPair from "./demotxsign/keypair"
-import Math from "./demotxsign/math"
 import Signature from "./demotxsign/signature/signature"
 import Transaction from "./demotxsign/transaction/transaction"
 import {Blockchain} from "./demotxsign/blockchain/blockchain"
 import {data} from "../data/txsign_blockchain"
+import Math from "./demotxsign/math"
+import ECDSA from "./demotxsign/ECDSA"
 
 function DemoTxSign() {
   return (
@@ -16,6 +17,7 @@ function DemoTxSign() {
             <button className="nav-link       " id="nav-transaction-tab"            data-toggle="tab" data-target="#nav-transaction"            type="button" role="tab" aria-controls="nav-transaction"              aria-selected="false">Transaction</button>
             <button className="nav-link       " id="nav-blockchain--demotxsign-tab" data-toggle="tab" data-target="#nav-blockchain--demotxsign" type="button" role="tab" aria-controls="nav-blockchain--demotxsign"   aria-selected="false">Blockchain</button>
             <button className="nav-link       " id="nav-math-tab"                   data-toggle="tab" data-target="#nav-math"                   type="button" role="tab" aria-controls="nav-math"                     aria-selected="false">Math</button>
+            <button className="nav-link       " id="nav-ecds-tab"                   data-toggle="tab" data-target="#nav-ecds"                   type="button" role="tab" aria-controls="nav-ecds"                     aria-selected="false">ECDS Scheme</button>
           </div>
         </nav>
 
@@ -25,6 +27,7 @@ function DemoTxSign() {
           <div className="tab-pane fade            " id="nav-transaction"             role="tabpanel" aria-labelledby="nav-transaction-tab">             <Transaction />   </div>
           <div className="tab-pane fade            " id="nav-blockchain--demotxsign"  role="tabpanel" aria-labelledby="nav-blockchain--demotxsign-tab">  <Blockchain data={data}/>  </div>
           <div className="tab-pane fade            " id="nav-math"                    role="tabpanel" aria-labelledby="nav-math-tab">                    <Math/>  </div>
+          <div className="tab-pane fade            " id="nav-ecds"                    role="tabpanel" aria-labelledby="nav-ecds-tab">                    <ECDSA/>  </div>        
         </div>
       </div>
     </>
