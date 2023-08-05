@@ -13,6 +13,13 @@ function ECDSA() {
                             </div>
                         </div>
                         
+                        <div className="row justify-content-center">
+                            <div class="col col-sm-6 border">
+                                A trusted party chooses a finite field F<sub>p</sub>, an elliptic curve E/F<sub>p</sub>,<br/>
+                                and a point G ∈ E(F<sub>p</sub>) of large prime order q.
+                            </div>
+                        </div>
+
                         <div class="row justify-content-center">
                             <div class="col col-sm-3 border">
                                 <strong className="text">Alice</strong>
