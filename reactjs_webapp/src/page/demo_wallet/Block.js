@@ -50,7 +50,7 @@ function Block (props) {
             <div className="form-group row">
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Tx</strong></label>
 
-              <div className="col-sm-10">
+              <div className="col-sm-10 overflow-auto" style={{maxHeight: "12em"}}>
                 {
                   blockObj.transactions.map( (tx, i) => {
                     return <TxInfo from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} key={tx.hash} />
