@@ -48,46 +48,6 @@ function Sign(){
           <input className="form-control" id="signature" type="text" readOnly={true} value={signature}/>
         </div>
       </form>
-      <button
-          style={{ "minWidth": "5rem",float: 'left'}} type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#explainSignModal"
-          onClick={ () => {
-          }}
-      >Cơ sở toán học</button>
-
-      {/*Modal*/}
-      {/*TODO: Translate to English & write again by katex*/}
-      <div className="modal" tabIndex="-1" id="explainSignModal">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            {/*Modal header*/}
-            <div className="modal-header">
-              <h4 className="modal-title">Cơ sở toán học quá trình tạo chữ ký</h4>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            {/*Modal body*/}
-            <div className="modal-body">
-              {/*Ref: "Cơ sở lý thuyết số trong an toàn - bảo mật thông tin"
-                - Bùi Doãn Khánh, Nguyễn Đình Thúc, Trần Đan Thư*/}
-              <h4>Thuật toán RSA:</h4>
-            <>Dùng một đơn ánh f: [0, n-1] -> [0, n-1]<br/></>
-              <>Với đơn ánh f, private key (d, n) và nguyên bản m<span> ∈ </span>[0, n-1]<br/></>
-              <hr></hr>
-              <>Để Alice gửi cho Bob, Alice tính 2 số nguyên:<br/></>
-              <></>
-              <ul>
-                <li>M = f(m)</li>
-                <li>s = M<sup>d</sup> mod n</li>
-              </ul>
-              <h5>=> s là chữ ký RSA của nguyên bản m</h5>
-             <strong><em>Sau đó Alice gửi s cho Bob</em></strong>
-              <hr></hr>
-              <h4>Thuật toán ECC:</h4>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   )
 }
