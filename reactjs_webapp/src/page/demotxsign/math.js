@@ -24,8 +24,8 @@ function Math() {
                             <li>Perform the "dot function" at iteration 2: draw the line AC, which intersects the EC at point D', then take D as the reflection of D' across the x-axis (similarly, D will still lie on the EC).</li>
                             <li>...</li>
                             <li>Perform the "dot function" at iteration n: obtain some point Zn.</li>
-                            <li>(A, Zn) correspond to the public key and the number of iterations n corresponds to the private key</li>
                         </ul>
+                        <em>=> (A, Zn) correspond to the public key and the number of iterations n corresponds to the private key</em>
                         <h5>Signature:</h5>
                         <h5>Validation:</h5>
 
@@ -33,38 +33,37 @@ function Math() {
                         {/*Ref: "Cơ sở lý thuyết số trong an toàn - bảo mật thông tin"
                         - Bùi Doãn Khánh, Nguyễn Đình Thúc, Trần Đan Thư*/}
                         <h2>RSA (Rivest–Shamir–Adleman):</h2>
-                        <>Mấu chốt cơ bản của việc sinh khóa RSA là tìm được bộ 3 số nguyên (e, d, n);<br/></>
-                        <>Trong đó n là tích của 2 số nguyên tố lớn khác nhau p,q.<br/> </>
-                        {<>(Trên thực tế n được tạo bởi nhiều số nguyên tố khác nhau dựa vào định lý Trung Hoa mở rộng,
-                            thay vì chỉ 2 số nguyên tố p, q)<br/></>}
+                        <>The fundamental key of RSA encryption is to find a set of three integers (e, d, n).<br/></>
+                        <>Where n is the product of two large prime numbers, p and q.<br/></>
+                        <>(In practice, n is generated from multiple distinct prime numbers based on the Chinese Remainder Theorem, instead of just two prime numbers p and q)<br/></>
 
-                        <h5>Quá trình sinh khóa:</h5>
+                        <h5>Key pair generation:</h5>
                         <ul>
-                            <li>Chọn n = pq (Với p,q là 2 số nguyên tố lớn)</li>
-                            <li>Tính <span>&#934;</span>(n) = (p-1)(q-1)</li>
-                            <li>Chọn e sao cho:   1 <span>&#60;</span> e <span>&#60;</span> <span>&#934;</span>(n), GCD(e, <span>&#934;</span>(n)) = 1 </li>
-                            <li>Chọn d sao cho:   d = e<sup>-1</sup> mod <span>&#934;</span>(n), 1 <span>&#60;</span> d <span>&#60;</span> <span>&#934;</span>(n)</li>
+                            <li>Choose two large prime numbers, p and q</li>
+                            <li>Compute n = pq.</li>
+                            <li>Calculate <span>&#934;</span>(n) = (p-1)(q-1)</li>
+                            <li>Choose e:   1 <span>&#60;</span> e <span>&#60;</span> <span>&#934;</span>(n), GCD(e, <span>&#934;</span>(n)) = 1 </li>
+                            <li>Choose d:   d = e<sup>-1</sup> mod <span>&#934;</span>(n), 1 <span>&#60;</span> d <span>&#60;</span> <span>&#934;</span>(n)</li>
                         </ul>
-                        <em>=> Cặp (e, n) gọi là public key, còn cặp (d,n) là private key</em>
+                        <em>=> The public key is (e, n), and the private key is (d, n).</em>
 
-                        <h5>Quá trình tạo chữ ký:</h5>
-                        <>Dùng một đơn ánh f: [0, n-1] -> [0, n-1]<br/></>
-                        <>Với đơn ánh f, private key (d, n) và nguyên bản m<span> ∈ </span>[0, n-1]<br/></>
-                        <>Để Alice gửi cho Bob, Alice tính 2 số nguyên:<br/></>
-                        <></>
+                        <h5>Signature:</h5>
+                        Using a one-to-one function f: [0, n-1] -> [0, n-1].<br/>
+                        With the one-to-one function f, the private key (d, n), and the plaintext m ∈ [0, n-1].<br/>
+                        To send a message from Alice to Bob, Alice calculates two integers:<br/>
                         <ul>
                             <li>M = f(m)</li>
                             <li>s = M<sup>d</sup> mod n</li>
                         </ul>
-                        <em>=> s là chữ ký RSA của nguyên bản m<br/></em>
-                        <em>Sau đó Alice gửi s cho Bob</em>
+                        <em>=> s is the RSA signature of the plaintext m.<br/></em>
+                        <em>Then, Alice sends s to Bob.</em>
 
-                        <h5>Quá trình xác thực:</h5>
-                        <>Với đơn ánh f, public key (e, n) và chữ ký s, Bob tính:</>
+                        <h5>Validation:</h5>
+                        <>With the one-to-one function f, the public key (e, n), and the signature s, Bob calculates:</>
                         <ul>
                             <li>M<sup>*</sup> = s<sup>e</sup> mod n</li>
                         </ul>
-                        <em>Nếu M<sup>*</sup> <span>&#8713;</span> f([0, n-1]) loại bỏ chữ ký s</em>
+                        <em>If M<sup>*</sup> <span>&#8713;</span> f([0, n-1]), then the signature s is considered invalid and should be discarded.</em>
                     </div>
                 </div>
             </div>
