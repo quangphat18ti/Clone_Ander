@@ -1,5 +1,8 @@
+import React from "react"
+//
 import BlockMock from "./block_mock"
 import BlockMumbai from "./block_mumbai";
+import BlockSepolia from "./block_sepolia"
 
 function BlockNavtab() {
   return (
@@ -13,7 +16,7 @@ function BlockNavtab() {
 
         <div className="tab-content" id="pills-tabContent">
           <div className="tab-pane fade show active" id="pills-blockmock"    role="tabpanel" aria-labelledby="pills-blockmock-tab"    > <BlockMock/> </div>
-          <div className="tab-pane fade            " id="pills-blocksepolia" role="tabpanel" aria-labelledby="pills-blocksepolia-tab" >TODO blocksepolia</div>
+          <div className="tab-pane fade            " id="pills-blocksepolia" role="tabpanel" aria-labelledby="pills-blocksepolia-tab" > <BlockSepolia/> </div>
           <div className="tab-pane fade            " id="pills-blockmumbai" role="tabpanel" aria-labelledby="pills-blockmumbai-tab" > <BlockMumbai/> </div>
         </div>
       </div>

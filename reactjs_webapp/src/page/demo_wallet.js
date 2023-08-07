@@ -1,13 +1,36 @@
 import { useState, useEffect, useRef } from "react"
+import Tx from "./demo_wallet/Tx"
+import Block from "./demo_wallet/Block"
 let ethers = require("ethers")
+
+async function popupMetamaskToMakeTransaction(from, to, amount) {
+  let provider = new ethers.providers.Web3Provider(window.ethereum)
+  let                           accounts =await  provider.send('eth_requestAccounts', [])
+  let                       signer = provider.getSigner()
+  const transactionParameters = {
+    from, // sender wallet address
+    to,  // receiver address
+    value: ethers.utils.parseEther(amount),
+  }
+
+  let transaction = await signer.sendTransaction(transactionParameters)
+  return transaction
+}
+
+async function getTxByHash(hash, confirmBlock = null) {
+  let provider = new ethers.providers.Web3Provider(window.ethereum)
+  let transaction = await provider.waitForTransaction(hash, confirmBlock)
+  return transaction
+}
 
 function DemoWallet() {
   let [fromaccount_pubkey, set__fromaccount_pubkey] = useState(localStorage.getItem("walletaccount_pubkey")) 
-  let [toaccount_pubkey, set__toaccount_pubkey] = useState()
-  let [amount, set__amount] = useState()
+  let [toaccount_pubkey, set__toaccount_pubkey] = useState('0x6f46693c8b9A18E80d36a6DCD47F83E871e665b8')
+  let [amount, set__amount] = useState('0.00001')
   let [tx, set__tx] = useState('') 
   let [chainID, set__chainID] = useState()
   let [network, set__network] = useState()
+  let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
 
   // add event listener and initialize chainID
   useEffect(()=>{
@@ -56,7 +79,7 @@ function DemoWallet() {
           <div class="form-group row">
             <label for="from-address" class="col-sm-1 col-form-label">From</label>
             <div class="col-sm-11">
-              <input type="text" class="form-control" id="from-address" placeholder="Enter From Wallet PubKey StartWith 0x" value={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
+              <input type="text" class="form-control" id="from-address" placeholder="Login to Metamask Wallet" disabled value={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
                     required
                     onChange={(e) => set__fromaccount_pubkey(e.target.value)}
               />
@@ -84,38 +107,44 @@ function DemoWallet() {
               />
             </div>
           </div>
+          {/* Submit button */}
           <div class="form-group row">
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary" 
                     onClick={async (e) => {
                       if(formTransaction.current.checkValidity() === false) return
-                      // alert(`From: ${fromaccount_pubkey}\nTo: ${toaccount_pubkey}\nAmount: ${amount}`)
-                      
-                      let provider = new ethers.providers.Web3Provider(window.ethereum)
-                      let                           accounts =await  provider.send('eth_requestAccounts', [])
-                      let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
-                      let                       signer = provider.getSigner();
-                      let gasPrice          = await provider.getGasPrice();
-                      const transactionParameters = {
-                        from: fromaccount_pubkey, // sender wallet address
-                        to: toaccount_pubkey,  // receiver address
-                        // nonce: provider.getTransactionCount(fromaccount_pubkey, "latest"),
-                        value: ethers.utils.parseEther(amount),
-                        gasLimit: ethers.utils.hexlify(100000),
-                        gasPrice: ethers.utils.hexlify(parseInt(gasPrice)),
+                      setSpinClass(       'ml-2 spinner-border spinner-border-sm')
+                      try{
+                        let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
+                        let transactionAfterBlock = await getTxByHash(transactionBeforeBlock.hash)
+                        // console.log("before: ", transactionBeforeBlock)
+                        // console.log("after: ", transactionAfterBlock)
+                        let fullTransaction = {
+                          ...transactionBeforeBlock,
+                          ...transactionAfterBlock
+                        }
+                        // console.log("full: ", fullTransaction)
+                        set__tx(fullTransaction)
+                      }catch(e){
+                        alert(e)
                       }
-
-                      let transaction = await signer.sendTransaction(transactionParameters)
-                      set__tx(JSON.stringify(transaction))
+                      setSpinClass('d-none ml-2 spinner-border spinner-border-sm')
                     }}
-              >Confirm</button>
+              >Confirm
+                {/* loading spinner */}
+                <div className={spinClass}></div>
+              </button>
             </div>
           </div>
-
         </form>
       </div>
-      <div>Transaction detail
-        {tx}
+
+       {/* Tx detail */}
+      <div>
+         { tx ? <Tx transaction={tx}/> : <></>}
+      </div>
+      <div>
+        {tx ? <Block blockNumber={tx.blockNumber}/> : <>  </>}
       </div>
     </div>
   )
