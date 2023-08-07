@@ -75,7 +75,6 @@ function KeyPair() {
               <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
             </div>
           </div>
-
         </div>
       </div>
     </>
