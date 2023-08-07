@@ -33,3 +33,14 @@ tx sign demo    https://andersbrownworth.com/blockchain/public-private-keys/keys
     how to map vanilla js lib to nodejs/reactjs package name https://stackoverflow.com/q/76696833/248616
 
 team task plan https://docs.google.com/document/d/1KVw_VVOVDYCEudaNqB0_JPc4J8BVuOONqNvgaW1MoHw/edit?usp=sharing
+
+
+## block explorer aka block scan
+api doc ref:
+https://docs.etherscan.io/getting-started/endpoint-urls
+https://docs.polygonscan.com/getting-started/endpoint-urls
+
+| Network | URL                                   | Documentation                                      | Faucet                             |
+|---------|---------------------------------------|----------------------------------------------------|------------------------------------|
+| Sepolia | https://api-sepolia.etherscan.io/     | https://docs.etherscan.io/v/sepolia-etherscan/     | https://sepoliafaucet.com/         |
+| Mumbai  | https://api-testnet.polygonscan.com/  | https://docs.polygonscan.com/v/mumbai-polygonscan/ | https://faucet.polygon.technology/ |
