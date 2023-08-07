@@ -37,7 +37,15 @@ function BlockInChain(props) {
     updateState(hash_new)
   }, [blockNum, nonce, data, prev])
 
-  const mine = (block) => {
+  let css_spinner = 'ml-2 spinner-border spinner-border-sm'
+  let [spinClass, setSpinClass] = useState(`d-none ${css_spinner}}`)
+
+  const mine = async (block, slowDown=true) => {
+    if (slowDown) {
+      const sleep = ms => new Promise(r => setTimeout(r, ms))  // sleep() in js ref. https://stackoverflow.com/a/39914235/248616
+      await sleep(66)  // onpurpose we want slowdown to see the spinner; otherwise it's too fast to see the spinner
+    }
+
     const DIFFICULTY = 4
     const maxmem = 8 * Math.pow(16, DIFFICULTY)
     for (let nonce = 1 ; nonce < maxmem ; nonce ++) {
@@ -135,17 +143,18 @@ function BlockInChain(props) {
             <div className="col-sm-2"></div>
 
             {/* mine btn */}
-            <div className="form-group row">
-              <div className="col-sm-2">
-                <i className="icon-spinner icon-spin icon-large"></i>
-              </div>
-              <div className="col-sm-10">
-                <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button" onClick= {() => {
-                  mine(block)
-                }}>
-                  <span className="ladda-label">Mine</span>
-                </button>
-              </div>
+            <div className="col-sm-10">
+              <button id="blockMineButton" className="btn btn-primary" data-style="expand-right" type="button"
+                onClick= {
+                  async(e) => {
+                  setSpinClass(css_spinner)
+                  await mine(block)
+                  setSpinClass(`d-none ${css_spinner}`)
+                }}
+              >
+              <span className="ladda-label">Mine</span>
+              <div className={spinClass}></div>
+              </button>
             </div>
           </div>
 
