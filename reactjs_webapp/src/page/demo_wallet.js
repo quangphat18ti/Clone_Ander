@@ -28,6 +28,7 @@ function DemoWallet() {
   let [toaccount_pubkey, set__toaccount_pubkey] = useState('0x6f46693c8b9A18E80d36a6DCD47F83E871e665b8')
   let [amount, set__amount] = useState('0.00001')
   let [tx, set__tx] = useState('') 
+  let [blockNo, set__blockNo] = useState()
   let [chainID, set__chainID] = useState()
   let [network, set__network] = useState()
   let [spinClass, setSpinClass] = useState('d-none ml-2 spinner-border spinner-border-sm')
@@ -125,6 +126,7 @@ function DemoWallet() {
                         }
                         // console.log("full: ", fullTransaction)
                         set__tx(fullTransaction)
+                        set__blockNo(fullTransaction.blockNumber)
                       }catch(e){
                         alert(e)
                       }
@@ -144,7 +146,7 @@ function DemoWallet() {
          { tx ? <Tx transaction={tx}/> : <></>}
       </div>
       <div>
-        {tx ? <Block blockNumber={tx.blockNumber}/> : <>  </>}
+        {tx ? <Block blockNumber={blockNo} key={blockNo}/> : <>  </>}
       </div>
     </div>
   )

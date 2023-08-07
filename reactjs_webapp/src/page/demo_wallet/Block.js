@@ -5,17 +5,16 @@ let ethers = require("ethers")
 const hexToDecimal = hex => parseInt(hex, 16)
 
 function Block (props) {
-  let [blockNumber, set__blockNumber] = useState(props.blockNumber)
   let [blockObj, set__blockObj] = useState()
   useEffect(() => {
     const getBlockInfo = async() => {
       let provider = new ethers.providers.Web3Provider(window.ethereum)
-      let b = await provider.getBlockWithTransactions(blockNumber)
+      let b = await provider.getBlockWithTransactions(props.blockNumber)
       console.log("block object = ", b);
       set__blockObj(b)
     } 
     getBlockInfo()
-  },[blockNumber])
+  },[])
 
   return (
     <>
