@@ -1,5 +1,5 @@
-import SignTx from "./signtx"
-import VerifyTx from "./verifytx";
+import SignTx       from "./signtx"
+import VerifyTx     from "./verifytx"
 function Transaction() {
   
   return(
@@ -28,4 +28,4 @@ function Transaction() {
   )
 }
 
-export default Transaction;
+export default Transaction

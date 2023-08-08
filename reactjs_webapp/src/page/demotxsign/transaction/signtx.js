@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react"
-import bigInt from "big-integer"
-import { signMessage, getPubkeyByPrivkey } from '../../../service/crypto_service'
+import { useState, useEffect }                from "react"
+import { signMessage, getPubkeyByPrivkey }    from '../../../service/crypto_service'
 
 function SignTx() {
   let [amount, setAmount]         = useState('20.00')
@@ -88,4 +87,4 @@ function SignTx() {
   )
 }
 
-export default SignTx;
+export default SignTx

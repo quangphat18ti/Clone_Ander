@@ -1,8 +1,7 @@
-import React from "react"
-//
-import BlockMock from "./block_mock"
-import BlockMumbai from "./block_mumbai";
-import BlockSepolia from "./block_sepolia"
+import React          from "react"
+import BlockMock      from "./block_mock"
+import BlockMumbai    from "./block_mumbai"
+import BlockSepolia   from "./block_sepolia"
 
 function BlockNavtab() {
   return (

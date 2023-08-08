@@ -1,8 +1,8 @@
-import Hash from "./demoblockchain/hash"
-import BlockNavtab from "./demoblockchain/block/_block_navtab"
-import BlockChain from "./demoblockchain/blockchain/blockchain"
-import Distributed from "./demoblockchain/distributed"
-import Token from "./demoblockchain/token"
+import Hash           from "./demoblockchain/hash"
+import BlockNavtab    from "./demoblockchain/block/_block_navtab"
+import BlockChain     from "./demoblockchain/blockchain/blockchain"
+import Distributed    from "./demoblockchain/distributed"
+import Token          from "./demoblockchain/token"
 
 function DemoBlockchain() {
   return (

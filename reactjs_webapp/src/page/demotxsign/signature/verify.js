@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-import { verifyMessage } from '../../../service/crypto_service'
+import {useState, useEffect}    from 'react'
+import { verifyMessage }        from '../../../service/crypto_service'
 
 function Verify() {
   let [message, setMessage]         = useState('')
@@ -50,4 +50,4 @@ function Verify() {
   )
 }
 
-export default Verify;
+export default Verify

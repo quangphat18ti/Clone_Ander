@@ -1,5 +1,4 @@
 import { useState, useEffect }  from "react"
-import bigInt                   from "big-integer"
 import { verifyMessage }        from '../../../service/crypto_service'
 
 function VerifyTx() {
@@ -59,4 +58,4 @@ function VerifyTx() {
   )
 }
 
-export default VerifyTx;
+export default VerifyTx

@@ -1,9 +1,8 @@
-import KeyPair from "./demotxsign/keypair"
-import Signature from "./demotxsign/signature/signature"
-import Transaction from "./demotxsign/transaction/transaction"
-import Blockchain from "./demotxsign/blockchain/blockchain"
-import Math from "./demotxsign/math"
-import ECDSA from "./demotxsign/ECDSA"
+import KeyPair      from "./demotxsign/keypair"
+import Signature    from "./demotxsign/signature/signature"
+import Transaction  from "./demotxsign/transaction/transaction"
+import Blockchain   from "./demotxsign/blockchain/blockchain"
+import ECDSA        from "./demotxsign/ECDSA"
 
 function DemoTxSign() {
   return (

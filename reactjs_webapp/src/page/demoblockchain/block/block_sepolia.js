@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react"
-import {getBlockInfoByBlockHexNumber, getNewestBlockHexNumber} from "../../../service/etherscan_service/_"
-import Tx from "./Tx"
+import {useEffect, useState}                                    from "react"
+import {getBlockInfoByBlockHexNumber, getNewestBlockHexNumber}  from "../../../service/etherscan_service/_"
+import Tx                                                       from "./Tx"
 
 const hexToDecimal = hex => parseInt(hex, 16)
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import TxInfo from './../demoblockchain/block/Tx'
+import { useState, useEffect }  from 'react'
+import TxInfo                   from './../demoblockchain/block/Tx'
 const ethers = require("ethers")
 
 const hexToDecimal = hex => parseInt(hex, 16)

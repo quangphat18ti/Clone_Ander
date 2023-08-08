@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react'
-import { signMessage, getPubkeyByPrivkey } from '../../../service/crypto_service'
-import bigInt from 'big-integer'
+import {useState, useEffect}                from 'react'
+import { signMessage, getPubkeyByPrivkey }  from '../../../service/crypto_service'
 
 function Sign(){
   let [message, setMessage]     = useState('')

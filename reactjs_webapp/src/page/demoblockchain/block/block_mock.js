@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import {mine, hash_a_block, ZERO_PREFIX} from "../../../service/crypto_service"
+import { useState, useEffect }            from "react"
+import {mine, hash_a_block, ZERO_PREFIX}  from "../../../service/crypto_service"
 
 function BlockMock(props) {
   let [prev, setPrev]         = useState(props.prev?     props.prev     : '' )

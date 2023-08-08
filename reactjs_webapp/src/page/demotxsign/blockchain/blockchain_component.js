@@ -1,7 +1,7 @@
-import React 							from 'react';
-import Block 							from './block_component';
-import {useState} 				from 'react'
-import { getMessageFromBlock, sha256_hash } 		from '../../../service/crypto_service';
+import React 																		from 'react'
+import Block 																		from './block_component'
+import {useState} 															from 'react'
+import { getMessageFromBlock, sha256_hash } 		from '../../../service/crypto_service'
 
 function Blockchain(props){  
 	let [blockchain, setBlockchain] = useState(props.data? props.data : '')

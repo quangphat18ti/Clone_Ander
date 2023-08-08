@@ -1,5 +1,5 @@
-import Sign from "./sign"
-import Verify from "./verify"
+import Sign     from "./sign"
+import Verify   from "./verify"
 
 function Signature() {
   return(

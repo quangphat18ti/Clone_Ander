@@ -1,5 +1,5 @@
-import React 							from 'react';
-import {Blockchain as BlockchainComponent} from './blockchain_component';
+import React 							from 'react'
+import {Blockchain as BlockchainComponent} from './blockchain_component'
 import {data} from '../../../data/txsign_blockchain'
 
 function Blockchain(){  

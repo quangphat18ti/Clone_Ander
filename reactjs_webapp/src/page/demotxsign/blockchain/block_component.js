@@ -1,16 +1,16 @@
-import React 																									from 'react';
+import React 																									from 'react'
 import {useState, useEffect} 																	from 'react'
 import Tx 																										from './tx_component'
-import { sha256_hash, ZERO_PREFIX, getMessageFromBlock } 			from '../../../service/crypto_service';
+import { sha256_hash, ZERO_PREFIX, getMessageFromBlock } 			from '../../../service/crypto_service'
 
 function Block(props){
   let [blockNum, setBlockNum] 								= useState(props.blockNum? 				props.blockNum 			: 1  )
-  let [nonce, setNonce]       								= useState(props.nonce?    				props.nonce    			: '72608' )
+  let [nonce, setNonce]       								= useState(props.nonce?    				props.nonce    			: '' )
 	let [coinbasevalue, setCoinbasevalue]				= useState(props.coinbasevalue? 	props.coinbasevalue	: '')
 	let [coinbase, setCoinbase] 								= useState(props.coinbase? 				props.coinbase 			: '')
 	let [tx, setTx]															= useState(props.tx? 			 				props.tx						: [])
 	let [prev, setPrev]         								= useState(props.prev?     				props.prev     			: '' )
-  let [hash, setHash]         								= useState('0000000000000000000000000000000000000000000000000000000000000000' )
+  let [hash, setHash]         								= useState('' )
 	let [isMine, setIsMine] 										= useState(1) // 0 is mine, 1 isn't mine
 	
 	let BLOCK = { blockNum, nonce, coinbasevalue, coinbase, tx, prev }
@@ -48,7 +48,7 @@ function Block(props){
 	useEffect(()=> {
 		setBlockNum					(props.blockNum)
 		setNonce						(props.nonce)
-		setCoinbasevalue						(props.coinbasevalue? 	props.coinbasevalue	: '')
+		setCoinbasevalue		(props.coinbasevalue? 	props.coinbasevalue	: '')
 		setCoinbase					(props.coinbase? 				props.coinbase 			: '')
 		setTx								(props.tx)
 		setPrev							(props.prev)
