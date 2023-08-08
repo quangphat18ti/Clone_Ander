@@ -99,7 +99,7 @@ let getPubkeyByPrivkey = (privkey = 0) => {
 }
 
 const getMessageFromBlock = (block) => {
-  let message = '' + block.blockNum + block.nonce + block.coinbasevalue + block.coinbase
+  let message = '' + block.blockNum + block.nonce + (block.coinbasevalue === undefined? '' : block.coinbasevalue) + (block.coinbase === undefined? '' : block.coinbase)
   message = block.tx.reduce((msg, curr) => 
     msg += '' + curr.value + curr.from + curr.to + (curr.seq === undefined? '' : curr.seq) + (curr.sig === undefined ? '' : curr.sig)
   , message)
