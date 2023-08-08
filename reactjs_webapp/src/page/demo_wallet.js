@@ -76,7 +76,7 @@ function DemoWallet() {
           <div className="form-group row">
             <label htmlFor="from-address" className="col-sm-1 col-form-label"><strong>From</strong></label>
             <div className="col-sm-11">
-              <input type="text" className="form-control" id="from-address" placeholder="Login to Metamask Wallet" value={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
+              <input type="text" className="form-control" id="from-address" placeholder="Login to Metamask Wallet" defaultvvalue={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
                     required
                     // onChange={(e) => set__fromaccount_pubkey(e.target.value)}
               />

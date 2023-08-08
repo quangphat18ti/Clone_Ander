@@ -56,7 +56,7 @@ function BlockMock(props) {
             <div className="form-group row">
               <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
               <div className="col-sm-10">
-                <input type="text" className="form-control" id="prev" disabled value={prev} />
+                <input type="text" className="form-control" id="prev" readOnly={true} value={prev} />
               </div>
             </div>
           }
@@ -105,7 +105,7 @@ function BlockMock(props) {
           <div className="form-group row">
             <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash</strong></label>
             <div className="col-sm-10">
-            <input type="text" className="form-control" id="hash" disabled value={hash} />
+            <input type="text" className="form-control" id="hash" readOnly={true} value={hash} />
             </div>
           </div>
 

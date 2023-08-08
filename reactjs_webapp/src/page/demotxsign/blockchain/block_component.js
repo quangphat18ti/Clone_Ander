@@ -130,18 +130,14 @@ function Block(props){
 						<div className="form-group row">
 							<label htmlFor="prev" className="col-sm-2 col-form-label text-right">Prev:</label>
 							<div className="col-sm-10">
-								<input type="text" className="form-control" id="prev" value={prev} onChange= {(e) => {
-									setPrev(e.target.value)
-									let block_new = {...BLOCK, prev: e.target.value}
-									props.updateChain(props.block_index, props.chain_index, block_new)
-								}}/>
+								<input type="text" className="form-control" id="prev" value={prev} readOnly={true}/>
 							</div>
 						</div>
 
 						<div className="form-group row">
 							<label htmlFor="hash" className="col-sm-2 col-form-label text-right">Hash:</label>
 							<div className="col-sm-10">
-								<input type="text" className="form-control" id="hash" disabled value={hash}/>
+								<input type="text" className="form-control" id="hash" readOnly={true} value={hash}/>
 							</div>
 						</div>
 

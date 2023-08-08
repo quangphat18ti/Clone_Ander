@@ -12,7 +12,7 @@ function Blockchain(){
 					</div>
 					{
 						data.map((blockchain, chain_index) => 
-							<BlockchainComponent data={blockchain} showCoinbase={true}/>
+							<BlockchainComponent data={blockchain} showCoinbase={true} key={chain_index}/>
 						)
 					}
 				</div>

@@ -30,8 +30,8 @@ function Blockchain(props) {
       <div className="row row-horizon d-flex flex-nowrap mh-200" style={{overflowY: "scroll"}}>
       {console.log(blockList)}
       {blockList.map( (b,i) =>
-          <div className="col-4">
-          <Block blockObj={b} key={b} noHeader={true}/>
+          <div className="col-4" key={b}>
+            <Block blockObj={b}  noHeader={true}/>
           </div>
       )}
       </div>

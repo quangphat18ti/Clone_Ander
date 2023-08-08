@@ -37,7 +37,7 @@ function BlockSepolia() {
               <div className="form-group row">
                 <label htmlFor="prev" className="col-sm-2 col-form-label text-right"><strong>Prev</strong></label>
                 <div className="col-sm-10">
-                  <input type="text" className="form-control" id="prev" disabled value={blockObj.parentHash.slice(2)} />
+                  <input type="text" className="form-control" id="prev" readOnly={true} value={blockObj.parentHash.slice(2)} />
                 </div>
               </div>
 
@@ -49,7 +49,7 @@ function BlockSepolia() {
                   <div className="input-group">
                     <span className="input-group-text" id="basic-addon1">#</span>
                     <input type="number" className="form-control" id="blockchainnumber"
-                          value={hexToDecimal(blockObj.number) || ''} disabled
+                          value={hexToDecimal(blockObj.number) || ''} readOnly={true}
                           //  onChange={(e) => {set_blockObj({"number":e.target.value, blockObj})}}
                     />
                   </div>
@@ -74,7 +74,7 @@ function BlockSepolia() {
                 <label htmlFor="nonce" className="col-sm-2 col-form-label text-right"><strong>Nonce</strong></label>
 
                 <div className="col-sm-10">
-                  <input type="text" className="form-control" id="nonce" disabled
+                  <input type="text" className="form-control" id="nonce" readOnly={true}
                         value={blockObj.nonce || ''}
                   />
                 </div>
@@ -84,7 +84,7 @@ function BlockSepolia() {
               <div className="form-group row">
                 <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash</strong></label>
                 <div className="col-sm-10">
-                <input type="text" className="form-control" id="hash" disabled value={blockObj.hash.slice(2)} />
+                <input type="text" className="form-control" id="hash" readOnly={true} value={blockObj.hash.slice(2)} />
                 </div>
               </div>
           </form>

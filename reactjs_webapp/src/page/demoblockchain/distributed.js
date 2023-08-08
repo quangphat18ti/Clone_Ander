@@ -11,10 +11,10 @@ function Distributed(){
 					</div>
 					{
 						data.map((blockchain, chain_index) => 
-              <>
+              <div key={chain_index}>
                 <h4>Peer {peer[chain_index]}</h4>
                 <BlockChainComponent data={blockchain} key={chain_index}/>
-              </>
+              </div>
 						)
 					}
 				</div>
