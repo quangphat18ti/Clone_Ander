@@ -31,7 +31,7 @@ function Blockchain(props) {
       {console.log(blockList)}
       {blockList.map( (b,i) =>
           <div className="col-4">
-          <Block blockObj={b} key={b.toString()} noHeader={true}/>
+          <Block blockObj={b} key={b} noHeader={true}/>
           </div>
       )}
       </div>
