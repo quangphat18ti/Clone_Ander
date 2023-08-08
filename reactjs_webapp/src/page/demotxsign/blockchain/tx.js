@@ -41,20 +41,22 @@ function Tx(props){
       </div>
       {
         seq != null && 
-        <div className="input-group">
-          <span className="input-group-text">Seq:</span>
-          <input type="text" className="form-control col-sm-2" id="seq" value={seq} onChange={(e) => {
-              setSeq(e.target.value)
-              props.handleTxchange(props.index, {seq: e.target.value})
-            }}/>
-          <span className="input-group-text">Sig:</span>
-          <input type="text" className={`form-control ${txState === 0 ? '' : 'text-danger'}`} id="sig" value={sig} onChange={(e) => {
-              setSig(e.target.value)
-              props.handleTxchange(props.index, {sig: e.target.value})
-            }}/>
-        </div>
+        <>
+          <div className="input-group">
+            <span className="input-group-text">Seq:</span>
+            <input type="text" className="form-control col-sm-2" id="seq" value={seq} onChange={(e) => {
+                setSeq(e.target.value)
+                props.handleTxchange(props.index, {seq: e.target.value})
+              }}/>
+            <span className="input-group-text">Sig:</span>
+            <input type="text" className={`form-control ${txState === 0 ? '' : 'text-danger'}`} id="sig" value={sig} onChange={(e) => {
+                setSig(e.target.value)
+                props.handleTxchange(props.index, {sig: e.target.value})
+              }}/>
+          </div>
+          <br/>
+        </>
       }
-      <br/>
     </>
   )
 }
