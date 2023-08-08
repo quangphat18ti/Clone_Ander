@@ -18,12 +18,6 @@ async function popupMetamaskToMakeTransaction(from, to, amount) {
   return transaction
 }
 
-async function getTxByHash(hash, confirmBlock = null) {
-  let provider = new ethers.providers.Web3Provider(window.ethereum)
-  let transaction = await provider.waitForTransaction(hash, confirmBlock)
-  return transaction
-}
-
 function DemoWallet() {
   let [fromaccount_pubkey, set__fromaccount_pubkey] = useState(localStorage.getItem("walletaccount_pubkey")) 
   let [toaccount_pubkey, set__toaccount_pubkey] = useState('0x6f46693c8b9A18E80d36a6DCD47F83E871e665b8')
@@ -60,6 +54,7 @@ function DemoWallet() {
     getNetworkName()
   }, [chainID])
 
+  // change fromaccount_pubkey
   useEffect(()=>{
     const handleStorage = () => {
       set__fromaccount_pubkey(localStorage.getItem("walletaccount_pubkey"))
@@ -71,28 +66,28 @@ function DemoWallet() {
   const formTransaction = useRef();
 
   return (
-    <div className="container mt-5 mx-5">
+    <div className="container-fluid mt-5 mx-2">
       {chainID && <h3>{network} network</h3> }
       <div className="card">
         <h4 className="card-header"> Transaction </h4>
 
         <form className="card-body" onSubmit={(e) => e.preventDefault()} ref={formTransaction}>
           {/* From */}
-          <div class="form-group row">
-            <label for="from-address" class="col-sm-1 col-form-label">From</label>
-            <div class="col-sm-11">
-              <input type="text" class="form-control" id="from-address" placeholder="Login to Metamask Wallet" disabled value={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
+          <div className="form-group row">
+            <label htmlFor="from-address" className="col-sm-1 col-form-label"><strong>From</strong></label>
+            <div className="col-sm-11">
+              <input type="text" className="form-control" id="from-address" placeholder="Login to Metamask Wallet" value={fromaccount_pubkey === 'undefined' ? '' : fromaccount_pubkey}
                     required
-                    onChange={(e) => set__fromaccount_pubkey(e.target.value)}
+                    // onChange={(e) => set__fromaccount_pubkey(e.target.value)}
               />
             </div>
           </div>
 
           {/* To */}
-          <div class="form-group row">
-            <label for="to-address" class="col-sm-1 col-form-label">To</label>
-            <div class="col-sm-11">
-              <input type="text" class="form-control" id="to-address" placeholder="Enter To Wallet PubKey StartWith 0x" value={toaccount_pubkey || ''}
+          <div className="form-group row">
+            <label htmlFor="to-address" className="col-sm-1 col-form-label"><strong>To</strong></label>
+            <div className="col-sm-11">
+              <input type="text" className="form-control" id="to-address" placeholder="Enter To Wallet PubKey StartWith 0x" value={toaccount_pubkey || ''}
                     required
                     onChange={(e) => set__toaccount_pubkey(e.target.value)}
               />
@@ -100,32 +95,36 @@ function DemoWallet() {
           </div>
 
            {/* Amount */}
-           <div class="form-group row">
-            <label for="to-address" class="col-sm-1 col-form-label">Amount</label>
-            <div class="col-sm-11">
-              <input type="number" class="form-control" id="to-address" placeholder="" value={amount || ''}
+           <div className="form-group row">
+            <label htmlFor="to-address" className="col-sm-1 col-form-label"><strong>Amount</strong></label>
+            <div className="col-sm-11">
+              <input type="number" className="form-control" id="to-address" placeholder="" value={amount || ''}
                     required
                     onChange={(e) => set__amount(e.target.value)}
               />
             </div>
           </div>
           {/* Submit button */}
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary" 
+          <div className="form-group row">
+            <div className="col-sm-10">
+              <button type="submit" className="btn btn-primary" 
                     onClick={async (e) => {
                       if(formTransaction.current.checkValidity() === false) return
                       setSpinClass(       'ml-2 spinner-border spinner-border-sm')
                       try{
-                        let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount);
+                        let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount)
+                        const getTxByHash = async (hash) => {
+                          let provider = new ethers.providers.Web3Provider(window.ethereum)
+                          let transaction = await provider.waitForTransaction(hash)
+                          return transaction
+                        }
+                        
                         let transactionAfterBlock = await getTxByHash(transactionBeforeBlock.hash)
-                        // console.log("before: ", transactionBeforeBlock)
-                        // console.log("after: ", transactionAfterBlock)
                         let fullTransaction = {
                           ...transactionBeforeBlock,
                           ...transactionAfterBlock
                         }
-                        // console.log("full: ", fullTransaction)
+                        console.log("full: ", fullTransaction)
                         set__tx(fullTransaction)
                         set__blockNo(fullTransaction.blockNumber)
                       }catch(e){
@@ -150,7 +149,7 @@ function DemoWallet() {
         {tx ? <Block blockNumber={blockNo} key={blockNo}/> : <>  </>}
       </div>
       <div>
-        {tx ? <Blockchain/> : <>  </>}
+        {tx ? <Blockchain blockNumber={blockNo} key={blockNo}/> : <>  </>}
       </div>
     </div>
   )
