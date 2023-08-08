@@ -2,7 +2,7 @@ let CryptoJS = require('crypto-js')
 let Buffer = require('buffer')
 let EC = require('elliptic').ec ; const ec = new EC('secp256k1')
 
-//ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/keys.pug#L21C5-L37C1
+// ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/keys.pug#L21C5-L37C1
 function gen_keypair(privkey = null) {
   const EC = require('elliptic').ec
   const ec = new EC('secp256k1')
@@ -20,6 +20,7 @@ function gen_keypair(privkey = null) {
   }
 } 
 
+// ref https://github.com/anders94/blockchain-demo/blob/master/views/hash.pug#L27C34-L27C34
 const sha256_hash = (data) => {
     return CryptoJS.SHA256(data)  //TODO should we call .toString() here
 }
@@ -31,6 +32,7 @@ const sha256_hash = (data) => {
 initial maximumNonce
 ref https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/blockchain.js#L6C25-L32
 */
+//TODO what it means by DIFFICULTY_MINOR, DIFFICULTY_MAJOR
 const DIFFICULTY_MINOR = 15
 const DIFFICULTY_MAJOR = 4
 
@@ -69,7 +71,8 @@ function mine({prev, blockNum, data}) {
 
   console.log(`mining ${blockNum}... NOT found nonce`)
   return null
-}//endregion mine
+}
+//endregion mine
 
 //ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/signatures.pug#L66C7-L73C10
 let verifyMessage = (msg2Verify, publicKey, signature) => {
