@@ -25,7 +25,7 @@ function Blockchain(props){
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-12">
-							<h2>Blockchain</h2>
+							<h3>Blockchain</h3>
 					</div>
 					{
 						blockchain.map((blockchain, chain_index) => 

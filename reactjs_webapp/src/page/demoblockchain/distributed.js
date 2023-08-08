@@ -9,7 +9,7 @@ function Distributed(){
       <div className="container-fluid">
 				<div className="row">
 					<div className="col-12">
-							<h2>Distributed Blockchain</h2>
+							<h3>Distributed Blockchain</h3>
 					</div>
 					{
 						data.map((blockchain, chain_index) => 
