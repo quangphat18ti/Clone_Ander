@@ -2,7 +2,7 @@ let CryptoJS = require('crypto-js')
 let Buffer = require('buffer')
 let EC = require('elliptic').ec ; const ec = new EC('secp256k1')
 
-//ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/keys.pug#L21C5-L37C1
+// ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/keys.pug#L21C5-L37C1
 function gen_keypair(privkey = null) {
   const EC = require('elliptic').ec
   const ec = new EC('secp256k1')
@@ -20,6 +20,7 @@ function gen_keypair(privkey = null) {
   }
 } 
 
+// ref https://github.com/anders94/blockchain-demo/blob/master/views/hash.pug#L27C34-L27C34
 const sha256_hash = (data) => {
     return CryptoJS.SHA256(data)  //TODO should we call .toString() here
 }
