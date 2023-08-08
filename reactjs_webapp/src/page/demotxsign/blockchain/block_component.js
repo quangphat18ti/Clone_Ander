@@ -1,6 +1,6 @@
 import React 																									from 'react';
 import {useState, useEffect} 																	from 'react'
-import Tx 																										from './tx'
+import Tx 																										from './tx_component'
 import { sha256_hash, ZERO_PREFIX, getMessageFromBlock } 			from '../../../service/crypto_service';
 
 function Block(props){
@@ -22,7 +22,7 @@ function Block(props){
 		tx_clone[index] = {...tx_clone[index], ...tx_new}
 		setTx(tx_clone)
 		let block_new = {...BLOCK, tx: tx_clone}
-		props.updateChain(props.block_index, props.chain_index, block_new)
+		props.updateChain(props.block_index, block_new)
 	}
 
 	const mine = (block) => {
@@ -33,7 +33,7 @@ function Block(props){
 			let message = getMessageFromBlock(block)
 			let hash = sha256_hash(message).toString()
 			if (hash.startsWith(ZERO_PREFIX)) {
-				props.updateChain(props.block_index, props.chain_index, block)
+				props.updateChain(props.block_index,  block)
 				break
 			}
 		}
@@ -69,7 +69,7 @@ function Block(props){
 									<input type="number" className="form-control" id="blockchainnumber" value={blockNum} onChange= {(e)=> {
 										setBlockNum(e.target.value)
 										let block_new = {...BLOCK, blockNum: e.target.value}
-										props.updateChain(props.block_index, props.chain_index, block_new)
+										props.updateChain(props.block_index, block_new)
 									}}/>
 								</div>
 							</div>
@@ -81,7 +81,7 @@ function Block(props){
 								<input type="text" className="form-control" id="nonce" value={nonce} onChange= {(e)=>{
 									setNonce(e.target.value)
 									let block_new = {...BLOCK, nonce: e.target.value}
-									props.updateChain(props.block_index, props.chain_index, block_new)
+									props.updateChain(props.block_index, block_new)
 								}}/>
 							</div>
 						</div>
@@ -96,7 +96,7 @@ function Block(props){
 										<input type="text" className="form-control" id="coinbasevalue" value={coinbasevalue} onChange= {(e)=> {
 											setCoinbasevalue(e.target.value)
 											let block_new = {...BLOCK, coinbasevalue: e.target.value}
-											props.updateChain(props.block_index, props.chain_index, block_new)
+											props.updateChain(props.block_index, block_new)
 										}}/>
 										<span className="input-group-text">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -107,7 +107,7 @@ function Block(props){
 										<input type="text" className="form-control" id="coinbaseto" value={coinbase} onChange= {(e) => {
 											setCoinbase(e.target.value)
 											let block_new = {...BLOCK, coinbase: e.target.value}
-											props.updateChain(props.block_index, props.chain_index, block_new)
+											props.updateChain(props.block_index, block_new)
 										}}/>
 									</div>
 								</div>

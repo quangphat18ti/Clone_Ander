@@ -1,6 +1,4 @@
-import React, {useState} from 'react'
 import {data, peer} from '../../data/blockchain_distributed'
-import { sha256_hash } from '../../service/crypto_service'
 import BlockChainComponent from './blockchain/blockchain_component'
 function Distributed(){
 
@@ -14,7 +12,7 @@ function Distributed(){
 					{
 						data.map((blockchain, chain_index) => 
               <>
-                <h3>Peer {peer[chain_index]}</h3>
+                <h4>Peer {peer[chain_index]}</h4>
                 <BlockChainComponent data={blockchain} key={chain_index}/>
               </>
 						)
