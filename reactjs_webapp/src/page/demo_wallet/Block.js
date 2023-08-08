@@ -13,12 +13,18 @@ function Block (props) {
       console.log("block object = ", b);
       set__blockObj(b)
     } 
-    getBlockInfo()
+    
+    if (props.blockObj) {
+      set__blockObj(props.blockObj)
+    }
+    else {
+      getBlockInfo()
+    }
   },[])
 
   return (
     <>
-      <h3>Block Info</h3>
+      {!props.noHeader && <h3>Block Info</h3>}
       {blockObj && 
       <div className={`alert alert-success px-3 pt-3 pb-3`} role="alert" style={{ color: 'black' }}>
         <form className="pb-10">

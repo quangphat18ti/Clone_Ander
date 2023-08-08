@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import Tx from "./demo_wallet/Tx"
 import Block from "./demo_wallet/Block"
+import Blockchain from "./demo_wallet/Blockchain"
 let ethers = require("ethers")
 
 async function popupMetamaskToMakeTransaction(from, to, amount) {
@@ -147,6 +148,9 @@ function DemoWallet() {
       </div>
       <div>
         {tx ? <Block blockNumber={blockNo} key={blockNo}/> : <>  </>}
+      </div>
+      <div>
+        {tx ? <Blockchain/> : <>  </>}
       </div>
     </div>
   )
