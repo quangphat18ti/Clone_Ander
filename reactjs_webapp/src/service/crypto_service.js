@@ -32,6 +32,7 @@ const sha256_hash = (data) => {
 initial maximumNonce
 ref https://github.com/anders94/blockchain-demo/blob/master/public/javascripts/blockchain.js#L6C25-L32
 */
+//TODO what it means by DIFFICULTY_MINOR, DIFFICULTY_MAJOR
 const DIFFICULTY_MINOR = 15
 const DIFFICULTY_MAJOR = 4
 
@@ -70,7 +71,8 @@ function mine({prev, blockNum, data}) {
 
   console.log(`mining ${blockNum}... NOT found nonce`)
   return null
-}//endregion mine
+}
+//endregion mine
 
 //ref https://github.com/anders94/public-private-key-demo/blob/9ad71dc54a5844157aaeb5d7fb98f7974ffa803f/views/signatures.pug#L66C7-L73C10
 let verifyMessage = (msg2Verify, publicKey, signature) => {
