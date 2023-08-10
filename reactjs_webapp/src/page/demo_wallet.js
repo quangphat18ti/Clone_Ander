@@ -122,6 +122,7 @@ function DemoWallet() {
                       onClick={async (e) => {
                         if(formTransaction.current.checkValidity() === false) return
                         setSpinClass(       'ml-2 spinner-border spinner-border-sm')
+                        set__tx()
                         try{
                           let transactionBeforeBlock = await popupMetamaskToMakeTransaction(fromaccount_pubkey, toaccount_pubkey, amount)
                           const getTxByHash = async (hash) => {

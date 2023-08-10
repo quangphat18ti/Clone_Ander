@@ -10,7 +10,12 @@ function Block (props) {
     const getBlockInfo = async() => {
       if(!window.ethereum) return
       let provider = new ethers.providers.Web3Provider(window.ethereum)
-      let b = await provider.getBlockWithTransactions(props.blockNumber)
+      
+      let b 
+      do{
+        b = await provider.getBlockWithTransactions(props.blockNumber)
+      }while(!b)
+      
       set__blockObj(b)
     } 
 
