@@ -1,51 +1,24 @@
-import { useState } from "react"  
-import { sha256_hash } from "../../service/crypto_service"  
+import Hash from "./hash/hash"
 
-function Hash() {
-  const [data, setData] = useState('')  
-  const [hash, setHash] = useState(sha256_hash(''))  
-
+function HashNavTab() { 
   return (
     <>
       {/* ref anders demo ref https://andersbrownworth.com/blockchain/hash */}
+      <div className="container">
+        <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li className="nav-item" role="presentation"> <button className="py-1 px-2 small  nav-link active" id="pills-sha256demo-tab"   data-toggle="pill" data-target="#pills-sha256demo"   type="button" role="tab" aria-controls="pills-sha256demo"   aria-selected="true"  >SHA256 DEMO</button> </li>
+          <li className="nav-item" role="presentation"> <button className="py-1 px-2 small  nav-link       " id="pills-abc-tab" data-toggle="pill" data-target="#pills-abc" type="button" role="tab" aria-controls="pills-abc"  aria-selected="false" >abc</button> </li>
+          <li className="nav-item" role="presentation"> <button className="py-1 px-2 small  nav-link       " id="pills-xyz-tab" data-toggle="pill" data-target="#pills-xyz" type="button" role="tab" aria-controls="pills-xyz"  aria-selected="false" >xyz</button> </li>
+        </ul>
 
-      <div className="container mt-3">
-        <h3>SHA256 Hash</h3>
-
-        <div className="px-3 pt-3 pb-1" style={{ backgroundColor: '#dcdcdc' }}>
-          <form>
-            <div className="form-group row">
-              <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
-
-              <div className="col-sm-10">
-                <textarea
-                  className="form-control" id="data" rows="10"
-                  onChange={(e) => {
-                    let new_data = e.target.value
-                    let new_hash = sha256_hash(new_data)
-
-                    setData(new_data)
-                    setHash(new_hash)
-                  }}
-                  defaultvvalue={data || ''}
-                >
-                </textarea>
-              </div>
-
-            </div>
-
-            <div className="form-group row">
-              <label htmlFor="hash" className="col-sm-2 col-form-label text-right"><strong>Hash</strong></label>
-              <div className="col-sm-10">
-                <input type="text" className="form-control" id="hash" disabled value={hash}/>
-              </div>
-            </div>
-          </form>
+        <div className="tab-content" id="pills-tabContent">
+          <div className="tab-pane fade show active" id="pills-sha256demo"    role="tabpanel" aria-labelledby="pills-blockmock-tab"    > <Hash/> </div>
+          <div className="tab-pane fade            " id="pills-abc" role="tabpanel" aria-labelledby="pills-blocksepolia-tab" > @TODO </div>
+          <div className="tab-pane fade            " id="pills-xyz" role="tabpanel" aria-labelledby="pills-blockmumbai-tab" > @TODO </div>
         </div>
-
       </div>
     </>
   )
 }
 
-export default Hash
+export default HashNavTab
