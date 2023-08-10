@@ -8,15 +8,17 @@ function Blockchain(props) {
   useEffect(() => {
     const getChainInfo = async () => {
       let provider = new ethers.providers.Web3Provider(window.ethereum)
-      const promise1 = provider.getBlockWithTransactions(props.blockNumber - 2);
-      const promise2 = provider.getBlockWithTransactions(props.blockNumber - 1);
-      const promise3 = provider.getBlockWithTransactions(props.blockNumber);
-      const promise4 = provider.getBlockWithTransactions(props.blockNumber + 1);
-      const promise5 = provider.getBlockWithTransactions(props.blockNumber + 2);
-
-      let blockList = await Promise.all([promise1, promise2, promise3, promise4, promise5])
+      let blockList
+      do {
+        const promise1 = provider.getBlockWithTransactions(props.blockNumber - 2);
+        const promise2 = provider.getBlockWithTransactions(props.blockNumber - 1);
+        const promise3 = provider.getBlockWithTransactions(props.blockNumber);
+        const promise4 = provider.getBlockWithTransactions(props.blockNumber + 1);
+        const promise5 = provider.getBlockWithTransactions(props.blockNumber + 2);
+  
+        blockList = await Promise.all([promise1, promise2, promise3, promise4, promise5])
+      }while(blockList.some(b => b===null))
       set__blockList(blockList)
-      console.log(blockList)
     }
     getChainInfo()
   }, [])
@@ -28,10 +30,9 @@ function Blockchain(props) {
       <h3>Blockchain</h3>
 
       <div className="row row-horizon d-flex flex-nowrap mh-200" style={{overflowY: "scroll"}}>
-      {console.log(blockList)}
       {blockList.map( (b,i) =>
           <div className="col-4" key={b}>
-            <Block blockObj={b}  noHeader={true}/>
+            <Block blockObj={b} key={"chain"+b}  noHeader={true}/>
           </div>
       )}
       </div>

@@ -4,7 +4,6 @@ let ethers = require("ethers")
 function Tx(props) {
   return (
     <>
-
       <h3 className="mt-5">Transaction detail</h3>
 
       <div className="container-fluid alert alert-success" role="alert" style={{ color: 'black' }}>
@@ -12,7 +11,7 @@ function Tx(props) {
         {/* Hash */}
         { props.transaction.hash &&
           <div className="row my-3">
-            <div className="col-sm-2 text-right m-auto"><strong>Hash</strong></div>
+            <div className="col-sm-2 text-right m-auto"><strong>Transaction Hash</strong></div>
             <input className="col-sm-10 form-control" defaultValue ={props.transaction.hash.slice(2)} readOnly />
           </div>
         }
@@ -29,7 +28,7 @@ function Tx(props) {
         { props.transaction.blockHash &&
           <div className="row my-3">
             <div className="col-sm-2 text-right m-auto"><strong>Block Hash</strong></div>
-            <input className="col-sm-10 form-control" defaultValue ={props.transaction.blockHash} readOnly />
+            <input className="col-sm-10 form-control" defaultValue ={props.transaction.blockHash.slice(2)} readOnly />
           </div>
         }
         
@@ -37,7 +36,7 @@ function Tx(props) {
         {props.transaction.from && 
           <div className="row my-3">
             <div className="col-sm-2 text-right m-auto"><strong>From</strong></div>
-            <input className="col-sm-10 form-control" defaultValue ={props.transaction.from} readOnly />
+            <input className="col-sm-10 form-control" defaultValue ={props.transaction.from.slice(2)} readOnly />
           </div>
         }
 
@@ -45,7 +44,7 @@ function Tx(props) {
         {props.transaction.to && 
           <div className="row my-3">
             <div className="col-sm-2 text-right m-auto"><strong>To</strong></div>
-            <input className="col-sm-10 form-control" defaultValue ={props.transaction.to} readOnly />
+            <input className="col-sm-10 form-control" defaultValue ={props.transaction.to.slice(2)} readOnly />
           </div>
         }
 

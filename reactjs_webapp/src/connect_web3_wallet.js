@@ -15,6 +15,7 @@ function ConnectWeb3Wallet() {
 
   // catch change account event
   useEffect(()=>{
+    if(!window.ethereum) return;
     let provider = new ethers.providers.Web3Provider(window.ethereum)
     provider.provider.on('accountsChanged', (accounts) => {
       set__walletaccount_pubkey(accounts[0])
