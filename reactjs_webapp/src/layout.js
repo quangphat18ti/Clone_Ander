@@ -2,8 +2,10 @@ import About from "./page/about"
 import DemoBlockchain from "./page/demo_blockchain"
 import DemoTxSign from "./page/demo_tx_sign"
 import DemoWallet from "./page/demo_wallet"
+import Mathematic from "./page/mathematic"
 //
 import ConnectWeb3Wallet from "./connect_web3_wallet"
+
 
 const Layout = ()=> {
   return(
@@ -26,7 +28,7 @@ const Layout = ()=> {
           <div className="tab-pane fade            " id="nav-demotxsign"     role="tabpanel" aria-labelledby="nav-demotxsign-tab">      <DemoTxSign/>     </div>
           <div className="tab-pane fade            " id="nav-about"          role="tabpanel" aria-labelledby="nav-about-tab">           <About/>          </div>
           <div className="tab-pane fade            " id="nav-demowallet"     role="tabpanel" aria-labelledby="nav-demowallet-tab">      <DemoWallet/>     </div>
-          <div className="tab-pane fade            " id="nav-mathematic"     role="tabpanel" aria-labelledby="nav-mathematic-tab">      @TODO     </div>
+          <div className="tab-pane fade            " id="nav-mathematic"     role="tabpanel" aria-labelledby="nav-mathematic-tab">      <Mathematic/>    </div>
         </div>
       </div>
     </>
