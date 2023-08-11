@@ -1,6 +1,7 @@
 import {useEffect, useState}                                    from "react"
 import {getBlockInfoByBlockHexNumber, getNewestBlockHexNumber}  from "../../../service/etherscan_service/_"
 import Tx                                                       from "./Tx"
+const ethers = require('ethers')
 
 const hexToDecimal = hex => parseInt(hex, 16)
 
@@ -63,7 +64,7 @@ function BlockSepolia() {
                 <div className="col-sm-10 overflow-auto" style={{maxHeight: "12em"}} rows="10">
                   {
                     blockObj.transactions.map( (tx, i) => {
-                      return <Tx from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} key={tx.hash} />
+                      return <Tx from={tx.from} to={tx.to} value={ethers.utils.formatEther(tx.value)} key={tx.hash} />
                     })
                   }
                 </div>
