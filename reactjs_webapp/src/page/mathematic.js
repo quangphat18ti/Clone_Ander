@@ -1,3 +1,5 @@
+import HashNavTab from "./mathematic/_hash_navtab"
+
 export default function Mathematic() {
   return (
     <>
@@ -10,7 +12,7 @@ export default function Mathematic() {
         </nav>
 
         <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-nav-hash-mathematic"  role="tabpanel" aria-labelledby="nav-hash-mathematic-tab">  @TODO         </div>
+          <div className="tab-pane fade show active" id="nav-nav-hash-mathematic"  role="tabpanel" aria-labelledby="nav-hash-mathematic-tab">  <HashNavTab/>  </div>
           <div className="tab-pane fade            " id="nav-ECDS"                 role="tabpanel" aria-labelledby="nav-ECDS-tab           ">  @TODO          </div>
         </div>
       </div>
