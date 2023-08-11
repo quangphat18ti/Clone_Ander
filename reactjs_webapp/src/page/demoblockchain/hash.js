@@ -1,5 +1,6 @@
 import { useState } from "react"  
 import { sha256_hash } from "../../service/crypto_service"  
+import onClickButton from "../mathematic/hash/onClickButton"
 function Hash() {
   const [data, setData] = useState('')  
   const [hash, setHash] = useState(sha256_hash(''))  
@@ -41,7 +42,12 @@ function Hash() {
             </div>
           </form>
         </div>
+        <button type="button" className='mt-5 mb-2 mx-auto btn btn-primary'
+                onClick={(e) => onClickButton(e, `nav-mathematic-tab`)}>
+            Click me to know more about SHA256
+        </button>
       </div>
+
     </>
   )
 }

@@ -36,7 +36,6 @@ export default function WhatIsSHA256() {
               <li>We will find out this in the next chapter.</li> */}
               <li>Now that you have grasped the concept of the SHA-256 hash function, please contemplate how to apply it to our daily lives. Maybe you will get some interesting idea. Try it!!!</li>
               <li>In the upcoming chapter, we will unveil two fundamental applications of SHA-256, along with various other cryptographic hash functions, in real-life scenarios. Get ready to embark on an exciting journey of discovery. </li>
-              <li><strong>Click the 'Next' button below to proceed.</strong></li>
             </ul>
           </div>
         </div>
