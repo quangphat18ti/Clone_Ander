@@ -30,22 +30,19 @@ function SignTx() {
         <div className="form-group">
           <label className="form-label" htmlFor="message--tx">Message</label>
           <div className="input-group">
-            <div className="input-group-text">$
-            </div>
+            <div className="input-group-prepend"><spand className="input-group-text">$</spand></div>
               <input className="form-control" value={amount} onChange={(e) => {
                 setAmount(e.target.value)
                 localStorage.setItem('amount', e.target.value)
                 window.dispatchEvent(new Event('storage_amount_event'))
               }}/>
-            <div className="input-group-text" >From:
-            </div>
+            <div className="input-group-prepend" ><spand className="input-group-text">From:</spand></div>
               <input className="form-control" value={from} onChange={(e) => {
               setFrom(e.target.value)
               localStorage.setItem('from', e.target.value)
               window.dispatchEvent(new Event('storage_from_event'))
             }}/>
-            <div className="input-group-text">-&gt;
-            </div>
+            <div className="input-group-prepend"><spand className="input-group-text">-&gt;</spand></div>
               <input className="form-control" value={to} onChange={(e) => {
                 setTo(e.target.value)
                 localStorage.setItem('to', e.target.value)

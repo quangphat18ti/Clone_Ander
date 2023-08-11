@@ -98,18 +98,20 @@ function Block(props){
 								<label htmlFor="coinbase" className="col-sm-2 col-form-label text-right">Coinbase:</label>
 								<div className="col-sm">
 									<div className="input-group">
-										<span className="input-group-text">$</span>
+										<div className="input-group-prepend"><spand className="input-group-text">$</spand></div>
 										<input type="text" className="form-control" id="coinbasevalue" value={coinbasevalue} onChange= {(e)=> {
 											setCoinbasevalue(e.target.value)
 											let block_new = {...BLOCK, coinbasevalue: e.target.value}
 											props.updateChain(props.block_index, block_new)
 										}}/>
-										<span className="input-group-text">
+										<div className="input-group-prepend">
+											<spand className="input-group-text">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
 													<path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
 												</svg>
 												<i className="bi bi-arrow-right"></i>
-										</span>
+											</spand>
+										</div>
 										<input type="text" className="form-control" id="coinbaseto" value={coinbase} onChange= {(e) => {
 											setCoinbase(e.target.value)
 											let block_new = {...BLOCK, coinbase: e.target.value}
