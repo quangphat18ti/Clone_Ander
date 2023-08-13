@@ -1,5 +1,5 @@
 import { useState } from "react"  
-import { sha256_hash } from "../../service/crypto_service"  
+import { sha256_hash } from "../../../service/crypto_service"  
 
 function Hash() {
   const [data, setData] = useState('')  
