@@ -99,10 +99,13 @@ function BlockMock(props) {
                      onChange={(e) => {setNonce(e.target.value)}}
               />
 
-              {/* Instruction to find nonce when mine */}
+              {/* TODO: Instruction to find nonce when mine */}
               <div>
-                <small className="form-text text-muted"> @TODO Instruction  </small>
+                <small className="form-text text-muted"> 
+                  Click on the 'Mine' button to find a Nonce so that the Hash(Block) has 4 leading digits '0' corresponding to the inputted text content.
+                </small>
               </div>
+              
             </div>
 
           </div>
