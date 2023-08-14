@@ -1,4 +1,4 @@
-import EC_Image from "./ECC.gif"
+import EC_Image from "./ECC_first_case.gif"
 function ECDSA() {
   return (
     <>
@@ -27,7 +27,7 @@ function ECDSA() {
               </ul>
 
               <div className="row justify-content-center">
-                <img src={EC_Image} alt="An Elliptic Curve"/>
+                <img src={EC_Image} alt="An Elliptic Curve" style={{ maxWidth: '70%', maxHeight: '70%' }} />
               </div>
 
               <strong>Elliptic curves over finite fields</strong>
