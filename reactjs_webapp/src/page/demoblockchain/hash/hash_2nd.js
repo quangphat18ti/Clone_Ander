@@ -8,18 +8,12 @@ let data_txs = [{value: '6.42', from: 'Charlotte', to: 'Elizabeth'},
 
 function Hash2nd () {
   const [hash, set__hash] = useState('')
-  const [txs, set__txs] = useState(localStorage.getItem('hash_txs') ? JSON.parse(localStorage.getItem('hash_txs')) : data_txs)
-
-  // Auto remove none data transaction
-  useEffect(() => {
-    let txs_clone = [...txs]
-    txs_clone = txs_clone.filter(tx => tx.value !== '' && tx.from !== '' && tx.to !== '')
-    set__txs(txs_clone)
-  }, [])
+  const [txs, set__txs] = useState(localStorage.getItem('hash_txs') ? JSON.parse(localStorage.getItem('hash_txs')).filter(tx => tx.value !== '' && tx.from !== '' && tx.to !== '') : data_txs)
 
   useEffect(() => {
     let txs_string = txs.reduce((msg, tx) => msg + tx.value + tx.from + tx.to, '')
     set__hash(sha256_hash(txs_string).toString())
+    console.log(1,txs)
   }, [txs])
 
   useEffect(() => {
@@ -31,7 +25,6 @@ function Hash2nd () {
     txs_clone[index] = {...txs_clone[index], ...tx_new};
     set__txs(txs_clone);
   }
-
 
   return (
     <>
@@ -53,7 +46,6 @@ function Hash2nd () {
 
               <div className="col-sm-10 overflow-auto"  style={{maxHeight : '14em'}}>
                 {/* @TODO: Render from state txs to transactions */}
-
                 {txs.map((data, index) => <Tx key={index} {...data} handleTxchange={handleTxChange} index={index}/>)}
               </div>
 
