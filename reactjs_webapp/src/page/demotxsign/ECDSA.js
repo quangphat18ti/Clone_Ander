@@ -1,4 +1,4 @@
-import EC_Image from "./ECC_3cases.gif"
+import EC_Image from "./ver1_ECC_DAC_lab.gif"
 function ECDSA() {
   return (
     <>
