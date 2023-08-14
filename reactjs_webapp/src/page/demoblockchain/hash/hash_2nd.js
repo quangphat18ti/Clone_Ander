@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import Tx from '../../demotxsign/blockchain/tx_component'
-import { sha256_hash } from "../../../service/crypto_service"  
+import Tx                      from '../../demotxsign/blockchain/tx_component'
+import { sha256_hash }         from "../../../service/crypto_service"  
 
 let data_txs = [{value: '6.42', from: 'Charlotte', to: 'Elizabeth'},
                 {value: '13.37', from: 'Satoshi', to: 'Hal Finney'},
@@ -9,6 +9,13 @@ let data_txs = [{value: '6.42', from: 'Charlotte', to: 'Elizabeth'},
 function Hash2nd () {
   const [hash, set__hash] = useState('')
   const [txs, set__txs] = useState(localStorage.getItem('hash_txs') ? JSON.parse(localStorage.getItem('hash_txs')) : data_txs)
+
+  // Auto remove none data transaction
+  useEffect(() => {
+    let txs_clone = [...txs]
+    txs_clone = txs_clone.filter(tx => tx.value !== '' && tx.from !== '' && tx.to !== '')
+    set__txs(txs_clone)
+  }, [])
 
   useEffect(() => {
     let txs_string = txs.reduce((msg, tx) => msg + tx.value + tx.from + tx.to, '')
@@ -31,10 +38,12 @@ function Hash2nd () {
       <div className="container mt-3">
         <div className="row px-3 d-flex" style={{justifyContent: "space-between"}}>
           <h3>SHA256 Hash With Transaction</h3>
-          <button type="button" className="btn btn-primary mb-2 " data-toggle="modal" data-target="#"
-                  onChange={(e) => {
+          <button type="button" className="btn btn-primary mb-2 "
+                  onClick={(e) => {
                     e.preventDefault()
-                  }}>Create New</button>              
+                    set__txs([...txs, {value: '0.00', from: '', to: ''}])
+                    console.log(txs)
+                  }}>Create New Transaction</button>              
         </div>
 
         <div className="px-3 pt-3 pb-1" style={{ backgroundColor: '#dcdcdc' }}>

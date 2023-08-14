@@ -3,8 +3,8 @@ import {verifyMessage}        from '../../../service/crypto_service'
 
 function Tx(props){
   let [value, setValue]         = useState(props.value ? props.value : '0.00' )
-  let [from, setFrom]           = useState(props.from  ? props.from  : '0')
-  let [to, setTo]               = useState(props.to    ? props.to    : '0')
+  let [from, setFrom]           = useState(props.from  ? props.from  : '')
+  let [to, setTo]               = useState(props.to    ? props.to    : '')
   let [seq, setSeq]             = useState(props.seq   ? props.seq   : null)
   let [sig, setSig]             = useState(props.sig   ? props.sig   : '')
   let [txState, setTxState]     = useState(0) // 0 is valid signature, 1 is invalid signature
