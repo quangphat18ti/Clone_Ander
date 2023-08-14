@@ -29,7 +29,13 @@ function Hash2nd () {
   return (
     <>
       <div className="container mt-3">
-        <h3>SHA256 Hash With Transaction</h3>
+        <div className="row px-3 d-flex" style={{justifyContent: "space-between"}}>
+          <h3>SHA256 Hash With Transaction</h3>
+          <button type="button" className="btn btn-primary mb-2 " data-toggle="modal" data-target="#"
+                  onChange={(e) => {
+                    e.preventDefault()
+                  }}>Create New</button>              
+        </div>
 
         <div className="px-3 pt-3 pb-1" style={{ backgroundColor: '#dcdcdc' }}>
           <form>
