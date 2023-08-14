@@ -15,6 +15,7 @@ function Hash2nd () {
               <label htmlFor="data" className="col-sm-2 col-form-label text-right"><strong>Data</strong></label>
 
               <div className="col-sm-10">
+                {/* @TODO: Render from state txs to transactions */}
               </div>
 
             </div>
