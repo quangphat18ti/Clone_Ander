@@ -30,7 +30,7 @@ function KeyPair() {
 
   return(
     <>
-      <div className="cointainer mt-3 mx-5">
+      <div className="cointainer mt-3 mx-2">
         <div className="card">
           <h4 className="card-header">Public / Private Key Pairs</h4>
 

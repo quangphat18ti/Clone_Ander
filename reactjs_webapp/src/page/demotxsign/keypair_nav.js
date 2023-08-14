@@ -17,7 +17,7 @@ function KeyPairNav() {
 
         <div className="card-body p-0" >
           <div className="tab-content" id="nav-tabContent--keypair" >
-              <div className="tab-pane fade show active" id="keypair-random"    role="tabpanel" aria-labelledby="keypair-random">   @TODO    </div>
+              <div className="tab-pane fade show active" id="keypair-random"    role="tabpanel" aria-labelledby="keypair-random">   <KeyPair />    </div>
             <div className="tab-pane fade            "   id="keypair-message"   role="tabpanel" aria-labelledby="keypair-message">  @TODO  </div>
           </div>
         </div>
