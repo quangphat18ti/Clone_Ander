@@ -16,6 +16,7 @@ function ECDSA() {
               </p>
 
               <strong>Addition law</strong>
+              {/* @TODO: Change to 3 types like th.Thuc, add .gif */}
               <ul>
                 <li>The point P and Q are on the elliptic curve E. The line L connecting P and Q intersects E at three points: P, Q, and R. 
                   The relection of R on the curve across the x-axis is R'. We call R' is the "sum of P and Q".
