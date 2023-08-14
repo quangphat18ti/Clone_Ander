@@ -8,7 +8,16 @@ let data_txs = [{value: '6.42', from: 'Charlotte', to: 'Elizabeth'},
 
 function Hash2nd () {
   const [hash, set__hash] = useState('')
-  const [txs, set__txs] = useState(data_txs)
+  const [txs, set__txs] = useState(localStorage.getItem('hash_txs') ? JSON.parse(localStorage.getItem('hash_txs')) : data_txs)
+
+  useEffect(() => {
+    let txs_string = txs.reduce((msg, tx) => msg + tx.value + tx.from + tx.to, '')
+    set__hash(sha256_hash(txs_string).toString())
+  }, [txs])
+
+  useEffect(() => {
+    localStorage.setItem('hash_txs', JSON.stringify(txs))
+  }, [txs])
 
   const handleTxChange = (index, tx_new) => {
     let txs_clone = [...txs];
@@ -16,10 +25,6 @@ function Hash2nd () {
     set__txs(txs_clone);
   }
 
-  useEffect(() => {
-    let txs_string = txs.reduce((msg, tx) => msg + tx.value + tx.from + tx.to, '')
-    set__hash(sha256_hash(txs_string).toString())
-  }, [txs])
 
   return (
     <>
