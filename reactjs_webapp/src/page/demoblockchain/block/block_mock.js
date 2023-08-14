@@ -98,7 +98,13 @@ function BlockMock(props) {
                      value={nonce || ''}
                      onChange={(e) => {setNonce(e.target.value)}}
               />
+
+              {/* Instruction to find nonce when mine */}
+              <div>
+                <small className="form-text text-muted"> @TODO Instruction  </small>
+              </div>
             </div>
+
           </div>
 
           {/* hash */}
