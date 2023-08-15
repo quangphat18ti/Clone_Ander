@@ -8,16 +8,11 @@ let data_txs = [{value: '6.42', from: 'Charlotte', to: 'Elizabeth'},
 
 function Hash2nd () {
   const [hash, set__hash] = useState('')
-  const [txs, set__txs] = useState(localStorage.getItem('hash_txs') ? JSON.parse(localStorage.getItem('hash_txs')).filter(tx => tx.value !== '' && tx.from !== '' && tx.to !== '') : data_txs)
+  const [txs, set__txs] = useState(data_txs)
 
   useEffect(() => {
     let txs_string = txs.reduce((msg, tx) => msg + tx.value + tx.from + tx.to, '')
     set__hash(sha256_hash(txs_string).toString())
-    console.log(1,txs)
-  }, [txs])
-
-  useEffect(() => {
-    localStorage.setItem('hash_txs', JSON.stringify(txs))
   }, [txs])
 
   const handleTxChange = (index, tx_new) => {
