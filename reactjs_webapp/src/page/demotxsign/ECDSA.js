@@ -28,14 +28,10 @@ function ECDSA() {
                   More precisely, when adding P to its reflection P', we obtain the point O. In other words, O acts like zero for elliptic curve addition.</li>
               </ul>
               <div className="row justify-content-center">
-                <img src={EC_Image} alt="An Elliptic Curve" style={{ maxWidth: '45%', maxHeight: '45%' }} />
-              </div>
-              <strong>Note: 2nd presentation:</strong>
-              <div className="row justify-content-center">
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <img src={EC_Case1} alt="ECC Case 1" style={{ maxWidth: '57%', maxHeight: '57%' }} />
-                  <img src={EC_Case2} alt="ECC Case 2" style={{ maxWidth: '57%', maxHeight: '57%' }} />
-                  <img src={EC_Case3} alt="ECC Case 3" style={{ maxWidth: '57%', maxHeight: '57%' }} />
+                  <img src={EC_Case1} alt="ECC Case 1" style={{ maxWidth: '56%', maxHeight: '56%', marginRight: '30px' }} />
+                  <img src={EC_Case2} alt="ECC Case 2" style={{ maxWidth: '56%', maxHeight: '56%', marginRight: '30px' }} />
+                  <img src={EC_Case3} alt="ECC Case 3" style={{ maxWidth: '56%', maxHeight: '56%' }} />
                 </div>
               </div>
 
