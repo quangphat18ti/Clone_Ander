@@ -1,7 +1,7 @@
-import EC_Image from "./ver1_ECC_DAC_lab.gif"
-import EC_Case1 from "./ECC_case1.gif"
-import EC_Case2 from "./ECC_case2.gif"
-import EC_Case3 from "./ECC_case3.gif"
+import EC_Image from "./ver1_ECC_DAC_lab_square.gif"
+import EC_Case1 from "./ECC_case1_square.gif"
+import EC_Case2 from "./ECC_case2_square.gif"
+import EC_Case3 from "./ECC_case3_square.gif"
 function ECDSA() {
   return (
     <>
@@ -27,9 +27,8 @@ function ECDSA() {
                 <li>The point O is an extra point that does not exist in the XY-plane and is defined to lie on every vertical line. 
                   More precisely, when adding P to its reflection P', we obtain the point O. In other words, O acts like zero for elliptic curve addition.</li>
               </ul>
-              {/*TODO: crop to square shape*/}
               <div className="row justify-content-center">
-                <img src={EC_Image} alt="An Elliptic Curve" style={{ maxWidth: '70%', maxHeight: '70%' }} />
+                <img src={EC_Image} alt="An Elliptic Curve" style={{ maxWidth: '45%', maxHeight: '45%' }} />
               </div>
               <strong>Note: 2nd presentation:</strong>
               <div className="row justify-content-center">
