@@ -30,13 +30,7 @@ function Hash2nd () {
     <>
       <div className="container mt-3">
         <div className="row px-3 d-flex" style={{justifyContent: "space-between"}}>
-          <h3>SHA256 Hash With Transaction</h3>
-          <button type="button" className="btn btn-primary mb-2 "
-                  onClick={(e) => {
-                    e.preventDefault()
-                    set__txs([...txs, {value: '0.00', from: '', to: ''}])
-                    console.log(txs)
-                  }}>Create New Transaction</button>              
+          <h3>SHA256 Hash Data as Tx</h3>
         </div>
 
         <div className="px-3 pt-3 pb-1" style={{ backgroundColor: '#dcdcdc' }}>
