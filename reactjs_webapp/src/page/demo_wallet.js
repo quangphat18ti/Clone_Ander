@@ -78,8 +78,14 @@ function DemoWallet() {
     <>
       {!isEther ? <h2>Metamask not installed</h2> : 
       <div className="container-fluid mt-5 mx-2">
-        {chainID && <h3>{network} network</h3> }
-        <div className="card">
+        {chainID && <h3 className="mb-0">{network} network</h3> }
+        <div>
+          <small className="form-text text-muted"> 
+            You can change Network in Metamask Wallet
+          </small>
+        </div>
+
+        <div className="card mt-3">
           <h4 className="card-header"> Transaction </h4>
 
           <form className="card-body" onSubmit={(e) => e.preventDefault()} ref={formTransaction}>
