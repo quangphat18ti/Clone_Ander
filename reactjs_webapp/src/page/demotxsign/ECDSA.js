@@ -1,4 +1,7 @@
 import EC_Image from "./ver1_ECC_DAC_lab.gif"
+import EC_Case1 from "./ECC_case1.gif"
+import EC_Case2 from "./ECC_case2.gif"
+import EC_Case3 from "./ECC_case3.gif"
 function ECDSA() {
   return (
     <>
@@ -16,7 +19,6 @@ function ECDSA() {
               </p>
 
               <strong>Addition law</strong>
-              {/* @TODO: Change to 3 types like th.Thuc, add .gif */}
               <ul>
                 <li>The point P and Q are on the elliptic curve E. The line L connecting P and Q intersects E at three points: P, Q, and R. 
                   The relection of R on the curve across the x-axis is R'. We call R' is the "sum of P and Q".
@@ -25,9 +27,17 @@ function ECDSA() {
                 <li>The point O is an extra point that does not exist in the XY-plane and is defined to lie on every vertical line. 
                   More precisely, when adding P to its reflection P', we obtain the point O. In other words, O acts like zero for elliptic curve addition.</li>
               </ul>
-
+              {/*TODO: crop to square shape*/}
               <div className="row justify-content-center">
                 <img src={EC_Image} alt="An Elliptic Curve" style={{ maxWidth: '70%', maxHeight: '70%' }} />
+              </div>
+              <strong>Note: 2nd presentation:</strong>
+              <div className="row justify-content-center">
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <img src={EC_Case1} alt="ECC Case 1" style={{ maxWidth: '57%', maxHeight: '57%' }} />
+                  <img src={EC_Case2} alt="ECC Case 2" style={{ maxWidth: '57%', maxHeight: '57%' }} />
+                  <img src={EC_Case3} alt="ECC Case 3" style={{ maxWidth: '57%', maxHeight: '57%' }} />
+                </div>
               </div>
 
               <strong>Elliptic curves over finite fields</strong>
