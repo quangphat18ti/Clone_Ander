@@ -20,7 +20,7 @@ export default function Mathematic() {
             <h4>Introduction</h4>
             <p>In this chapter, we will find answer for two questions:</p>
             <ul>
-              <li>Why is the output of SHA256 always $256$ bits?</li>
+              <li>Why is the output of <strong> SHA256 </strong>  always $256$ bits?</li>
               <li>Why with each data, the hash is unique? </li>
             </ul>
           </div>
@@ -33,16 +33,21 @@ export default function Mathematic() {
                     And to know why it can make fix-length, we need to discover about how it solve data input.
               </li>
               <li id="accordion">
-                <a class="card-link" data-toggle="collapse" href="#merkle-construction" style={{color: "black"}}>
-                  SHA256 is built with <a href='https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction'>Merkle–Damgård construction</a>. Overall about it:   
+                <a class="card-link" data-toggle="collapse" href="#merkle-construction" >
+                  <strong> SHA256 </strong>  is built with Merkle–Damgård construction. Overall about it:   
                 </a>
 
                 <div id="merkle-construction" class="collapse show" data-parent="#accordion">
                   <ul>
-                    <li> Initially, SHA256 will initialize the hash with a default value of $256$ bits.</li>
-                    <li>With any given input data, the algorithm will automatically add padding to make the input length a multiple of $512$ bits. SHA256 then proceeds to divide the input data into a sequence of blocks, each block having a fixed length of $512$ bits.</li>
+                    <li> Initially, <strong> SHA256 </strong>  will initialize the hash with a default value of $256$ bits.</li>
+                    <li>With any given input data, the algorithm will automatically add padding to make the input length a multiple of $512$ bits. <strong> SHA256 </strong>  then proceeds to divide the input data into a sequence of blocks, each block having a fixed length of $512$ bits.</li>
                     <li>There is an extremely unique function, the <strong>one-way compression function</strong>, denoted by $F$, which transforms two fixed-length inputs into an output of the same size as one of the inputs.</li>
-                    <li> Function $F$ takes two parameters: the current Hash value and the content of the current Block. The value of the Block, consisting of $512$ bits, contributes as a parameter to cause the $F$ function to alter the value of the Hash. </li>
+                    <li> Function $F$ takes two parameters: 
+                      <ol>
+                        <li>The current Hash value</li>
+                        <li>The value of the current Block. The value of the Block, consisting of $512$ bits, contributes as a parameter to cause the $F$ function to alter the Hash value.</li>
+                      </ol>  
+                    </li>
                     <li>And when reaching the final Block, the Hash value for the entire document is generated.</li>
                   </ul>
                 </div>
@@ -63,7 +68,7 @@ export default function Mathematic() {
             <ul>
               <li>
                 <div id="accordion">
-                  <a class="card-link" data-toggle="collapse" href="#collapseOne" style={{color: "black"}}>
+                  <a class="card-link" data-toggle="collapse" href="#collapseOne">
                     The property that we need to understand here is Anti-Collision. (Mentioned in Chapter 3)
                   </a>
 
@@ -79,10 +84,10 @@ export default function Mathematic() {
               </li>
             
               <li>
-                <span>We know that: SHA-256 is used to map the data of arbitrary size to generate an output of a fixed size - $256$ bits. 
+                <span>We know that: <strong>SHA256</strong> is used to map the data of arbitrary size to generate an output of a fixed size - $256$ bits. 
                   The input set is infinite while the output is only 2<sup>256</sup> cases. 
                   The map between a bigger set to a smaller set is not one-to-one. So, there are many inputs that map to the same output.
-                  Howerver, SHA256 was created to make Anti-Collision as difficult as possible.
+                  Howerver, <strong> SHA256 </strong>  was created to make Anti-Collision as difficult as possible.
                 </span>
               </li>
               <li>
@@ -94,20 +99,20 @@ export default function Mathematic() {
               </div>
             </ul>
             <div id="accordion">
-                <a class="card-link" data-toggle="collapse" href="#SHA256-Compress-Function" style={{color: "black"}}>
-                  Overall about SHA256 Compression Function ($F$):
+                <a class="card-link" data-toggle="collapse" href="#SHA256-Compress-Function">
+                  Overall about <strong> SHA256 </strong>  Compression Function ($F$):
                 </a>
 
                 <div id="SHA256-Compress-Function" class="collapse show" data-parent="#accordion">
                   <ul>
-                    <li> Initially, SHA256 will initialize the hash with a default value of $256$ bits; is divided into $8$ variables and each variable is $32$ bytes. </li>
+                    <li> Initially, <strong> SHA256 </strong>  will initialize the hash with a default value of $256$ bits; is divided into $8$ variables and each variable is $32$ bytes. </li>
                     <li>Function $F$ takes two parameters: the current Hash value and the content of the current Block. The value of the Block, consisting of $512$ bits, contributes as a parameter to cause the $F$ function to alter the value of the Hash. </li>
-                    <li>With $512$ bits of parameter, it divide into $16$ <strong>words</strong>, each word is $32$ bits. And from $16$ words, it construction an array of $64$ words - $32$ bits.</li> 
-                    <li>$64$ words above with $64$ keys const value are the parameters for $64$ rounds of compression function. </li>
+                    <li>With $512$ bits of parameter, it divide into $16$ <strong>words</strong>, each word is $32$ bits. And from $16$ words, it construction an array of $64$ words - $32$ bits. Denote: $W_i$</li> 
+                    <li>$64$ words ($W_i$) above with $64$ keys ($K_i$) const value (is initialized for whole program) are the parameters for $64$ rounds of compression function. </li>
                     <li>Each round involves numerous mathematical formulas using nonlinear functions such as bitwise rotation, bitwise shifting, etc., performed on integer variables of $32$ bits. 
                       And end of the each round, the result of $8$ variables are change together. (Like a picture above)
                     </li>
-                    <li>With its intricate compression function, SHA256 has successfully passed NIST's tests and is recognized as a secure cryptographic hash function.</li>
+                    <li>With its intricate compression function, <strong> SHA256 </strong>  has successfully passed NIST's tests and is recognized as a secure cryptographic hash function.</li>
                   </ul>
                 </div>
             </div>
