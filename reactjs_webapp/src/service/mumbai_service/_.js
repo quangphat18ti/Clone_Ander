@@ -6,11 +6,18 @@ async function getNewestBlockHexNumber() {
   get newest blocknumber
   ref https://docs.polygonscan.com/v/mumbai-polygonscan/api-endpoints/geth-parity-proxy#eth_blocknumber
   */
-  let res = await fetch(`https://api-testnet.polygonscan.com/api?module=proxy&action=eth_blockNumber&apikey=${POLYGONSCAN_API_KEY}`)
 
-  let r
-  r = await res.json()
-  r = r.result
+  let r = null 
+  try {
+    let res = await fetch(`https://api-testnet.polygonscan.com/api?module=proxy&action=eth_blockNumber&apikey=${POLYGONSCAN_API_KEY}`)
+  
+    r = await res.json()
+    r = r.result
+  }
+  catch(error) {
+    console.log(error)
+  }
+
   return r
 }
 
@@ -21,11 +28,18 @@ async function getBlockInfoByBlockHexNumber(blockHexNumber) {
   get block info by blocknumber
   ref https://docs.polygonscan.com/v/mumbai-polygonscan/api-endpoints/geth-parity-proxy#eth_getblockbynumber
   */
-  let res = await fetch(`https://api-testnet.polygonscan.com/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true
-   &apikey=${POLYGONSCAN_API_KEY}`)
+  let r = null 
 
-  let r
-  r = await res.json()
-  r = r.result
+  try{
+    let res = await fetch(`https://api-testnet.polygonscan.com/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true
+     &apikey=${POLYGONSCAN_API_KEY}`)
+  
+    r = await res.json()
+    r = r.result
+  }
+  catch(error) {
+    console.log(error)
+  }
+  
   return r
 }
