@@ -1,7 +1,7 @@
 import WhatIsSHA256                   from "./hash/whatIsSHA256"
 import Applications                   from "./hash/Application"
 import PropertiesOfCryptoHashFunction from "./hash/6PropertiesOfCryptoHashFunction"
-import Mathematic                     from "./hash/mathematic"
+import MathematicSHA256                     from "./hash/mathematicSHA256"
 
 export default function HashNavTab() { 
   return (
@@ -19,7 +19,7 @@ export default function HashNavTab() {
           <div className="tab-pane show active     " id="pills-whatIsSHA256"  role="tabpanel" aria-labelledby="pills-whatIsSHA256-tab"  > <WhatIsSHA256/>                   </div>
           <div className="tab-pane fade            " id="pills-Applications"  role="tabpanel" aria-labelledby="pills-Applications-tab"  > <Applications/>                   </div>
           <div className="tab-pane fade            " id="pills-6ProperCHF"    role="tabpanel" aria-labelledby="pills-6ProperCHF-tab"    > <PropertiesOfCryptoHashFunction/> </div>
-          <div className="tab-pane fade            " id="pills-mathematic"    role="tabpanel" aria-labelledby="pills-mathematic-tab"    > <Mathematic/> </div>
+          <div className="tab-pane fade            " id="pills-mathematic"    role="tabpanel" aria-labelledby="pills-mathematic-tab"    > <MathematicSHA256/> </div>
         </div>
       </div>
     </>
