@@ -1,4 +1,7 @@
-import EC_Image from "./ECC.gif"
+import EC_Image from "./ver1_ECC_DAC_lab_square.gif"
+import EC_Case1 from "./ECC_case1_square.gif"
+import EC_Case2 from "./ECC_case2_square.gif"
+import EC_Case3 from "./ECC_case3_square.gif"
 function ECDSA() {
   return (
     <>
@@ -24,9 +27,12 @@ function ECDSA() {
                 <li>The point O is an extra point that does not exist in the XY-plane and is defined to lie on every vertical line. 
                   More precisely, when adding P to its reflection P', we obtain the point O. In other words, O acts like zero for elliptic curve addition.</li>
               </ul>
-
               <div className="row justify-content-center">
-                <img src={EC_Image} alt="An Elliptic Curve"/>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <img src={EC_Case1} alt="ECC Case 1" style={{ maxWidth: '56%', maxHeight: '56%', marginRight: '30px' }} />
+                  <img src={EC_Case2} alt="ECC Case 2" style={{ maxWidth: '56%', maxHeight: '56%', marginRight: '30px' }} />
+                  <img src={EC_Case3} alt="ECC Case 3" style={{ maxWidth: '56%', maxHeight: '56%' }} />
+                </div>
               </div>
 
               <strong>Elliptic curves over finite fields</strong>
