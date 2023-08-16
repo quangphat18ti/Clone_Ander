@@ -1,5 +1,5 @@
 import { useEffect, useState }  from 'react'
-import { gen_keypair }          from  '../../service/crypto_service'
+import { gen_keypair }          from  '../../../service/crypto_service'
 
 function KeyPair() {
   let [privkey, setPrivkey] = useState(0)
@@ -30,7 +30,7 @@ function KeyPair() {
 
   return(
     <>
-      <div className="cointainer mt-3 mx-5">
+      <div className="cointainer mt-3 mx-2">
         <div className="card">
           <h4 className="card-header">Public / Private Key Pairs</h4>
 
