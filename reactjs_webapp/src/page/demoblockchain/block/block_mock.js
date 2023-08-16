@@ -84,6 +84,7 @@ function BlockMock(props) {
               <textarea
                 className="form-control" id="data" rows="10"
                 onChange={(e) => { setData(e.target.value)}}
+                placeholder="Enter any data here and click Mine to find Nonce"
                 value={data || ''}
               ></textarea>
             </div>
@@ -98,7 +99,16 @@ function BlockMock(props) {
                      value={nonce || ''}
                      onChange={(e) => {setNonce(e.target.value)}}
               />
+
+              {/* TODO: Instruction to find nonce when mine */}
+              <div>
+                <small className="form-text text-muted"> 
+                  Click on the 'Mine' button to find a Nonce so that the Hash(Block) has 4 leading digits '0' corresponding to the inputted text content.
+                </small>
+              </div>
+
             </div>
+
           </div>
 
           {/* hash */}
