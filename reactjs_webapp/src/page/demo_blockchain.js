@@ -1,4 +1,4 @@
-import Hash           from "./demoblockchain/hash"
+import HashNav        from "./demoblockchain/hash/hash_nav"
 import BlockNavtab    from "./demoblockchain/block/_block_navtab"
 import BlockChain     from "./demoblockchain/blockchain/blockchain"
 import Distributed    from "./demoblockchain/distributed"
@@ -19,7 +19,7 @@ function DemoBlockchain() {
         </nav>
 
         <div className="tab-content" id="nav-tabContent">
-          <div className="tab-pane fade show active" id="nav-hash"                        role="tabpanel" aria-labelledby="nav-hash-tab">                         <Hash/>          </div>
+          <div className="tab-pane fade show active" id="nav-hash"                        role="tabpanel" aria-labelledby="nav-hash-tab">                         <HashNav/>          </div>
           <div className="tab-pane fade            " id="nav-block"                       role="tabpanel" aria-labelledby="nav-block-tab">                        <BlockNavtab showPrev="false"/>   </div>
           <div className="tab-pane fade            " id="nav-blockchain--demoblockchain"  role="tabpanel" aria-labelledby="nav-blockchain--demoblockchain-tab">   <BlockChain/>    </div>
           <div className="tab-pane fade            " id="nav-distributed"                 role="tabpanel" aria-labelledby="nav-distributed-tab">                  <Distributed /> </div>
