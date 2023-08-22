@@ -110,25 +110,24 @@ function KeyPair() {
 
 
       {/* explain */}
-      <div>
-        <p onClick={handleClick} style={{ cursor: 'pointer', color: 'red', fontWeight: 'bold',  margin: '30px', fontSize: '25px' }}>
+      <p>
+        <a onClick={handleClick}  data-toggle="collapse" href="#genarateCode" role="button" aria-expanded="false" aria-controls="genarateCode"
+           style={{ cursor: 'pointer', color: 'red', fontWeight: 'bold',  margin: '30px', fontSize: '25px' }}>
           Explain it
-        </p>
-        {showText && (
-            <div style={{backgroundColor: 'black', color: 'white'}}>
-              <div  style={{margin: '30px'}}>
-                <p>privkey = keypair.getPrivate('hex')</p>
-                <p>pubkey  = keypair.getPublic('hex')</p>
-                <p></p>
-                <p>keypair = ec.genKeyPair()</p>
-                <p>or</p>
-                <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
-                <p></p>
-                <p>EC = require('elliptic').ec</p>
-                <p>ec = new EC('secp256k1')</p>
-              </div>
-            </div>
-        )}
+        </a>
+      </p>
+      <div className="collapse" id="genarateCode">
+        <div className="card card-body" style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
+          <p>privkey = keypair.getPrivate('hex')</p>
+          <p>pubkey  = keypair.getPublic('hex')</p>
+          <p></p>
+          <p>keypair = ec.genKeyPair()</p>
+          <p>or</p>
+          <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
+          <p></p>
+          <p>EC = require('elliptic').ec</p>
+          <p>ec = new EC('secp256k1')</p>
+        </div>
       </div>
     </>
   )
