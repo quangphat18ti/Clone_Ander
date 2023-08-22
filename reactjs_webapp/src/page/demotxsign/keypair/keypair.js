@@ -28,6 +28,12 @@ function KeyPair() {
     window.addEventListener('storage_keypair_event', handleKeypairStorage)
   }, [])
 
+  const [showText, setShowText] = useState(false);
+
+  const handleClick = () => {
+    setShowText(!showText);
+  };
+
   return(
     <>
       <div className="cointainer mt-3 mx-2">
@@ -35,7 +41,18 @@ function KeyPair() {
         <div className="form-group mx-4 mt-3">
 
           {/* privkey */}
-          <label htmlFor="privkey" className="control-label mt-2"><strong>Private Key</strong></label>
+          <label htmlFor="privkey" className="control-label mt-2">
+            {showText ? (
+                    <div>
+                      <strong>Private Key</strong>
+                      <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                        Explain
+                      </sup>
+                    </div>
+                ):
+                (<div><strong>Private Key</strong></div>)}
+          </label>
+
           <div className="input-group">
             <input type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" placeholder="0x" className="form-control mb-2" id="privkey"
                    value={privkey || ''}
@@ -61,15 +78,57 @@ function KeyPair() {
                 storeKeypair(keypair.privkey, keypair.pubkey)
               }}>Random</button>
             </span>
+            <div>
+              {showText && (
+                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                    Explain
+                  </sup>
+              )}
+            </div>
+
 
           </div>
         </div>
 
         {/* pubkey */}
         <div className="form-group mx-4 mt-3">
-          <label htmlFor="pubkey" className="mt-2"><strong>Public Key</strong></label>
+          <label htmlFor="pubkey" className="mt-2">
+            {showText ? (
+                <div>
+                  <strong>Public Key</strong>
+                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                      Explain
+                  </sup>
+                </div>
+            ):
+            (<div><strong>Public Key</strong></div>)}
+
+          </label>
           <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
         </div>
+      </div>
+
+
+      {/* explain */}
+      <div>
+        <p onClick={handleClick} style={{ cursor: 'pointer', color: 'red', fontWeight: 'bold',  margin: '30px', fontSize: '25px' }}>
+          Explain it
+        </p>
+        {showText && (
+            <div style={{backgroundColor: 'black', color: 'white'}}>
+              <div  style={{margin: '30px'}}>
+                <p>privkey = keypair.getPrivate('hex')</p>
+                <p>pubkey  = keypair.getPublic('hex')</p>
+                <p></p>
+                <p>keypair = ec.genKeyPair()</p>
+                <p>or</p>
+                <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
+                <p></p>
+                <p>EC = require('elliptic').ec</p>
+                <p>ec = new EC('secp256k1')</p>
+              </div>
+            </div>
+        )}
       </div>
     </>
   )
