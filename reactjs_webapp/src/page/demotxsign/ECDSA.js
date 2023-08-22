@@ -1,7 +1,7 @@
-import EC_Image from "./ver1_ECC_DAC_lab_square.gif"
-import EC_Case1 from "./ECC_case1_square.gif"
-import EC_Case2 from "./ECC_case2_square.gif"
-import EC_Case3 from "./ECC_case3_square.gif"
+import EC_Image from "./ECC_presentation/ver1_ECC_DAC_lab_square.gif"
+import EC_Case1 from "./ECC_presentation/ECC_case1_square.gif"
+import EC_Case2 from "./ECC_presentation/ECC_case2_square.gif"
+import EC_Case3 from "./ECC_presentation/ECC_case3_square.gif"
 function ECDSA() {
   return (
     <>
