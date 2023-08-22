@@ -6,11 +6,18 @@ async function getNewestBlockHexNumber() {
   get newest blocknumber
   ref https://docs.etherscan.io/v/sepolia-etherscan/api-endpoints/geth-parity-proxy
   */
-  let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${ETHERSCAN_API_KEY}`)
 
-  let r
-  r = await res.json()
-  r = r.result
+  let r = null
+  try{
+    let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=${ETHERSCAN_API_KEY}`)
+    
+    r = await res.json()
+    r = r.result
+  }
+  catch(error) {
+    console.log(error)
+  }
+
   return r
 }
 
@@ -21,10 +28,17 @@ async function getBlockInfoByBlockHexNumber(blockHexNumber) {
   get block info by blocknumber
   ref https://docs.etherscan.io/v/sepolia-etherscan/api-endpoints/geth-parity-proxy#eth_getblockbynumber
   */
-  let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true&apikey=${ETHERSCAN_API_KEY}`)
+  let r = null
 
-  let r
-  r = await res.json()
-  r = r.result
+  try{
+    let res = await fetch(`https://api-sepolia.etherscan.io/api?module=proxy&action=eth_getBlockByNumber&tag=${blockHexNumber}&boolean=true&apikey=${ETHERSCAN_API_KEY}`)
+  
+    r = await res.json()
+    r = r.result
+  }
+  catch(error) {
+    console.log(error)
+  }
+  
   return r
 }

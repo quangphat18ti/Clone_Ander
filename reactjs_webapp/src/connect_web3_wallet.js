@@ -15,6 +15,7 @@ function ConnectWeb3Wallet() {
 
   // catch change account event
   useEffect(()=>{
+    if(!window.ethereum) return;
     let provider = new ethers.providers.Web3Provider(window.ethereum)
     provider.provider.on('accountsChanged', (accounts) => {
       set__walletaccount_pubkey(accounts[0])
@@ -42,7 +43,13 @@ function ConnectWeb3Wallet() {
               let                       a = accounts[0]  //NOTE we only care about 1st selected one here ie [0]
               set__walletaccount_pubkey(a)
             } catch (error) {
-              alert(error);
+              if(error.code === -32002) {
+                console.log("User closed the MetaMask prompt.")
+                alert("MetaMask prompt is closed. Let's open Metamask extension to connect wallet!!!")
+              }
+              else {
+                console.error("Error connecting to MetaMask:", error);
+              }
             }
            } ; connectToMetamask()
            //endregion popup metamask to let user select pubkey/wallet/account

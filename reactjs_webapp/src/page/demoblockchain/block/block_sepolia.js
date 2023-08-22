@@ -1,6 +1,7 @@
 import {useEffect, useState}                                    from "react"
 import {getBlockInfoByBlockHexNumber, getNewestBlockHexNumber}  from "../../../service/etherscan_service/_"
 import Tx                                                       from "./Tx"
+const ethers = require('ethers')
 
 const hexToDecimal = hex => parseInt(hex, 16)
 
@@ -10,6 +11,8 @@ function BlockSepolia() {
   useEffect( () => {
     let get_latest_blocknum = async ()=>{
       let bno = await getNewestBlockHexNumber()
+      if(bno === null) return
+
       let b   = await getBlockInfoByBlockHexNumber(bno)
       set_blockObj(b)
     }; get_latest_blocknum()  //NOTE must wrap code in an inner function to run w/ async; dont use useEffect( https://devtrium.com/posts/async-functions-useeffectasync()=>{} )  ref.
@@ -19,17 +22,8 @@ function BlockSepolia() {
     <>
       <h3>Block Sepolia</h3>
 
-      {/* {blockObj && <>
-        <pre>
-          <br/>Prev         {blockObj.parentHash}
-          <br/>Block Number {blockObj.number}
-          <br/>Nonce        {blockObj.nonce}
-          <br/>Hash         {blockObj.hash}
-        </pre>
+      {blockObj === null && <h3>Sepolia EtherScan is busy. Let's F5 and visit it again.</h3>}
 
-        <hr/>
-        <div>{JSON.stringify(blockObj)}</div>
-      </>} */}
       {blockObj && 
         <div className={`alert alert-success px-3 pt-3 pb-3`} role="alert" style={{ color: 'black' }}>
           <form className="pb-10">
@@ -63,7 +57,7 @@ function BlockSepolia() {
                 <div className="col-sm-10 overflow-auto" style={{maxHeight: "12em"}} rows="10">
                   {
                     blockObj.transactions.map( (tx, i) => {
-                      return <Tx from={tx.from} to={tx.to} value={hexToDecimal(tx.value)} key={tx.hash} />
+                      return <Tx from={tx.from} to={tx.to} value={ethers.utils.formatEther(tx.value)} key={tx.hash} />
                     })
                   }
                 </div>
