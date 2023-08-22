@@ -12,6 +12,25 @@
   </head>
 
   <body>
+
+    <!-- Add inline-math ref. https://docs.mathjax.org/en/latest/web/configuration.html -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    
+    <!-- Add mathJAX ref. https://medium.com/@isurulakr/integrating-mathjax-version-3-in-react-d6fd4c5a8b81#:~:text=MathJax%20can%20be%20simply%20added%20to%20your%20React%20application%20by,v3)%20to%20our%20React%20application. -->
+    <!--    Add the below script for mathjax-->
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js">
+    </script>
+
     <div id="root"></div>
 
     <!-- Bootstrap core JS ref. https://getbootstrap.com/docs/4.6/getting-started/introduction/ -->
