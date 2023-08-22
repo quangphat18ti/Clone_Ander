@@ -31,49 +31,44 @@ function KeyPair() {
   return(
     <>
       <div className="cointainer mt-3 mx-2">
-        <div className="card">
-          <h4 className="card-header">Public / Private Key Pairs</h4>
 
-          <div className="card-body">  
-            <div className="form-group">
+        <div className="form-group mx-4 mt-3">
 
-              {/* privkey */}
-              <label htmlFor="privkey" className="control-label mt-2">Private Key</label>
-              <div className="input-group">
-                <input type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" placeholder="0x" className="form-control mb-2" id="privkey"
-                       value={privkey || ''}
-                       onChange={ (e) => {
-                         // calc new pubkey
-                         let privkey_new = (e.target.value === '')? '0' : e.target.value// convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
-                         let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
-                           0 : gen_keypair(privkey_new).pubkey
+          {/* privkey */}
+          <label htmlFor="privkey" className="control-label mt-2"><strong>Private Key</strong></label>
+          <div className="input-group">
+            <input type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" placeholder="0x" className="form-control mb-2" id="privkey"
+                   value={privkey || ''}
+                   onChange={ (e) => {
+                     // calc new pubkey
+                     let privkey_new = (e.target.value === '')? '0' : e.target.value// convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
+                     let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
+                       0 : gen_keypair(privkey_new).pubkey
 
-                         // render to ui
-                         setPrivkey(privkey_new)
-                         setPubkey(pubkey_new)
-                         storeKeypair(privkey_new, pubkey_new)
-                       }}
-                />
+                     // render to ui
+                     setPrivkey(privkey_new)
+                     setPubkey(pubkey_new)
+                     storeKeypair(privkey_new, pubkey_new)
+                   }}
+            />
 
-                {/* btn Random */}
-                <span className="input-group-append">
-                  <button className="btn btn-secondary mb-2" onClick={()=>{
-                    let keypair = gen_keypair()
-                    setPrivkey(keypair.privkey)
-                    setPubkey(keypair.pubkey)
-                    storeKeypair(keypair.privkey, keypair.pubkey)
-                  }}>Random</button>
-                </span>
+            {/* btn Random */}
+            <span className="input-group-append">
+              <button className="btn btn-secondary mb-2" onClick={()=>{
+                let keypair = gen_keypair()
+                setPrivkey(keypair.privkey)
+                setPubkey(keypair.pubkey)
+                storeKeypair(keypair.privkey, keypair.pubkey)
+              }}>Random</button>
+            </span>
 
-              </div>
-            </div>
-
-            {/* pubkey */}
-            <div className="form-group mb-5">
-              <label htmlFor="pubkey" className="mt-2">Public Key</label>
-              <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
-            </div>
           </div>
+        </div>
+
+        {/* pubkey */}
+        <div className="form-group mx-4 mt-3">
+          <label htmlFor="pubkey" className="mt-2"><strong>Public Key</strong></label>
+          <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
         </div>
       </div>
     </>
