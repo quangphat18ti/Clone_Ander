@@ -34,12 +34,6 @@ function KeyPair() {
     window.addEventListener('storage_keypair_event', handleKeypairStorage)
   }, [])
 
-  const [showText, setShowText] = useState(false);
-
-  const handleClick = () => {
-    setShowText(!showText);
-  };
-
   return(
     <>
       <div className="cointainer mt-3 mx-2">
@@ -48,67 +42,73 @@ function KeyPair() {
 
           {/* privkey */}
           <label htmlFor="privkey" className="control-label mt-2">
-            {showText ? (
-                    <div>
-                      <strong>Private Key</strong>
-                      <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
-                        Explain
-                      </sup>
-                    </div>
-                ):
-                (<div><strong>Private Key</strong></div>)}
+            <div>
+              <strong>Private Key</strong>
+              {showExplain && <a className="badge badge-danger ml-1" href='#privatekey' onClick={async () => {
+                setShowPrivkey(true)
+                await new Promise(resolve => setTimeout(resolve, 300))
+                setShowPrivkey(false)
+              }}>Explain</a>}
+            </div>
+            
           </label>
 
           <div className="input-group">
             <input type="text" pattern="[a-fA-F\d]+" title="must be hexadecimal number" placeholder="0x" className="form-control mb-2" id="privkey"
-                   value={privkey || ''}
-                   onChange={ (e) => {
-                     // calc new pubkey
-                     let privkey_new = (e.target.value === '')? '0' : e.target.value// convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
-                     let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
-                       0 : gen_keypair(privkey_new).pubkey
+              value={privkey || ''}
+              onChange={async (e) => {
+              // calc new pubkey
+              let privkey_new = (e.target.value === '')? '0' : e.target.value// convert to bigint to use w/ elliptic  ref https://github.com/anders94/public-private-key-demo/blob/master/views/keys.pug#L47
+              let pubkey_new = privkey_new === '0'?  /* handle error @ calling w/ empty '' or '0' param ie gen_keypair(p) ie ec.keyFromPrivate(p) will result as error */
+                0 : gen_keypair(privkey_new).pubkey
 
-                     // render to ui
-                     setPrivkey(privkey_new)
-                     setPubkey(pubkey_new)
-                     storeKeypair(privkey_new, pubkey_new)
-                   }}
+              // render to ui
+              setPrivkey(privkey_new)
+              setPubkey(pubkey_new)
+              storeKeypair(privkey_new, pubkey_new)
+              setShowChangePriv(true)
+              await new Promise(resolve => setTimeout(resolve, 300))
+              setShowChangePriv(false)
+              }}
             />
 
             {/* btn Random */}
             <span className="input-group-append">
-              <button className="btn btn-secondary mb-2" onClick={()=>{
+              <button className="btn btn-secondary mb-2" onClick={async ()=>{
                 let keypair = gen_keypair()
                 setPrivkey(keypair.privkey)
                 setPubkey(keypair.pubkey)
                 storeKeypair(keypair.privkey, keypair.pubkey)
-              }}>Random</button>
+
+                //random explanation
+                setShowRandom(true)
+                await new Promise(resolve => setTimeout(resolve, 300))
+                setShowRandom(false)
+              }}>Random 
+              </button>
             </span>
             <div>
-              {showText && (
-                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
-                    Explain
-                  </sup>
-              )}
+              {showExplain && <a className="badge badge-danger ml-1" href='#random' onClick={async () => {
+                setShowRandom(true)
+                await new Promise(resolve => setTimeout(resolve, 300))
+                setShowRandom(false)
+              }}>Explain</a>}
             </div>
-
-
           </div>
+          
         </div>
 
         {/* pubkey */}
         <div className="form-group mx-4 mt-3">
           <label htmlFor="pubkey" className="mt-2">
-            {showText ? (
-                <div>
-                  <strong>Public Key</strong>
-                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
-                      Explain
-                  </sup>
-                </div>
-            ):
-            (<div><strong>Public Key</strong></div>)}
-
+            <div>
+              <strong>Public Key</strong>
+              {showExplain && <a className="badge badge-danger ml-1" href='#publickey' onClick={async () => {
+                setShowPubkey(true)
+                await new Promise(resolve => setTimeout(resolve, 300))
+                setShowPubkey(false)
+              }}>Explain</a>}
+            </div>
           </label>
           <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
         </div>
@@ -117,22 +117,26 @@ function KeyPair() {
 
       {/* explain */}
       <p>
-        <a onClick={handleClick}  data-toggle="collapse" href="#genarateCode" role="button" aria-expanded="false" aria-controls="genarateCode"
-           style={{ cursor: 'pointer', color: 'red', fontWeight: 'bold',  margin: '30px', fontSize: '25px' }}>
+        <a data-toggle="collapse" href="#genarateCode" role="button" aria-expanded="false" aria-controls="genarateCode"
+           style={{ cursor: 'pointer', color: 'red', fontWeight: 'bold',  margin: '30px', fontSize: '25px' }} onClick={() => {
+            setShowExplain(!showExplain)
+           }}>
           Explain it
         </a>
       </p>
-      <div className="collapse" id="genarateCode">
-        <div className="card card-body" style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
-          <p>privkey = keypair.getPrivate('hex')</p>
-          <p>pubkey  = keypair.getPublic('hex')</p>
-          <p></p>
-          <p>keypair = ec.genKeyPair()</p>
-          <p>or</p>
-          <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
-          <p></p>
-          <p>EC = require('elliptic').ec</p>
-          <p>ec = new EC('secp256k1')</p>
+      <div className="collapse pt-5" id="genarateCode">
+        <div className="card card-body " style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
+          <code className={`${showPrivkey === true ? '' : 'text-white'}`} id='privatekey'>privkey = keypair.getPrivate('hex')</code>
+          <code className={`${showPubkey === true ? '' : 'text-white'}`} id='publickey'>pubkey  = keypair.getPublic('hex')</code>
+          <br/>
+          
+          <code className={`${showRandom === true ? '' : 'text-white'}`} id='random'>keypair = ec.genKeyPair()</code>
+          <code className='text-secondary'>or</code>
+          <code className={`${showChangePriv === true ? '' : 'text-white'}`} id='changePrive'>keypair = ec.keyFromPrivate(privkey) <span className='text-secondary'>// run when you update privkey value;</span></code>
+          <br/>
+
+          <code className='text-white'>EC = require('elliptic').ec</code>
+          <code className='text-white'>ec = new EC('secp256k1')</code>
         </div>
         <p>
           <a data-toggle="collapse" href="#ECDSA" role="button" aria-expanded="false" aria-controls="ECDSA"
