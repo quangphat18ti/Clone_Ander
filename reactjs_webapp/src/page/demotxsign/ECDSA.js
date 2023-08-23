@@ -1,11 +1,11 @@
-import EC_Image from "./ver1_ECC_DAC_lab_square.gif"
-import EC_Case1 from "./ECC_case1_square.gif"
-import EC_Case2 from "./ECC_case2_square.gif"
-import EC_Case3 from "./ECC_case3_square.gif"
+import EC_Image from "./ECC_presentation/ver1_ECC_DAC_lab_square.gif"
+import EC_Case1 from "./ECC_presentation/ECC_case1_square.gif"
+import EC_Case2 from "./ECC_presentation/ECC_case2_square.gif"
+import EC_Case3 from "./ECC_presentation/ECC_case3_square.gif"
 function ECDSA() {
   return (
     <>
-      <div className="cointainer mt-3 mx-5">
+      <div className="cointainer mt-3 mx-5 " id="ECDSA">
         <div className="card" >
           <h1 className="card-header">Elliptic curve digital signature algorithm</h1>
             <div className="card-body">
