@@ -31,10 +31,29 @@ function KeyPair() {
     window.addEventListener('storage_keypair_event', handleKeypairStorage)
   }, [])
 
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState(false)
 
   const handleClick = () => {
-    setShowText(!showText);
+    setShowText(!showText)
+  }
+
+  const [changeText1, setColor1 ] = useState(false)
+  const [changeText2, setColor2 ] = useState(false)
+  const [changeText3, setColor3 ] = useState(false)
+  const changeColor = (option) => {
+    if (option === 1) {
+      setColor1(!changeText1)
+      setColor2(false)
+      setColor3(false)
+    } else if (option === 2) {
+      setColor2(!changeText2)
+      setColor1(false)
+      setColor3(false)
+    } else if (option === 3) {
+      setColor3(!changeText3)
+      setColor2(false)
+      setColor1(false)
+    }
   };
 
   return(
@@ -48,7 +67,7 @@ function KeyPair() {
             {showText ? (
                     <div>
                       <strong>Private Key</strong>
-                      <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                      <sup onClick={() => changeColor(1)} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
                         Explain
                       </sup>
                     </div>
@@ -83,7 +102,7 @@ function KeyPair() {
             </span>
             <div>
               {showText && (
-                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                  <sup onClick={() => changeColor(3)} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
                     Explain
                   </sup>
               )}
@@ -99,7 +118,7 @@ function KeyPair() {
             {showText ? (
                 <div>
                   <strong>Public Key</strong>
-                  <sup onClick={handleClick} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
+                  <sup onClick={() => changeColor(2)} style={{ cursor: 'pointer', fontWeight: 'bold',  color: 'red', marginLeft: '10px'}}>
                       Explain
                   </sup>
                 </div>
@@ -121,12 +140,22 @@ function KeyPair() {
       </p>
       <div className="collapse" id="genarateCode">
         <div className="card card-body" style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
-          <p>privkey = keypair.getPrivate('hex')</p>
-          <p>pubkey  = keypair.getPublic('hex')</p>
+          {changeText1 ? (<div style={{color: 'yellow'}}><p>privkey = keypair.getPrivate('hex')</p></div>):
+              (<div><p>privkey = keypair.getPrivate('hex')</p></div>)}
+          {changeText2 ? (<div style={{color: 'yellow'}}><p>pubkey  = keypair.getPublic('hex')</p></div>):
+              (<div><p>pubkey  = keypair.getPublic('hex')</p></div>)}
           <p></p>
-          <p>keypair = ec.genKeyPair()</p>
-          <p>or</p>
-          <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
+          {changeText3 ? (
+              <div style={{color: 'yellow'}}>
+                <p>keypair = ec.genKeyPair()</p>
+                <p>or</p>
+                <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
+              </div>):
+              (<div>
+                <p>keypair = ec.genKeyPair()</p>
+                <p>or</p>
+                <p>keypair = ec.keyFromPrivate(privkey)  // run when you update privkey value</p>
+              </div>)}
           <p></p>
           <p>EC = require('elliptic').ec</p>
           <p>ec = new EC('secp256k1')</p>
