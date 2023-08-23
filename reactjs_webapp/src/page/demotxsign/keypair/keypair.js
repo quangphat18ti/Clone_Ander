@@ -5,6 +5,11 @@ import ECDSA from '../ECDSA';
 function KeyPair() {
   let [privkey, setPrivkey] = useState(0)
   let [pubkey, setPubkey]   = useState(0)
+  let [showPrivkey, setShowPrivkey]       = useState(false)
+  let [showPubkey, setShowPubkey]         = useState(false)
+  let [showRandom, setShowRandom]         = useState(false)
+  let [showChangePriv, setShowChangePriv] = useState(false)
+  let [showExplain, setShowExplain]       = useState(false)
 
   /*
     Store and dispatch event
