@@ -35,24 +35,22 @@ function KeyPair() {
 
   const handleClick = () => {
     setShowText(!showText)
+    changeColor(4)
   }
 
   const [changeText1, setColor1 ] = useState(false)
   const [changeText2, setColor2 ] = useState(false)
   const [changeText3, setColor3 ] = useState(false)
   const changeColor = (option) => {
+    setColor1(false)
+    setColor2(false)
+    setColor3(false)
     if (option === 1) {
       setColor1(!changeText1)
-      setColor2(false)
-      setColor3(false)
     } else if (option === 2) {
       setColor2(!changeText2)
-      setColor1(false)
-      setColor3(false)
     } else if (option === 3) {
       setColor3(!changeText3)
-      setColor2(false)
-      setColor1(false)
     }
   };
 
