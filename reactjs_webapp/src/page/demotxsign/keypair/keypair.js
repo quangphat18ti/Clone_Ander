@@ -87,13 +87,12 @@ function KeyPair() {
               }}>Random 
               </button>
             </span>
-            <div>
-              {showExplain && <a className="badge badge-danger ml-1" href='#random' onClick={async () => {
-                setShowRandom(true)
-                await new Promise(resolve => setTimeout(resolve, 300))
-                setShowRandom(false)
-              }}>Explain</a>}
-            </div>
+            {showExplain && <a className="badge badge-danger ml-1 mb-2 align-self-center" href='#random' onClick={async () => {
+              setShowRandom(true)
+              await new Promise(resolve => setTimeout(resolve, 300))
+              setShowRandom(false)
+            }}>Explain</a>}
+
           </div>
           
         </div>
