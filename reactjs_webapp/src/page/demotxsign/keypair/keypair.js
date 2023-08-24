@@ -1,6 +1,7 @@
 import { useEffect, useState }  from 'react'
 import { gen_keypair }          from  '../../../service/crypto_service'
 import ECDSA from '../ECDSA';
+import ideaIcon from "./idea_icon.png"
 
 function KeyPair() {
   let [privkey, setPrivkey] = useState(0)
@@ -44,11 +45,15 @@ function KeyPair() {
           <label htmlFor="privkey" className="control-label mt-2">
             <div>
               <strong>Private Key</strong>
-              {showExplain && <a className="badge badge-danger ml-1" href='#privatekey' onClick={async () => {
+              {showExplain && <sup><a className="badge badge-pill badge-light ml-1" style={{color:'red', fontSize:'12px'}} href='#privatekey' onClick={async () => {
                 setShowPrivkey(true)
                 await new Promise(resolve => setTimeout(resolve, 300))
                 setShowPrivkey(false)
-              }}>Explain</a>}
+              }}>
+                <div style={{ lineHeight: '20px', display: 'flex', alignItems: 'center' }}>
+                  <img src={ideaIcon} style={{ verticalAlign: 'middle' }} alt='Idea Icon'/> Explain
+                </div>
+              </a></sup>}
             </div>
             
           </label>
@@ -87,12 +92,15 @@ function KeyPair() {
               }}>Random 
               </button>
             </span>
-            {showExplain && <a className="badge badge-danger ml-1 mb-2 align-self-center" href='#random' onClick={async () => {
+            {showExplain && <sup><a className="badge badge-pill badge-light ml-1" style={{color:'red', fontSize:'12px'}} href='#random' onClick={async () => {
               setShowRandom(true)
               await new Promise(resolve => setTimeout(resolve, 300))
               setShowRandom(false)
-            }}>Explain</a>}
-
+            }}>
+              <div style={{ lineHeight: '20px', display: 'flex', alignItems: 'center' }}>
+                <img src={ideaIcon} style={{ verticalAlign: 'middle' }} alt='Idea Icon'/> Explain
+              </div>
+            </a></sup>}
           </div>
           
         </div>
@@ -102,11 +110,15 @@ function KeyPair() {
           <label htmlFor="pubkey" className="mt-2">
             <div>
               <strong>Public Key</strong>
-              {showExplain && <a className="badge badge-danger ml-1" href='#publickey' onClick={async () => {
+              {showExplain && <sup><a className="badge badge-pill badge-light ml-1" style={{color:'red', fontSize:'12px'}} href='#publickey' onClick={async () => {
                 setShowPubkey(true)
                 await new Promise(resolve => setTimeout(resolve, 300))
                 setShowPubkey(false)
-              }}>Explain</a>}
+              }}>
+                <div style={{ lineHeight: '20px', display: 'flex', alignItems: 'center' }}>
+                  <img src={ideaIcon} style={{ verticalAlign: 'middle' }} alt='Idea Icon'/> Explain
+                </div>
+              </a></sup>}
             </div>
           </label>
           <input className="form-control" id="pubkey" type="text" readOnly={true} value={pubkey || ''}/>
