@@ -74,7 +74,7 @@ function KeyPair() {
 
             {/* btn Random */}
             <span className="input-group-append">
-              <button className="btn btn-secondary mb-2" onClick={async ()=>{
+              <button className="btn btn-secondary mb-2 rounded-right" onClick={async ()=>{
                 let keypair = gen_keypair()
                 setPrivkey(keypair.privkey)
                 setPubkey(keypair.pubkey)
@@ -125,7 +125,7 @@ function KeyPair() {
         </a>
       </p>
       <div className="collapse pt-5" id="genarateCode">
-        <div className="card card-body " style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
+        <div className="card card-body rounded-0" style={{backgroundColor: 'black', color: 'white', marginBottom: '20px'}}>
           <code className={`${showPrivkey === true ? '' : 'text-white'}`} id='privatekey'>privkey = keypair.getPrivate('hex')</code>
           <code className={`${showPubkey === true ? '' : 'text-white'}`} id='publickey'>pubkey  = keypair.getPublic('hex')</code>
           <br/>
